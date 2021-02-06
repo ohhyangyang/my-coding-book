@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+		/*
+		3D缩放
+		
+		scaleX(x)	通过设置 X 轴的值来定义缩放转换。
+		scaleY(y)	通过设置 Y 轴的值来定义缩放转换。
+		scaleZ(z)	通过设置 Z 轴的值来定义 3D 缩放转换。
+		scale3d(x,y,z)	定义 3D 缩放转换。
+		
+		如果只设置scaleZ(number)，你会发现元素并没有扩大或压缩，
+		但scaleZ(number)需要配合translateZ(length)使用时，缩放大小为number x length的结果
+		 */
+		
+		
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#wrap{
+			width: 400px;
+			height:400px;
+			border:1px solid;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin-top: -200px;
+			margin-left: -200px;
+			perspective: 300px;/*刚好甩到屏幕边缘上*/
+		}
+		#inner{
+			position: absolute;
+			left: 50%;
+			top:50%;
+			margin-left: -100px;
+			margin-top: -100px;
+			width: 200px;
+			height: 200px;
+			border-radius: 50%;
+			border:1px solid;
+			text-align: center;
+			line-height: 200px;
+			font-size: 20px;
+			transition: 2s;
+			background-color: #fff3cd;
+		}
+		#inner:hover{
+			transform: scaleZ(2) translateZ(100px);
+		}
+	</style>
+</head>
+<body>
+<div id="wrap">
+	<div id="inner">YANGYANG</div>
+</div>
+</body>
+</html>

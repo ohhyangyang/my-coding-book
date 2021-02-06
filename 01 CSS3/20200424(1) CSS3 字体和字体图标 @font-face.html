@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+		/*
+		- 位图与矢量图
+		  位图特点：
+		  会失真
+		 
+		  矢量图：
+		  不会失真，但色彩单一
+
+		- Web Safe Fonts 指一般浏览器都会有的常见字体  https://www.w3schools.com/cssref/css_websafe_fonts.asp
+
+		- Google Fonts https://fonts.google.com
+		   1 进入网站选择字体
+		   2 选择要引入的style，也可以all in
+		   3 选择引用方式<link> 或者 @import
+
+		- @font-face 自定义字体
+		  @font-face允许网页开发者为其网页指定在线字体，通过这种作者自备字体的方式，可以消除对用户电脑字体的依赖
+		     font-family 指定字体的名字，指定的名字将会被用于CSS选择器内的font或font-family属性
+		     src         字体资源
+		                  （注意选择的字体资源的格式，得是.ttf结尾等有效的font格式资源）
+		                  （一个font兼容处理站点：https://www.fontsquirrel.com）
+		                  （一个专业字体编辑软件：Fontlab）
+		
+		  ⚠️ 不要在一个CSS选择器中定义@font-face
+		  
+		- 字体图标准备及使用流程：
+		   1 设计一套矢量图（UI designer来完成）
+		   2 将矢量图绑定到不同的字符上，生成自定义字体（一般通过工具或站点来处理）（字体图标网站：https://icomoon.io
+		                                                                               https://www.iconfont.cn）
+		   3 将生成的css文件t通过<link>导入到project中，要引用图标时，只需要找到该图标对应的class，加入到元素中即可
+		      
+		  优点：不失真，降低网络负担
+		
+		
+		
+		 */
+		/*引用本地电脑中的font*/
+		@font-face {
+			font-family:"Des" ;
+			src: local(Corbel Italic);/*本地电脑内资源*/
+			    /*
+			    相对路径或网络的绝对路径
+			    url("font/Corbel Italic.ttf")
+			     */
+		}
+		#test1{
+			font: 50px "Des";
+		}
+		
+		/*引用相对路径或绝对路径中的字体图标*/
+		@font-face {
+			font-family:"QHF" ;
+			src: url("font/QHF.ttf");
+			
+		}
+		#test2{
+			font: 100px "QHF";
+		}
+		#test2 span{
+			font-size: 20px;
+		}
+		
+		/*下载并使用网上下载的字体图标*/
+		/*
+		1 上网站下载文件（可通过preferences改图标名字）
+		2 通过下载的文件，引入图标对应的css文件
+		3 将icon-home这个class赋予给icon标签
+		*/
+		icon{
+			font-size: 100px;
+			color: pink;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="font/buildings/style.css"/>
+	<link rel="stylesheet" href="../00 ALBERT PROJECT/05 HPO网站目录交互3/HPO/css/UserHelp_HPO.css"><!--⚠️⚠️ 引用图标的css文件-->
+</head>
+<body>
+<div id="test1">
+	杨歌 Albert
+	
+</div>
+<div id="test2">
+	QQQQ
+	<span>-->这个图标绑定到了大写q字母</span>
+</div>
+<br>
+<br>
+<br>
+<br>
+<icon class="icon-home"></icon>
+</body>
+</html>

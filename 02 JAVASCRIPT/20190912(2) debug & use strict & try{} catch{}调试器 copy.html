@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    - debugging调试
+    在代码中添加"debugger"关键字以调试
+    ⚠️⚠️ 在project中Uros强烈推荐使用，但是在有Jasmin的时候，并不适合
+    可通过在调试器中设置停顿点，来监控每一行代码给页面带来的结果，挺有意思的，如果不懂可以回顾60 debug视频
+    1 chrome中
+    sources中，载入网页，然后和watch配合使用
+    2 firefox中
+    调试器中，通过来源载入网页，然后和监视表达式配合使用
+
+
+    - "use strict" 函数严格模式规则
+      1 不允许unnamed variables
+      2 eliminaates silent errors in JS by throwing actual errors
+
+    - try{code} catch{error} 测试
+
+
+    */
+    //"use strict"  可以写在全局中
+
+    alert(d);
+
+    var a=10;
+    debugger
+    var b="hello";
+    
+    c=true;
+
+    function fun(){
+        alert("hello");
+    }
+
+    var d=35;
+
+    // use strict
+    //例一
+    function canYouSpotTheProblem (){
+        //"use strict" //可以写在函数里
+        for (counter = 0; counter<10 ; counter++){ //⚠️⚠️ 因为严格模式，此处会因为使用let报错
+            console.log('Happy');
+        }
+    }
+
+    canYouSpotTheProblem();
+
+    //例二
+    function sumPrice(){
+
+    }
+
+    function priceToString(){
+
+    }
+
+    //try{} catch{}
+    function checkNumber(x){
+        try{
+            /*
+            can put the codes that we want to run
+            if try{block} encounters an error, it will send it to the catch{ block}
+            */
+
+            if(typeof x === 'string'){
+                throw new Error('Invalid argument');
+            }else{
+                console.log("It's a number");
+            }
+        }
+
+        catch(error){
+            console.log("ERROR WAS" , error);
+        }
+    }
+    checkNumber(5);
+    checkNumber("5");
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

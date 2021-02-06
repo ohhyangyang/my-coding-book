@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<!--
+	$(节点).remove()  删除匹配的节点
+	$(节点).empty()  删除匹配的节点的子节点
+	-->
+</head>
+<script type="text/javascript" src="jquery-1.10.1.js"></script>
+<script type="text/javascript">
+	
+	//1 当点击city的li时，li被删除
+	$(function () {
+	    $("#city li").click(function () {
+	        $(this).remove();
+        })
+        //2 清空game
+        alert("game要被清空了");
+        $("#game").empty();
+    })
+	
+	
+</script>
+<body>
+<p>你喜欢那个城市？</p>
+<ul id="city">
+	<li id="bj" name="Beijing">北京</li>
+	<li>上海</li>
+	<li id="dj">东京</li>
+	<li id="se">首尔</li>
+</ul>
+<br>
+<br>
+<p>你喜欢哪款单机游戏？</p>
+<ul id="game">
+	<li id="rl">红警</li>
+	<li>实况</li>
+	<li>极品飞车</li>
+	<li>魔兽</li>
+</ul>
+<br>
+<br>
+<form action="www.yang.com" name="myform">
+	回答：<br>
+	<input type="radio" name="type" value="city">城市
+	<input type="radio" name="type" value="game">游戏
+	name:<input type="text" name="name"/>
+	<input type="submit" value="Submit" id="submit"/>
+
+</form>
+</body>
+</html>

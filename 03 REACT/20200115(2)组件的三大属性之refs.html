@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<!--
+- 如果做交互，必需要绑定时间监听事件
+
+- refs对象
+  组件内的所有标签都可以通过ref属性来标识自己
+  
+  方法1 通过{回调函数}直接获取input标签（官方推荐的方法）
+          <input type="text" ref={input => this.xxx = input}/>
+        (⚠️ input固定的代表当前input标签，this为当前组件对象
+           也就是说，将当前的input标签保存给组件对象的xxx)
+          alert(this.xxx.value)
+          
+  方法2 通过标签的refs属性来获取input标签
+        将目标标签的ref属性值标记为一个string: ref="xxx"
+          const input = this.refs.xxx
+          alert(input.value)
+   
+- this.handleXxx事件处理
+  step1 通过目标标签的onXxx监听事件属性来指定调用组件的handleXxx方法
+           <标签 onXxx={this.handleXxx}/>
+       ⚠️添加handleXxx自定义方法之前需要在constructor中绑定它的this为当前组件对象（它的原始this为undefined）
+            constructor(props) {
+                 super(props);
+                 this.handleXxx=this.handleXxx.bind(this)
+            }
+  
+  step2 选择一，如果元素触发事件使得其他元素发生交互
+               通过标签的ref属性来获得发生交互的目标标签
+               
+        选择二，如果元素触发事件使其本身发生交互
+               通过event.target获得触发事件的DOM元素对象
+
+-->
+    <div id="example"></div>
+    
+    <script type="text/javascript" src="js/react.development.js"></script>
+    <script type="text/javascript" src="js/react-dom.development.js"></script>
+    <script type="text/javascript" src="js/babel.min.js"></script>
+    
+    <script type="text/babel">
+	    /*
+	    需求：自定义一个组件，功能如下：
+	        1 点击按钮，出现窗口，提示第一个输入框中的值
+	        2 当第二个输入框失去焦点时，提示该输入框中的值
+	     */
+	    //1 定义组件
+	    class MyComponent extends React.Component{
+        
+            //⚠️此段为添加组件新方法的规定套路！
+	        constructor(props) {
+                super(props);
+                this.showInput=this.showInput.bind(this)
+		        this.handleBlur=this.handleBlur.bind(this)
+            }
+            
+            //添加showInput方法
+            showInput(){
+
+	            /*
+	            方法一：通过{回调函数}直接获取input标签（官方推荐的方法）
+	            将ref标记为一个{回调函数}：ref={(input) => this.input1 = input}
+	            input固定的代表当前input标签，this为当前MyComponent组件，
+	            也就是说，将当前的input标签保存给MyComponent组件对象的input1
+	            
+	             */
+	            alert(this.input1.value)
+    
+                /*
+                方法二：通过标签的refs属性来获取input标签
+                将ref标记为一个string: ref="info"
+
+                const input2 = this.refs.info
+                alert(input2.value)
+                 */
+	            
+            }
+            
+            //添加handleBlur方法
+            handleBlur(event){
+	            alert(event.target.value)
+	            //⚠️通过event.target即可获得下面的第三个input标签
+            }
+	        
+	        render(){
+	            return (
+	                <div>
+		                
+                        <input type="text" ref={(input) => this.input1 = input}/>&nbsp;&nbsp;
+                        <input type="text" ref="info"/>&nbsp;&nbsp;
+		                <button onClick={this.showInput}>提示输入的数据</button><br/><br/>
+		                <input type="text" placeholder="失去焦点时，提示内容" onBlur={this.handleBlur}/>
+	                </div>
+	            )
+	        }
+	    }
+	    
+	    //2 渲染组件标签
+	    ReactDOM.render(<MyComponent/>,document.getElementById("example"))
+    </script>
+</body>
+</html>

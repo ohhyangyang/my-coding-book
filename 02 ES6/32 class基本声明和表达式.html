@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类声明</title>
+</head>
+
+<body>
+    <script>
+        /*
+        - class 类
+        ES6 提供了更接近传统语言的写法 (JAVA和C++)，引入了 Class（类）这个概念作为对象的模板。
+        class实际上是个“特殊的函数”。通过class，可以定义类。通过类来实例化对象
+        
+        基本上， ES6的class可以看作只是一个语法糖，它的绝大部分功能， ES5的构造函数都可以做到，
+        新的class写法只是让对象原型的写法更加清晰、更像面向对象编程的语法而已。
+        
+        ⚠️⚠️⚠️ 类声明和类表达式的主体都执行在严格模式下。
+                 比如，以下构造函数，静态方法，原型方法，getter和setter都在严格模式下执行。
+                 
+        - class 类声明
+          语法 class name [extends] {// class body}
+        
+        ⚠️⚠️⚠️ 函数声明和类声明之间的一个重要区别是函数声明会提升，类声明不会。
+               你首先需要声明你的类，然后访问它，否则会抛出一个ReferenceError：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes
+       
+        - class 类表达式
+          语法 const MyClass = class [className] [extends] {// class body};
+          
+          ⚠️⚠️⚠️ 类表达式的语法和类语句的语法很类似，只是在类表达式中，你可以省略掉类名，而类语句中不能。
+          
+       
+        - constructor()创建class的实例的属性和方法：  obj.xxx
+           -> 实例方法就是只有实例可以调用，
+        
+           constructor() 是一种用于创建和初始化class创建的对象的特殊方法。
+           语法
+                 constructor([arguments]) { 
+
+                     (隐藏声明一个空this对象 this = {})
+
+                     this.x = x; (向空this中添加属性和方法)
+                     this.y = y;
+                     this.z = function(){};
+                     ...
+
+                     (一个隐藏的 return this)
+                  }
+
+                    ⚠️⚠️  this - 新对象被创建
+                         this.xx - 向新对象中添加一个新属性
+           
+           特点：
+                 在一个类中只能有一个名为 “constructor” 的特殊方法。 一个类中出现多次constructor方法将会抛出yntaxError 错误。
+                 当使用new关键字加类名的时候，就会自动执行实例对象中的constructor()方法
+                 在一个构造方法中可以使用super关键字来调用一个父类的构造方法
+                 如果没有显式指定构造方法，则会添加默认的 constructor 方法。
+                 如果不指定一个constructor方法, 则使用一个默认的constructor。
+
+               
+            
+       - 创建class的instance属性和方法       obj.xxx
+           -> 实例的属性方法不储存在__ptoto__中，而是跟随instance
+           声明方法 1 在constructor中声明属性和方法
+                   2 在cosntructor下面使用箭头函数声明方法 fn = () => {}
+           调用方法
+               obj.xxx
+
+
+       - 创建class的prototype的属性和方法  obj.prototype.xxx   obj.xxx   
+           -> 原型的方法储存在__ptoto__中，instace和class都可以调用，是共享的方法
+           声明方法
+               在constructor下面使用ES6的简洁写法声明  fn(){}
+           调用方法
+               obj.prototype.xxx   obj.xxx  class.xxx
+
+           ⚠️⚠️⚠️ ()=>{}箭头函数书写在constructor()外面意味着向constructor()中添加方法
+        
+       ⚠️⚠️⚠️ 简而言之，实例方法就是只有实例可以调用，
+                     静态方法只有构造函数可以调用，
+                     原型方法是实例和构造函数都可以调用，是共享的方法！！！
+        
+        
+        -new 过程
+            1.新生成了一个对象
+            2.链接到原型
+            3.绑定 this
+            4.返回新对象
+        
+        
+        
+        
+        - 知识点：
+         1) class声明类
+         2) constructor定义构造函数初始化
+         3) extends继承父类
+         4) super调用父级构造方法
+         5) static定义静态方法和属性
+         6) 父类方法可以重写
+         */
+
+        ////////////////////ES5 构造函数的语法///////////////////////////////////////////////
+        //创建手机的构造函数原型
+        
+        function Phone(brand, price) {
+
+            //初始化实例对象属性
+            this.brand = brand;
+            this.price = price;
+        }
+
+        //给手机构造函数原型对象中添加方法
+        Phone.prototype.call = function () {
+            console.log("我可以打电话!!");
+        };
+
+        //实例化对象
+        let Huawei = new Phone('华为', 5999);
+        Huawei.call();
+        console.log(Huawei);
+
+        //////////////////ES6 class的语法////////////////////////////////////////////////////
+        class Shouji {
+
+            //添加实例的属性和方法   (constructor名字是固定的) （个性化的）
+            constructor(brand, price) {
+                this.brand = brand;
+                this.price = price;
+            }
+
+            //添加原型对象的属性和方法 （属于所有实例共性的）
+            //⚠️⚠️添加方法必须使用以下该语法, 不能使用 ES5 的对象完整形式
+            call() {
+                console.log("我可以打电话!!");
+            }
+
+            // sayHi = () => {
+            //     console.log("我会加入constructor中")
+            // }
+
+
+        }
+
+        let onePlus = new Shouji("1+", 1999);
+
+        console.log(onePlus);
+        console.log(Shouji);
+
+    </script>
+</body>
+
+</html>

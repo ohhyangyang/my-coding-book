@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<!--
+	- 响应式布局
+	指的是同一页面在不同屏幕尺寸下有不同的布局。
+	传统的开发方式是PC端开发一套，手机端再开发一套，而使用响应式布局只要开发一套就够，
+	缺点就是CSS比较重
+	
+	- CSS3媒体属性
+	CSS3媒体查询是响应式布局的核心
+	
+       
+     *媒体属性
+      width 浏览器窗口宽度	    (可加max min前缀）
+	  height 浏览器窗口高度		(可加max min前缀）
+	  device-width 电子设备的像素宽度	 （可加max min前缀）
+	               PC端：看电脑的分辨率
+	               移动端：机器参数   （可以通过google chrome的inspector查询和调节）
+	  -webkit-device-pixel-ratio 设备像素比（可加max min前缀） 例如-webkit-min-device-pixel-ratio
+	               PC端：1
+	               移动端：机器参数   （可以通过google chrome的inspector查询到）
+	  orientation   "portrait"竖屏
+		   		    "landscape"横屏
+		  ⚠️ min  >= 大于等于
+		     max  <= 小于等于
+	-->
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#wrap{
+			width: 100px;
+			height: 100px;
+			margin: 100px auto;
+		}
+		
+		
+		/*一般都写在最下面*/
+		/*媒体类型+媒体属性*/
+		
+		@media screen and (max-width : 800px){
+			/*只在彩色屏幕中显示，以下的声明在打印时都看不见*/
+			#wrap{
+				border: 10px solid orange;
+			}
+		}
+		
+		@media screen and (min-width : 800px){
+			/*只在彩色屏幕中显示，以下的声明在打印时都看不见*/
+			#wrap{
+				border: 10px solid red;
+			}
+		}
+		
+		@media screen and (min-width : 1000px){
+			/*只在彩色屏幕中显示，以下的声明在打印时都看不见*/
+			#wrap{
+				border: 10px solid green;
+			}
+		}
+		
+		@media screen and (min-width : 1500px){
+			/*只在彩色屏幕中显示，以下的声明在打印时都看不见*/
+			#wrap{
+				border: 10px solid blue;
+			}
+		}
+	</style>
+</head>
+<body>
+<div id="wrap">
+
+</div>
+</body>
+</html>

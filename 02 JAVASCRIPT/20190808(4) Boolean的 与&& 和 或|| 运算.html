@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    && ||非Boolean的情况
+    对于非Boolean进行与或运算，会先将其转换为Boolean，然后再运算,并返回原值
+    
+    &&运算（找false）
+    若第一个值为true，则必然返回第二个值
+    如果第一个值为false，则直接返回第一个值
+
+    ||运算（找true）
+    如果第一个值为true，直接返回第一个值
+    如果第一个值为false，则必然返回第二个值
+
+
+    */
+
+    //&&(找fasle)
+    //true && true
+    //如果两个值都为true，则返回后边的
+    var result=1 && 2;
+    console.log(result);//2
+
+    var result=2 && 1;
+    console.log(result);//1
+
+    //false && true
+    result= 0 && 2;
+    console.log(result);//0
+
+    result= 2 && 0;
+    console.log(result);//0
+
+    //false && false
+    result= NaN && 0;
+    console.log(result);//NaN
+
+    result= 0 && NaN;
+    console.log(result);//0
+
+    //||(找true)
+    //true||true
+    result = 2||1;
+    console.log(result);//2
+
+    result = 1||2;
+    console.log(result);//1
+
+    result = 1||NaN;
+    console.log(result);//1
+
+    result = NaN||1;
+    console.log(result);//1
+
+    result = NaN||0;
+    console.log(result);//0
+
+    result = NaN||NaN;
+    console.log(result);//NaN
+
+    result="" || "你好";//(“”为false)
+    console.log(result);//你好
+
+    result= -1||" 你好";//（-1为true）
+    console.log(result);//-1
+
+
+
+
+
+
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

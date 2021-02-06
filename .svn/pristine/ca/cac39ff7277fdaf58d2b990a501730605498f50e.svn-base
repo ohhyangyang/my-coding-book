@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    自增++，使变量在自身基础上加1
+    分为两种，后++：a++， 前++：++a
+    无论a++还是++a，都会立即使原变量a自增1
+    而不同的是，表达式a++和++a的值不同
+    （此处注意a和a++以及++a不同，a为一个变量，而a++和++a为表达式）
+    a++的值为原变量的原值（自增前的值）
+    ++a的值为原变量的新值（自增后的值）
+
+    自减--，是变量在自身基础上减1
+    分为a--和--a，都会使原变量a自减1
+    不同的是，表达式a--和--a的值不同
+    a--是a变量的原值（自减前的值）
+    --a是a变量的新值（自减后的值）
+
+
+
+    */
+    
+    //变量a的自增
+    var a = 1;
+    a++;
+    console.log("a="+a);//a=2
+    a++;
+    console.log("a="+a);//a=3
+    ++a;
+    console.log("a="+a);//a=4
+    ++a;
+    console.log("a="+a);//a=5
+
+    //表达式a++和++a的值
+    var b = 1;
+    console.log(b++);//1
+    var c = 1;
+    console.log(++c);//2
+
+    var d=10;
+    d++;//在10基础上自增为11
+    console.log(d++);//输出d++的值为：11
+    console.log(d);//12
+
+    var e=10;
+    console.log(e++);//结果为10，但同时d在此处自增1
+    console.log(++e);//结果为12
+
+    var f=21;
+
+    result= ++f + f++ + f;
+    //result=22+22+23
+    console.log(result);//79
+
+    var g=5;
+    g=g++;
+    console.log(g);//5
+    //可分解为g++ = x， g = x
+
+    //自减--(同理)
+    var aa = 10;
+    aa--;
+    console.log(aa);//9
+
+
+    
+
+    
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<!--
+	- jQuery进行DOM操作
+	  * 创建节点（元素，属性，文本）
+	    $(html)
+	    返回值为一个jQuery对象
+	      var $abc = $("<li id='abc'>abc</li>");
+	      
+	  * 插入节点到文档中
+	    1 append，appendTo
+	      $("<li id='dl'>大连</li>").appendTo("#city");
+		  $("#city").append("<li id='sz'>深圳</li>");
+		  
+		2 prepend，prependTo
+		  $("<li id='dl'>大连</li>").prependTo("#city");
+		  $("#city").prepend("<li id='sz'>深圳</li>");
+		  
+		3 before，insertBefore
+		  $("<li id='dl'>大连</li>").insertBefore("#city");
+		  $("#city").before("<li id='sz'>深圳</li>");
+		  
+		4 after，insertAfter
+		  $("<li id='dl'>大连</li>").insertAfter("#city");
+		  $("#city").after("<li id='sz'>深圳</li>");
+		  
+	  * 删除节点
+	    $("#bj").remove();
+	    
+	  - 清空节点
+	    $("#game").empty();
+	    
+	  - 克隆节点
+	    $("#bj).clone(true)
+	           .attr("id","bj2)
+	           .insertAfter($("#rl"));
+	           
+	  * 替换节点
+	    创建一个<li>尚硅谷</li>节点，替换city的最后一个子节点
+	    $("<li>尚硅谷</li>").replaceAll("#city li:last");
+	    
+	    创建<li>西班牙垃圾政府草菅人命</li>节点，替换game的第二个子节点
+	    $("#game li:eq(1)").replaceWith("<li>垃圾政府草菅人命</li>");
+	  
+	  * 包裹节点  了解性学习
+	    wrap, wrapAll, wrapInner
+	    
+	  * val(),html(),text(),attr(),width(),height()的读取和设置
+	  
+    - 注意要点
+      * jQuery对象本身就是一个DOM数组对象，可以进行隐式迭代
+      
+      * jQuery中使用each()方法来进行显式，通过index属性可获得正在遍历的对象的索引
+      
+      * 在jQuery的响应函数中，this为一个DOM对象，若想使用其jQuery方法，需要$(this)包装this
+      
+      * defaultValue属性为一个DOM属性，可以获取或设置表单元素的初始value内容
+      
+      * 使用val()给:radio赋值时，需要传递一个数组对象
+      
+      * val()不能直接获取checkbox被选中的选项，需通过each()遍历获得。（具体见20200409(1))
+      
+      * $.trim(str)可以去除str的前后空格
+      
+      * $(节点).find() 查找其子节点
+	    搜索所有与指定表达式匹配的元素。这个函数是找出正在处理的元素的后代元素的好方法。
+	    返回值为查找到的后代元素对应的jquery对象
+     
+     
+		  
+	  
+	  
+	  
+	  
+	  
+	-->
+</head>
+<body>
+
+</body>
+</html>

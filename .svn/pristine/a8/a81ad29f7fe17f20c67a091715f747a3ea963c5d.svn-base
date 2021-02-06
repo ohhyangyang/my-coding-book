@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>练习</title>
+        <style type="text/css">
+        .box1{
+            width: 990px;
+            height: 32px;
+            background-color: #bfa;
+            margin: 100px auto;
+            background-image: url(img/nav.jpg);
+            background-repeat: repeat-x;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="box1"></div>
+    </body>
+</html>

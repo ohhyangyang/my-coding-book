@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生成器函数参数</title>
+</head>
+<body>
+    <script>
+	    /*
+	    - 生成器和Iterator.next()传参
+	      next(value) 方法可以接受一個參數，这个参数会被當作上一次 yield 語句的返回值：
+	     */
+        function * gen(arg){
+            
+            console.log(`生成器实参：${arg}`);
+            let one = yield 111;
+            console.log(`第二个next()实参 AKA 第一个yield的返回结果：${one}`);
+            
+            let two = yield 222;
+            console.log(`第三个next()实参 AKA 第二个yield的返回结果：${two}`);
+            
+            let three = yield 333;
+            console.log(`第四个next()实参 AKA 第三个yield的返回结果：${three}`);
+        }
+
+        //获取迭代器对象
+        let iterator = gen('AAA');
+        console.log(iterator.next()); //AAA {value: 111, done: false}  -->指针停在第一个yield
+        
+         //next方法可以传入实参，而且该实参即是当前yield语句的返回结果
+        console.log(iterator.next('BBB'));  //第二个next()实参 AKA 第一个yield的返回结果：BBB  {value: 222, done: false}  -->指针停在第二个yield
+        console.log(iterator.next('CCC'));  //第三个next()实参 AKA 第二个yield的返回结果：CCC  {value: 333, done: false}  -->指针停在第三个yield
+        console.log(iterator.next('DDD'));  //第四个next()实参 AKA 第三个yield的返回结果：DDD  {value: undefined, done: true}   -->指针停在最末尾，结束迭代
+        
+    </script>
+</body>
+</html>

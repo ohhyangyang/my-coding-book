@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<!--
+https://www.ruanyifeng.com/blog/2014/06/git_remote.html
+-Forking:  意味着拿着别人的代码，然后创建自己的副本。 在 GitHub 上，这意味着把别人的远程 repo 复制到自己的远程 repo 上。
+   Means taking someone else’s code, and creating your copy of it
+   On GitHub, this means taking someone’s remote repo and copying it to your own remote repo.
+   
+   -不要忘记：
+      远程repo位于GitHub上，因此通过forking，你可以复制某人托管在GitHub的repo上，而复制的副本将被托管在你的GitHub中，
+      与forking相关的所有事情都在GitHub上在线进行。
+      
+   -什么时候可以forking：
+      1 Open Source Contributions 开源的项目，例如express.js或jQuery
+      2 Creating a new project 不喜欢当前开源项目，获得许可的情况下可以做自己的版本
+      3 Submitting work here at Ironhack 在ironhack做练习也需要fork
+      
+   -具体操作：进入到github对应的repo，点击fork即可
+      
+-Cloning 克隆仓库到local
+   Means taking a remote repository and copying it to your local machine.
+   
+   -步骤：
+     1 复制github中repo的url
+     2 在terminal中，cd到对应文件夹
+     3 两种情况：
+       如果克隆master
+        输入 git clone <url> 回车
+        例如 git clone https://github.com/jalexy12/lab-github-practice.git
+       如果克隆其他分支
+        输入 git clone -b 分支名 <url> 回车
+        例如 git clone -b lesson-33 https://github.com/ohhyangyang/php-mysql-tutorial.git
+     4 code .  回车，在VSC中打开这个repo
+
+-Pull Requests  拉请求
+   pull request可以通知original repository的owner你进行了某些更改，
+   并希望将这些更改合并到他的repo中，owner可以自行决定是否接受你的request
+     why？
+       1 在将changes包含进codebase之前，owner可以对其进行检查，以防止危险（breaking changes或黑客）
+       2 它为各方面留出了交流讨论的空间
+     how?
+       1 在terminal中，进入到对应的目录
+       2 输入git remote -v   查看远程仓库克隆在local的alias和url。
+         或输入git remote   查看远程仓库克隆在local的alias。
+         （默认情况下，从远程仓库克隆下来的repo，会被git命名为origin）
+       3 输入git push origin master  确保已经完整上传我对repo的changes
+       4 打开我的github账号，进入到我fork的repo，点击New pull request
+       5 此时会弹出新页面，比较原repo和我的修改，显示我对origin哪些部分进行了修改
+       6 点击Create pull request，弹出对话框，输入title和description
+       7 点击Create pull request，完成
+
+
+
+
+
+-->
+<body>
+
+</body>
+</html>

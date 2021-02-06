@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>导航条</title>
+        <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+
+        }
+        .nav{
+            list-style: none;/*去掉默认ul格式*/
+            background-color: rgb(223, 199, 103);
+            width: 1000px;
+            margin: 20px auto;
+            overflow:hidden;/*解决高度塌陷*/
+            /*在IE6中，如为元素指定一个width，则会默认开启haslayout，因此此情况里不用加zoom:1了*/
+            
+        }
+        .nav li{
+            float:left;
+            width:25%
+            
+        }
+        li a{
+            text-decoration: none;
+            color:white;
+            font: bold 20px “微软雅黑”;
+            
+            display: block;/*将inline转为block*/
+            width: 100%;
+            text-align:center;
+            padding:5px 0;
+            
+        }
+        li a:hover{
+            color:white;
+            background-color:rgb(217, 241, 167);
+        }
+        </style>
+    </head>
+    <body>
+        <ul class="nav">
+            <li><a href="#">首页</a></li>
+            <li><a href="#">新闻</a></li>
+            <li><a href="#">联系</a></li>
+            <li><a href="#">关于</a></li>
+        </ul>
+    </body>
+</html>

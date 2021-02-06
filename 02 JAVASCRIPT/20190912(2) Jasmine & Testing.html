@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    - TDD - Test-driven development
+      [Red - Green - Refactor] Loop
+
+      步骤逻辑：
+      1 写Testing脚本
+      2 一一对照一边写红色Testing逻辑，一边创建目标的代码，将红色变成绿色
+      3 删除目标的代码，使Testing重新变红
+
+      Jest
+      Puppeteer
+      
+      - describe() 用于对不同的测试进行分组
+      - it() 接收一个字符串，表示我们要测试什么
+      - expect()  期待的测试内容
+      - matcher
+           .toBeTruthy()
+           .toBeFalsy()
+           .toEqual()
+           .toBe()
+      
+
+
+
+
+    */
+    // describe('the JavaScript language', () => {
+    //     describe('has different types and operators', () => {
+    //         it('considers numbers to be equal to their string representation', () => {
+    //             expect(1 == '1').toBeTruthy();
+    //             expect(1 != '1').toBeFalsy();
+    //         });
+    //     });
+    // });
+    
+    
+    //例一
+    function sumNumbers(num1,num2){
+        return num1 + num2;
+    }
+
+    const result = sumNumbers(5,5);
+
+    console.log('Should correctly sum 2 numbers');
+
+    console.log(sumNumbers(5,5) === 10)
+
+    //例二
+    function centsToDecimals(cents){
+        if(!cents || typeof cents === "string"){
+            return null;
+        }
+
+        let result = cents/100;
+
+        return result.toFixed(2) + "$" //toFixed()返回值为字符串类型
+
+
+
+
+    }
+    
+    centsToDecimals(1000);  //10.00$
+    centsToDecimals(50340);  //503.40$
+    centsToDecimals(3);  //0.03$
+    
+    //should define a function centsToDecimals
+
+    //should return null when the argument is not passed
+
+    //should return mull when the argument passed is a string
+
+    //should return null when the argument passed is NaN
+
+    //should cenvert a value from cents to floating point string with 2 decimals
+
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

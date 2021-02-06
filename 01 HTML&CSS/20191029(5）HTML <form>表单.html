@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单</title>
+</head>
+<body>
+    <!--
+        （以下均为内联元素）
+        <form>表单标签：用来将用户的信息提交给服务器
+        比如：搜索框 注册 登陆
+
+        *action属性：  <form action="url服务器地址">
+        <form>标签中必须指定一个action属性，action指向一个url服务器地址，
+        而用户输入的信息会被提交到该地址
+
+        ⚠️查询字符串：用户填写的所有信息会附在url服务器地址后边，以查询字符串的形式发送给服务器
+                    格式：  url地址?AAA=用户信息&BBB=用户信息&CCC=用户信息......
+                                        (名值对结构：属性名=属性值)
+
+        *<label>标签，用来选中表单中的提示文字
+         <label for="表单项id属性值">XXX</label>
+            ⚠️for属性：属性值指向一个表单选项的id值 
+
+        *<input>标签用于输入用户信息（自结束），
+            ⚠️type属性：必须指定一种type属性值，required
+            
+            文本输入框
+             <input type="text" name="XXX"/>    
+                    ⚠️name属性：如果要文本框中的内容信息被提交到服务器中，
+                      则必须要给文本框指定一个name属性，表示提交内容的属性名 required
+                    ⚠️value 属性：也可以指定value属性，属性值会作为文本框的默认值显示 optional
+            
+            输入密码
+            <input type="password" name="XXX"/> 
+                    ⚠️name属性:同文本框，必须填写 required
+
+            单选按钮
+            <input type="radio" name="XXX" value="XXX"/>
+                    ⚠️name属性：单选按钮通过name属性进行分组，name值相同的是一组按钮 required
+                    ⚠️value属性：像这种无需用户直接填写的表单还必须指定value属性
+                      被选中按钮的value值将会作为用户信息提交给服务器 required
+                    ⚠️checked属性：如希望指定一个默认选项，
+                      则可以在希望选中的选项中添加 checked="checked" optional
+
+            多选框
+            <input type="checkbox" name="XXX" value="XXX"/>
+                    ⚠️name属性：同单选按钮，required
+                    ⚠️value属性：同单选按钮，required
+                    ⚠️checked属性：同单选按钮，optional
+
+            提交按钮（提交表单信息）
+            <input type="submit" value="XXX"/> 
+                    ⚠️value属性：value属性用来指定按钮上的文字
+            
+            重置按钮（表单恢复默认值）
+            <input type="reset" value="XXX"/>
+                   ⚠️value属性：value属性用来指定按钮上的文字
+
+            单纯按钮（没有功能，需通过JS绑定事件）
+            <input type="button" value="XXX"/>
+                   ⚠️value属性：value属性用来指定按钮上的文字
+
+        *<button>按钮标签（非自结束）（成对出现，更灵活，更常用）
+            同<input>，也可以使用<button>创建提交按钮，重置按钮和单纯按钮
+            <button type="submit">提交</button>
+            <button type="reset">重置</button>
+            <button type="button">单纯</button>
+
+        *<select>下拉列表
+        <select name="XXX">  <option value="XXX"> ...
+        <select>标签，用于创建下拉列表  
+            ⚠️name属性：required
+            ⚠️multiple属性：若添加multiple="multiple"，则变为多选的下拉列表，optional
+        <option>子标签用于创建每个列表项  
+            ⚠️value属性：required
+            ⚠️selected属性：用法同单选按钮，optional
+        亦可用<optgroup>对<option>选项进行分组 optional
+            ⚠️label属性：指定每个分组的名字
+         
+        *<textarea>多行文本域
+        <textarea name="XXX">
+            ⚠️name属性：required
+
+        *<fieldset>标签用来为表单项进行分组
+        <legend>子标签用于创建组名
+        
+    -->
+    <form action="target.html">
+        <fieldset>
+            <legend>BASIC INFORMATION</legend>
+        <label for="un">Name</label>
+        <input id="un" type="text" name="username" value="default value"/><!--自结束标签-->
+        <br/>
+        <label for="em">Email</label>
+        <input id="em" type="text" name="email" />
+        <br/>
+        <label for="pw">Password</label>
+        <input id="pw" type="password" name="password"/>
+        <br/>
+        </fieldset>
+        <fieldset>
+            <legend>EXPERIENCE</legend>
+        Gender
+        <input id="man" type="radio" name="gender" value="male"/><label for="man">man</label>
+        <input id="woman" type="radio" name="gender" value="female" checked="checked"/><label for="woman">woman</label>
+        <br/>
+        Hobby
+        <input type="checkbox" name="hobby" value="fb"/>Football
+        <input type="checkbox" name="hobby" value="bb"/>Basketball
+        <input type="checkbox" name="hobby" value="pp" checked="checked"/>Ping-pong
+        <input type="checkbox" name="hobby" value="bmt" checked="checked"/>Badminton
+        <br/>
+        Idol
+        <select name="star" multiple="multiple">
+            <option value="wjk">王俊凯</option>
+            <option value="yyqx" selected="selected">易洋千玺</option>
+            <option value="wy">王源</option>
+        </select>
+        <br/>
+        Travel list
+        <select name="travellist" multiple="multiple">
+            <optgroup label="Asia">
+                <option value="jp">Japan</option>
+                <option value="chi">China</option>
+                <option value="ko">Korea</option>
+                <option value="sgp" selected="selected">Singapore</option>
+            </optgroup>
+            <optgroup label="Europe">
+                <option value="sp">Spain</option>
+                <option value="ntl">Netherlands</option>
+                <option value="mt" selected="selected">Malta</option>
+                <option value="gc">Greece</option>
+            </optgroup>
+        </select>
+        <br/>
+        Introduction
+        <textarea name="info"></textarea>
+        </fieldset>
+
+
+
+        <br/>
+        <br/>
+        <input type="submit" value="GO"/>
+        <input type="reset" value="RESET"/>
+        <input type="button" value="SIMPLE"/>
+        <br/>
+        <br/>
+        <button type="submit">提交</button>
+        <button type="reset">重置</button>
+        <button type="button">单纯</button>
+    </form>
+</body>
+</html>

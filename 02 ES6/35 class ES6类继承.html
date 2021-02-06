@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类继承-2</title>
+</head>
+<body>
+    <script>
+	    /*
+	    ES5中的继承首先要执行父类方法，然后将原型对象指向父类的原型对象，
+	    最后修正原型对象的constructor属性，使其指回子类构造函数，比较麻烦，
+	    ES6的继承机制和ES5不同，ES6中采用关键字extends实现继承,使用super()调用父类的构造函数。
+	    
+	    - extends关键字 继承父类结构
+	      extends关键字用于类声明或者类表达式中，以创建一个类，该类是另一个类的子类。
+	      语法 class ChildClass extends ParentClass { ... }
+
+        - prototype chain 原型链 
+          Object.prototype的原型指向：      __proto__: null
+          父类的原型指向：                   __proto__: Object.prototype
+          子类的原型指向：                   __proto__: Parent.prototype
+	      
+	    - 子类可以重写父类的方法
+	      父子都声明了同一个名称的方法时，子类的方法会覆盖父类的
+	      具体见下面的例子
+        
+        ⚠️⚠️ ES6 Class 声明不提前
+	     */
+///////////ES6 class////////////////////////////////////////////////////////////
+	    //声明父类
+        class Phone{
+            
+            //构造方法创建属性
+            constructor(brand, price){
+                this.brand = brand;
+                this.price = price;
+            }
+            
+            //创建call()方法
+            call(){
+                console.log("我可以打电话!!");
+            }
+        }
+        
+        //声明子类
+        class SmartPhone extends Phone {
+            
+            //构造方法初始化子类属性
+            constructor(brand, price, color, size){
+
+                super(brand, price); // 类似于上一章ES5的Phone.call(this, brand, price)
+                this.color = color;
+                this.size = size;
+            }
+
+            photo(){
+                console.log("拍照");
+            }
+
+            playGame(){
+                console.log("玩游戏");
+            }
+
+            call(){
+                console.log('我可以进行视频通话');//⚠️⚠️⚠️重写父类的call()方法
+            }
+        }
+
+        const xiaomi = new SmartPhone('小米',799,'黑色','4.7inch');
+        console.log(xiaomi);
+        /*
+        SmartPhone
+           brand: "小米"
+           color: "黑色"
+           price: 799
+           size: "4.7inch"
+           
+           __proto__: Phone
+             call: ƒ ()
+             constructor: class SmartPhone
+             photo: ƒ photo()
+             playGame: ƒ playGame()
+             price: undefined
+             __proto__:
+               call: ƒ ()
+               constructor: class Phone
+               __proto__: Object
+         */
+        xiaomi.call();
+        xiaomi.photo();
+        xiaomi.playGame();
+
+    </script>
+</body>
+</html>

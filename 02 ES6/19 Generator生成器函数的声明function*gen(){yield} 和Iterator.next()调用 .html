@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生成器</title>
+</head>
+<body>
+    <script>
+        /*
+		   - 生成器 Generator
+		     生成器函数是ES6提供的一种异步编程新的解决方案，语法行为与传统函数完全不同
+		     传统异步编程方式：回调函数，例如node fs ajax mongodb
+		     
+		   - yield关键字
+		     函数代码的分隔符，控制迭代器每次 next() 返回结果
+		     ⚠️⚠️ yield 关键字只能在生成器内部使用，嵌套的函数也不行
+		     
+		   - 使用规则
+		     生成器函数使用 function* 语法编写。(* 的位置没有限制)
+		     调用生成器函数会返回一个Generator Object，其本質上是一個 Iterator。
+		    
+		     一个Generator Object 的起始状态会先暂停什么都不做，而每次执行next() 方法，
+		     就会继续执行函数，直到遇到下一个yield 关键字，又会暂停函数的执行，
+		     而每一次暂停时会yield (产出) 一个当前状态值。
+		     
+		   ⚠️⚠️ 生成器函数不支持箭头函数写法
+		   
+		  
+		   
+		   - 代码说明：
+              4) next方法可以传递实参，作为 yield语句的返回值
+			*/
+        
+        
+
+        //声明生成器函数
+        function * gen(){
+            //one
+            console.log(111);
+            yield '一只没有耳朵';
+            
+            //two
+            console.log(222);
+            yield '一只没有尾部';
+            
+            console.log(333);
+            yield '真奇怪';
+            
+            console.log(444);
+        }
+
+        //gen()生成器函数返回一个迭代器对象
+        let iterator = gen();
+        
+        
+        //调用迭代器的next()方法，来获得内部值
+        //第一次执行next()
+        let one = iterator.next(); //111
+        console.log(one);// next()返回  {value:  "一只没有耳朵", done: false}
+        
+        //第二次执行next()
+        let two = iterator.next(); //222
+        console.log(two);// next()返回 {value: "一只没有尾部", done: false}
+        
+        //第三次执行next()
+        let three = iterator.next(); //333
+        console.log(three); // next()返回 {value:  "真奇怪", done: false}
+
+        //第四次执行next()
+        let four = iterator.next(); //444
+        console.log(four); // next()返回 {value: undefined, done: true}  ⚠️ 迭代结束
+        
+        
+        
+
+        //遍历
+        let i = 0;
+        for(let v of gen()){
+            console.log(i,v);
+            i++;
+        }
+        /*
+         111
+         0,一只没有耳朵
+         222
+         1,一只没有尾部
+         333
+         2,真奇怪
+         444
+         */
+
+    </script>
+</body>
+</html>

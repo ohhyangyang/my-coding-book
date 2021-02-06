@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title></title>
+        <style type="text/css">
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            padding: 10px;
+            border: 10px yellow solid;
+            
+        }
+        #box3{
+            width: 200px;
+            height: 300px;
+            background-color: #bfa;
+            overflow: auto;
+
+        }
+        #box4{
+            width: 450px;
+            height: 400px;
+            background-color: yellow;
+        }
+        </style>
+        <script type="text/javascript">
+        /*
+        ⚠️以下都是只读属性，不能修改样式
+        ⚠️他们的返回值都为数字，不带px单位，可直接进行计算
+
+        *clientWidth（图）
+        clientHeight（图）
+        可以获取元素的可见宽度和高度（content+padding)
+        
+        ⚠️获取的宽度和高度包括content和padding，不包括border
+        
+
+        *offsetWidth（图）
+        offsetHeight（图）
+        可以获取元素整个宽度和高度(content+padding+border)
+        ⚠️不带px单位
+        ⚠️获取的宽度和高度包括content padding和border
+        
+
+        *offsetParent
+        用来获取当前元素的定位父元素
+        定位父元素：离当前元素最近的开启了定位的祖先元素，若都没有开启，则返回body
+        ⚠️而parentNode是用来获取父元素
+
+        *offestLeft（图）
+        offsetTop（图）
+        当前元素相对于其定位父元素的水平和垂直的偏移量
+
+        *element.scrollHeight(图)
+        element.scrollWidth	(图)	
+        元素的整体滚动区域的高度和宽度。
+        
+        
+        *element.scrollLeft	(图)
+        element.scrollTop (图)   
+        可以获得滚动条水平和垂直滚动的距离。
+        ⚠️chrome认为浏览器的滚动条属于body，可以通body.scrollTop来获取
+          而火狐等浏览器认为浏览器的滚动条是HTML的
+          
+        *当满足element.scrollHeight-element.scrollTop == element.clientHeight
+        说明垂直滚动条滚到底了
+
+        当满足element.scrollWidth-element.scrollLeft == element.clientWidth
+        说明水平滚动条滚到底了
+        */
+        window.onload=function(){
+            var box1=document.getElementById("box1")
+            var btn01=document.getElementById("btn01")
+            console.log(box1.clientHeight);//120,content+padding 
+            console.log(box1.offsetHeight);//140,content+padding+border
+            console.log(box1.offsetParent);//<body>,因为box2未开启定位，于是只能捕捉到body
+            console.log(box1.offsetLeft);//8,浏览器默认的
+            console.log(box1.offsetTop);//30
+            console.log(box3.clientHeight);//285，300剪去了滚动条
+            console.log(box3.clientWidth);//185，200剪去了滚动条
+            console.log(box3.scrollHeight);//400
+            console.log(box3.scrollWidth);//450
+            btn01.onclick=function(){
+                alert(box3.scrollTop);//0~115
+                alert(box3.scrollLeft);//0~265
+                alert(box3.scrollHeight-box3.scrollTop);//400~285
+            }
+            
+
+        }
+        </script>
+    </head>
+    <body>
+        <button id="btn01">hello</button>
+        <br/>
+        <div id="box2">
+            <div id="box1"></div>
+        </div>
+        <div id="box3">
+            <div id="box4"></div>
+        </div>
+        
+    </body>
+</html>

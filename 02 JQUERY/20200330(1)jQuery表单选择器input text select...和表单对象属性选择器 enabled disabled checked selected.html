@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<!--
+	- 表单选择器（⚠️实则大多数为input的type属性值）
+	  选择器          描述
+	  :input         匹配所有<input>, <textarea>, <select> 和 <button> 元素      ⚠️使用几率很小，因为选择范围太大
+	  :text          匹配所有的单行文本框
+	  textarea       匹配所有的多行文本框
+	  select         匹配所有的下拉列表        ⚠️选取<select>的选项需要选中<select>的<option>子节点
+	  :password      匹配所有密码框
+	  :radio         匹配所有单选框
+	  :checkbox      匹配所有复选框
+	  :submit        匹配所有提交按钮
+	  :image         匹配所有图像域
+	  :reset         匹配所有重置按钮
+	  :button        匹配所有按钮
+	  :file          匹配所有文件域
+	  
+	- 表单对象属性选择器
+	  选择器          描述                               返回结果
+	  :enabled       选取所有可用的元素                   集合元素
+	  :disabled      选取所有不可用元素                   集合元素
+	  :checked       选取所有被选中的元素（单选框，复选框）  集合元素
+	  :selected      选取所有被选中的选项元素（下拉列表）    集合元素
+	  
+	- 属性
+	  attr()  获取(传递一个参数)或设置(传递两个参数)被选元素的属性值。
+	  val()   获取(不传递参数)或设定(传递参数)被选中元素的value属性值。
+	
+	- 核心
+	each(callback)    遍历，对于每个匹配的元素都要执行的一个callback函数。⚠️this为每个匹配到的元素
+	-->
+	<script type="text/javascript" src="jquery-1.10.1.js"></script>
+	<script type="text/javascript">
+		$(function () {
+            $("#btn1").click(function () {
+                $(":text:enabled").val("不高兴😒");
+            });
+            $("#btn2").click(function () {
+                $(":text:disabled").val("不开心😔");
+            });
+            $("#btn3").click(function () {
+                alert($(":checkbox[name=newsletter]:checked").length);
+            })
+            $("#btn4").click(function () {
+                $(":checkbox[name=newsletter]:checked").each(function () {
+                    alert(this);//this为每个匹配到的元素
+                    alert(this.value);
+                })
+            })
+            $("#btn5").click(function () {
+                //⚠️选取<select>的选项需要选中<select>的<option>子节点
+                $("select[name=test1]>:selected").each(function () {
+                    alert(this.value);
+                })
+            })
+        })
+	</script>
+</head>
+<body>
+<h3>表单对象属性过滤选择器</h3>
+<button id="btn1">对表单内 可用的文本框 进行赋值操作</button><br>
+<button id="btn2">对表单内 不可用的文本框 进行赋值操作</button><br>
+<button id="btn3">获取多选框选中的个数</button><br>
+<button id="btn4">获取多选框选中的内容</button><br>
+<button id="btn5">获取下拉框选中的内容</button><br>
+<br>
+
+<form id="form1" action="#">
+	可用元素：<input type="text" name="add" value="可用文本框1"/>
+	<br>
+	不可用元素：<input type="text" name="email" disabled="true" value="不可用文本框1">
+	<br>
+	可用元素：<input type="text" name="che" value="可用文本框2">
+	<br>
+	不可用元素：<input type="text" name="name" disabled="true" value="不可用文本框2">
+	<br>
+	<br>
+	
+	多选框：<br>
+	<input type="checkbox" name="newsletter" checked="checked" value="test1">test1
+	<input type="checkbox" name="newsletter" value="test2">test2
+	<input type="checkbox" name="newsletter" value="test3">test3
+	<input type="checkbox" name="newsletter" checked="checked" value="test4">test4
+	<input type="checkbox" name="newsletter" value="test5">test5
+	<br>
+	<br>
+	下拉列表1：<br>
+	<select name="test1" multiple="multiple">
+		<option>浙江</option>
+		<option selected="selected">辽宁</option>
+		<option>北京</option>
+		<option selected="selected">天津</option>
+		<option>广州</option>
+		<option>湖北</option>
+		
+	</select>
+	<br>
+	<br>
+	下拉列表2：<br>
+	<select name="test2" >
+		<option>浙江</option>
+		<option>辽宁</option>
+		<option selected="selected">北京</option>
+		<option>天津</option>
+		<option>广州</option>
+		<option>湖北</option>
+	
+	</select>
+</form>
+</body>
+</html>

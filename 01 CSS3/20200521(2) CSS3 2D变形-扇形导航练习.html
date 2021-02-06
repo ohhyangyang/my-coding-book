@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+		/*
+		
+		 */
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#wrap{
+			width: 60px;
+			height: 60px;
+			/*background-color: #fff3cd;*/
+			/*margin: 50px;*/
+			position: fixed;
+			bottom: 10px;
+			right: 10px;
+		}
+		#wrap>.inner{
+			height: 100%;
+			width: 100%;
+		}
+		#wrap>.inner>img{
+			position: absolute;
+			border: white 1px solid;
+			border-radius: 50%;
+			bottom: 0;/*必须写这个，来对应js中的transform的过渡*/
+			right: 0;
+			background-color: white;
+			/*box-shadow: 0px 0px 1px 2px gray;*/
+			
+		}
+		#wrap>.home{
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			width: 100%;
+			height: 100%;
+			background: url("img/xcolorcheck.png") no-repeat;
+			background-color: white;
+			border: white 1px solid;
+			border-radius: 50%;
+			transition: 1s;
+			
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function () {
+		    //1 操作home，扇形打开，关闭
+            var home = document.querySelector(".home");
+            var imgs = document.querySelectorAll("#wrap > .inner > img");
+            var flag = true;
+            var c = 200;
+            home.onclick = function () {
+                if(flag){
+                    this.style.transform = "rotate(-720deg)";//旋转.home
+	                for( var i=0;i<imgs.length;i++){
+	                    imgs[i].style.transition = "1s " + (i*0.1) + "s";//第一个值为duration，第二个值为delay！！！
+                        imgs[i].style.transform = "rotate(-360deg) scale(1)";
+	                    imgs[i].style.right = getPoint(c,90*i/(imgs.length-1)).x+"px";//定位.inner
+                        imgs[i].style.bottom = getPoint(c,90*i/(imgs.length-1)).y+"px";//定位.inner
+	                }
+                }
+                else{
+                    this.style.transform = "rotate(0deg)";//旋转.home
+                    for( var i=0;i<imgs.length;i++) {
+                        imgs[i].style.transition = "1s " + ((imgs.length-1-i)*0.1) + "s";//第一个值为duration，第二个值为delay！！！
+                        imgs[i].style.transform = "rotate(0deg) scale(1)";
+                        imgs[i].style.right = 0 + "px";//定位.inner
+                        imgs[i].style.bottom = 0 + "px";//定位.inner
+                    }
+                }
+                flag=!flag;
+            };
+            
+            //声明一个函数给各logo定位xy，（已知斜边和一个角，求两个直角边）
+			function getPoint(c,deg) {
+                var x=Math.round(c*Math.sin(deg*Math.PI/180));
+                var y=Math.round(c*Math.cos(deg*Math.PI/180));
+                /*⚠️⚠️ Math 类的 sin(x)、cos(x)、tan(x) 中的 x 参数是弧度
+			    	角度A1转换弧度A2：弧度=角度*π/180
+                    弧度A2转换角度A1：角度=弧度*π/PI
+				 */
+				//⚠️⚠️ Math.round() 四舍五入为整数
+                return {x:x,y:y}
+            }
+            
+            //2 扇形打开后，点击logo，放大，改变透明度，再变回原始大小
+			for(var i=0;i<imgs.length;i++){
+			    imgs[i].onclick = function () {
+                    this.style.transition = "0.3s ";//取消在homeOnclick中的transition-delay
+			        this.style.transform = "rotate(-360deg) scale(1.5)"; //⚠️⚠️ transform切换必须保持队形一致，不然容易出bug
+				                                                         //于是，后期项目中会针对transform定义transform.js来解决问题
+			        this.style.opacity = 0.1;
+                
+                    //给imgs的transition添加transitionend监听，切记要写在循环里！！！
+                    // 并且只在每次触发imgsOnclick的时候触发一次！！！
+			        this.addEventListener("transitionend",end)
+                };
+                
+                
+                function end() {
+			        this.style.transition = "0.3s";
+			        this.style.transform = "rotate(-360deg) scale(1)";
+			        this.style.opacity = 1;
+			        
+			        
+			        this.removeEventListener("transitionend",end);//触发一次监听之后解绑listener
+                }
+			}
+			
+			
+        }
+	</script>
+</head>
+<body>
+<div id="wrap">
+	<div class="inner">
+		<img src="img/xweb.png" alt="">
+		<img src="img/xprofile.png" alt="">
+		<img src="img/xset.png" alt="">
+		<img src="img/xplay.png" alt="">
+		<img src="img/xtime.png" alt="">
+	</div>
+	<div class="home"></div>
+</div>
+</body>
+</html>

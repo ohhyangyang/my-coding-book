@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Table</title>
+    <style type="text/css">
+    /*
+    <table> 块元素
+    *width表格宽度
+    *margin:xxpx auto;居中
+    *border
+    *border-spacing 设置table和td边框之间的距离
+    *border-collapse 设置表格边框的合并
+       可选值
+          separate	默认值。边框会被分开。不会忽略 border-spacing 和 empty-cells 属性。
+          collapse	边框合并。会忽略 border-spacing 和 empty-cells 属性。
+    *tr:nth-child(even/odd)设置隔行变色
+       ⚠️IE8不支持
+
+    
+ 
+    */
+    table{
+        width:300px;
+        margin:0 auto;/*居中*/
+        /* border-spacing: 0; */
+        border-collapse: collapse;
+        
+    }
+    td,th{
+        border:1px solid orange;
+    }
+    tr:nth-child(even){/*odd为基数 even为偶数*/
+        background-color:rgb(253, 252, 236);
+    }
+    tr:nth-child(odd){
+        background-color:rgb(245, 245, 245);
+    }
+    tr:hover{
+        background-color:yellow;
+    }
+    </style>
+    
+</head>
+<body>
+    <table>
+        <!--<tbody>-->
+        <tr>
+            <th>Number</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Nationality</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Yang</td>
+            <td>girl</td>
+            <td>China</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Laura</td>
+            <td>girl</td>
+            <td>Galicia</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Natalia</td>
+            <td>girl</td>
+            <td>Catalonya</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Rob</td>
+            <td>boy</td>
+            <td>Mexico</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Albert</td>
+            <td>boy</td>
+            <td>Catalonya</td>
+        </tr>
+        <!--</tbody>-->
+    </table>
+</body>
+</html>

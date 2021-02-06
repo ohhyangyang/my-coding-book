@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    创建一个函数，计算三个数的和
+    使用return来设置函数返回值
+    语法：
+       return 值;
+    注：1 在函数中，return以后的语句都不执行
+        2 如果return语句后不加任何值，就相当于 return undefined
+        3 如果函数中不写return，也会返回undefined
+        4 return后，可以返回任意类型的值
+
+    ⚠️⚠️ 面试题
+       what does a JS function return?
+       It always return something, a value or undefined
+    */
+    function sum(a,b,c){
+        var d=a+b+c;
+        return d;
+        alert("hello");//该语句不会被执行
+    }
+    console.log(typeof d);//undefined
+    var result=sum(4,7,8);
+    console.log("result="+result);//result=19
+    //变量result为函数sum的执行结果，sum函数返回什么，result的值就是什么
+
+    //另外，alert（）作为一个函数，没有返回值
+    var result=alert("hello");
+    console.log("result="+result);//result=undefined
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

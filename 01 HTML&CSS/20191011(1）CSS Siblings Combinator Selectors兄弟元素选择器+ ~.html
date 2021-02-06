@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>siblings</title>
+        <style type="text/css">
+        /*
+        后一个兄弟元素选择器
+        可以选中指定元素后紧挨着的一个兄弟元素
+        语法：前一个+后一个
+
+        后边所有兄弟元素选择器
+        可以选中指定元素后边的所有兄弟元素
+        语法：前一个~后边所有
+        */
+        span+p{
+            background-color: yellow;
+        }
+        span~p{
+            color:red;
+        }
+        </style>
+    </head>
+    <body>
+        <p>我是p</p>
+        <p>我是p</p>
+        <span>我是span</span>
+        <p>我是p</p>
+        <p>我是p</p>
+        
+
+    </body>
+</html>

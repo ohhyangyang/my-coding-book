@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+
+		/*test4实际应用：自定义单选按钮*/
+		#test4 label{
+			margin: 10px;
+			float: left;
+			width: 100px;
+			height: 100px;
+			border: 2px solid lavender;
+			overflow: hidden;
+			position: relative;
+			border-radius: 50%;
+		}
+		#test4 input{
+			position:absolute;
+			top: -50px;
+		}
+		#test4 input:checked + span{
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background-color: lavender;
+		}
+		
+		
+	</style>
+</head>
+<body>
+
+
+<div id="test4">
+	<label>
+		<input type="radio" name="b">
+		<span></span>
+	</label>
+	<label>
+		<input type="radio" name="b">
+		<span></span>
+	</label>
+	<label>
+		<input type="radio" name="b">
+		<span></span>
+	</label>
+</div>
+
+
+</body>
+</html>

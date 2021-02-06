@@ -1,0 +1,17 @@
+/*
+异步文件的写入
+   1 创建文件
+     fs.open(path, flags[, mode], callback)
+          path 要打开文件的路径
+          flags 打开文件要做的操作的类型
+               "r" 只读的
+               "w" 可写的
+          model 设置文件的操作权限，一般不传（optional）
+          返回值 表示文件描述符的整数。（不确定的一个数）
+ */
+//引入fs模块
+var fs=require("fs");
+
+
+//创建文件
+var fd=fs.open("02hello async.txt","w")

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    （结合视频图解）
+    DOM，全称Document Object Model文档对象模型
+    JS中通过DOM来对HTML进行操作，只要理解了DOM，就可以随心所欲的操作WEB页面
+    Document：整个HTML网页文档
+    Object：将网页中的每个部分都转换为一个对象
+    Model：表示对象之间的关系，这样方便获取对象
+
+    HTML DOM树（图解）
+    https://www.w3school.com.cn/i/ct_htmltree.gif
+
+    节点 Node：构成网页的最基本的单元，网页中每个部分都可以成为是一个节点
+    比如：html标签，属性，文本，注释，整个文档等
+    虽然都是节点，但是具体类型不同，常用分为四类
+    比如：（图解）
+    文档节点：整个HTML文档
+    元素节点：HTML文档中的HTML标签
+    属性节点：元素的属性
+    文本节点：HTML标签中的文本内容
+    
+    节点的属性（图解）（不常用）
+    不同节点类型的属性和方法也不尽相同
+
+    */
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

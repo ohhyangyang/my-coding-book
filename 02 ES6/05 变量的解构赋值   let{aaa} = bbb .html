@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>变量解构赋值</title>
+</head>
+<body>
+<script>
+  /*
+  - 解构赋值
+     ES6允许按照一定模式，从数组和对象中提取值，使用变量对其内部数据进行赋值，这被称为解构赋值。
+     1 数组的解构
+        1.1 解构所有属性和方法
+        1.2 解构内部某个方法
+     2 对象的解构
+   */
+
+  //1 对象的解构赋值  ⚠️对方法赋值用得较多
+    const zbs = {
+      name:'赵本山',
+      age:'不详',
+      xiaopin: function(){
+        console.log('我可以演小品');
+      }
+    };
+
+    //1.1 解构所有属性和方法
+    // let{name,age,xiaopin} = zbs;
+    // console.log(name);
+    // console.log(age);
+    // xiaopin();
+
+    //1.2 解构内部某个方法  ⚠️⚠️ 更常用
+    let{xiaopin} = zbs;
+    xiaopin();  //我可以演小品
+
+
+
+
+  //2 数组的解构赋值   ⚠️⚠️ 数组的情况应用相对较少
+    const F4 = ['小沈阳','刘能','赵四','宋小宝'];
+
+    let [xiao,liu,zhao,song] = F4;
+    console.log(xiao); //小沈阳
+    console.log(liu);  //刘能
+    console.log(zhao);  //赵四
+    console.log(song);  //宋小宝
+
+
+</script>
+</body>
+</html>

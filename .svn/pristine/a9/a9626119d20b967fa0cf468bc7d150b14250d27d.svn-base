@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+
+    var obj={
+        name:"孙悟空",
+        age:18,
+        gender:"男",
+        address:"花果山"
+    }
+    //枚举对象中的属性
+    //使用for...in语句
+    /*
+    语法：
+        for(var 变量 in 对象){
+
+        }
+
+    for...in语句 对象中有几个属性，循环体就会执行几次
+    每次执行时，会将对象中的一个属性的名字赋值给变量
+    */
+
+    for(var n in obj){
+        console.log("属性名:"+n);//打印出属性名！！
+        console.log("属性值:"+obj[n]);//打印出属性值！！
+    }
+    //属性名:name 属性值:孙悟空 属性名:age 属性值:18 属性名:gender 属性值:男 属性名:address 属性值:花果山
+
+    //回顾in在object中的用法!!!
+    var obj2= {
+        name:1,
+        age:2,
+        gender:3
+    }
+    alert("gender" in obj2);//true
+
+    
+
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

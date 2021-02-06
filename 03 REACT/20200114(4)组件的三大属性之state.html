@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<!--
+- 组件的三大属性
+    props 标签属性的集合对象
+    refs
+    state 状态
+
+- state属性
+  state是组件对象最重要的一个属性，属性值是一个对象（可以包含多个状态值）
+  组件有时亦会被称作"状态机"，会根据状态来显示
+  
+- 操作state
+   1 初始化state
+     constructor(props){
+         super(props)     ⚠️必须写！！调用父类型(React.Component)的构造函数，将props交给父类型
+                            在调用之前不可以使用this的
+         this.state = {
+             stateProp1 : value1,
+             statePros2 : value2
+         }
+     }
+   
+   2 读取某个state值
+     this.state.state属性名
+     
+   3 更新state -> 组件界面更新
+     this.setState({
+         stateProp1 : value1,
+         stateProp2 : value2
+     })
+     
+- super()调用父类型的构造函数
+
+- ES6解构赋值  https://www.runoob.com/w3cnote/deconstruction-assignment.html
+   数组模型的解构
+      let [a, b, c] = [1, 2, 3];
+      // a = 1
+      // b = 2
+      // c = 3
+   对象模型的解构
+      let { foo, bar } = { foo: 'aaa', bar: 'bbb' };
+      // foo = 'aaa'
+      // bar = 'bbb'
+      
+- fn.bind(obj)  ES5新增方法
+  将新增的方法fn强制绑定this为一个对象obj，并返回一个新函数
+  
+
+-->
+    <div id="example"></div>
+    <script type="text/javascript" src="js/react.development.js"></script>
+    <script type="text/javascript" src="js/react-dom.development.js"></script>
+    <script type="text/javascript" src="js/babel.min.js"></script>
+
+    <script type="text/babel">
+	    /*
+	    需求：自定义一个组件，功能如下
+	    1 显示h2标题，起始文本为：你喜欢我
+	    2 点击标题，更新为：我喜欢你
+	     */
+	    
+	    //1 定义组件
+	    class Like extends React.Component{
+	        
+	        constructor(props) {
+        
+                //使用️super()来️调用父类型(React.Component)的构造函数，将props交给父类型
+                super(props);
+                
+		        //初始化state
+		        this.state = {
+		            isLikeMe: false
+		        }
+		        
+		        //将新增的handleClick方法中的this强行绑定为组件对象
+		        this.handleClick = this.handleClick.bind(this)
+		        /*
+		        -this.handleClick
+		        通过this.handleClick来得到下面的handleClick方法
+		        
+		        -bind()
+		        使用bind()强制handleClick函数指向当前this，也就是组件对象
+		        bind()函数的返回值为一个新函数
+		        */
+            }
+            
+            
+		    /*
+		    添加handleClick方法，功能是给isLikeMe取反
+		    ⚠️和组件对象自有的render()方法不同，️️handleClick为新添加的方法，
+		      内部的this不再是组件对象，而是undefined
+		      因此执行了上面的bind()方法来修改this为组件对象
+		    */
+            handleClick(){
+             
+	            //得到state，并给state取反
+	            console.log(this)
+	            const isLikeMe = !this.state.isLikeMe
+	            console.log(isLikeMe)//true,false,true,false....
+	            
+	            //更新state，给setState传递名值对
+	            this.setState({isLikeMe})   //ES6的简写
+            }
+            
+	        render(){
+	            //读取state
+		        const {isLikeMe} = this.state  //⚠️ES6解构赋值，非常常用
+	            return <h2 onClick={this.handleClick}>{isLikeMe?"你喜欢我":"我喜欢你"}</h2>  //判读？true:false
+		        /*
+		        ⚠️此处onClick为监听函数，C大写，代表它不是原生JS事件，为了和onclick区别开
+		        ⚠️this.handleClick  this代表当前组件对象Like，一触发onClick则调用组件对象的handleClick方法
+		                              注意不加()，因为不是主动调用的handleClick()，而是告诉计算机去调用
+		        */
+		         
+	        }
+	    }
+	    
+	    //2 渲染组件标签
+	    ReactDOM.render(<Like/>,document.getElementById("example"))
+	    
+	    
+	    
+	    
+    </script>
+</body>
+</html>

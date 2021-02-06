@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<!--
+- Boolean
+  - logical operators
+    && and
+    || or
+    ! not
+ - == 和 ===
+     2 == '2'; // => true
+     2 === '2'; // => false
+     2 === 2; // => true
+ - if statement
+   ⚠️⚠️
+   如果两个condition属于不同的 condition blocks，则切记不要使用if和if else，而需使用if和if
+   例如  let hardWork = 9;
+         if (hardWork > 8) {
+           console.log("You will be a great developer!");
+         }
+         if (hardWork > 6) {
+           console.log("You're getting better, but you could be working harder!");
+         }
+         
+ - switch
+ 
+   switch (expression) {
+    case value1:
+      // statements executed when the result of expression matches value1
+      [break;]
+    case value2:
+      // statements executed when the result of expression matches value2
+      [break;]
+    ...
+    case valueN:
+      // statements executed when the result of expression matches valueN
+      [break;]
+    default:
+      // statements executed when none of the values match the value of the expression
+      [break;]
+  }
+
+ - break
+   break语句会结束一个block execution，例如conditional blocks或loop blocks，然后继续执行程序。
+   （您很少会使用break，因为您应该能够控制程序的流程而不是中断它。 您是优秀的开发人员！）
+   （除非是switch语句时必须使用）
+   
+ - continue
+   会skip当前loop
+   
+ - truthy和falsy
+   All values are truthy unless they are defined as falsy. The falsy values in JavaScript are:
+     false;
+     null;
+     undefined;
+     0;
+     NaN;
+     (''); 空对象
+
+- while循环
+
+- for循环
+
+ ⚠️⚠️ 尽量减少循环的嵌套，因为会使性能变慢
+
+
+
+
+-练习
+    1
+    let str1 = "hello";
+    let str2 = "hola";
+    if(str1.length>str2.length){
+      console.log("Variable str1 has more characters");
+    }else if(str1.length<str2.length){
+      console.log("Variable str2 has more characters");
+    }else{
+      console.log("they have an equal number of characters");
+    }
+    
+    2
+    let word = 'web';
+    let sentence = 'I enrolled Ironhack because I love web development.';
+    if(sentence.includes(word)){
+      console.log("It inclueds");
+    }else{
+      console.log("It doesn't");
+    }
+    
+    3
+    let year = xxx;
+    let num = year/100;
+    if(num%1 == 0){
+      console.log("it's " + num + " century");
+    }
+    if(num%1 != 0){
+      num = parseInt(num);
+      console.log("it's " + (num+1) + " century");
+    }
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+-->
+<body>
+
+</body>
+</html>

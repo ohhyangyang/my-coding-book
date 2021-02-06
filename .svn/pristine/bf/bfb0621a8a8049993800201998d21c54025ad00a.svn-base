@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    
+    /*
+    数据类型指字面量的类型
+    在js中共有六种数据类型
+    String  字符串
+    Number 数值
+    Boolean 布尔值
+    Null 空值
+    Undefined 为定义
+    Object 对象
+
+    其中String Number Boolean Null Undefined属于基本类型
+    Object属于引用数据类型
+    
+    String 
+    需要用引号引起来
+    双引单引都可以，但不能混着用
+    可以“ ‘XXxxX’ ”或‘ “XxXXx” ’或用\转义
+    \"表示"
+    \'表示'
+    \n表示换行
+    \t表示制表符
+    \\表示\
+
+
+
+    */
+
+    var str = "我说：‘今天天气真不错’";//我说：‘今天天气真不错’
+    console.log(str);
+
+    str= "我说:\"今天天\n气真不错!\"";/*   我说:"今天天
+                                        气真不错!"     */
+    console.log(str);
+
+    str= "我说:\"今天天\t气真不错!\"";//我说:"今天天	气真不错!"
+    console.log(str);
+
+    str= "\\";//  \
+    console.log(str);
+
+    str= "\\\\";//  \\
+    console.log(str);
+
+
+
+
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

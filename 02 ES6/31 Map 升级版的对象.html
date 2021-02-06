@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map</title>
+</head>
+<body>
+    <script>
+	    /*
+	    - Map
+	    ES6 提供了 Map 数据结构。它类似于对象，也是键值对的集合。
+	    但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键。
+	    Map也实现了iterator接口，所以可以使用『...扩展运算符』和『 for…of…』进行遍历。
+	    
+	    - 创建Map
+	      语法上来说，Map是一个构造函数，可以被实例化
+	       let m = new Map()
+	       
+	    - Map的属性和方法：
+            1) size属性    返回Map的元素个数
+            2) set(键,值)方法   增加一个新元素，返回当前 Map
+            3) get   返回键名对象的键值
+            4) has   检测 Map中是否包含某个元素，返回 boolean值
+            5) clear   清空集合，返回 undefined
+            delete(键)方法 删除map中一个元素
+	     */
+	    
+        //声明 Map
+        let m = new Map();
+        console.log(m,typeof m); //Map(0) {} "object"
+        
+        //map.set(): 添加元素
+        m.set('name','Yang');
+        m.set('change', function(){
+            console.log("我要变成网页设计师!!");
+        });
+        
+        //声明一个key对象
+        let key = {
+            school : 'ironhack'
+        };
+        //给m添加一个键为key对象和值为一个数组的元素
+        m.set(key, ['北京','上海','深圳']);
+        console.log(m);  // Map(3) {"name" => "Yang", "change" => ƒ, {…} => Array(3)}
+        
+        //map.size返回Map的元素个数
+        console.log(m.size); //3
+
+        //map.delete(): 删除map中一个元素
+        m.delete('name');
+        console.log(m);  // Map(2) {"change" => ƒ, {…} => Array(3)}
+    
+        //map.get(): 获取一个元素的值
+        console.log(m.get('change')); //ƒ (){console.log("我要变成网页设计师!!");}
+        console.log(m.get(key));  //(3) ["北京", "上海", "深圳"]
+    
+        //遍历map，每次回返回键值数组
+        for(let v of m){
+            console.log(v);
+        }
+        /*
+        (2) ["change", ƒ]
+        (2) [{…}, Array(3)]
+         */
+        
+        //map.clear(): 清空
+        m.clear();
+        console.log(m);
+    
+    
+
+    </script>
+</body>
+</html>

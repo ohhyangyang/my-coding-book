@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+    <!--
+        表格
+       一个<tr>来表示表格中的一行 （row)
+       一个<td>来表示<tr>中的一个单元格 
+        <th>为特殊的<td>，表示表头 (heading)
+        此次在html中设置了样式，但以后不推荐使用
+        colspan:横向合并单元格
+        rowspan:纵向合并单元格
+    -->
+    <table border="1" width="40%" align="center">
+        <tr>
+            <td>A1</td>
+            <td>A2</td>
+            <td>A3</td>
+            <td>A4</td>
+        </tr>
+        <tr>
+            <td>B1</td>
+            <td>B2</td>
+            <td>B3</td>
+            <td rowspan="2">B4</td>
+        </tr>
+        <tr>
+            <td>C1</td>
+            <td>C2</td>
+            <td>C3</td>
+            
+        </tr>
+        <tr>
+            <td>D1</td>
+            <td>D2</td>
+            <td colspan="2">D3</td>
+            
+        </tr>
+        
+    </table>
+</body>
+</html>

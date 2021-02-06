@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+		/*
+			:enabled	匹配可编辑的表单
+			:disable	匹配被禁用的表单
+			:checked	匹配被选中的表单
+			:focus		匹配获焦得焦点的表单
+		 */
+		/*:enabled*/
+		#test1 input:enabled{
+			background-color: #b3d4fc;
+		}
+		/*:disable*/
+		#test1 input:disabled{
+			background-color: red;
+		}
+		/*:checked*/
+		#test1 input:checked{
+			width: 200px;
+			height: 200px;
+		}
+		/*:focus*/
+		#test2 input:focus{
+			background-color: #fff3cd;
+		}
+		/*test4实际应用：自定义单选按钮*/
+		#test4 label{
+			margin: 10px;
+			float: left;
+			width: 100px;
+			height: 100px;
+			border: 2px solid lavender;
+			overflow: hidden;
+			position: relative;
+			border-radius: 50%;
+		}
+		#test4 input{
+			position:absolute;
+			top: -50px;
+		}
+		#test4 input:checked + span{
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background-color: lavender;
+		}
+		
+		
+	</style>
+</head>
+<body>
+
+<div id="test1">
+	
+    <input type="text">
+    <br>
+    <input type="text" disabled="disabled">
+    <br>
+    <input type="checkbox">
+    
+</div>
+<br>
+<div id="test2">
+    <input type="text">
+</div>
+<br>
+<br>
+<div id="test3">
+
+	<label>
+		<input type="radio" name="a">
+		<span>我是和左边:radio在同一个label里的span，选我就等于选它</span>
+	</label>
+	<br>
+	<label>
+		<input type="radio" name="a">
+		<span>我是和左边:radio在同一个label里的span，选我就等于选它</span>
+	</label>
+	
+</div>
+<br>
+<br>
+<div id="test4">
+	<label>
+		<input type="radio" name="b">
+		<span></span>
+	</label>
+	<label>
+		<input type="radio" name="b">
+		<span></span>
+	</label>
+	<label>
+		<input type="radio" name="b">
+		<span></span>
+	</label>
+</div>
+
+
+</body>
+</html>

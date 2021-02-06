@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+    *{
+        margin:0;
+        padding:0;   /*清除默认样式*/
+    }
+    img{
+        width:500px;
+    }
+    #outer{
+        width:500px;/*宽*/
+        margin:0px auto;/*高*/
+        padding:50px;/*内边框*/
+        background-color:lavender;/*背景色*/
+        
+        text-align:center;/*文本居中*/
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload=function(){
+        /*
+        点击按钮切换图片
+        */
+       var prev=document.getElementById("prev");
+       var next=document.getElementById("next");
+       /*
+       要切换图片就是要修改img标签的src属性
+       */
+      //获取img标签
+      var imgTag=document.getElementsByTagName("img");
+      console.log(imgTag.length);//1，只有一个元素节点，那肯定是img标签
+      var img=imgTag[0];//取出img元素节点（标签）
+      //或者，当确定只有一个元素节点时，可以直接写成：var img=document.getElementsByTagName("img")[0];
+      
+      //创建一个数组，用于保存图片路径
+      var imgArr=["img/1.jpg","img/2.jpg","img/3.jpg","img/4.jpg","img/5.jpg"];
+
+      //创建一个变量，来保存当前正在显示的图片的索引
+      var index=0;
+
+      
+      //获取id为info的p元素
+      var info=document.getElementById("info");
+      //设置提示文字
+      info.innerHTML="一共5张图片，当前第1张";
+      //上一张 下一张 分别绑定单机响应函数
+       prev.onclick=function(){
+           index--;//切换到上一张是自减
+           if(index<0){
+               index=imgArr.length-1;
+           }//如果当前为img1，设置上一张为img5
+           img.src=imgArr[index];
+           info.innerHTML="一共"+imgArr.length+"张图片，当前第"+(index+1)+"张";//一定要括号，不然会从左到右拼串
+       }
+       next.onclick=function(){
+           index++;//切换到下一张是自增
+           if(index>4){
+               index=0;
+           }//如果当前为img5，设置下一张为img1
+           
+           img.src=imgArr[index];
+           info.innerHTML="一共"+imgArr.length+"张图片，当前第"+(index+1)+"张";//一定要括号，不然会从左到右拼串
+       }
+    }
+    </script>
+</head>
+<body>
+    <div id="outer">
+        <p id="info"></p><!--表明当前图片号码-->
+        <img src="img/1.jpg"/><!--插入图片-->
+        <button id="prev">上一张</button><!--插入按钮-->
+        <button id="next">下一张</button><!--插入按钮-->
+    </div>
+</body>
+</html>

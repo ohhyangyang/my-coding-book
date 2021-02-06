@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+		/*
+		⚠️⚠️伪类和伪元素
+		    ️伪类和伪元素为不存在于DOM树中的状态和元素，他们存在的目的是为了能够让CSS选中他们
+		    
+		⚠️⚠️ href="javascript:;"
+		     ”javascript:”是一种嵌套js代码在网页中的方法
+		     如<a href="javascript:alert('页面未跳转');">点我页面不会跳转</a>
+		     而"href=javascript:;"用于防止页面跳转，不会标记在URL中，a:visited无效
+		     
+		⚠️⚠️ href="#"
+		     href="#"代表链接至当前页面，会标记在URL中，a:visited有效
+		
+		
+		- 超链接伪类
+		       
+			a:link		表示作为超链接，并指向一个未访问的地址
+			
+			a:visited	表示作为超链接，并指向一个已访问的地址
+			  ⚠️⚠️  href="javascript:;" 不会启动a:visited
+			         而href="#"会启动a:visited
+			  
+			  
+			  ⚠️⚠️  只有下列的属性才能被应用到a:visited ！！！：
+						 color
+						 background-color
+						 border-color
+			
+			element:target 	代表一个特殊的e元素，它的id是URI的片段标识符
+			  例如： <a href="#abc"></a>
+			        <element id="abc"></element>
+			        点击这个<a>，URL地址栏上将增加一个#abc片段标识符
+			        于是就可以选中#XXX对应的<element>元素
+					
+		- 动态伪类
+		  ⚠️⚠️ hover，:active基本可以作用于所有的元素！
+			element:hover		表示悬浮到元素上
+			element:active		表示匹配被用户激活的元素（点击按住时）
+			⚠️⚠️遵循 LVHA 原则！！！
+					
+	    - 锚点伪类：
+		       锚点伪类包括 a:link，a:visited (用于链接元素的)
+		                  e:hover，e:active (用于所有的元素)
+		       "LVHA 原则"
+		       由于a:link和a:visited可以覆盖了所有a标签的状态
+		       所以当:link，:visited，:hover，:active同时出现在a标签上时
+		       :link和:visited不能放在最后！！！！
+		       ⚠️⚠️必须遵循 LVHA 原则！！！
+		 */
+		
+		#test1 a{
+			display: block;
+			text-decoration: none;
+		}
+		
+		/*未访问的超链接*/
+		#test1 a:link{
+			color: #fd7e14;
+		}
+		
+		/*已访问的超链接*/
+		#test1 a:visited{
+			color: lightgrey;
+		}
+		
+		/*选项卡练习*/
+		#test1 div{
+			width: 100px;
+			height: 100px;
+			background-color: #b3d4fc;
+			text-align: center;
+			font: 20px/100px Arial;
+			display: none;
+		}
+		#test1 div:target{
+			display: block;
+			
+		}
+		
+		/*超链接的实际应用综合练习*/
+		#test2 a{
+			display: block;
+			text-decoration: none;
+		}
+		
+		#test2 a:link{
+			color: black;
+		}
+		
+		#test2 a:visited{
+			color: pink;
+			/*
+			⚠️⚠️ 只有下列的属性才能被应用到a:visited ！！！：
+				color
+				background-color
+				border-color
+			 */
+		}
+		
+		#test2 a:hover{
+			color: yellow;
+		}
+		
+		#test2 a:active{
+			color: red;
+		}
+		
+		
+		
+	</style>
+	<script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
+	<script type="text/javascript">
+
+	</script>
+</head>
+<body>
+<div id="test1">
+    <a href="#box1">点击我target到box1</a>
+    <a href="#box2">点击我target到box2</a>
+    <a href="#box3">点击我target到box3</a>
+    <div id="box1">box1</div>
+    <div id="box2">box2</div>
+    <div id="box3">box3</div>
+</div>
+<br>
+<div id="test2">
+	<a href="javascript:;">我们使用了 javascript:; 我们不会跳转页面，所以我们点击之后不会变色 </a>
+	<a href="javascript:;">我们使用了 javascript:; 我们不会跳转页面，所以我们点击之后不会变色</a>
+	<a href="javascript:;">我们使用了 javascript:; 我们不会跳转页面，所以我们点击之后不会变色</a>
+	<br>
+	<a href="#">我们使用了href=# 我们visited之后会一起变色</a>
+	<a href="#">我们使用了href=# 我们visited之后会一起变色</a>
+	<a href="#">我们使用了href=# 我们visited之后会一起变色</a>
+	<br>
+	<a href="#1">我们使用了href=#1 我们visited之后会一起变色</a>
+	<a href="#1">我们使用了href=#1 我们visited之后会一起变色</a>
+	<br>
+	<a href="#2">我们使用了href=#2 我们visited之后会一起变色</a>
+	<a href="#2">我们使用了href=#2 我们visited之后会一起变色</a>
+	<br>
+	<a href="javascript:alert('页面未跳转');">点我页面不会跳转</a>
+	<a href="javascript:alert('清除成功（假的）');">清除病毒</a>
+
+</div>
+</body>
+</html>

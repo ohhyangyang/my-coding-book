@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    var arr1=["a","b","c"];
+    var arr2=["1","2","3"];
+    var arr3=["一","二","三"];
+    /*
+    https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
+    - arr.reduce() 方法对数组中的每个元素执行一个由您提供的reducer函数(升序执行)，将其结果汇总为单个返回值。
+    语法： arr.reduce( callback(accumulator, currentValue[, index[, array]])[, initialValue] )
+    参数：callback
+               执行数组中每个值 (如果没有提供 initialValue则第一个值除外)的函数，包含四个参数：
+             accumulator
+                 累计器累计回调的返回值; 它是上一次调用回调时返回的累积值，或initialValue（见于下方）。
+             currentValue
+                 数组中正在处理的元素。
+             index 可选
+                 数组中正在处理的当前元素的索引。 如果提供了initialValue，则起始索引号为0，否则从索引1起始。
+              array可选
+                  调用reduce()的数组
+        initialValue可选
+               作为第一次调用 callback函数时的第一个参数的值。 如果没有提供初始值，则将使用数组中的第一个元素。 在没有初始值的空数组上调用 reduce 将报错。
+
+    - arr.includes()
+      includes() 方法用来判断一个数组是否包含一个指定的值，根据情况，
+       如果包含则返回 true，否则返回false。
+
+    - arr.indexOf()
+      indexOf()方法返回在数组中可以找到一个给定元素的第一个索引，
+      如果不存在，则返回-1。
+
+    - arr.find() 方法返回数组中满足提供的测试函数的第一个元素的值。否则返回 undefined。
+      语法 arr.find(callback[, thisArg])
+      参数  callback  在数组每一项上执行的函数，接收 3 个参数：
+               element  当前遍历到的元素。
+               index可选  当前遍历到的索引。
+               array可选   数组本身。
+            thisArg可选  执行回调时用作this 的对象。
+
+       返回值 数组中第一个满足所提供测试函数的元素的值，否则返回 undefined。
+
+       
+    */
+    //1
+    var sum = [0, 1, 2, 3].reduce(function (accumulator, currentValue) {
+        return accumulator + currentValue;
+    }, 0);
+    // 和为 6
+	   
+	//2
+    var initialValue = 0;
+    var sum = [{x: 1}, {x:2}, {x:3}].reduce(function (accumulator, currentValue) {
+        return accumulator + currentValue.x;
+    },initialValue)
+
+    console.log(sum) // 6
+
+    
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

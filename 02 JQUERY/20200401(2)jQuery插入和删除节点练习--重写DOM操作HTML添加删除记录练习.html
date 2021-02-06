@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<style type="text/css">
+	form {
+		text-align: center;
+		margin: 100px auto;
+	}
+	table{
+		margin: 50px auto;
+		border-collapse: collapse;
+	}
+	th{
+		border: 1px solid black;
+		padding: 5px 20px;
+	}
+	td{
+		border: 1px solid black;
+		padding: 0 20px;
+	}
+	
+</style>
+<body>
+<script type="text/javascript" src="jquery-1.10.1.js"></script>
+<script type="text/javascript">
+	/*
+	- $(节点).parent()
+	  取得一个包含着所有匹配元素的唯一父元素的元素集合
+	  返回值为匹配到的父元素对应的jquery对象，而不再是原元素本身
+	
+	- $(节点).find()
+	  搜索所有与指定表达式匹配的元素。这个函数是找出正在处理的元素的后代元素的好方法。
+	  返回值为查找到的后代元素对应的jquery对象
+	 */
+    $(function () {
+        
+        //先声明一个delTr函数，点击 <a>delete</a>后，可以删除它的tr
+        function delTr() {
+            //this为<a>, 获取a的tr节点
+	        console.log(this)
+            var $tr = $(this).parent().parent();
+            //获取tr中员工的名字，为tr的第一个td的文本内容
+	        console.log($tr);
+            var name = $tr.find("td:first").text();
+            console.log(name);
+            var flag = confirm("确定删除"+name+"的信息吗？");
+            if(flag){
+                //如果确定，flag返回true，删除员工tr
+                $tr.remove();
+            }
+        }
+        
+        //获取<a>，将delTr函数绑定给已有的员工
+	    $("#table a").click(function () {
+		    console.log(this);//此时的this为<a>标签
+		    delTr.call(this);//而delTr函数的this为window，因此需要使用call来绑定<a>这个this给delTr函数使用
+		    return false
+        })
+	    
+	    //点击submit，添加新员工
+	    $("#submit").click(function () {
+	        //创建一个tr员工
+	       $("<tr></tr>").append("<td>"+$("#newName").val()+"</td>")//添加员工名字
+		                 .append("<td>"+$("#newEmail").val()+"</td>")//添加员工email
+		                 .append("<td>"+$("#newSalary").val()+"</td>")//添加员工工作
+		                 .append("<td><a href='xxx'>Delete</a> </td>")//添加delete
+		                 .appendTo("#table tbody")//将tr放入tbody
+		                 .find("a")//查找tr的<a>
+		                 .click(function () {//给<a>绑定delTr函数
+		                     delTr.call(this);
+		                     return false
+                         });
+            return false
+        });
+        
+        
+    })
+</script>
+<form id="form" action="#">
+	<h3>New Employee</h3>
+	Name:<input id="newName" type="text" name="name">&nbsp
+	Email:<input id="newEmail" type="text" name="email">&nbsp
+	Salary:<input id="newSalary" type="text" name="salary">&nbsp
+	<br><br>
+	<input type="submit" id="submit" value="submit">
+</form>
+<table id="table">
+	<tr>
+		<th>Name</th>
+		<th>Email</th>
+		<th>Salary</th>
+		<th></th>
+	</tr>
+	<tr>
+		<td>Tom</td>
+		<td>tom@tom.com</td>
+		<td>5000</td>
+		<td><a href="xxx">Delete</a> </td>
+	</tr>
+	<tr>
+		<td>Jerry</td>
+		<td>jerry@sohu.com</td>
+		<td>8000</td>
+		<td><a href="xxx">Delete</a> </td>
+	</tr>
+	<tr>
+		<td>Bob</td>
+		<td>Bob@gmail.com</td>
+		<td>10000</td>
+		<td><a href="xxx">Delete</a></td>
+	</tr>
+</table>
+</body>
+</html>

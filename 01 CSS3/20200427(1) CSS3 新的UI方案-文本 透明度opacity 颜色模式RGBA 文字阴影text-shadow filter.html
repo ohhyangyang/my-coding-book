@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+	<title>Title</title>
+	<style type="text/css">
+		/*
+		文本新增样式1：
+		  1透明度 opacity
+		    opacity不是一个可继承的属性，但他的透明度可以影响自己的后代元素
+		    
+		  2新增颜色模式 RGBA
+		    RGBA 颜色值是 RGB 颜色值的扩展, 带有一个 alpha 通道 - 它规定了对象的不透明度。
+		    它是这样规定的：rgba(red, green, blue, alpha)。alpha 参数是介于 0.0（完全透明）与 1.0（完全不透明）的数字
+		    
+		    ⚠️⚠️他可以有效解决背景透明度和颜色透明度分开操作的问题
+		    小技巧，打开浏览器查看颜色值代码时，按住shift键点击可以切换颜色模式
+		    
+		    
+		  3文字阴影 text-shadow
+		    text-shadow 可向文本应用阴影
+		    能够规定水平阴影、垂直阴影、模糊距离，以及阴影的颜色
+		    默认值 none
+		    语法 text-shadow: h-shadow v-shadow blur color;
+		         h-shadow	必需。水平阴影的位置。允许负值。
+ 		         v-shadow	必需。垂直阴影的位置。允许负值。
+		         blur	可选。模糊的距离。
+		         color	可选。阴影的颜色。
+		    ⚠️ 以逗号分隔来描述一个或多个阴影（第一个阴影在最上面）
+		    		  
+		  4文字描边
+		  5文字排版
+		  
+		  
+		- filter属性
+		  filter 属性定义了元素(通常是<img>)的可视效果(例如：模糊与饱和度)。
+		  语法：
+		    filter: none | blur() | brightness() | contrast()
+		            | drop-shadow() | grayscale() | hue-rotate()
+		            | invert() | opacity() | saturate() | sepia()
+		            | url();
+		  
+		 */
+		
+		/* 1 opacity */
+		#box1{
+			width: 200px;
+			height: 200px;
+			margin: 10px auto;
+			background-color: pink;
+			opacity: 0.5;
+		}
+		#inner{
+			width: 100px;
+			height: 100px;
+			margin: auto ;
+			background-color: red;
+			color: rgb(0,0,0);
+			font-size: 10px;
+			/*line-height: 100px;*/
+			/*text-align: center;*/
+		}
+		
+		/* 2 rgba背景透明颜色不透明 */
+		#box2{
+			width: 200px;
+			height: 200px;
+			margin: 10px auto;
+			background-color: rgba(0,0,0,.2);
+			color: rgb(0,0,0);
+			font-size: 20px;
+			/*line-height: 200px;*/
+			text-align: center;
+			
+		}
+		
+		/* 3 文字阴影 */
+		h1{
+			text-align: center;
+			font:50px/100px "Arial" ;
+			text-shadow: pink 10px 10px 2px,greenyellow 5px 5px 2px;
+		}
+		/* 浮雕文字 */
+		#test1{
+			font: bold 50px "Arial";
+			text-align: center;
+			color: white;
+			text-shadow: black 1px 1px 10px;
+			
+		}
+		/* 文字逐渐模糊 */
+		#test2{
+			font: bold 20px "Arial";
+			text-align: center;
+			color: #000;
+			text-shadow: 0 0 0 rgba(0,0,0,1);
+			border: 1px solid #000;
+			transition: 1s;
+		}
+		#test2:hover{
+			color: rgba(0,0,0,0);
+			text-shadow: 0 0 100px rgba(0,0,0,0);
+		}
+		/* 模糊背景 */
+		
+		#test3{
+			height: 100px;
+			width: 300px;
+			background:rgba(0,0,0,.5);
+			position: relative;
+		}
+		
+		#test3 #bg{
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background:url("img/image1.jpeg") no-repeat;
+			background-size: 100% 100%;
+			z-index: -1;
+			filter: blur(2px);
+		}
+		
+		#test3 img{
+			margin: 20px 110px;
+		}
+	</style>
+</head>
+<body>
+
+<div id="box1">
+	<div id="inner">
+		我是inner，因为我的父元素，我继承了opacity=0.5
+	</div>
+</div>
+
+<div id="box2">
+	我是box2，因为我的父元素使用了rgba，所以没有影响我的透明度
+</div>
+
+<h1>我使用了text-shadow文字阴影</h1>
+<p id="test1">我使用text-shadow创建出了浮雕文字</p>
+<p id="test2">我使用了transition:1s，所以hover我后我会逐渐消失</p>
+<br>
+我是模糊背景
+<div id="test3">
+	
+	<img src="img/image1.jpeg" width="64px" height="64px" alt=""/>
+	<div id="bg"></div>
+</div>
+</body>
+</html>

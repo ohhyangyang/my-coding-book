@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+		/*
+		flexbox弹性盒子
+		CSS3 弹性盒（ Flexible Box 或 flexbox），是一种当页面需要适应不同的屏幕大小以及设备类型时确保元素拥有恰当的行为的布局方式。
+		
+		详见:https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+		
+		------------------生成弹性盒子--------------------------
+		* display:flex   -->针对容器
+		
+		------------------水平分布--------------------------
+		* justify-content 设置flexbox中的一组元素水平方向的对齐方式    -->针对容器
+		  flex-start: 默认值 在flexbox中，元素左对齐.
+		  flex-end: 在flexbox中，元素右对齐.
+		  center: 在flexbox中，元素居中对齐.
+		  space-between: 在flexbox中，元素之间以相等的间距排列.
+		  space-around: 在flexbox中，每个元素两边分布相等的空间，所以左右边缘的距离会为元素间间距的一半.
+		  space-evenly: 在flexbox中，元素之间以及周围都同样以相等的距离排列.
+		  
+		
+		
+		------------------垂直分布--------------------------
+		* align-self 定义对单个元素纵向的对齐方式    -->针对子项
+		  flex-start: 元素位于flexbox的上端。 默认值
+		  flex-end: 元素位于flexbox的下端.
+		  center: 元素位于flexbox的垂直中心.
+		  baseline: 元素位于flexbox的基线上.
+		  stretch: 元素纵向被拉伸以适应flexbox.
+		  
+		* align-items 单行一组元素垂直向分布方式    -->针对容器
+		    (align-items属性将所有直接子节点上的align-self值设置为一个组)
+		  flex-start: 整组元素位于flexbox的上端。 默认值
+		  flex-end: 整组元素位于flexbox的下端.
+		  center: 整组元素位于flexbox的垂直中心.
+		  baseline: 整组元素位于flexbox的基线上.
+		  stretch: 整组元素纵向被拉伸以适应flexbox.
+		  
+		* align-content 多行元素垂直向分布方式    -->针对容器
+		  flex-start: 多行元素位于flexbox的上端。 默认值
+		  flex-end: 多行元素位于flexbox的下端.
+		  center: 多行元素位于flexbox的垂直中心.
+		  space-between:多行元素纵向被均匀分布，两端没有空隙.
+		  space-around: 多行元素纵向被均匀分布，两端有空隙.
+		  stretch: 多行元素纵向被拉伸以适应flexbox.
+		
+		------------------控制盒子主轴侧轴--------------------------
+		* flex-direction 规定flexbox中元素的排列方向，控制主轴   -->针对容器
+		  row: 从左向右在x轴上  默认值
+		  row-reverse: 从右往左的x轴.   ⚠️ flex-start和flex-end的主轴也会被倒过来
+		  column: 从上往下的y轴.
+		  column-reverse: 从下往上的y轴.
+				
+		* flex-wrap 控制侧轴方向，决定是否自动换行   -->针对容器
+		  nowrap: 不换行  默认值
+		  wrap: 侧轴方向由上而下               (flex-shrink失效)
+		  wrap-reverse: 侧轴方向由下而上       (flex-shrink失效)
+		
+		* flex-flow ==> flex-wrap和flex-direction的简写属性  -->针对容器
+		
+		  ⚠️ 书写顺序没有要求
+		
+		------------------伸缩规则--------------------------
+		详见：https://juejin.im/post/5dedb28ef265da33b12e98cd
+		
+		* flex-basis  定义了弹性盒子剩余空间被瓜分之前，盒子内子项的大小。   -->针对子项
+		   number	一个长度单位或者一个百分比，规定灵活项目的初始长度。
+           auto	    默认值。长度等于灵活项目的长度。如果该项目未指定长度，则长度将根据内容决定。
+           
+		 ⚠️ 当一个元素同时被设置了 flex-basis (除值为 auto 外) 和 width (或者在 flex-direction: column 情况下设置了height) , flex-basis 具有更高的优先级.
+		 ⚠️ 在flex简写属性中flex-basis的默认值为0
+		 
+		      -min-width 属性为给定元素设置最小宽度   -->针对子项
+		       默认值为none
+		
+		     ⚠️ max-width 会覆盖width设置, 但 min-width设置会覆盖 max-width.
+		
+		      -max-width 定义元素的最大宽度。   -->针对子项
+		       默认值为none
+		
+		     ⚠️ min-width 的值会同时覆盖 max-width 和 width。
+		
+		* flex-grow 定义了flexbox内元素的拉伸规则    -->针对子项
+		   如果所有的兄弟项目都有相同的flex-grow系数，那么所有的项目将获得相同的扩展空间，
+		   否则将根据不同的flex-grow系数定义的比例进行分配。
+		   
+		     默认值 0
+		     属性值 一个数字，规定项目将相对于其他灵活的项目进行扩展的量。负值无效
+		    
+		    计算方式：
+		    
+		      假设有n个item元素，flex-basis的值分别为A,B,C...，flex-grow 的值分别为a, b, c...
+		      flexbox的剩余空间：x       (剩余空间x = flexbox容器大小 - (A+B+C+...))
+			  
+			  那么每个item可以瓜分的剩余空间为：
+ 			     a/(a+b+c) * x，
+ 			     b/(a+b+c) * x，
+  		    	 c/(a+b+c) * x
+  			    ...
+			  而每个item最终的大小为：
+			     A + a/(a+b+c) * x，
+ 			     B + b/(a+b+c) * x，
+  		    	 C + c/(a+b+c) * x
+  			    ...
+			  
+		* flex-shrink 定义了flexbox内元素的收缩规则    -->针对子项
+		  ⚠️ flex 元素仅在默认宽度之和大于容器的时候才会发生收缩，其收缩的大小是依据flex-shrink的值。
+		    默认值 1
+		    属性值 一个数字，负值是不被允许的
+		    
+		    计算方式：
+
+               n个item元素的flex-basis: b1, b2, b3
+               n个item元素的flex-shrink：s1, s2, s3
+               计算总压缩权重：
+                  sum = b1 * s1  +  b2 * s2  +  b3 * s3
+                  ...
+               计算每个元素收缩率：
+                  R1 = b1 * s1 / sum，
+                  R2 = b2 * s2 / sum，
+                  R3 = b3 * s3 / sum
+                  ...
+               计算每个元素宽度：
+                  b1 - 溢出空间 * R1       (溢出空间 = (b1 + b2 + b3 ...) - flexbox容器大小)
+                  b2 - 溢出空间 * R2
+                  b3 - 溢出空间 * R3
+                  ...
+
+		
+		* flex简写属性
+		
+		* order 控制容器中元素的排列顺序
+		
+		
+		 */
+	</style>
+</head>
+<body>
+
+</body>
+</html>

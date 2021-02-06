@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CORS</title>
+</head>
+<style>
+	#result{
+		width: 200px;
+		height: 100px;
+		border: solid 1px #90b;
+	}
+</style>
+<body>
+  <button>发送请求</button>
+  <div id="result"></div>
+
+</body>
+<script type="text/javascript">
+	
+	/*
+	-CORS是什么？
+       CORS（Cross-Origin Resource Sharing），跨域资源共享。
+       CORS是官方的跨域解决方案，
+       特点：不需要在客户端做任何特殊的操作，完全在服务器中进行处理，
+            支持GET和POST等请求。
+       CORS标准新增了一组HTTP首部字段，允许服务器声明哪些源站通过浏览器有权限访问哪些资源
+    
+    -CORS怎么工作的？
+       CORS是通过设置一个响应头来告诉浏览器，该请求允许跨域，浏览器收到该响应以后就会对响应放行。
+       ⚠️⚠️ 要想实现跨域请求，必须要在服务器端返回结果的时候设置一个响应头，否则会被浏览器端block
+       
+       https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS
+       可查看所有CORS相关讯息和响应头设置
+       Access-Control-Allow-Origin
+       Access-Control-Expose-Headers
+       Access-Control-Max-Age
+       Access-Control-Allow-Credentials
+       Access-Control-Allow-Methods
+       Access-Control-Allow-Headers
+       
+	 */
+	const btn = document.querySelector('button');
+	const result = document.getElementById('result')
+	
+	btn.onclick = function () {
+        //1 创建AJAX对象
+		const xhr = new XMLHttpRequest();
+		
+		//2 初始化
+		xhr.open('GET','http://127.0.0.1:8000/cors-server');
+		
+		//3 发送
+		xhr.send();
+		
+		//4 绑定事件
+		xhr.onreadystatechange =function () {
+            if(xhr.readyState === 4){
+                if(xhr.status >= 200 && xhr.status < 300){
+                    result.innerHTML = xhr.response + "跨域成功";
+                }
+            }
+        }
+    }
+</script>
+</html>

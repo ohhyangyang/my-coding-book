@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    Location
+    该对象封装了浏览器的地址栏信息
+    直接打印location：可以获取到了地址栏的信息（当前页面的完整路径）
+    修改location为一个完整路径或相对路径：页面会自动跳转到该路径
+                                     并且会生成相应的历史记录
+    
+    location.assign()方法
+    用来跳转到其他页面，作用和直接修改location一样，也会生成历史记录，可以使用回退按钮
+
+    location.reload()方法
+    用于重新加载当前页面，作用和刷新按钮一样
+    如果传递一个true作为参数，则会强制清空缓存，刷新页面
+
+    location.replace()方法
+    可以使用新的页面替换当前页面，调用后会跳转页面，但是不会生成历史记录，不能使用回退按钮
+    */
+    window.onload=function(){
+        var btn01=document.getElementById("btn01");
+        btn01.onclick=function(){
+            //alert(location);
+            location="https://www.baidu.com";
+            //等于 location.assign("https://www.baidu.com");
+            //location.reload(true);
+            //location.replace("https://www.google.es");
+        };
+
+    };
+    </script>
+</head>
+<body>
+    <h1>Location</h1>
+    <button id="btn01">go</button>
+    <br/>
+    <input type="text"/>
+</body>
+</html>

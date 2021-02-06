@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+    window.onload=function(){
+        var btn01=document.getElementById("btn01");
+
+        /*
+        *绑定响应函数：obj.handler =  函数
+        只能同时为一个元素的一个事件绑定一个响应函数
+        如绑定多个，则后边的会覆盖掉前边的
+
+        例：
+        btn01.onclick=function(event){
+         alert(1);
+        btn01.onclick=function(event){
+         alert(2);  //点击后-->alert：2 (只执行了第二个函数)
+        }*/
+
+        /*
+        *obj.addEventListener(a,b,c)  正常浏览器
+             参数：
+                a： event handler的字符串（去掉on）
+                b： 回调函数
+                c： 是否在捕获阶段触发事件，一般都传false
+        使用addEventListener()可以同时为一个元素的相同事件同时绑定多个响应函数
+        事件触发后，会根据函数的绑定顺序依次执行
+        ⚠️IE8及一下浏览器不支持
+
+        例：
+        btn01.addEventListener("click",function(){
+            alert(1);
+        },false);
+        btn01.addEventListener("click",function(){
+            alert(2);
+        },false);     //点击后-->alert：1,2 (两个函数都执行了)
+        */
+
+        /*
+        *obj.attachEvent(a,b)   IE浏览器
+             参数：
+                a: event handler的字符串（需要on）
+                b: 回调函数
+        功能同addEventListener()，不同的是它先执行后绑定的函数，
+        顺序和addEventListener相反
+
+        例：
+        btn01.attachEvent("onclick",function(){
+            alert(1);
+        })
+        btn01.attachEvent("onclick",function(){
+            alert(2);
+        })     //点击后-->alert：2，1 (两个函数都执行了)
+        */
+
+
+        
+
+
+        //创建一个兼容所有浏览器的bind函数
+        function bind(obj,eventStr,callback){
+            if(obj.addEventListener){    //寻找obj的相关属性，即使没有，浏览器也不会报错
+            //正常浏览器
+            obj.addEventListener(eventStr,callback,false);
+            }else{
+            //IE8及以下
+            obj.attachEvent("on"+eventStr,function(){
+                callback.call(obj);//使this从window转为obj
+            });
+            }
+            /*⚠️⚠️⚠️
+            关于this
+            addEventListener()的this，是绑定事件的obj对象 --> 说明addEventListener()是作为obj的方法被调用的
+            而attachEvent()的this，是window --> 说明attachEvent()是作为浏览器的函数被调用的
+            这会使得两种情况的this不统一，造成使用bind函数的局限性
+            修改方式：
+            在编写obj.attachEvent()相关代码时，使用一个匿名函数来调用callback函数，
+            并用call()让obj对象来强行调用window浏览器对象的callback函数
+            这样this会变为obj
+        */
+        }
+
+        //调用bind
+        bind(btn01,"click",function(){
+            alert(1);
+            alert(this);   
+        });
+        bind(btn01,"click",function(){
+            alert(2);
+        });
+        //点击后-->alert：1,2(或2,1)  this:[object HTMLButtonElement]
+                  
+
+
+        
+    }
+    </script>
+</head>
+<body>
+    <button id="btn01">hola</button>
+</body>
+</html>

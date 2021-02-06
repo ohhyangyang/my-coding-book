@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    电子邮件规则
+    hello.nihao@abc.com.cn
+    任意字母数字下划线  (.任意字母数字下划线)(0-n位)  @   任意字母或数字(1-n位)   .   任意字母(2-5位)   (.  任意字母(2-5位))
+    ^  \w+           (\.\w+)*                   @    [A-z0-9]+            \.   [A-z]{2,5}      (\.  [A-z]{2.5})* $
+    ⚠️⚠️ 正则内不可以加空格！！！！
+    */
+
+    var emailReg=/^\w{3,}(\.\w+)*\@[A-z0-9]+\.[A-z]{2,5}(\.[A-z]{2,5})*$/;
+    //或者var emailReg=/^\w{3,}(\.\w+)*@[A-z0-9]+(\.[A-z]{2,5}){1,2}$/
+    //注意^和$不能少
+    var email="hello.nihao@abc.com.cn";
+
+    var result=emailReg.test(email);
+    console.log(result);
+
+    //其他的常用正则需要上网查找并验证是否正确再去使用
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

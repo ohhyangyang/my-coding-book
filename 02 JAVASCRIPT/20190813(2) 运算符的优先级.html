@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    ,逗号运算符：可以分割多个语句，一般可以在声明多个变量时使用
+
+    */
+
+    //使用，运算符同时声明多个变量
+    var a,b,c;
+    //,同时声明多个变量，并赋值
+    var a=1,b=2,c=3;
+    alert(b);//2
+
+    /*
+    优先级
+    就和数学中一样，在Javascript中也有优先级
+    比如：先乘除，后加减
+    
+    在JS中，存在运算符优先级表，在表中，越靠上，优先级越高，越优先计算
+    如果优先级一样，则从左往右计算:
+
+    .、[]、new
+    ()
+    ++、--
+    !、~、+（一元）、-（一元）、typeof、void、delete
+    %、*、/
+    +（二元）、-（二元）
+    <<、>>、>>>
+    <、<=、>、>=
+    ==、!==、===
+    &
+    ^
+    |
+    &&
+    ||
+    ?:
+    =、+=、-=、*=、/=、%=、<<=、>>=、>>>=、&=、^=、|=
+    ,
+    
+    但是这个表并不需要记忆，如果遇到优先级不清楚的，可使用（）来改变优先级
+
+   
+
+    */
+
+    var result=1+2*3;//7
+
+    var result=(1||2)&&3;
+
+    console.log("result="+result);//result=3,||找true为1，然后&&找false为3
+
+
+    
+    
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

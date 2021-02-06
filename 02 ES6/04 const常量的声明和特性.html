@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>const常量</title>
+</head>
+<body>
+<script>
+  //- const声明常量的格式
+  const SCHOOL = 'ironhack';
+  /*
+  - 声明常量的注意事项
+    1 必须赋初始值
+    2 常量一般为大写
+    3 常量值不可被重复声明和修改
+    4 块级作用域
+    5 常量对象属性修改和常量数组元素变化，console不会报错
+     例：
+       cosnt TEAM = ['UZI','MXLG','Ming','Letme'];
+       TEAM.push('Meiko');    ⚠️⚠️不会报错
+           因为此时常量数组的元素发生了变化，但是它指向的地址没有发生改变，所以不会报错
+       TEAM = 100;   ⚠️⚠️ 会报错
+           所以使用const来声明数组和对象是比较稳妥的，避免因为误操作而修改数据里的值
+
+   */
+</script>
+</body>
+</html>

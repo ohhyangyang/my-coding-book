@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+		/*
+		  - 样式表的组成
+		    规则
+		        选择器+声明块
+		               声明
+		                   CSS合法的属性名+属性值
+		                   
+		  - 浏览器读取编译css的顺序？(渲染的顺序）
+		      浏览器解析CSS的顺序是从右往左
+		      
+		  - CSS3包括哪些内容：
+		      选择器
+		      自定义字体
+		      新的UI方案
+		      过渡
+		      2d/3d变形
+		      动画
+		      布局扩展
+		      
+		  CSS level3选择器规范地址：	   https://www.w3.org/TR/2011/REC-css3-selectors-20110929/
+	      CSS level4选择器规范地址:  https://www.w3.org/TR/selectors
+	      
+		  - CSS基本选择器
+		      通配符选择器   *		    * { margin: 0; padding: 0; border: none; }
+		      元素选择器     元素名		body { background: #eee; }
+		      类选择器      .	        .list { list-style: square; }
+		      ID选择器      #          	#list { width: 500px; margin: 0 auto; }
+		      后代选择器     空格		    .list li { margin-top: 10px; background: #abcdef; }
+		      
+		      
+		  - CSS基本选择器扩展
+		      子元素选择器   >            #wrap > .inner {color: pink;}
+					也可称为直接后代选择器,此类选择器只能匹配到直接后代，不能匹配到深层次的后代元素
+			  相邻兄弟选择器 +            #wrap #first + .inner {color: #f00;}
+	              	它只会匹配选中元素紧跟着的下一个兄弟元素 ⚠️⚠️必须紧跟！！！
+	          通用兄弟选择器 ~            #wrap #first ~ div { border: 1px solid;}
+	                它会匹配选中元素后面所有的兄弟元素(不需要紧跟)
+	          分组选择器     ,           h1,h2,h3{color: pink;}
+					此处的逗号我们称之为结合符
+					
+		 */
+		#wrap > #second + .inner{ /*紧跟着#second的下一个inner*/
+			color: #f00;
+		}
+		#wrap > #second ~ div{
+			border: 1px solid;
+		}
+	</style>
+</head>
+<body>
+<div id="wrap">
+	<div class="inner">inner</div>
+	<div id="second">second</div>
+	<div class="inner">inner<div>inner2</div></div>
+	<p>p</p>
+	<div class="inner">inner</div>
+	<div class="inner">inner</div>
+	<div class="inner">inner</div>
+</div>
+</ul>
+</body>
+</html>

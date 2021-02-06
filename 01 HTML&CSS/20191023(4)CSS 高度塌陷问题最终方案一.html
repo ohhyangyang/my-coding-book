@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>高度塌陷</title>
+        <style type="text/css">
+        /*
+        解决方案二：（W3C推荐方式）推荐
+        可以直接在塌陷的父元素内部的最后添加一个空白的div（.clear）
+        然后对其进行clear，这样通过这个空白的div位置的回归来撑开父元素的高度
+        该方法基本没有副作用（各种浏览器都支持，甚至优于overflow:hidden）
+        缺点：虽然解决了问题，但是html中添加了多余结构
+        */
+        .box1{
+            border:1px red solid;
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            float: left;
+        }
+        .clear{
+            clear: both;/*清除box2的float对空白clear的影响，空白clear回到box2下方，这样即可撑开其父元素*/
+        }
+        </style>
+    </head>
+    <body>
+        <div class="box1">
+            <div class="box2"></div>
+            <div class="clear"></div>
+        </div>
+    </body>
+</html>

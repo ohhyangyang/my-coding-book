@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+	/*
+	- 径向渐变 radial-gradient()函数
+	   radial-gradient() 函数用径向渐变创建<image>。
+	   用来展示由原点（渐变中心）辐射开的颜色渐变
+	   语法：background-image: radial-gradient(shape size at position, start-color, ..., last-color);
+	      值	    描述
+	      
+          shape	    确定圆的类型:
+              ellipse (默认): 指定椭圆形的径向渐变。
+              circle ：指定圆形的径向渐变
+              
+          size	定义渐变的半径：
+              farthest-corner (默认) : 从圆心到离圆心最远角
+              closest-side ：从圆心到离圆心最近边
+              closest-corner ： 从圆心到离圆心最近角
+              farthest-side ：从圆心到离圆心最远边
+              
+          position	定义渐变的圆心：
+              center（默认）：设置中间为圆心。
+              top：设置顶部为圆心。
+              bottom：设置底部圆心。
+              x y：左上角为0 0，右下角为100% 100%
+              
+          start-color, ..., last-color	用于指定渐变的起止颜色。
+              color1,color2：颜色均匀分布
+              color1 %,color2 %：颜色不均匀分布
+	 */
+		#test{
+			width: 500px;
+			height: 300px;
+			border: 1px solid;
+			margin: 0 auto;
+			background-image: radial-gradient(farthest-side circle at 100% 100%,yellow 5%,red,lightgoldenrodyellow);
+		}
+	</style>
+</head>
+<body>
+<div id="test"></div>
+</body>
+</html>

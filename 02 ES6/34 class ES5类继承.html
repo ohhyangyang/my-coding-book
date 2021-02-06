@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象继承</title>
+</head>
+<body>
+    <script>
+	    /*
+	    
+         
+	    ES5中的继承首先要执行父类方法，然后将原型对象指向父类的原型对象，
+	    最后修正原型对象的constructor属性，使其指回子类构造函数，比较麻烦，
+	    ES6中采用关键字extends实现继承,使用super()调用父类的构造函数。
+	    
+	    - ES5 类的继承
+	      
+	      ES5继承基本步骤：
+         1 子类构造器中调用父类构造器—— Super.call(this)
+         2 Sub.prototype = new Super();
+         3 Sub.prototype.constructor = Sub;
+	     具体见下文举例分析和这个link：https://juejin.im/entry/6844903689530900488
+	     
+	    （我尽力了。。。我看不懂。。。。）
+	    
+	    - call()方法
+	        call() 方法使用一个指定的 this 值和单独给出的一个或多个参数来调用一个函数。
+	        语法  function.call(thisArg, arg1, arg2, ...)
+	        参数
+                   thisArg                可选的。在 function 函数运行时使用的 this 值。
+                   arg1, arg2, ...        指定的参数列表。
+	     */
+///////////ES5 构造函数////////////////////////////////////////////////////////////
+        //创建手机构造函数--> 创建父级构造函数⚠️⚠️
+        function Phone(brand, price){
+            this.brand = brand;
+            this.price = price;
+        }
+        
+        //给Phone的原型添加call()方法
+        Phone.prototype.call = function(){
+            console.log("我可以打电话");
+        };
+        
+        //继承Phone父级构造函数，创建子级构造函数
+        //智能手机 --> 创建子级构造函数⚠️⚠️
+        
+        function SmartPhone(brand, price, color, size){
+    
+            /*
+			call()方法将brand price参数交给父级，
+			首先改变this指向SmartPhone，
+			其次传递对应的brand price参数
+			*/
+            Phone.call(this, brand, price);
+            
+            this.color = color;
+            this.size = size;
+        }
+
+        //设置子级构造函数的原型
+    
+        /*
+        想要理解下面的代码，首先需要了解new的知识：
+         new 过程
+            1.新生成了一个对象
+            2.链接到原型
+            3.绑定 this
+            4.返回新对象*/
+        
+        //⚠️⚠️⚠️⚠️⚠️⚠️ 理解以下原理的时候，不要忘了构造函数会提升（类不会），所以很多时候会影响console.log()的输出结果，会严重影响理解
+    
+        console.log(SmartPhone.prototype);
+        /*
+        {constructor: ƒ}
+            constructor: ƒ SmartPhone(brand, price, color, size)
+            __proto__: Object
+        */
+        SmartPhone.prototype = new Phone;  //修正SmartPhone的prototype原型对象，使其指向Phone原型，SmartPhone原型通过new关键字实例化继承了父级Phone的原型（此时暂时失去SmartPhone的constructor，在下面会找回）
+	    console.log(SmartPhone.prototype); // 发现SmartPhone的原型指向了父级的_proto_对象
+	    /*
+	    Phone {brand: undefined, price: undefined}
+           brand: undefined
+           price: undefined
+           __proto__: Object
+	    */
+	    console.log(SmartPhone.prototype.constructor); //发现SmartPhone原型的constructor也变为了父级原型的constructor
+	    /*
+	    Phone(brand, price){
+            this.brand = brand;
+            this.price = price;
+        }
+        */
+
+	    SmartPhone.prototype.constructor = SmartPhone; //修正SmartPhone原型的constructor，SmartPhone原型上重新改回SmartPhone的constructor属性，完成继承
+        console.log(SmartPhone.prototype);// 发现SmartPhone的原型找回了原来的constructor，但仍指向父级
+        //详细解说见： https://juejin.im/entry/6844903689530900488
+
+
+        //声明子级的方法
+        SmartPhone.prototype.photo = function(){
+            console.log("我可以拍照")
+        };
+
+        SmartPhone.prototype.playGame = function(){
+            console.log("我可以玩游戏");
+        };
+
+        //实例化子级
+        const xiaomi = new SmartPhone('小米',2499,'黑色','5.5inch');
+
+        console.log(xiaomi); //发现xiaomi实例的_proto_对象指向SmartPhone，但是SmartPhone的_proto_对象指向Phone
+
+        /*
+        SmartPhone
+           brand: "锤子"
+           color: "黑色"
+           price: 2499
+           size: "5.5inch"
+           
+           __proto__: Phone
+             brand: undefined
+             constructor: ƒ SmartPhone(brand, price, color, size)
+             photo: ƒ ()
+             playGame: ƒ ()
+             price: undefined
+             __proto__:
+               call: ƒ ()
+               constructor: ƒ Phone(brand, price)
+               __proto__: Object
+         */
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<!--
+var text = $.trim("  hello, how are you?  ") 去掉文本前后空格
+-->
+<script type="text/javascript" src="jquery-1.10.1.js"></script>
+<script type="text/javascript">
+    $(function () {
+        //1
+        //声明一个showContent函数，点击li选项时则显示选项内容
+	    function showContent(li){
+	        alert($(li).text());
+	    }
+        $("li").click(function () {
+            showContent(this);
+        });
+	    
+        //2
+	    // 绑定submit的单机响应函数，输入喜欢的内容并上传至list
+	    $("#submit").click(function () {
+	        
+	        //获取选择的type类型
+	        var $type = $(":radio[name=type]:checked");
+	        
+	        //如果未选择类型，则alert提醒
+		    if($type.length==0){
+		        alert("请选择类型");
+			    
+		        return false //取消submit默认行为
+		    }
+		    else {
+		        //如果选择了类型，用console输出该类型的value
+			    var typeValue = $type.val();
+			    console.log(typeValue);
+			    
+			    //获取name文本框
+			    var $name = $(":text[name=name]");
+			    //获取name文本框输入的value值
+			    var nameValue = $name.val();
+			    //去掉文本框的value值的前后空格
+			    var nameValue = $.trim(nameValue);
+			    //然后将trim之后的新value值重新输入到文本框的value属性中
+			    $name.val(nameValue);
+			    
+			    //如果文本框输入的value值为空，则alert提醒
+			    if(nameValue == ""){
+			        alert("请输入喜欢的内容");
+				    return false  //停止函数，并取消submit默认行为
+			    }
+			    
+                //console输出文本框输入的值
+                console.log(nameValue);
+			    
+			    //将得到的nameValue传到上面相对应的list中
+			    //⚠️⚠️将showContent绑定给新的li选项
+			    $("<li>"+nameValue+"</li>").appendTo("#"+typeValue)
+				                           .click(function () {
+				                               showContent(this);
+                                           });
+			    
+			     return false //取消submit默认行为
+		    }
+		    
+
+		  
+		    
+		    
+        })
+            
+            
+        
+        })
+
+</script>
+<body>
+<p>你喜欢那个城市？</p>
+<ul id="city">
+	<li id="bj" name="Beijing">北京</li>
+	<li>上海</li>
+	<li id="dj">东京</li>
+	<li id="se">首尔</li>
+</ul>
+<br>
+<br>
+<p>你喜欢哪款单机游戏？</p>
+<ul id="game">
+	<li id="rl">红警</li>
+	<li>实况</li>
+	<li>极品飞车</li>
+	<li>魔兽</li>
+</ul>
+<br>
+<br>
+<form action="www.yang.com" name="myform">
+	回答：<br>
+	<input type="radio" name="type" value="city">城市
+	<input type="radio" name="type" value="game">游戏
+	name:<input type="text" name="name"/>
+	<input type="submit" value="Submit" id="submit"/>
+	
+</form>
+</body>
+</html>

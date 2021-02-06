@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+        练习：
+        输入小明的期末成绩
+        成绩为100时，“奖励一辆BMW”
+        成绩为（80-99）时，“奖励一个iphone”
+        成绩为（60-80）时，“奖励一本参考书”
+        其他时，什么奖励也没有
+        */
+
+     var score= prompt("输入小明的成绩(0-100)");
+     while(score<0 || score>100 || isNaN(score)){
+         alert("请输入0-100之间的有效成绩");
+        score = prompt("输入小明的成绩(0-100)");
+     }
+        if(score==100){
+            //注意！！，要使用==，而不是=，=为赋值
+            alert("奖励一个宝马");
+        }else if(score>80 && score<=99){
+            alert("奖励一个iphone");
+        }else if(score>60 &&score<=80){
+            alert("奖励一本参考书");
+        }else if(score<60){
+            alert("继续努力！！");
+        }
+     
+    
+    
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

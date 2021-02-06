@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    作用域：一个变量的作用范围
+    在javascript中有两种作用域：
+    
+    全局作用域
+      直接编写在<script>中的js代码，都在全局作用域中（在页面打开时创建，在页面关闭时销毁）
+      注1 在全局作用域中有一个全局对象window（浏览器窗口，由浏览器创建，可直接使用）（如例1）
+      注2 且创建的新变量都会作为window全局对象的属性进行保存（如例2）
+      注3 创建的函数都会作为window全局对象的方法进行保存（如例3）
+      注4 全局作用域中的变量都是全局变量（如 var function），在页面的任意部分都可以访问到
+    
+
+    */
+    //例1
+    console.log(window);// Window {postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, parent: Window, …}
+    
+    //例2
+    var a=10;
+    console.log(a);//10，a变量
+    console.log(window.a);//10，window对象的a属性
+
+    //例3
+    function fun(){
+        console.log("我是fun函数");
+    }
+    fun();//我是fun函数,fun函数
+    window.fun();//我是fun函数，window对象的fun方法
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

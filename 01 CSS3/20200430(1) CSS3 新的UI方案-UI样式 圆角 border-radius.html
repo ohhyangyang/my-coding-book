@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<style type="text/css">
+		/*
+		- 圆角 border-radius
+		   传统的圆角生成方案必须使用多张图片作为背景图案
+		   border-radius圆角的优点：
+		      1 减少工作量
+		      2 提高网页性能
+		      3 增加视觉可靠性
+		   
+		  border-radius属性允许你为元素添加圆角边框！
+		    该属性是一个简写属性，是为了将这四个属性：（顺时针一圈）
+		                border-top-left-radius、
+		                border-top-right-radius、
+		                border-bottom-right-radius，
+		                border-bottom-left-radius
+		       ⚠️⚠️ 注意: 每个半径的四个值的顺序是：左上角，右上角，右下角，左下角。
+		            如果省略左下角，右上角是相同的。如果省略右下角，左上角是相同的。
+		            如果省略右上角，左上角是相同的。
+		   
+		   默认值：0
+		   不可继承
+		   
+		   单位：px值   （指定圆角的圆半径，不可用负值）更优！
+		        或
+		        % （圆角半径相对于box的高度或宽度，不可用负值，最大不超过50%）
+		        ⚠️⚠️ %百分比在旧版的 iOS5 之前和 Android Webkit 532 之前不支持（移动端），因此最好使用px值
+		            https://caniuse.com
+		            
+		     ⚠️⚠️ 如果要做圆角，则输入值 XXpx 或 XX%
+		          如果要做椭圆角，则需输入值 XXpx/XXpx 或 XX%/XX%
+		     
+		     
+		   语法一：圆角
+		          border-radius: 左上&右下&右上&左下         （一个值）
+		          border-radius: 左上&右下   右上&左下       （两个值）
+		          border-radius: 左上   右上&左下   右下      （三个值）
+		          border-radius: 左上   右上   右下   左下    （四个值）
+		          
+		   语法二：椭圆角
+		          border-radius: 根据'语法一'的规则分别定义四个角的x半轴 / 定义四个角的y半轴
+		          
+		          例如：border-radius: 4px 3px 6px / 2px 4px;
+                       等价于  左上:    4px / 2px;
+		                      右上:    3px / 4px;
+		                      右下:    6px / 2px;
+		                      左下:    3px / 4px;
+		
+		
+		 */
+		body>div{
+			width: 200px;
+			height: 200px;
+			border: 1px solid;
+			position: relative;
+			float: left;
+			margin: 15px;
+			
+		}
+		/*圆形*/
+		
+		#box1 #test1{
+			width: 100px;
+			height: 100px;
+			border: solid 1px;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			border-radius:50px ;
+		}
+		
+
+		
+		/*两个值的圆角*/
+		#box2 #test2{
+			width: 100px;
+			height: 100px;
+			border: solid 1px;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			border-radius:10% 30%;
+		}
+		
+		/*三个值的圆角*/
+		#box3 #test3{
+			width: 100px;
+			height: 100px;
+			border: solid 1px;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			border-radius:10% 20%  40% ;
+		}
+		
+		/*四个值的圆角*/
+		#box4 #test4{
+			width: 100px;
+			height: 100px;
+			border: solid 1px;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			border-radius:10% 20% 30% 40% ;
+		}
+		
+		/*四个椭圆角*/
+		
+		#box5 #test5{
+			width: 100px;
+			height: 100px;
+			border: solid 1px;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			border-radius:20%/50% ;
+			/*
+			等价于  左上:    20%/50%;
+		           右上:    20%/50%;
+		           右下:    20%/50%;
+		           左下:    20%/50%;
+			*/
+		}
+		
+		
+		
+		/*2椭圆角+2圆角*/
+		#box6 #test6{
+			width: 100px;
+			height: 100px;
+			border: solid 1px;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			border-radius:20px/30px 20px;
+			/*
+			等价于  左上:    20px/20px;
+		           右上:    30px/20px;
+		           右下:    20px/20px;
+		           左下:    30px/20px;
+			*/
+		}
+		
+		/*1圆角+3椭圆角*/
+		#box7 #test7{
+			width: 150px;
+			height: 100px;
+			border: solid 1px;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			border-radius: 10px 20px  20px/ 10px 30px ;
+			/*
+			等价于  左上:    10px/10px;
+		           右上:    20px/30px;
+		           右下:    20px/10px;
+		           左下:    30px/30px;
+			*/
+		}
+		
+		/*1圆角+3椭圆角*/
+		#box8 #test8{
+			width: 100px;
+			height: 100px;
+			border: solid 1px;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			border-radius:10px 20px 20px 20px/ 10px 30px ;
+			/*
+			等价于  左上:    10px/10px;
+		           右上:    20px/30px;
+		           右下:    20px/10px;
+		           左下:    20px/30px;
+			*/
+		}
+		
+		/*一个操场*/
+		#box9 #test9{
+			width: 200px;
+			height: 100px;
+			border: solid 1px;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			border-radius:50px ;
+		}
+		
+		/*一个操场*/
+		#box10 #test10{
+			width: 200px;
+			height: 100px;
+			border: solid 1px;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			border-radius:100px/50px ;
+		}
+	</style>
+</head>
+<body>
+<div id="box1">
+	左上&右下&右上&左下
+	<div id="test1"></div>
+</div>
+
+<div id="box2">
+	左上&右下   右上&左下
+	<div id="test2"></div>
+</div>
+
+<div id="box3">
+	左上   右上&左下   右下
+	<div id="test3"></div>
+</div>
+
+<div id="box4">
+	左上   右上   右下   左下
+	<div id="test4"></div>
+</div>
+
+<div id="box5">
+	四个椭圆角
+	<div id="test5"></div>
+</div>
+
+<div id="box6">
+	两个圆角，两个椭圆角
+	<div id="test6"></div>
+</div>
+
+<div id="box7">
+	一个圆角，三个椭圆角
+	<div id="test7"></div>
+</div>
+
+<div id="box8">
+	一个圆角，三个椭圆角
+	<div id="test8"></div>
+</div>
+
+<div id="box9">
+	一个操场
+	<div id="test9"></div>
+</div>
+
+<div id="box10">
+	一个椭圆
+	<div id="test10"></div>
+</div>
+</body>
+</html>

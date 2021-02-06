@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<!--
+	wrap作为了解即可
+	- $(节点).wrap() 将匹配的节点用标记分别包装为若干元素
+	- $(节点).wrapAll()  将匹配到的节点用一个元素来包装
+	- $(节点).wrapInner()  将匹配到的节点的子内容包装起来
+	-->
+</head>
+<script type="text/javascript" src="jquery-1.10.1.js"></script>
+<script type="text/javascript">
+    $(function () {
+        
+        //1 wrap()  包装所有的li本身
+	    //$("#city li").wrap("<font color='red'></font>")
+	    /*
+	    <font color="red"><li>...</li></font>
+	    <font color="red"><li>...</li></font>
+	    <font color="red"><li>...</li></font>
+	    <font color="red"><li>...</li></font>
+	     */
+	    
+	    //2 wrapAll()  包装所有li为一个标签
+	    $("#game li").wrapAll("<font color='red'></font>")
+	    /*
+	    <font color="red">
+	       <li>...</li>
+	       <li>...</li>
+	       <li>...</li>
+	       <li>...</li>
+	    </font>
+	     */
+	    
+	    //3 wrapInner()  包装li里面的文字
+	    $("#language li").wrapInner("<font color='red'></font>");
+	    /*
+	    <li><font color="red">...</font></li>
+	    <li><font color="red">...</font></li>
+	    <li><font color="red">...</font></li>
+	    <li><font color="red">...</font></li>
+	    
+	     */
+	    
+	    
+	    
+    })
+</script>
+<body>
+<p>你喜欢那个城市？</p>
+<ul id="city">
+	<li id="bj" name="Beijing">北京</li>
+	<li>上海</li>
+	<li id="dj">东京</li>
+	<li id="se">首尔</li>
+</ul>
+<br>
+<br>
+<p>你喜欢哪款单机游戏？</p>
+<ul id="game">
+	<li id="rl">红警</li>
+	<li>实况</li>
+	<li>极品飞车</li>
+	<li>魔兽</li>
+</ul>
+<br>
+<br>
+<p>你喜欢哪种开发语言？</p>
+<ul id="language">
+	<li>C</li>
+	<li>Java</li>
+	<li>PHP</li>
+	<li>NodeJS</li>
+</ul>
+gender:
+<input type="radio" name="gender" value="male">Male
+<input type="radio" name="gender" value="female">Female
+<br>
+<br>
+name:
+<input type="text" name="username" value="火辣辣">
+</body>
+</html>

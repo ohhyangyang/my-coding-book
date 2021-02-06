@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>5 网络请求超时与网络异常</title>
+	<style type="text/css">
+		#result{
+			width:200px;
+			height:100px;
+			border:solid 1px #90b;
+		}
+	</style>
+</head>
+<body>
+<button>点击发送请求</button>
+<div id="result"></div>
+<script type="text/javascript">
+/*
+  项目在上线之后，在运行过程中，服务端无法保证永远及时快速的响应，所以一定会出现网络请求超时的情况
+  此时可以通过对AJAX做一个超时的设置，超时后会自动取消请求，并给用户设置一个提醒，
+  另外在网络异常的时候，也可以给用户设置提醒
+  目的都是为了优化对产品的体验
+  
+  需求：
+    点击按钮向服务端发请求，服务端返回结果
+    其间加入一个超时设置，时间设置为2s，
+    如果2s后还未返回结果，则提醒用户'网络超时，请稍后重试'
+ */
+const btn = document.getElementsByTagName('button')[0];
+const result = document.getElementById('result');
+btn.addEventListener('click',function () {
+    //创建AJAX对象
+    const xhr = new XMLHttpRequest();
+    
+    //超时设置，2s之内请求没有结果的话，请求就取消
+	xhr.timeout = 2000;
+	
+	//超2s时的回调
+	xhr.ontimeout = function(){
+	    alert('网络异常，请稍后重试');
+	};
+	
+	//网络异常时的回调
+	/*
+	如何操作网络异常：
+	打开google chrome的inspector，选择Network，
+	将子目录中的Online暂时修改为Offline，以此来暂时造成网络异常的效果，
+	从而进行网络异常回调测试
+	 */
+	xhr.onerror = function(){
+	    alert('你的网络似乎出了一些问题')
+	}
+	
+    //初始化
+	xhr.open('GET','http://127.0.0.1:8000/delay');
+	//发送请求
+	xhr.send();
+	//onreadystatechange监听，并处理响应结果
+	xhr.onreadystatechange = function () {
+	    if(xhr.readyState === 4){
+	        if(xhr.status >= 200 && xhr.status < 300){
+	            //处理结果
+		        console.log(xhr.response);
+		        result.innerHTML = xhr.response;
+	        }
+	    }
+     
+    }
+    
+});
+</script>
+</body>
+</html>

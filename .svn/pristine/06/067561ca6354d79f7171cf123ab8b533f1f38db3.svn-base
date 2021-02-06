@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*  在js中， 如果需要表示16进制的数字，则需要以0x开头
+                如果需要表示8进制的数字，则需要以0开头
+                如果需要表示2进制的数字，则需要以0b开头,但不是所有浏览器都支持，不常用
+                
+                
+
+
+    */
+   //16进制
+    a=0x10;
+   console.log(a);//16
+   b=0xff;
+   console.log(b);//255
+   c=0xcafe;
+   console.log(c);//51966
+   //8进制
+   d=070;
+   console.log(d);//56
+   //2进制
+   e=0b10;
+   console.log(e);//2(IE中不支持)
+
+   f="070";
+   f=Number(f);
+   console.log(f);//70或56，因为有些浏览器会把它当作8进制（例如IE），有些当作10进制
+   console.log(typeof f);//number
+   //为了避免不同浏览器的结果不同的问题：处理方式如下
+   g="070"
+   g=Number(g,10);//使用第二个参数“10”，来制定是10进制
+   console.log(g);//70
+
+
+
+    
+    
+    
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

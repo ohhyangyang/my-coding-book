@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    定义一个函数，判断一个数字是否是偶数，如果是，返回true，否则返回false
+    */
+    function num(a){
+        if(a%2==0){
+            return true;
+        }else if(a%2==1){
+            return false;
+        }else{
+            return "请重新输入";
+        }
+    }
+    var b=num("哈哈");
+    console.log(b);//请重新输入
+    
+    //改，此方法更“优雅”
+    function even(num){
+        return num%2==0;
+    }
+    var result=even(15);
+    console.log("result="+result);//result=false
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

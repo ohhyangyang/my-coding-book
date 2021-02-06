@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+		/*
+		transform-style 营造有层级的3D舞台，只对子元素有效
+		   transform--style属性指定嵌套的元素是怎样在三维空间中呈现。
+		   默认值：flat
+		      flat	表示所有子元素在2D平面呈现。
+              preserve-3d	表示所有子元素在3D空间中呈现。
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		
+		#wrap {
+			width: 400px;
+			height: 400px;
+			border: 1px solid;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin-top: -200px;
+			margin-left: -200px;
+			
+			background-color: gray;
+			perspective: 500px; /*刚好甩到屏幕边缘上*/
+			transform-style: preserve-3d;/*出现层级，部分元素跑到背景后面去*/
+		}
+		
+		#inner {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin-left: -100px;
+			margin-top: -100px;
+			width: 200px;
+			height: 200px;
+			border: 1px solid;
+			text-align: center;
+			line-height: 200px;
+			font-size: 20px;
+			transition: 2s;
+			background-color: #fff3cd;
+			transform: rotateX(90deg) translateZ(100px);
+		}
+	</style>
+</head>
+<body>
+<div id="wrap">
+	<div id="inner">YANGYANG</div>
+</div>
+</body>
+</html>

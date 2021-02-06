@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    基本数据类型包括：Number String Boolean Null Undefined
+    在js中为我们提供了三个包装类，可以将基本数据类型转换为对象
+      String()可以将基本数据类型的string转换为String对象
+      Number()可以将基本数据类型的number转换为Number对象
+      Boolean()可以将基本数据类型的boolean转换为Boolean对象
+    */
+   
+    //创建一个基本数据类型对象（注意这里只是为了理解，实际不人为应用，只有浏览器应用）
+    var num=new Number(3);
+    var str=new String("hello");
+    var bool=new Boolean(true);
+
+    console.log(typeof num);//object
+    console.log(typeof str);//object
+    console.log(typeof bool);//object
+
+    /*
+     但是注意⚠️，在实际应用中，人为不会使用基本数据类型的对象，因为有可能会产生不可预期的结果
+     
+     但当我们用一些基本数据类型去直接调用属性和方法时，因为属性和方法只能添加给对象，而不能添加给基本数据类型，
+     因此浏览器会在调用时临时使用包装类将其转换为对象，调用完之后，再将其转换为基本数据类型
+
+     但也因此，string number boolean这三个基本数据类型可以直接应用与之相对应的对象的属性和方法
+     (其中会细说string的方法，因为number和boolean方法不是很多)
+    */
+    var s=123;
+    s=s.toString();
+    console.log(s);//123
+    console.log(typeof s);//string
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

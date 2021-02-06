@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <style type="text/css">
+        img {
+            height: 333px;
+        }
+
+        #outer {
+            width: 464px;
+            height: 333px;
+            background-color: pink;
+            margin: 200px auto;
+            /*居中*/
+            padding: 10px 0;
+            position: relative;
+            /*⚠️⚠️⚠️*/
+            overflow: hidden;
+            /*裁剪溢出的内容*/
+        }
+
+        #imgList {
+            /*⚠️width通过JS代码设定（可根据图片数量调节）*/
+            height: 333px;
+            position: absolute;
+            /*⚠️给子元素ul开启绝对定位，需要同时给其父元素div开启相对定位*/
+            /*每向左移动464px，就会显示到下一张图片*/
+        }
+
+        #imgList li {
+            float: left;
+            margin: 0 10px;
+
+        }
+
+        #navDiv {
+            position: absolute;
+            /*⚠️⚠️
+            相对定位会是元素提升一个层级，会盖住其他元素
+            ul和div同时开启了绝对定位，但因为div为ul下方的兄弟元素，所以div会在ul上方优先显示
+            */
+            bottom: 20px;
+            /*⚠️left通过JS代码设定（可根据图片数量调节）*/
+        }
+
+        #navDiv a {
+            float: left;
+            width: 8px;
+            height: 8px;
+            background-color: pink;
+            margin: 0 5px;
+            opacity: 0.8;
+            /*设置半透明 正常浏览器*/
+            filter: alpha(opacity=80);
+            /*设置半透明 IE浏览器*/
+        }
+
+        #navDiv a:hover {
+            background-color: orange;
+        }
+    </style>
+    <script type="text/javascript" src="js/tools.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+
+            var imgList = document.getElementById("imgList");//获取ul
+            var imgArr = document.getElementsByTagName("img");//获取img的nodelist
+            imgList.style.width = 464 * imgArr.length + "px";//设置ul的宽度（恰好可容纳所有img）
+            
+            var navDiv = document.getElementById("navDiv");//获取导航div
+            var outer = document.getElementById("outer");//获取最外部div（用来控制显示图框的大小，多出的部分用overflow来隐藏）
+            navDiv.style.left = (outer.offsetWidth - navDiv.offsetWidth) / 2 + "px";
+            //(父元素-子元素)/2  -->设置导航div的居中（随着图片数量的变化而变化）
+
+            //设置显示默认选中图片的效果（第一张：index=0）
+            var index = 0;
+            var allA = document.getElementsByTagName("a");
+            allA[index].style.backgroundColor = "orange";
+            //将默认选中的a设为橙色（注意style修改的是内联样式）
+
+            autoChange();//开启图片的自动切换功能
+            
+            /*
+            为所有<a>绑定单击响应函数
+                点击一个<a>后：
+                   1 图片会切换
+                   2 导航按钮会变化
+            */
+            for (var i = 0; i < allA.length; i++) {
+                allA[i].num = i;
+                /*
+                ⚠️⚠️标记i
+                for循环在页面加载时已经执行完毕，因此此时i只能显示为5
+                所以需要给每个<a>都添加一个num属性，
+                并将当前<a>的索引作为num的属性值保存起来
+                */
+                allA[i].onclick = function () {//按下超链接控制照片移动
+                    clearInterval(timer);
+                    /*
+                    ⚠️⚠️
+                    如果自动播放图片和点击播放图片同时执行，时常造成体验不佳
+                    此时应以点击导航按钮播放图片的功能为主
+                    因此在点击时应暂时关闭autoChange的功能
+                    */
+                    index = this.num;//获取当前<a>的索引，并将其设置为index
+                    move(imgList, "left", -464 * index, 20, function () {
+                        autoChange();//点击结束后再重新开启自动切换功能
+                    });
+                    /*
+                    第一张 index 0 left 0px
+                    第二张 index 1 left -464px
+                    第三张 index 2 left -928px
+                    第四张 index 3 left -1392px
+                    第五张 index 4 left -1856px
+                    */
+                    setA();//使用setA函数控制导航按钮样式
+                };
+            }
+
+            //创建一个函数，设置选中一个<a>时导航按钮的颜色样式变化
+            function setA() {
+                if (index >= imgArr.length - 1) {//处理移动到最后一张时的切换情况
+                    index = 0;//遇到最后一张照片，则将index设置为0
+                    imgList.style.left = 0;
+                    /*
+                    ⚠️⚠️⚠️
+                    遇到最后一张照片，则立刻转到第一张图片
+                    最后一张照片要设置成和第一张一摸一样
+                    一摸一样的照片
+                    （神不知鬼不觉，造成一直在朝一个方向移动的错觉）
+                    */
+                }
+                for (var i = 0; i < allA.length; i++) {
+                    allA[i].style.backgroundColor = "";
+                    /*
+                    ⚠️⚠️
+                    传一个空string，消除了所有<a>背景色的内联样式
+                    那么此时只会显示css样式（-->pink）
+                    */
+                }
+                allA[index].style.backgroundColor = "orange";
+                //再将选中的<a>设为orange（修改了选中的<a>的内联样式）
+            }
+
+            //创建一个函数，来设置自动切换图片功能
+            var timer;           
+            function autoChange() {
+                timer = setInterval(function () {//开启一个计时器
+                    index++;//索引自增
+                    index %= imgArr.length;//当index到了最后一张后，会自动再从0开始
+                    move(imgList, "left", -464 * index, 20, function () {
+                        setA();//移动图片，同时修改导航按钮
+                    });
+                }, 4000);
+
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <!--创建div，作为大容器-->
+    <div id="outer">
+        <!--创建ul，用于放置图片-->
+        <ul id="imgList">
+            <li><img src="img/7.JPG" alt="xxx" /></li>
+            <li><img src="img/8.JPG" alt="xxx" /></li>
+            <li><img src="img/9.JPG" alt="xxx" /></li>
+            <li><img src="img/10.JPG" alt="xxx" /></li>
+            <li><img src="img/11.JPG" alt="xxx" /></li>
+            <li><img src="img/7.JPG" alt="xxx" /></li>
+        </ul>
+        <!--创建导航按钮-->
+        <div id="navDiv">
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    练习一：打印1-100之间所有奇数之和
+    练习二：打印1-100之间所有7的倍数的个数和总和
+    练习三：水仙花数
+           水仙花数是指一个三位数，它的每个位上的数字3次幂之和等于它本身。
+           例如：13+53+33=153，请打印所有的水仙花数
+    */
+    //解法一
+    var sum=0;//求和的参数
+    for(var i=1;i<100;i+=2){
+        document.write(i+"<br/>");
+        sum=sum+i;
+        document.write(sum+"<br/>");
+    }
+    document.write("奇数之和为"+sum)
+
+    //解法二
+    for(var i=1,sum=0;i<100;i++){
+        if(i%2==1){
+            sum=sum+i
+        }
+    }
+    document.write("奇数之和为"+sum);
+    
+    
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

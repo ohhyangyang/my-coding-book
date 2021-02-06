@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>子元素伪类选择器</title>
+        <style type="text/css">
+        /*
+        :first-child
+           可以选中第一个子元素
+
+        :last-child
+           可以选中最后一个子元素
+           ⚠️在使用css的 :last-child 选择器时，测试时未能将目标元素修改样式；
+           而将同样的代码复制到桌面上的HTML文件时测试，则能选中，所以我只能猜测是VSC的问题
+
+        :nth-child()
+           可以选中指定位置的子元素
+           :nth-child可以指定一个参数，指定要选中第几个子元素
+                      even 偶数位置的子元素
+                      odd  基数位置的子元素
+
+        :first-of-type
+        :last-of-type
+        :nth-of-type()
+           和:xx-child系列非常类似，只不过:xx-child是在所有子元素中排列
+           而:xx-of-type是在当前类型的子元素中排列
+
+        */
+        
+        /* 
+        p:first-child{
+            background-color: antiquewhite;
+        }
+        意味着默认p为第一个子元素，如果不是first child，则什么都不显示
+         */
+
+        span:first-child{
+            color: blue;
+        }/*意味着默认p为第一个子元素*/
+        
+        :first-child{
+            color: blue;
+        }/* 相当于 *:first-child{}   任意firstchild都可以*/
+        
+        body>span:first-child{
+            background-color:azure;
+        }
+
+        p:last-child{
+            color: red;
+        }
+        
+        p:nth-child(3){
+            color: chartreuse;
+        }
+        p:nth-child(even){
+            background-color:darkseagreen;
+        }
+        p:nth-child(odd){
+            background-color: beige
+        }
+
+        p:first-of-type{
+            font-size: 30px;
+        }
+        
+        </style>
+    </head>
+    <body>
+            <!-- <span>我是span</span><br/>
+            <span>我是span</span> -->
+            <p>我是p</p>
+            <p>我是p</p>
+            <p>我是p</p>
+            <p>我是p</p>
+            <p>我是p</p>
+            <p>我是p</p>
+            <!-- <div>
+                <p>我是p</p>
+            </div> -->
+    </body>
+</html>

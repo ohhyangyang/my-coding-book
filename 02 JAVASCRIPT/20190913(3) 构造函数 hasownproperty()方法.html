@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <Script type="text/javascript">
+    function MyClass(){
+
+    }
+    MyClass.prototype.name="原型中的name";
+    var mc=new MyClass();
+    
+    //⚠️ 使用in检查对象是否含有某属性时，如果对象中没有但是原型中有，也会返回true
+    console.log("name" in mc);//true
+    
+    //此时可以使用hasOwnProperty()来检查对象自身的属性
+    console.log(mc.hasOwnProperty("name"));//false
+    
+    //寻找hasOwnProperty()方法的来源
+    /*
+    原型对象也有原型
+    当我们使用一个对象的属性或方法时，会先在自身中寻找，如没有则继续去上一级寻找，直到找到Object对象的原型，若都没有，则返回undefined
+    这样原型一级一级的关系被称为原型链
+    */
+    console.log("hasOwnProperty" in mc);//true,说明来自于mc对象或相对应的原型链
+    console.log(mc.hasOwnProperty("hasOwnProperty"));//false，说明不是mc对象的方法
+    console.log(mc.__proto__.hasOwnProperty("hasOwnProperty"));//false，说明不是MyClass原型的方法
+    console.log(mc.__proto__.__proto__.hasOwnProperty("hasOwnProperty"));//true，说明hasOwnProperty()是MyClass原型的原型的方法
+    console.log(mc.__proto__.__proto__.__proto__)//null
+    console.log(mc.__proto__==MyClass.prototype);
+    console.log(mc.__proto__.__proto__==Object.prototype);//true
+    
+    
+    
+    </Script>
+</head>
+<body>
+    
+</body>
+</html>

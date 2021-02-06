@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    //练习二：打印1-100之间所有7的倍数的个数和总和
+    var sum=0,count=0;
+    for(i=7;i<100;i=i+7){
+        sum=sum+i;
+        count++
+    }
+    document.write("个数为"+count+"<br/>");
+    document.write("总和为"+sum);
+    
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

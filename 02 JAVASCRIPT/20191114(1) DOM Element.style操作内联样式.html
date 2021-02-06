@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>获取内联样式</title>
+        <style type="text/css">
+        #box1{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        .active{
+            width: 100px;
+            height: 100px;
+            background-color: greenyellow;
+        }
+        </style>
+        <script type="text/javascript">
+        /*
+        style属性 操作内联样式
+        *修改元素内联样式
+        语法：元素.style.样式名=样式值;
+
+        *读取元素内联样式
+        语法：元素.style.样式名
+        ⚠️css样式名的命名方式在js中不合法，需改为驼峰命名法
+        如：border-top-width --> borderTopWidth
+        ⚠️通过style属性，只能设置或读取元素的内联样式，而无法获取到style标签中的样式
+        ⚠️js通过style属性修改的是内联样式，具有较高的优先级，会优于选择器样式被立即显示
+          除非是使用了优于内联样式的!important，会导致js修改样式失效，所以尽量不要使用!important
+        */
+        
+        window.onload=function(){
+            var box1=document.getElementById("box1");//获取box1
+            var box2=document.querySelector("#box2");//获取box1
+            //点击按钮1，修改box1大小
+            var btn01=document.getElementById("btn01");//获取按钮1
+            btn01.onclick=function(){
+                box1.style.width="300px";//样式值为string
+                box1.style.height="300px";
+                box1.style.backgroundColor="yellow";//css样式名改为js驼峰命名法
+            };
+            //点击按钮2，读取box1样式
+            var btn02=document.getElementById("btn02");
+            btn02.onclick=function(){
+                box2.className += "active";
+            };
+        }
+        </script>
+    </head>
+    <body>
+        <button id="btn01">click 1</button>
+        <button id="btn02">click 2</button>
+        <br/>
+        <div id="box1"></div>
+        <div id="box2"></div>
+    </body>
+</html>

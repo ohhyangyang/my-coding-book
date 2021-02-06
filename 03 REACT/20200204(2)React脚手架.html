@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	
+</head>
+<body>
+<!--
+- React脚手架  scaffold
+
+  	xxx脚手架: 用来帮助程序员快速创建一个基于xxx库的模板项目
+  	a.	包含了所有需要的配置
+  	b.	指定好了所有的依赖
+  	c.	可以直接安装/编译/运行一个简单效果
+  	
+  	项目的整体技术架构为:  react + webpack模块打包机 + es6规范 + eslint代码规范检查工具
+  	
+  	使用脚手架开发的项目的特点: 模块化, 组件化, 工程化，live reload（实时更新网页）
+
+- create-react-app脚手架
+  	react提供了一个用于创建react项目的脚手架库: create-react-app
+  	
+  	如何创建：
+  	  1 打开terminal
+  	  2 输入sudo npm install -g create-react-app
+  	  3 输入密码1111，开始安装
+  	  4 安装完毕后，创建一个文件夹来创建项目（可以通过在terminal输入 create-hello-react 目录名）
+  	  5 通过terminal进入到该文件夹，输入npm start
+  	  
+  	输入npm root -g可以找到create-react-app的全剧下载根目录
+
+  	  
+- react脚手架的项目结构
+  	|--node_modules---第三方依赖模块文件夹
+  	
+	|--public
+		|-- index.html-----------------html主页面
+		
+	|--src------------react源码文件夹，包含react相关的所有文件
+	    |--index.js-------------------应用的入口js，在此处渲染<App>标签为真实DOM
+		|--components-----------------所有react组件
+		     |--app.jsx---------------------编辑<App>标签的组件，可以使用jsx或js格式
+		                                   （但是jsx更明显，一目了然就知道是react组件）
+		|--index.css------------------通过在index.js入口文件中对app.jsx和index.css的引用，对app.jsx的样式设置
+		
+	|--.gitignore------git版本管制的忽略, 选择忽略对哪些文件的控制
+	
+	|--package.json----应用包配置文件，表述当前reactcd脚手架相关信息的文件
+		|-- "dependencies": react.scripts-----------------几乎封装了所有react功能，通过start打开
+		|-- "scripts": build-----------------build打包引用配置（生成打包文件）
+		|-- "scripts": start-----------------start运行引用配置（启动项目）
+	
+	|--README.md-------应用的描述说明
+	
+- 如何在webstorm中添加自定义模版templates，以快速输入常规重复性的编程代码
+    1 进入到preferences -- editor -- live templates
+    2 通过右上角"+"添加group或组件
+    3 Abbreviation中添加提示名
+    4 template text中添加模版代码
+    5 最下面点击define，添加要应用到什么类型文件
+
+- 如何修改快捷键
+    Preferences -- Keymap -- Main Menu -- Edit ...
+
+- 注意，如果需要使用PropTypes，需要后面自己下载
+            进入脚手架主目录，输入 npm install --save prop-types
+
+  
+
+
+-->
+</body>
+</html>

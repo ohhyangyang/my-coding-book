@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>catch方法</title>
+</head>
+<body>
+    <script>
+	    /*
+	    - Promise.prototype.catch(onRejected)捕捉错误
+	        catch()方法返回一个Promise，并且处理rejected的情况。
+	        它的行为与调用Promise.prototype.then(undefined, onRejected) 相同。
+	        (事实上, 调用 p.catch(onRejected)时 内部调用的是 p.then(undefined, onRejected)).
+	        
+	        ⚠️⚠️ 一个代表then()方法失败状态下的语法糖
+	        
+	        语法   p.catch(onRejected);
+	        
+                  p.catch(function(reason) {
+                      // 拒绝
+                  });
+             返回值 一个Promise
+	    
+	     */
+	    //创建一个Promise实例
+        const p = new Promise((resolve, reject)=>{
+            
+            
+            setTimeout(()=>{
+                
+                reject("出错啦!"); //设置 p 对象的状态为rejected, 并设置失败的值
+            }, 1000)
+        });
+	    
+        //then()方法处理rejected状态
+        // p.then(function (value) {
+        //     },
+        //     function (reason) {
+        //         console.error(reason);
+        //     });
+        
+	    //catch()方法处理rejected状态
+        p.catch(function(reason){
+            console.warn(reason);
+        });
+    </script>
+</body>
+</html>

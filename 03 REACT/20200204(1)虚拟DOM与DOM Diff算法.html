@@ -1,0 +1,62 @@
+<!Doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>DOM Diff</title>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/javascript" src="./js/react.development.js"></script>
+<script type="text/javascript" src="./js/react-dom.development.js"></script>
+<script type="text/javascript" src="./js/babel.min.js"></script>
+<script type="text/babel">
+	/*
+	该篇纯理论，具体见dif*/
+	class Time extends React.Component{
+	    
+	    //创建一个组件，设置state初始化，date为当前创建时间
+	    constructor(props) {
+            super(props);
+            this.state={
+                date:new Date()
+		    }
+        }
+        
+        //挂载后开启定时器，定时更新date为当前时间
+        componentDidMount(){
+	        setInterval(function () {
+	            //console.log("定时器开启")
+                this.setState({
+                    date: new Date()
+                })
+            }.bind(this),1000)
+        }
+       
+        /*
+        ⚠️
+        也可以写成如下箭头函数：
+          componentDidMount () {
+              setInterval(() => {
+                this.setState({
+                    date: new Date()
+                })
+              }, 1000)
+            }
+        箭头函数的this会和外层的this保持一致（即componentDidMount()的this，为组件对象）
+         */
+        
+        
+        render(){
+            console.log('render()')
+	        return (
+	            <p>
+		            Hello,<input type="text" placeholder="Your name here"/>!&nbsp;
+		            It is {this.state.date.toTimeString()}
+	            </p>
+	        )
+	    }
+	}
+	ReactDOM.render(<Time/>,document.getElementById("example"))
+</script>
+</body>
+</html>

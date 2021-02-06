@@ -1,0 +1,51 @@
+<!--
+- GitHub basics
+  -功能：
+    1 GitHub允许将Git repository托管在cloud中，以便其他人可以共享它们。
+    2 Managing Repos 团队合作可能很棘手。 当多个人在同一个项目上工作时，很难找到真相并管理谁可以更改资源库。
+                   GitHub具有促进这一功能的功能。
+    3 Project Management 对于开源项目，通常很难陈述产品的总体方向，透明地显示正在实施的功能以及这些功能的优先级。
+    4 Social Networking
+    5 Organizations and Team Management 如果您有一个公司或一个项目，其中有多个人在工作，则可以创建一个组织
+                                      或一组在存储库上具有不同权限和能力的人。
+     ...
+     
+  - 创建一个GitHub repo       Creating a GitHub Repo
+     1 打开github账号
+     2 填写Repository name: 不一定要 match local repository，但不能有空格
+     3 填写Description (optional):  Helpful for outsiders that may stumble upon your project on GitHub.
+     4 填写Public / Private: 在ironhack中需要填public来让老师检查进度
+  
+  - 连接本地Git repo 至远程GitHub repo          Adding a Remote Repository: git remote
+  
+     git remote add <alias> <GitHub-URL>
+          alias:在local系统中创建一个指向GitHub repo的alias，一般会被叫做origin
+          GitHub-URL:repo的url路径
+           例如 git remote add github-repo https://github.com/ohhyangyang/git-practice.git
+          （添加一个名为github-repo的remote repo，并使其指向https://github.com/ohhyangyang/git-practice.git）
+  
+  - 上传本地项目至GitHub     Adding changes to a remote repository
+  
+      1 terminal进入对应的project文件夹
+      2 首先前提是已做完准备工作： git add .  添加至缓存， git commit -m "xxx"  提交到git
+      3 输入 git push <alias> <branch>  传递本地当前git repo的文件至远程GitHub的branch中
+          alias: github repo在local中的别名
+          branch: 选择上传的branch
+          例如  git push github-repo master
+        (将当前git repo内的文件上传到alias为github-repo的远程repo的master分支中)
+      4 最后会提示你输入GitHub账号的用户名和密码
+      
+        
+  - 下载远程github文件的changes至本地git    Pulling changes From a Remote Repository
+  
+     1 terminal进入对应的project文件夹
+     2 输入 git pull <alias> <branch>  将<alias>远程repo的<branch>下载到git中
+          例如 git pull github-repo master
+          
+          ⚠️⚠️ 同时存在git fetch,区别在于使用fetch获取时，远程获取最新版本到本地，还并未merge到本地仓库，
+               所以可以认为git pull是git fetch和git merge两个步骤的结合。
+        
+  
+      
+      
+-->

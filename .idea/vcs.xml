@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/03 REACT/20200217react-comment" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/03 REACT/react-base" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/REACT/20200217" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/REACT/20200217 react_comment" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/REACT/20200217react-comment" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/REACT/20200217react_comment" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/REACT/20200217reactcomment" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/REACT/hello-react" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/REACT/hello_react" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/REACT/react-base" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/REACT/react_app" vcs="Git" />
+  </component>
+</project>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>gaodutaxian</title>
+        <style type="text/css">
+        /*
+        解决方案三：（W3C推荐方式）最推荐！
+        可以通过after伪类向塌陷元素内部的最后添加一个空白的块元素（同优化一），然后对其清除浮动影响
+        这样即和优化一的效果相同，而且不会在html中添加多余的元素，是最为推荐的方式，几乎没有副作用
+        缺点：在IE6中不支持after伪类，所以在IE6中还是需要haslayout来处理
+        .clearfix{
+            zoom:1
+        }
+        */
+        .box1{
+            border:1px red solid;
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            float: left;
+        }
+        /*将class名改为clearfix，这样该方法不只可以服务于box1，在其他元素用于相同问题时，添加clearfix的class名即可*/
+        .clearfix:after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .clearfix{
+            zoom:1
+        }
+        </style>
+    </head>
+    <body>
+        <div class="box1 clearfix">
+            <div class="box2"></div>
+        </div>
+    </body>
+</html>

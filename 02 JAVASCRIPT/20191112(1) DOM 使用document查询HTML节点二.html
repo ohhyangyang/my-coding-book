@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>DOM</title>
+        <script type="text/javascript">
+	        /*
+	        1 document.body属性：可以获取body标签
+	           野方法：var body=document.getElementsByTagName("body")[0]
+	           
+	        2 document.documentElement属性： 可以获取html根标签
+	        
+	        3 document.all属性：可以获取页面中所有的元素
+	           野方法：var all=document.getElementsByTagName("*");
+	           
+	        4 document.getElementsByClassName()方法 和 document.getElementsByTagName(): 
+                   可以根据class属性 和 tagname 查询返回一组元素节点对象，
+                   返回类型为一个类数组(array-like object)
+               ⚠️⚠️⚠️ array-like object和array不同，不是iterable，无法使用array的方法 (forEach, map, reduce ...)
+                     如果想使用，需要使用 const arr = [...arrayLike] 来转换
+	           ⚠️IE8和以下浏览器不支持
+
+
+            ⚠️⚠️⚠️ Uros preferred: 优于第4个  
+	        5 document.querySelector()方法: 可以通过CSS选择器来查询一个元素节点  （
+	           ⚠️为了考虑IE8的兼容性，可以使用querySelector()来代替document.getElementsByClassName()方法
+               ⚠️但是querySelector()只能返回一个元素，若满足条件的元素有多个，则只会返回第一个元素
+
+            ⚠️⚠️⚠️ Uros preferred: 优于第4个  
+            6 document.querySelectorAll()方法:
+                 类似于querySelector()，但是它会查询一组元素，并将符合条件的元素封装到一个可迭代对象列表(iterable list of elements)中⚠️⚠️  
+                 (不像第4个是返回 array-like object)
+	         */
+        window.onload=function(){
+            //1 document.body属性：可以获取body标签
+            var body=document.body;
+            console.log(body);//<body> 
+            //-->野方法：var body=document.getElementsByTagName("body")[0]
+            
+            //2 document.documentElement属性： 可以获取html根标签
+            var html=document.documentElement;
+            console.log(html);//<html>
+
+            //3 document.all属性：可以获取页面中所有的元素
+            var all=document.all;
+            console.log(all.length);//6
+            for(var i=0;i<all.length;i++){
+                console.log(all[i]);
+            }//<html> <head> <meta> <title> <script> <body>
+            //-->野方法：var all=document.getElementsByTagName("*");
+
+            //4 document.getElementsByClassName()方法: 可以根据class属性查询一组元素节点对象
+            //⚠️IE8和以下浏览器不支持
+            var box1=document.getElementsByClassName("box1");
+            console.log(box1.length);//3
+
+            //5 document.querySelector()方法: 可以通过CSS选择器来查询一个元素节点
+            //⚠️为了考虑IE8的兼容性，可以使用querySelector()来代替document.getElementsByClassName()方法
+            //⚠️但是querySelector()只能返回一个元素，若满足条件的元素有多个，则只会返回第一个元素
+            var div= document.querySelector(".box1 div");
+            console.log(div.innerHTML);//我是div子元素A
+
+            //6 document.querySelectorAll()方法: 类似于querySelector()，但是它会将符合条件的元素封装到一个数组中返回
+            var divs=document.querySelectorAll(".box1 div");
+            console.log(divs);//NodeList
+            console.log(divs.length);//3
+
+            
+        }
+        </script>
+    </head>
+    <body>
+        <div class="box1">
+            <div>我是div子元素A</div>
+            <div>我是div子元素B</div>
+            <div>我是div子元素C</div>
+        </div>
+        <div class="box1"></div>
+        <div class="box1"></div>
+    </body>
+</html>

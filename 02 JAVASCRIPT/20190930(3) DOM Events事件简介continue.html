@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">我是一个按钮</button>
+    <script type="text/javascript">
+    /*
+    第二种方式：
+    可以为按钮的对应事件绑定一个处理函数的形式来响应事件
+    当事件触发时，对应函数才会被调用
+    推荐使用
+    */
+    var btn=document.getElementById("btn");//获取按钮对象
+    //绑定一个单击事件
+    //这种为单击事件绑定的函数被称为单击响应函数
+    btn.onmousemove=function(){
+        alert("你还点～～");
+    }
+
+
+    </script>
+</body>
+</html>

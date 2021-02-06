@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+		/*
+		- 渐变
+		  包括线性渐变（linear-gradient）和径向渐变（radial-gradient）
+		  用它代替图片，可加快页面的载入时间，且效果比图片更好，且可更灵活便捷的调整页面布局
+		
+		- 线性渐变图片  linear-gradient()（其结果属于<gradient>数据类型，是一种特别的<image>数据类型。）
+		  重复线性渐变 repeating-linear-gradient()
+		  为了创建一个线性渐变，你需要设置一个起始点和一个方向（指定为一个角度）的渐变效果。
+		  你还要定义终止色。终止色就是你想让Gecko去平滑的过渡，并且你必须指定至少两种，当
+		  然也会可以指定更多的颜色去创建更复杂的渐变效果
+		     语法：background-image: linear-gradient(direction, color1 [px|%], color2 [px|%], ...);
+		     
+		          direction	   用角度值指定渐变的方向（或角度）。
+		              值   默认值：to bottom（对应180deg或者.5turn）
+		                   关键词：to top、to bottom、to left、to right、to top right、
+		                          to top left、to bottom right和to bottom left
+		                   或单位数字定义角度，如45deg、1turn等（0deg对应to top）
+		                   
+		          color1 [px|%], color2 [px|%], ...	用于指定渐变的起止颜色。
+		             值    color 渐变的颜色
+		                   px 用长度值指定起止色位置。不允许负值
+		                   % 用百分比指定起止色位置。
+		 
+		 */
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#test1{
+			width: 200px;
+			height: 100px;
+			border: 1px solid;
+			margin: 10px auto;
+			background-image: linear-gradient(pink,lavender);
+		}
+		#test2{
+			width: 200px;
+			height: 150px;
+			border: 1px solid;
+			margin: 10px auto;
+			background-image: linear-gradient(pink,lavender,mediumpurple);
+		}
+		#test3{
+			 width: 200px;
+			 height: 150px;
+			 border: 1px solid;
+			 margin: 10px auto;
+			 background-image: linear-gradient(to top left,pink,lavender,mediumpurple);
+		 }
+		#test4{
+			width: 200px;
+			height: 150px;
+			border: 1px solid;
+			margin: 10px auto;
+			background-image: linear-gradient(90deg,pink,lavender,mediumpurple);
+		}
+		#test5{
+			width: 200px;
+			height: 150px;
+			border: 1px solid;
+			margin: 10px auto;
+			background-image: linear-gradient(90deg,red 50px,lavender 80px ,blue 180px);
+		}
+		#test6{
+			width: 200px;
+			height: 150px;
+			border: 1px solid;
+			margin: 10px auto;
+			background-image: linear-gradient(90deg,rgba(0,0,0,0) 50px,rgb(0,0,0) 180px);
+		}
+		#test7{
+			width: 600px;
+			height: 150px;
+			border: 1px solid;
+			margin: 10px auto;
+			background-image: repeating-linear-gradient(90deg,rgba(0,0,0,0) 10px,rgb(0,0,0) 100px,rgba(0,0,0,0) 170px);
+		}
+	</style>
+</head>
+<body>
+	<div id="test1">双颜色渐变</div>
+	<div id="test2">多颜色渐变</div>
+	<div id="test3">to top left改变渐变方向(对应-45deg)</div>
+	<div id="test4">90deg改变渐变方向（对应to right)</div>
+	<div id="test5">控制颜色节点的分布</div>
+	<div id="test6">透明度渐变</div>
+	<div id="test7">重复渐变</div>
+</body>
+</html>

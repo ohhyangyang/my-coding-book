@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*js中有三种逻辑运算符
+    ！非
+       ！可以用来对一个值进行非运算
+       所谓非运算就是对一个Boolean进行取反操作：true变false，false变true
+       如果对一个值进行两次取反，他不会变化
+       如果对非boolean值进行计算，则会将其转化为boolean，再取反
+
+       所以我们可利用这一点，将其他类型转化为boolean：a=!!a
+       原理和boolean（）函数一样
+
+    &&与
+       &&可以对符号两侧的值进行与运算并返回结果
+       规则：
+       两个值中只要有一个值为false，就返回false，只有两个值都为true时，才会返回true
+       js中的&&属于短路的&&，如果第一个值为false，则不会查看第二个值
+
+
+
+    ||或
+
+       ||可以对符号两侧的值进行或运算，并返回结果
+       两个值只要有一个true，就返回true
+       如果两个值都为false，则返回false
+       Js中的||属于短路的||，如第一个值为true，则不会检查第二个值
+    */
+
+    //！
+    var a = true;
+    a=!a; //对a进行非运算
+    console.log("a="+a);//a=false
+    a=!!a;
+    console.log("a="+a);//a=false
+
+    var b=10;
+    console.log("b="+b);//10
+    console.log(typeof b);//number
+
+    b=!b;
+    console.log("b="+b);//false
+    console.log(typeof b);//boolean
+
+    b=0;
+    b=!b;//(0在boolean中为false，它的取反则为true)
+    console.log("b="+b);//true
+    console.log(typeof b);//boolean
+
+    //&&与
+    var result=true&&true;
+    console.log("result="+result);//result=true
+
+    result=true&&false;
+    console.log("result="+result);//result=false
+
+    result=false&&false;
+    console.log("result="+result);//result=false
+    
+    //js中的&&属于短路的&&，如果第一个值为false，则不会看第二个值
+    true&&alert("你看我出不出来");//第一个值为true，会检查第二个值，显示alert
+    false&&alert("你看我出不出来");//因为第一个值为false，不会检查第二个值，所以不显示第二个alert
+
+    //||或，只要有true，就返回true
+    result=false||false;
+    console.log("result="+result);//result=false
+
+    result=true||false;
+    console.log("result="+result);//result=true
+
+    //Js中的||属于短路的||，如第一个值为true，则不会检查第二个值
+    false||alert("123");//第一个值为false，则会检查alert
+    true||alert("123");//第一个值为true，则不会检查alert
+
+
+
+
+
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

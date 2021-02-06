@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    //break continue和return
+    function fun(){
+        alert("函数开始");
+        for(var i=0;i<5;i++){
+            if(i==2){
+                //break;//0 1 + 函数结束,使用break可以退出当前的循环
+                //continue;//0 1 3 4 + 函数结束,continue用于跳过当次循环
+                //return;//0 1，return可以结束整个函数，即不执行第二个alert
+            }
+            console.log(i);
+        }
+        alert("函数结束");
+    }
+    fun();
+    
+    //return
+    /*
+    返回值可以是任意数据类型，也可以是一个对象和函数
+    */
+    function fun2(){
+        var obj={name:"沙和尚"};
+        return obj;
+    }
+    var a=fun2();
+    console.log("a="+a.name);//a=沙和尚
+
+    //输出内部fun4函数的返回值
+    function fun3(){
+        function fun4(){
+            alert("我是fun4");
+        }
+        fun4();
+    }
+    fun3();//alert:我是fun4
+
+    //将内部fun4函数对象作为返回值返回
+    function fun5(){
+        function fun6(){
+            alert("fun6");
+        }
+        return fun6();//而不是fun6()
+    }
+    a=fun5();
+    console.log(a);//fun4(){alert("fun4");}
+    a();//alert:fun6
+    fun5()();//alert:fun6
+    
+     
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

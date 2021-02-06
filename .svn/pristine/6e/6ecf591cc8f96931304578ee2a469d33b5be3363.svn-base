@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>border简写属性</title>
+        <style type="text/css">
+        /*
+        ⚠️虽然border的color style width三个属性缺一不可
+        大部分浏览器中border的color和width都是有默认值的，然而border的style默认值是none
+        所以只输入border-style一个属性也会出现边框
+
+        border: 边框的简写样式，
+        可以一次性设置样式，宽度和颜色三种属性，而且无顺序要求
+        但是⚠️ border只能同时指定四个边 不能分别指定
+
+        border-xx：可单独设置一个边的样式
+        xx为top或right或bottom或left
+        ⚠️border-xx:none 可以删除指定的一条边框
+
+        
+        */
+        .box{
+            width:200px;
+            height:200px;
+            background-color:deepskyblue;
+            border:solid greenyellow 20px;
+            border-top: dashed red 40px;
+            border-bottom: none;
+
+        }
+        </style>
+    </head>
+    <body>
+        <div class="box"></div>
+    </body>
+</html>

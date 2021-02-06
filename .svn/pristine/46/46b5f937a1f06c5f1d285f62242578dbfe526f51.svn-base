@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    break关键字
+    用来退出switch或循环语句（loop）
+    注：在单独if语句中，不能使用break和continue
+    注：break会立即终止离他最近的那个loop
+    */
+
+    //1
+    for(var i=0;i<5;i++){
+        document.write(i+"<br/>");
+        if(i==2){
+            break;  //然而在单独if语句中，不能使用break和continue
+        }
+    }//结果为0 1 2
+
+
+    //2
+    for(var i=0;i<5;i++){
+        console.log("外层循环:"+i);
+        for(var j=0;j<5;j++){
+            break;        //只停止了内层循环
+            console.log("内层循环:"+j);
+        }
+    }//01234
+
+    //3
+    /*
+    可以为loop创建一个label，来标识当前循环
+    
+    label：循环语句;
+    ...
+    break label;
+
+    这样break会结束制定的循环，而不是最近的
+    */
+
+    outer:
+    for(var i=0;i<5;i++){
+        document.write(i+"<br/>");
+        for(var j=0;j<5;j++){
+            break outer;
+            document.write(j);
+        }
+        document.write("<br/>");
+    }//0
+
+    /*
+    continue关键字：
+    用来跳过当次循环
+    同样continue只会对最近的循环起作用
+
+    */
+    for(var i=0;i<5;i++){
+        if(i==2){
+            continue;
+        }
+        console.log(i);
+    }//结果为0134
+
+
+    for(var i=0;i<5;i++){
+        for(var j=0;j<5;j++){
+            if(j==2){
+                continue;
+            }
+            console.log("---->"+j);
+        }
+        console.log("@---->"+i);
+    }
+
+
+    outer:
+    for(var i=0;i<5;i++){
+        for(var j=0;j<5;j++){
+            if(j==2){
+                continue outer;  //最后结果只重复执行内部的1和2
+            }
+            console.log("---->"+j);
+        }
+        
+    }
+
+
+
+
+    
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

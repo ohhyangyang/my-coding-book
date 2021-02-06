@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    =, 可以将右侧的值赋值给左侧的变量
+    +=，a += 5 等价于 a = a+5 （+和=之间不可以有空格）
+    -=，
+    *=
+
+    */
+    // =
+    var a = 10;
+    console.log(a);
+
+    // +=
+    a+=5; //等价于：a=a+5;
+    console.log(a);//15
+
+    // -=
+    a=10;
+    a -= 5; //a=a-5
+    console.log(a);//5
+
+    // *=
+    a=10;
+    a *= 5;//a=a*5
+    console.log(a);//50
+
+    // /=
+    // %=
+
+
+
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

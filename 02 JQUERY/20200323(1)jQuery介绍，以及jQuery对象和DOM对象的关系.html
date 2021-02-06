@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<!--
+	- jQuery简介
+	  jQuery为继Prototype之后有一个优秀的JS函数库，JS库中封装了很多与定义的对象和实用函数，方便主流
+	  理念：写的少，做得多  write less, do more
+	  优势：轻量级
+	       强大的选择器
+	       出色的DOM操作封装（增删改查）
+	       可靠的事件处理机制
+	       完善的Ajax
+	       出色的浏览器兼容性
+	       链式操作方式
+	       ...
+	       
+	- jQuery对象：
+	   jQuery对象为通过jQuery($())包装DOM对象后产生的对象
+	   jQuery对象为jQuery独有，jQuery对象可以使用jQuery里的方法，DOM对象可以使用DOM的方法，!!!二者不能交叉使用
+	  
+	   约定：如果是jQuery对象，那么要在变量前加$:
+	          jQuery对象：var $variable
+	          DOM对象：var variable
+	          
+    - jQuery对象 转成 DOM对象   ->通过[index]
+      jQuery对象为一个DOM数组对象
+      (若jQuery对象中未封装想要的方法，不得不使用DOM对象时，可通过index来转成DOM对象)
+         1 jQuery对象为一个数组对象，可以通过 $variable[0] 来得到对应的DOM对象
+        例      var $btn1 = $("#btn1");
+                var btn1 = $btn1[0];
+                
+      or 2 使用jQuery中的$variable.get(index)方法得到DOM对象
+        例      var $btn1 = $("#btn1");
+                var btn1 = $btn1.get(0);
+                
+    - DOM对象 转成 jQuery对象  ->通过$()
+      jQuery对象是$()包装DOM对象后产生的对象，只需用$()把DOM对象包装起来
+           var btn1 = document.getElementById("btn1");
+           var $btn1 = $(btn1);
+    
+    -
+	-->
+	<!--导入JQuery库-->
+	<script type="text/javascript" src="jquery-1.10.1.js"></script>
+	<script type="text/javascript">
+		
+        //$(function(){})相当于window.onload，代码写在{}之间
+        $(function () {
+            
+            //通过选择器选取button: $("button")
+            //为button添加onclick响应函数: $("button").click(function () {})
+            $("button").click(function () {
+                
+                console.log(this)//返回点击的button标签  (DOM方法）
+	            console.log(this.innerHTML);//返回点击的button标签的value   (DOM方法）
+	            
+	            console.log($(this).text());//返回点击的button标签的value   (jQuery方法）
+	            
+                //弹出helloWorld
+                alert("helloWorld");
+	            
+	            //使用$()获取一个jQuery对象
+	            var $btn=$("button");
+                
+                //证明jQuery对象为一个数组
+                alert($btn.length);//2  (clickme1 和 clickme2）
+	            
+	            //获取button1的value
+	            console.log($btn[0].innerHTML);   //clickMe1
+	            
+	            //获取一个DOM对象
+	            var btn = document.getElementById("btn");
+	            
+	            //使用$()将DOM对象包装成jQuery对象
+	            var $btn = $(btn);
+	            
+	            //使用text()方法（为jQuery方法）来获取文本
+	            console.log($btn.text());  //clickMe2
+            })
+            
+        })
+	</script>
+</head>
+<body>
+    <button >clickMe1</button>
+    <br>
+    <button id="btn">clickMe2</button>
+</body>
+</html>

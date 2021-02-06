@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>添加删除记录</title>
+        <link rel="stylesheet" type="text/css" href="DOM.css"/>
+        
+        <script type="text/javascript">
+        /*
+        confirm()可以弹出带有确认和取消按钮的提示框
+        点击确认，返回true
+        点击取消，返回false
+        */
+        window.onload=function(){
+            var links=document.getElementsByTagName("a");//[0 1 2]
+            for(var i=0;i<links.length;i++){
+                alert("for循环正在执行"+i);//alert：分别执行0， 1， 2
+                /*⚠️for循环会在页面加载完之后立即被执行，
+                    分别执行i=0,i=1和i=2
+                    并在i=3时停止*/
+                    var a;
+                    links[i].a=i;//⚠️⚠️解决方法：将变量i作为属性值保存在每一个links上
+                    //更多解法：https://www.imooc.com/article/13833
+                links[i].onclick=function(){
+                    alert(i);//alert：3
+                    /*⚠️响应函数会在超链接被点击时执行
+                        而此时，for循环早已执行完毕，
+                        函数也只能被迫执行i=3的情况*/
+                    alert(this.a);//alert：0 1 2
+                    /*
+                    ⚠️⚠️输出其属性值i
+                    */
+                    return false;
+                    
+                };
+            }
+        }
+        </script>
+    </head>
+    <body>
+        <table id="employeeTable">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Salary</th>
+                <th>&nbsp;</th>
+            </tr>
+            <tr>
+                <td>Tom</td>
+                <td>tom@tom.com</td>
+                <td>5000</td>
+                <td><a href="xxx">Delete</a></td>
+            </tr>
+            <tr>
+                <td>Jerry</td>
+                <td>jerry@sohu.com</td>
+                <td>8000</td>
+                <td><a href="xxx">Delete</a></td>
+            </tr>
+            <tr>
+                <td>Bob</td>
+                <td>Bob@gmail.com</td>
+                <td>10000</td>
+                <td><a href="xxx">Delete</a></td>
+            </tr>
+        </table>
+        <form id="form" action="#">
+            <h4>New employee</h4>
+            <label class="word" for="nm">name:</label>
+            <input class="inp" id="nm" type="text" name="username"/>
+            <br/>
+            <label class="word" for="em">email:</label>
+            <input class="inp" id="em" type="text" name="email"/>
+            <br/>
+            <label class="word" for="sl">salary:</label>
+            <input class="inp" id="sl" type="text" name="salary"/>
+            <br/>
+            <button id="addEmpButton" type="button">Submit</button>
+        </form>
+    </body>
+</html>

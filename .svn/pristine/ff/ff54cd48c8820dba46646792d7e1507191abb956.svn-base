@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    流程控制语句
+    通过流程控制语句可以控制程序执行流程，是流程根据一定条件来执行
+
+    语句分类：
+    1 条件判断语句：
+    2 条件分支语句：
+    3 循环语句：
+
+    1条件判断语句：
+    在执行某个语句之前进行判断，如果条件成立才会执行语句，不成立则不执行语句
+
+    if语句
+    语法一：
+       if(条件表达式){
+           语句...
+       }
+       如条件表达式的值为true，则执行语句
+       如果为false，则不执行语句
+       注1：if语句只能控制紧随其后的语句，若要执行多个语句，可将它们统一放入{}中
+       注2:if语句中的{}不是必须的，但在开发中，尽量都写上{}，使结构更清楚
+
+
+    */
+
+    //if语句
+
+
+    var a=11;
+    if(a<10)
+        alert("a比10大");//不执行
+        alert("谁也管不了我");//执行
+    
+
+    //注1：if语句只能控制紧随其后的语句，若要执行多个语句，可将它们统一放入{}中
+    var a=11;
+    if(a>10){
+            alert("a比10大");
+            alert("谁也管不了我");
+        }//均执行
+
+    //注2:if语句中的{}不是必须的，但在开发中，尽量都写上{}，使结构更清楚
+    var a=11;
+    if(a>10){
+        alert("a比10大～～～～");
+    }//执行
+
+    var b=15;
+    if(b>10 && b<=20){
+        alert("a大于10，并且a小于等于20")
+    }//执行
+    
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

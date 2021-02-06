@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>overflow</title>
+        <style type="text/css">
+        /*
+        overflow 规定当内容溢出父元素框时如何设置。
+           可选值：
+              visible	默认值。不处理溢出内容。
+              hidden	内容会被修剪，溢出内容不可见的。
+              scroll	内容会被修剪，浏览器会显示滚动条以查看其余的内容。（无论是否溢出，水平垂直都会添加滚动条）
+              auto	    如果内容被修剪，则浏览器会显示滚动条以查看其余的内容。（会根据需求添加，没有需求就不加）
+
+        */
+        
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: #bfa;
+            overflow: scroll;
+        }
+        .box2{
+            width: 100px;
+            height: 500px;
+            background-color: red;
+            
+        }
+        </style>
+    </head>
+    <body>
+        <div class="box1">
+            <div class="box2"></div>
+            <p>
+                If you think of Halloween, you probably think of scary carved pumpkins, all kinds of fancy dress and children asking for sweets. And if you think of a country that celebrates Halloween, you probably think of the United States first. Americans and Canadians have adopted Halloween in a big way, but Halloween traditions actually come from 16th-century Ireland, Scotland and England.
+                The tradition of Halloween on 31 October comes from the ancient Celtic festival of Samhain. Samhain was the Celtic New Year and they celebrated it on 1 November because that was the end of summer and harvest time (life) and the beginning of winter (death). It was also the time for ghosts to return to earth for a day. People lit a big fire, wore special clothes made of animal skin and hoped to be safe from the ghosts and the winter. In AD 609, the Catholic Church put the Christian celebration of All Saints Day on 1 November. In AD 1000, the church added All Souls Day on 2 November, and All Hallows Eve – or Halloween – moved to the night of the 31st.
+            </p>
+        </div>
+    </body>
+</html>

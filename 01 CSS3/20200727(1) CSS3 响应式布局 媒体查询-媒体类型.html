@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<!--
+	- 响应式布局
+	指的是同一页面在不同屏幕尺寸下有不同的布局。
+	传统的开发方式是PC端开发一套，手机端再开发一套，而使用响应式布局只要开发一套就够，
+	缺点就是CSS比较重
+	
+	- CSS3媒体查询
+	CSS3媒体查询是响应式布局的核心
+	
+	 *媒体类型
+	    all             所有媒体（默认值）
+	   screen           彩色屏幕
+	   print            打印预览
+	   
+	   projection     手持设备
+	   tv              电视
+       braille         盲文触觉设备
+       embossed        盲文打印机
+       speech          “听觉”类似的媒体设备
+       tty              不适用像素的设备
+       
+     *媒体属性
+	-->
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#wrap{
+			width: 100px;
+			height: 100px;
+			margin: 100px auto;
+		}
+		
+		
+		/*一般都写在最下面*/
+		/*媒体类型*/
+		@media screen{
+			/*只在彩色屏幕中显示，以下的声明在打印时都看不见*/
+			#wrap{
+				border: 10px solid;
+			}
+		}
+		@media print{
+			/*只在打印中显示红边框，以下的声明在屏幕中都看不见*/
+			#wrap{
+				border: 10px solid red;
+			}
+		}
+	</style>
+</head>
+<body>
+<div id="wrap">
+
+</div>
+</body>
+</html>

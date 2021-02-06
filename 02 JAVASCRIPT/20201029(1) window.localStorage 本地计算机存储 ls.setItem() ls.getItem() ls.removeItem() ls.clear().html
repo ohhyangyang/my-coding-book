@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title></title>
+        <style type="text/css">
+        
+        </style>
+        <script type="text/javascript">
+        /*
+        - localStorage 本地存储 （只可储存本地数据，别的计算机不可以访问）
+          一个可被用于访问当前源（ origin ）的本地存储空间的 Storage 对象。
+          由domin创建，由browser控制，
+          可以储存string类型的key:value，
+          如果非string，则需要使用JSON.stringtify()和JSON.parse()进行格式转化
+
+          ⚠️⚠️ 在browser的inspector中，在application中可以找到localStorage储存的内容
+
+        - localStorage.setItem() 
+          作为 Storage 接口的方法，接受一个键名和值作为参数，将会把键名添加到存储中，
+          ⚠️⚠️⚠️  如果键名已存在，则更新其对应的值。overwrite
+          语法： storage.setItem(keyName, keyValue);
+          参数： keyName   一个 DOMString，要创建或更新的键名。
+                keyValue  一个 DOMString，要创建或更新的键名对应的值。
+          返回值 一个 DOMString，键名对应的值。如果键名不存在于存储中，则返回 null
+
+
+        - localStorage.getItem()
+           作为 Storage 接口的方法，接受一个键名（key name）作为参数，并返回对应键名的值（key's value）。
+           语法  var aValue = storage.getItem(keyName);
+
+        - localStorage.removeItem()
+        - localStorage.clear()
+
+        例：
+          从localStorage获取数据
+          const usersStr = localStorage.getItem('users');
+          const users = JSON.parse(user2Str);
+          （users = [{user1Obj},{user2Obj},{user3Obj}...];）    ->获得原localStorage中数据
+          
+          更新users数据到localStorage        
+          const newUser = {newUserObj};          ->要新添加的数据
+          const updatedUsers = [...users , newUser];   ->添加到数据数组
+          const updatedUsersStr = JSON.stringtify(updatedUsers);
+          localStorage.setItem("users",updatedUsersStr)
+            
+            
+          
+
+
+        */
+        
+        </script>
+    </head>
+    <body>
+        
+        
+    </body>
+</html>

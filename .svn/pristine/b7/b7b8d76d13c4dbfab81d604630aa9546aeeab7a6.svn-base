@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    
+    /*我们的程序是由一条条语句（statement）构成的,
+    由自上向下一条条执行
+    在Js中，可以用{}进行分组,
+    同一个{}中的语句被称为一组，要么都执行或都不执行，
+    一个{}中的语句为一个代码块
+    {}后不加；
+    js中的代码块，只有分组的作用，没有其他用途
+    代码块里的内容，在外部亦可见
+
+    */
+
+    {
+    alert("hello");
+    console.log("你好");
+    document.write("语句");
+    }
+
+    //代码块里的内容，在外部亦可见
+    {
+    var a=10;
+    alert("hello");
+    console.log("你好");
+    document.write("语句");
+    }
+
+    console.log("a="+a);//a=10
+
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

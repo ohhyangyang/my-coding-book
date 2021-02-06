@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*标识符：在js中可以有我们自主命名的
+    例如：变量名，函数名，属性名
+         须遵守如下规则：
+         1.标识符可含有字母，数字，__，$
+         2.不能以数字开头，例如1abc则不可以
+         3.标识符不能是js中的关键字或保留字，例如var var不可以
+         4.一般采用驼峰命名法，例如 helloWorld
+
+    */
+    
+    var a_1_$ = 123
+    console.log(a_1_$)
+    
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

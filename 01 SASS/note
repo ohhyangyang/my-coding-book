@@ -1,0 +1,5 @@
+* 创建sass watch:
+  1 先创建好想要关联的sass文件和css文件，
+  2 进入styles文件夹，输入：sass --watch sass/style.sass:css/style.css
+                    或者：sass --watch style.sass:style.css
+              (取决于你的文件结构)

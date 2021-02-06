@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+		/*
+		-perspective 景深：让3D场景有近大远小的效果
+		⚠️ 当为父元素定义 perspective 属性时，其子元素会获得透视效果，而不是元素本身。
+		写法：
+		     perspective:depth;
+		  或 transform:perspective(depth);   ⚠️⚠️ 不建议，它必须放在transform属性的首位，如放在其他函数之后会被忽略
+		默认值：none （无透视效果）
+		原理：
+		   景深越大，灭点越远，元素变形越小
+		   没有景深时，3d效果都看起来比较扁平
+		   
+		⚠️⚠️⚠️ 要尽量避免父子元素间景深的叠加，叠加原理及其复杂，且每个浏览器原理也不同
+		   
+		-perspective-origin 景深基点：视角的位置，设定眼睛从x，y轴哪个点来看这个元素
+		⚠️ 同样也是设置在父元素上，对后代起作用
+		 */
+		
+		
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		
+		#wrap {
+			width: 400px;
+			height: 400px;
+			border: 1px solid;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin-top: -200px;
+			margin-left: -200px;
+			perspective: 500px; /*刚好甩到屏幕边缘上*/
+			perspective-origin:left top ;
+		}
+		
+		#inner {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin-left: -100px;
+			margin-top: -100px;
+			width: 200px;
+			height: 200px;
+			border: 1px solid;
+			text-align: center;
+			line-height: 200px;
+			font-size: 20px;
+			transition: 2s;
+			background-color: #fff3cd;
+			transform: rotateX(45deg);
+		}
+	
+	</style>
+</head>
+<body>
+<div id="wrap">
+	<div id="inner">YANGYANG</div>
+</div>
+</body>
+</html>

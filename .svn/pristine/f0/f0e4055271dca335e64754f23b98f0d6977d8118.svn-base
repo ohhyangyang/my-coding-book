@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="52cc3d1a-c2d0-421f-9c13-57492c59b449" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NODEJS/02FILE SYSTEM/20191219(1)fs文件系统.js" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1VC9dugq0YAhCIufaMj0CoBgeRe" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunManager">
+    <configuration name="20191219(1)fs文件系统.js" type="NodeJSConfigurationType" temporary="true" path-to-js-file="20191219(1)fs文件系统.js" working-dir="$PROJECT_DIR$/NODEJS/02FILE SYSTEM">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.20191219(1)fs文件系统.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration>$USER_HOME$/.subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="SvnFileUrlMappingImpl">
+    <option name="myMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="$PROJECT_DIR$" />
+          <option name="myCopyRoot" value="$PROJECT_DIR$" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+    <option name="myMoreRealMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="$PROJECT_DIR$" />
+          <option name="myCopyRoot" value="$PROJECT_DIR$" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="52cc3d1a-c2d0-421f-9c13-57492c59b449" name="Default Changelist" comment="" />
+      <created>1576746301038</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1576746301038</updated>
+      <workItem from="1576746303095" duration="274000" />
+      <workItem from="1576746580328" duration="167000" />
+      <workItem from="1576746816290" duration="2577000" />
+      <workItem from="1576817512793" duration="3839000" />
+    </task>
+    <task id="LOCAL-00001">
+      <created>1576746627890</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1576746627890</updated>
+    </task>
+    <task id="LOCAL-00002">
+      <created>1576746651545</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1576746651545</updated>
+    </task>
+    <task id="LOCAL-00003">
+      <created>1576746839036</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1576746839036</updated>
+    </task>
+    <task id="LOCAL-00004">
+      <created>1576746917028</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1576746917028</updated>
+    </task>
+    <task id="LOCAL-00005">
+      <created>1576747265028</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1576747265028</updated>
+    </task>
+    <task id="LOCAL-00006">
+      <created>1576747340030</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1576747340030</updated>
+    </task>
+    <task id="LOCAL-00007">
+      <created>1576750173029</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1576750173029</updated>
+    </task>
+    <task id="LOCAL-00008">
+      <created>1576819660030</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1576819660030</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="210" y="227" key="#20191219(1)fs文件系统.js" timestamp="1576821481790">
+      <screen x="56" y="22" width="1624" height="1028" />
+    </state>
+    <state x="210" y="227" key="#20191219(1)fs文件系统.js/56.22.1624.1028@56.22.1624.1028" timestamp="1576821481790" />
+    <state x="210" y="227" key="#20191219(1)fs文件系统和sync同步文件写入.js" timestamp="1576821499664">
+      <screen x="56" y="22" width="1624" height="1028" />
+    </state>
+    <state x="210" y="227" key="#20191219(1)fs文件系统和sync同步文件写入.js/56.22.1624.1028@56.22.1624.1028" timestamp="1576821499664" />
+    <state x="99" y="143" key="CommitChangelistDialog2" timestamp="1576821577589">
+      <screen x="56" y="22" width="1624" height="1028" />
+    </state>
+    <state x="88" y="143" key="CommitChangelistDialog2/45.22.1635.1028@45.22.1635.1028" timestamp="1576747338675" />
+    <state x="90" y="143" key="CommitChangelistDialog2/47.22.1633.1028@47.22.1633.1028" timestamp="1576750171706" />
+    <state x="99" y="143" key="CommitChangelistDialog2/56.22.1624.1028@56.22.1624.1028" timestamp="1576821577589" />
+    <state width="862" height="280" key="GridCell.Tab.0.bottom" timestamp="1576821579865">
+      <screen x="56" y="22" width="1624" height="1028" />
+    </state>
+    <state width="862" height="280" key="GridCell.Tab.0.bottom/56.22.1624.1028@56.22.1624.1028" timestamp="1576821579865" />
+    <state width="862" height="280" key="GridCell.Tab.0.center" timestamp="1576821579863">
+      <screen x="56" y="22" width="1624" height="1028" />
+    </state>
+    <state width="862" height="280" key="GridCell.Tab.0.center/56.22.1624.1028@56.22.1624.1028" timestamp="1576821579863" />
+    <state width="862" height="280" key="GridCell.Tab.0.left" timestamp="1576821579863">
+      <screen x="56" y="22" width="1624" height="1028" />
+    </state>
+    <state width="862" height="280" key="GridCell.Tab.0.left/56.22.1624.1028@56.22.1624.1028" timestamp="1576821579863" />
+    <state width="862" height="280" key="GridCell.Tab.0.right" timestamp="1576821579864">
+      <screen x="56" y="22" width="1624" height="1028" />
+    </state>
+    <state width="862" height="280" key="GridCell.Tab.0.right/56.22.1624.1028@56.22.1624.1028" timestamp="1576821579864" />
+    <state x="657" y="442" key="svn.passwordDialog" timestamp="1576819659349">
+      <screen x="56" y="22" width="1624" height="1028" />
+    </state>
+    <state x="650" y="442" key="svn.passwordDialog/45.22.1635.1028@45.22.1635.1028" timestamp="1576746838762" />
+    <state x="651" y="442" key="svn.passwordDialog/47.22.1633.1028@47.22.1633.1028" timestamp="1576746387802" />
+    <state x="657" y="442" key="svn.passwordDialog/56.22.1624.1028@56.22.1624.1028" timestamp="1576819659349" />
+    <state x="629" y="442" key="svn.upgradeDialog" timestamp="1576746573342">
+      <screen x="45" y="22" width="1635" height="1028" />
+    </state>
+    <state x="629" y="442" key="svn.upgradeDialog/45.22.1635.1028@45.22.1635.1028" timestamp="1576746573342" />
+    <state x="630" y="442" key="svn.upgradeDialog/47.22.1633.1028@47.22.1633.1028" timestamp="1576746384611" />
+    <state x="591" y="421" key="svn4idea.checkout.options" timestamp="1576746572217">
+      <screen x="45" y="22" width="1635" height="1028" />
+    </state>
+    <state x="591" y="421" key="svn4idea.checkout.options/45.22.1635.1028@45.22.1635.1028" timestamp="1576746572217" />
+    <state x="592" y="421" key="svn4idea.checkout.options/47.22.1633.1028@47.22.1633.1028" timestamp="1576746383470" />
+  </component>
+</project>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*通过关系运算符比较两个值之间的大小
+    关系成立，返回true
+    关系不成立，返回false
+
+    >
+    >=
+    <
+    <=
+
+    非数值情况
+    对于非数值比较时，会将其转换为Number，然后再进行比较
+    
+    注：
+    1任何值和NaN比较，都是false
+    2一侧是String时，会将String转为Number
+    但如果符号两侧的值都是String时，他不会将其转化为Number进行比较，
+    而会分别比较String中的unicode编码
+
+    */
+
+    
+
+
+    // >
+    var result=5>10;//false
+    result=5>4;//true
+    result=5>5;//false
+
+    // >=
+    result=5>=5;//true
+    result=5>=4;//true
+
+    //非数值情况
+    
+
+    console.log(1>true);//false
+    console.log(1>=true);//true, true被转为1了
+    console.log(1>"0");//true,“0”被转为number 0
+    console.log(10>null);//true, null被转为number 0
+    console.log(10>"hello");//false, "hello"被转为NaN
+    console.log(true>false);//true, true为1，false为0
+
+    /*
+    两个String的比较情况
+    
+    一侧是String时，会将String转为Number
+    但如果符号两侧的值都是String时，他不会将其转化为Number进行比较，
+    而会分别比较String中的unicode编码
+    */
+    
+    console.log("a"<"b");//true,a的unicode为0061，b的unicode为0062
+    console.log("abc"<"b");//true,unicode是一位一位进行比较，值比较了首位的a和b
+    console.log("bbc"<"b");//false,因为两侧的首位b和b相等，所以开始比较下一位，因此bbc大，
+                           //因此可借用它的unicode的特点，对英文进行排序，
+                           //比较中文时，没有意义，因为unicode对中文的排序是按照康熙辞典进行的
+    
+    //如果比较的两个String型的数字，可能会得到不可预期的结果
+    console.log("1"<"5");//true
+    console.log("11"<"5");//true,只比较了两侧的第一位1和5，1的unicode为0031，5的unicode为0035
+    console.log("11"< +"5");//fasle
+    //注意！！！：在比较两个String型的数字时，一定要转型
+
+    
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

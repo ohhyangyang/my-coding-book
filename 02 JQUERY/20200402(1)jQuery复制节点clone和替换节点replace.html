@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<!--
+	- 克隆节点：$(节点).clone() 复制节点，不复制节点的事件
+	
+	  克隆节点和事件：$(节点).clone(true) 复制节点和该节点的事件
+	
+	- 替换：$(节点).replaceWith(html) 将匹配的元素替换为指定的html或元素
+	  移动：$(节点A).replaceWith(节点B) 删除节点A，并将节点B移动过来
+	
+	- 替换：$(html).replaceAll(节点) 用指定的tml或元素替换匹配的元素 （和replaceWith()语法相反）
+	  移动：$(节点B).replaceAll(节点A) 删除节点A，并将节点B移动过来
+	  
+	- 互换节点：需要先克隆，再替换
+	   ⚠️ var $rl = $("#rl").replaceWith($bj2);  该方法的返回值$rl为rl的jQuery对象本身
+	
+	  ⚠️若在替换前，元素绑定了事件，替换后，事件会跟着原先元素一起消失
+	-->
+</head>
+<script type="text/javascript" src="jquery-1.10.1.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("li").click(function () {
+            alert($(this).text());
+        });
+	    //复制北京li，添加到红警后面
+	    $("#bj").clone(true)
+		        .attr("id","bj2")
+		        .insertAfter("#rl");
+	    
+	    //创建一个<li>尚硅谷</li>节点，替换city的最后一个子节点
+	    $("<li>尚硅谷</li>").replaceAll("#city li:last");
+	    
+	    //创建<li>西班牙垃圾政府草菅人命</li>节点，替换game的第二个子节点
+	    $("#game li:eq(1)").replaceWith("<li>垃圾政府草菅人命</li>");
+	    
+	    //将#rl和#bj互换
+	    var $bj2 = $("#bj").clone(true); //克隆$bj2
+	    
+	    //$bj2替换$rl
+	    alert("$bj2替换$rl");
+	    var $rl = $("#rl").replaceWith($bj2); //用克隆的$bj2替换$rl，并保存$rl至声明的变量中
+	                                          // ⚠️ 该方法的返回值$rl为rl的jQuery对象本身
+	    console.log($rl[0]); //<li id="rl">红警</li>
+	    
+	    //$rl替换$bj
+	    alert("$rl替换$bj")
+	    $("#bj").replaceWith($rl);
+	    
+	    
+	    
+	    
+    
+    })
+</script>
+<body>
+<p>你喜欢那个城市？</p>
+<ul id="city">
+	<li id="bj" name="Beijing">北京</li>
+	<li>上海</li>
+	<li id="dj">东京</li>
+	<li id="se">首尔</li>
+</ul>
+<br>
+<br>
+<p>你喜欢哪款单机游戏？</p>
+<ul id="game">
+	<li id="rl">红警</li>
+	<li>实况</li>
+	<li>极品飞车</li>
+	<li>魔兽</li>
+</ul>
+<br>
+<br>
+gender:
+<input type="radio" name="gender" value="male">Male
+<input type="radio" name="gender" value="female">Female
+<br>
+<br>
+name:
+<input type="text" name="username" value="火辣辣">
+
+
+</body>
+</html>

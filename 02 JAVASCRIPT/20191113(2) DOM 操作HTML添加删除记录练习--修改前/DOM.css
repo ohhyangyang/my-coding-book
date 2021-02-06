@@ -1,0 +1,21 @@
+
+        table{
+            margin: 50px auto;
+            border-collapse: collapse;
+        }
+        th,td{
+            border: 1px solid black;
+        }
+        th,h4{
+            color: brown;
+        }
+        form{
+            padding: 20px;
+            width: 220px;
+            margin: 0 auto;
+            border:1px solid black;
+        }
+        button{
+            margin-left:70px;
+        }
+        

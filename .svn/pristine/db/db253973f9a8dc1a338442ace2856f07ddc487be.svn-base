@@ -1,0 +1,22 @@
+/*
+简单文件写入
+fs.writeFile(file, data[, options], callback)
+fs.writeFileSync(file, data[, options])
+       file 要操作文件的路径
+       data 要卸乳的数据
+       options 选项，可以对写入进行一些设置，一般省略不写(optional)
+             encoding 指定编码 默认值: 'utf8'。
+             mode 指定权限 默认值: 0o666。
+             flag 操作形式 参阅支持的文件系统标志。默认值: 'w'。
+       callback 写入完成后执行的函数
+ */
+var fs=require("fs");
+
+//异步文件写入的简单版本
+fs.writeFile("03hello easywrite","通过writeFile写入的内容",function (err) {
+    if(!err){
+        console.log("写入成功！");
+    }
+})
+
+//同步的同理

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<!--
+	- jQuery加载DOM事件 $(document).ready(fn)   ⚠️ 简写为$(fn)
+	
+	  方法      window.onload                          $(document).ready()
+	  执行时机  网页中所有内容加载完毕后（包括图片）才执行   网页中所有DOM结构绘制完成后执行，DOM的关联元素并没有加载完
+	  编写个数  不能同时编写多个                         能同时编写多个
+	  简化写法  无                                     $()
+	  
+	- jQuery绑定事件
+	  $(节点).bind()
+	
+	- jQuery合成事件
+	  $(节点).hover(fn1,fn2)  模拟鼠标悬停事件，合并了mouseover和mouseout
+	    当光标移动到元素上时，触发第一个函数
+	    当光标移出这个元素时，触发第二个函数
+	    
+	  $(节点).mouseover() 鼠标移入
+	  
+	  $(节点).mouseout() 鼠标移出
+	  
+	  $(节点).mousemove() 鼠标移动
+	  
+	  
+	  $(节点).toggle(fn1,fn2,...fnN) 模拟鼠标连续单机事件
+	    （第一次单击元素，触发第一个函数
+	      第二次单击元素，触发第二个函数
+	      若有更多函数，则依次触发，直到最后一个）
+	  ⚠️⚠️对于1。9以上的版本已失效，
+	  ⚠️⚠️只剩下切换元素的可见状态的作用
+	  
+	    
+	- 事件的冒泡
+	  事件会按照DOM层次结构像水泡一样不断向上，直至顶端
+	  取消冒泡：在事件处理中，返回false （同时还可以停止元素的默认行为）
+	
+	- 事件对象的属性
+	
+	  事件对象：
+	    event对象  事件执行完毕后，event对象就被销毁了
+	    例  $(xx).mousemove(function (event) {}
+	    
+	  事件对象的属性：
+	  event.pageX，event.pageX 获取触发事件时，光标相对于页面的x y坐标
+	
+	- 移除事件
+	  $(节点).unbind("click")  移除某节点的click事件
+	  $(节点).unbind()  移除某节点的所有事件
+	
+	- 一次性事件
+	  one("事件",fn)
+	  当one()被触发一次后，立即被删除，只会被执行一次
+	
+	  
+	- 方法
+	  $(节点).is(选择器)方法 判断某个jQuery对象是否符合某个选择器
+	  $(节点).show() 显示隐藏的节点
+	  $(节点).hide() 隐藏显示的节点
+	
+	-->
+	<style type="text/css">
+		#panel {
+			width: 300px;
+			border: 1px solid darkblue;
+		}
+		h5{
+			
+			height: 30px;
+			margin: 0;
+			background-color: #4cae4c;
+		}
+		.content{
+			border-top:1px solid darkblue;
+		}
+		#divbox{
+			width: 220px;
+			border: 1px solid #0050D0;
+			background: #96E555;
+		}
+		span{
+			width: 200px;
+			margin: 10px;
+			background: #666666;
+			cursor: pointer;
+			color: white;
+			display: block;
+		}
+		
+		
+	</style>
+</head>
+<script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
+<script type="text/javascript">
+	
+	//jQuery  $(document).ready(fn)
+	$(document).ready(function () {
+        //alert("jQuery1");
+    });
+	
+    //普通JS  window.onload=function(){}
+    window.onload=function () {
+        //alert("JS");
+    }
+    
+    $(document).ready(function () {
+        //alert("jQuery2");
+        
+        /*
+        //click响应函数
+        $(".head").click(function () {
+            var flag = $(".content").is(":hidden");
+            if(flag){
+                $(".content").show();
+            }else{
+                $(".content").hide();
+            }
+        })
+	    */
+        
+        
+        /*
+        //使用bind()绑定click响应函数
+	    $(".head").bind("click",function () {
+            var flag = $(".content").is(":hidden");
+            if(flag){
+                $(".content").show();
+            }else{
+                $(".content").hide();
+            }
+        });
+         */
+    
+        /*
+        //hover悬停事件的复杂写法
+        $(".head").mouseover(function () {
+            $(".content").show();
+        }).mouseout(function () {
+            $(".content").hide();
+        });
+         */
+        
+        /*
+        //合成事件 hover
+	    $(".head").hover(function () {
+	        $(".content").show();
+        },function () {
+	        $(".content").hide();
+        });
+         */
+	    
+	    /*
+        //合成事件 toggle  ⚠️⚠️已失效，1.9版本以上无法显示该效果
+        $(".head").toggle(function () {
+            //$(".content").show();
+            alert("显示")
+        },function () {
+            //$(".content").hide();
+            alert("隐藏")
+        });
+	     */
+	    
+	    /*
+	    //click事件的冒泡
+	    $('body').click(function () {
+	        alert("body click")
+        });//
+        $('#divbox').click(function () {
+            alert("div click")
+        });
+        $('span').click(function () {
+            alert("span click")
+	        return false //通过返回false，阻止事件冒泡，以阻止激发div click和body click
+        });
+	     */
+	    
+	    //输出事件的pageX，pageY属性
+	    $("body").mousemove(function (event) {
+	       $("#msg").text("x=" + event.pageX +",y=" + event.pageY);
+        })
+	    
+	    //移除mousemove事件
+	    $("body").unbind("mousemove");
+	    
+	    //one()
+	    $("#bj").one("click",function () {
+	        alert("一次性事件")
+        })
+        
+        
+	    
+	    
+    });
+	
+	
+</script>
+<body>
+<div id="divbox">
+	外层div
+	<span>内层span</span>
+	外层div
+</div>
+<br>
+<div id="msg"></div>
+<br>
+
+<div id="panel">
+	<h5 class="head">什么是jQuery?</h5>
+	<div class="content">
+		jQuery是一个快速、简洁的JavaScript框架，是继Prototype之后又一个优秀的JavaScript代码库（或JavaScript框架）。jQuery设计的宗旨是“write Less，Do More”，即倡导写更少的代码，做更多的事情。它封装JavaScript常用的功能代码，提供一种简便的JavaScript设计模式，优化HTML文档操作、事件处理、动画设计和Ajax交互。
+	</div>
+</div>
+<p>你喜欢那个城市？</p>
+<ul id="city">
+	<li id="bj" name="Beijing">北京</li>
+	<li>上海</li>
+	<li id="dj">东京</li>
+	<li id="se">首尔</li>
+</ul>
+<br>
+<br>
+<p>你喜欢哪款单机游戏？</p>
+<ul id="game">
+	<li id="rl">红警</li>
+	<li>实况</li>
+	<li>极品飞车</li>
+	<li>魔兽</li>
+</ul>
+<br>
+<br>
+<p>你喜欢哪种开发语言？</p>
+<ul id="language">
+	<li>C</li>
+	<li>Java</li>
+	<li>PHP</li>
+	<li>NodeJS</li>
+</ul>
+gender:
+<input type="radio" name="gender" value="male">Male
+<input type="radio" name="gender" value="female">Female
+<br>
+<br>
+name:
+<input type="text" name="username" value="火辣辣">
+</body>
+</html>

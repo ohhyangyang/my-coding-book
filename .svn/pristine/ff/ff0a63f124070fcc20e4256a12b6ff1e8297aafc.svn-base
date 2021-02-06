@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>margin的重叠</title>
+    <style type="text/css">
+    /*
+    上下margin的合并重叠
+    在CSS中，外边距合并指的是，当两个垂直外边距相遇时，它们将形成一个外边距。
+    合并后的外边距的高度等于两个发生合并的外边距的高度中的较大者。
+
+    关键字：垂直的，相邻的
+    
+    两个兄弟元素上下相邻时：取top或bottom两个margin中的最大值，而不是求和
+    父子元素之间上下相邻时：给子元素设置top或bottom的margin值时，子元素的margin值会传递给父元素
+
+    解决方法：
+    1 可以给其中一个元素的相连部分设置一个1px的padding或border（或sth），
+      这样可以把来把父子或兄弟隔开（注意要在height中把1px剪掉）
+    2 通过padding来解决（+padding -height）
+    */
+    .box1{
+        width:100px;
+        height:100px;
+        background-color:powderblue;
+        margin-bottom: 100px;
+    }
+    .box2{
+        width:100px;
+        height:100px;
+        background-color: orangered;
+        margin-top: 100px;
+    }
+    .box3{
+        width:200px;
+        height:199px;
+        background-color:steelblue;
+        padding-top:1px;
+    }
+    .box4{
+        width:100px;
+        height:100px;
+        background-color:yellowgreen;
+        margin-left: 80px;
+        margin-top: 50px;
+    }
+    
+    
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3">
+        <div class="box4"></div>
+    </div>
+</body>
+</html>

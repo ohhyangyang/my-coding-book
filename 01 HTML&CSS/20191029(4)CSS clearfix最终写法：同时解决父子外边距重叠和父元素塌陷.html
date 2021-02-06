@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>解决父子外边距重叠</title>
+    <style type="text/css">
+    /*
+    *解决父子元素外边距重叠：
+    垂直方向上，父子元素发生边距重叠时，子元素的外边距变化会传递给父元素
+    而使用空的<table>标签（块元素）可以隔离父子元素，从而阻止外边距的重叠和传递（空的<div>不可以）
+
+    *clearfix最终版本：
+    既解决了父元素高度塌陷，又解决了父子元素垂直外边距重叠问题
+    */
+    .box1{
+        width: 300px;
+        height: 300px;
+        background-color: lavender;
+    }
+    .box2{
+        width: 200px;
+        height: 200px;
+        background-color:thistle;
+        margin-top: 50px;
+    }
+    
+    .box3{
+        border:red solid 1px;
+    }
+    .box4{
+        width: 100px;
+        height: 100px;
+        background-color: wheat;
+        float: left;
+    }
+    /* 
+    .box1:before{  解决父子元素外边距重叠
+        content: "";
+        display:table;
+    }
+    .box3:after{   解决父元素高度塌陷
+        content: "";
+        display: table;
+        clear:both
+    } */
+
+    /*一条代码，同时解决了两个问题*/
+    .clearfix:before,
+    .clearfix:after{
+        content:"";
+        display: table;
+        clear: both;
+    }
+    .clearfix{
+        zoom:1;   /*用于兼容IE6*/
+    }
+
+
+    </style>
+</head>
+<body>
+    <div class="box1 clearfix">
+        <!-- <table></table> -->
+        <div class="box2"></div>
+    </div>
+    <div class="box3 clearfix">
+        <div class="box4"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Pseudo-elements</title>
+        <style type="text/css">
+        /*
+        伪元素：用来表示元素中的一些特殊位置
+        （⚠️以下所有伪元素，IE6均不支持）
+
+        :first-letter
+           用于选取指定选择器的首字母
+        :first-line
+           用于选取指定选择器的首行
+
+        :before
+           表示元素最前边的部分 
+           ⚠️before一般需要结合content一起使用
+           ⚠️通过content可以向before或after的位置添加内容
+
+        :after
+           表示元素最后边的部分
+        */
+
+        p:first-letter{
+            color:chocolate;
+            font-size: 30px;
+        }
+        p:first-line{
+            background-color: burlywood;
+        } 
+
+        p:before{
+            content:"我会出现在前边" ;
+            color:cornflowerblue;
+        }
+        p:after{
+            content:"我会出现在最后边";
+            color:darkorange;
+        }
+        </style>
+    </head>
+    <body>
+        <p>
+             "Mom, Mom, I have to go.
+            I hate to leave you all alone.
+            I'll miss you when I go away,
+             But if you need me then I'll stay."
+            "Little Daughter, I'll be just fine.
+            I'll love you always; you are mine.
+            I have our memories in my heart.
+            We're together though we're apart."
+                
+        </p>
+    </body>
+</html>

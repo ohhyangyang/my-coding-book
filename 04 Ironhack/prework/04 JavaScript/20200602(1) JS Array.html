@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script type="text/javascript">
+        
+        const prices = [10.99, 44.56, 112.79, 3, 5];
+        let sum = 0;
+        for(let i=0;i<prices.length;i++){
+            sum += prices[i];
+        }
+        sum = sum.toFixed(1);
+        console.log(sum);
+	
+	
+	</script>
+</head>
+<!--
+- Array
+
+ - 增减array中元素
+   添加元素
+    - array.push() 在最后面添加元素
+    - array.unshift() 在最前面添加元素
+   去除元素
+    - array.pop() 去除最后一个元素
+    - array.shift() 去除第一个元素
+   其他去除元素的方法
+    - delete array[index]  但它将元素替换为undefined。
+    - array.splice(index, howmany, newitems)
+         index   从哪个index开始删除元素
+         howmany 删除几个元素
+         返回值   删除的元素数组
+         
+ - array的遍历loops
+   for loops
+       for (let i = 0; i < animalArray.length; i++){
+         console.log(`Index: ${i} - element: ${animalArray[i]}`);
+       }
+   while loops
+       let counter = 0;
+       const animalArray = ["dog", "cat", "fish"];
+       while (counter < animalArray.length){
+         console.log(`Counter (===index): ${counter} - element: ${animalArray[counter]}`);
+         counter++;
+       }
+
+   forEach() loops
+        (ES5)
+       animalArray.forEach(function(element){
+         console.log(`option 1: ${element}`);
+       });
+        (ES6)
+       animalArray.forEach(element => {
+         console.log(`option 2: ${element}`);
+       });
+-->
+<body>
+
+</body>
+</html>

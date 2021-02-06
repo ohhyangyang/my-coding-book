@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<!--
+	- 可见性过滤选择器
+	根据元素的可见和不可见状态来选择
+	
+	选择器          描述                    返回结果
+	:hidden        选择所有不可见得元素      集合元素
+	:visible       选择所有可见的元素        集合元素
+	
+	⚠️ hidden包含 css中的display:none，文本隐藏域<input type="hidden"> 或 visible:hidden 之类的元素
+	
+	- 效果
+	  show([speed,[easing],[fn]])   使不可见元素变为可见。
+	   参数 speed 显示的速度，可以为毫秒数或slow normal fast
+	       [easing] 用来指定切换效果
+	       fn  动画完成时执行的函数
+	   返回值 为调用show()方法的jQuery对象本身，因此支持方法的连缀
+	         可以继续调用该对象的其他方法（⚠️jQuery的很多方法都支持连缀）
+	
+	- 属性
+	  attr()  获取(传递一个参数)或设置(传递两个参数)被选元素的属性值。
+	  val()   获取(不传递参数)或设定(传递参数)被选中元素的value属性值
+	-->
+	<style type="text/css">
+		div, span , p {
+			width: 200px;
+			height: 200px;
+			margin: 5px;
+			background: #aaa;
+			border: #000 1px solid;
+			float: left;
+			font-size: 17px;
+			font-family: Verdana;
+		}
+		div.mini {
+			width: 70px;
+			height: 70px;
+			background-color: #aaa;
+			font-size: 12px;
+		}
+		div.hide {
+			display: none;
+		}
+	</style>
+	<script type="text/javascript" src="jquery-1.10.1.js"></script>
+	<script type="text/javascript">
+	$(function () {
+        $("#btn1").click(function () {
+            $("div:visible").css("background","blue");
+        })
+		$("#btn2").click(function () {
+		    //show([speed,[easing],[fn]])   使不可见元素变为可见。
+            $("div:hidden").show(2000).css("background","blue");
+        })
+		$("#btn3").click(function () {
+            alert($("input:hidden").val());
+            alert($("input:hidden").attr("value"));
+            alert($("input:hidden").attr("size"));
+        })
+    })
+	</script>
+</head>
+<body>
+<input id="btn1" type="button" value="选择所有可见的DIV元素">
+<input id="btn2" type="button" value="选择所有不可见的DIV元素">
+<input id="btn3" type="button" value="选择所有不可见的的input元素">
+<br><br>
+<div class="one" id="one">
+	id为one，class为one的DIV
+	<div class="mini">class为mini的DIV</div>
+</div>
+<div class="one" id="two" title="test">
+	id为two，class为one，title为test的DIV
+	<div class="mini" title="other">class为mini，title为other的DIV</div>
+	<div class="mini" title="test">class为mini，title为test的DIV</div>
+</div>
+<div class="one">
+	<div class="mini">class为mini的DIV</div>
+	<div class="mini">class为mini的DIV</div>
+	<div class="mini">class为mini的DIV</div>
+	<div class="mini"></div>
+</div>
+<div class="one">
+	<div class="mini">class为mini的DIV</div>
+	<div class="mini">class为mini的DIV</div>
+	<div class="mini">class为mini的DIV</div>
+	<div class="mini" title="test">class为mini,title为test的DIV</div>
+</div>
+<div style="display: none;" class="none">style的display为none的DIV</div>
+<div class="hide">class为hide的DIV</div>
+<div>
+	包含input的type为hidden的DIV
+	<input type="hidden" value="12345" size="8">
+</div>
+<div>一个DIV元素</div>
+</body>
+</html>

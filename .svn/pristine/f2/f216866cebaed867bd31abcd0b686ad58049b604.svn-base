@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>样式的继承</title>
+    </head>
+    <body>
+        <!--
+            在CSS中，祖先的样式会被他的后代元素继承
+            因此，可以利用继承将一些基本的样式设置给祖先元素，这样所有的后代元素会自动继承这些样式
+            但是并不是所有的样式都会被继承，
+            比如：背景相关的样式
+                 https://www.w3school.com.cn/cssref/pr_background-color.asp
+                 默认值为transparent，继承性显示为no
+            又比如定位及边框相关的样式
+        -->
+        <div style="background-color: beige;"><!--p和span中的背景为透明，因此div的背景颜色透过来了-->
+            <p style="font-size: 30px;">
+                p的文字
+                <span>p中的span</span>
+            </p>
+        </div>
+        <span>p外的span</span>
+    </body>
+</html>

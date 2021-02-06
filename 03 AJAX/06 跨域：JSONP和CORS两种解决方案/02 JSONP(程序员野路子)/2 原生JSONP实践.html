@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JSONP实践</title>
+</head>
+<body>
+   用户名: <input type="text" id="username">
+   <p></p>
+   <script>
+	   /*
+	   需求：在input中输入一个用户名，然后丧失焦点，
+	        此时即刻向服务端发送请求，请求对该用户名进行检测是否存在
+	        服务端直接返回"该用户名已存在，不允许使用"，并将input框变为红色
+	        （因为我们没有数据库，无法去比对数据）
+	        
+	    */
+	   //获取input元素
+	   const input = document.querySelector('input');
+	   const p = document.querySelector('p');
+	   
+	   //创建handleExist函数，来解析服务器返回值，产生效果
+	   function handleExist(data){
+	       //边框变红
+	       input.style.border = "solid 1px #f00";
+	       //修改p标签的提示文本
+		   p.innerHTML = data.msg;
+	   }
+	   
+	   
+	   //绑定丧失焦点事件
+	   input.onblur = function () {
+	       //获取用户输入的值
+		   let username = this.value;
+		   //向服务端发送请求，检测用户名是否存在
+		   
+		   //开始向远端发请求
+		   //1 创建script标签
+		   const script = document.createElement('script');
+		   //2 设置script标签的src属性
+		   script.src = 'http://127.0.0.1:8000/check-username';
+		   //3 将script标签插入文档中
+		   document.body.appendChild(script);
+		   
+		   
+       }
+   </script>
+</body>
+</html>

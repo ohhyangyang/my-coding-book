@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<!--
+- state和props属性
+  state和props都是用来承载组件要显示的数据
+  但是区别在于：
+    state为组件内部可变化的数据（通过setState({}))，始终保存在state属性中
+    props为从组件外部传递进来的数据（render标签组件使传递），且组件对外部数据只读取，不修改
+    
+- 组件化编码的流程
+  1 拆分组件
+  2 实现静态组件
+  3 实现动态组件
+
+- 数据保存的位置
+  看数据是某个组件需要，还是某些组件需要
+    某个组件 ->给这个组件
+    某些组件 ->给他们共同的父组件
+-->
+    <div id="example"></div>
+    <script type="text/javascript" src="js/react.development.js"></script>
+    <script type="text/javascript" src="js/react-dom.development.js"></script>
+    <script type="text/javascript" src="js/babel.min.js"></script>
+    <script type="text/javascript" src="js/prop-types.js"></script>
+    <script type="text/babel">
+	    /*
+	    需求：1显示所有todo列表
+	         2输入文本，点击按钮显示到列表首位，并清除输入的文本
+	         
+	    组件化编写功能的流程分析
+	          1 拆分组件，定义出所有组件类
+	               父-App组件
+	                   子-Add组件
+	                   子-List组件
+	               
+              2 实现静态组件
+                   给各个组件类指定render()的返回值
+                   （⚠️此时只有静态界面，没有动态数据和交互）
+              3 实现动态组件
+                   1)实现初始化数据的动态显示
+                        考虑数据应保存在哪个组件里
+                   2)实现交互功能
+                        绑定事件监听
+        注意事项：
+             1 父子组件之间数据的传递
+             2 数据传递时，需要使用xxx.propTypes={}来指定传递数据的类型和必要性
+                   
+        
+        问题1：数据保存在那个组件内
+        答：保存到App组件中，因为Add和List组件都会用到plans数组，因此应该将其保存到它的父组件App中
+        
+        问题2：在子组件中改变父组件的状态
+        答：子组件不能直接改变父组件状态
+            状态在哪个组件，更新状态的行为--addPlan就应该在哪个组件
+            然后再将addPlan方法传递给子组件来调用
+
+	     */
+	    //定义组件
+	    //创建App组件
+        class App extends React.Component{
+            
+            constructor(props) {
+                super(props);
+                //初始化状态，在state中输入初始的plans数组
+	            
+                this.state = {
+                    plans:["吃饭","睡觉","打豆豆"]
+                }
+                
+                //给addPlan绑定this
+                this.addPlan=this.addPlan.bind(this)
+            }
+            
+            //由父组件创建addPlan方法，用于父组件更新状态，但由其子Add组件负责调用
+            addPlan(plan){
+                //取出plans数组
+                const {plans}=this.state
+	            //使用unshift()方法在plans数组首位添加plan
+	            plans.unshift(plan)
+	            //更新state！！
+	            this.setState({plans})
+            }
+	        
+	        //将plans数组的长度count和addPlan函数传递给Add组件的props以供使用
+            //将plans数组传递给List组件的props属性
+            render(){
+                const{plans}=this.state
+                return(
+                    <div>
+	                    <h1>Simple Todo List</h1>
+	                    <Add count={plans.length} addPlan = {this.addPlan} />
+	                    <List plans={plans}/>
+                    </div>
+                )
+            }
+        }
+        
+        //创建Add组件
+        class Add extends React.Component{
+            constructor(props) {
+                super(props);
+                this.handleClick=this.handleClick.bind(this)
+            }
+            
+            //添加handleClick方法，用于调用addPlan
+            handleClick(){
+                //读取输入的数据 (trim()可以去掉输入的数据的首尾空格)
+	            const plan=this.planInput.value.trim()
+	            //检查数据合法性，如果plan为false，则什么都不做
+	            if(!plan){
+	                 return
+	            }
+	            //如果合法，则调用传递过来的addPlan方法，来添加plan
+	            this.props.addPlan(plan)
+	            //最后清空输入框
+                this.planInput.value=""
+            
+            }
+            
+            //同时需要将count传入button标签
+            render(){
+                return(
+                    <div>
+	                    <input type="text" ref={(input)=>this.planInput=input}/>
+	                    <button onClick={this.handleClick}>add #{this.props.count+1}</button>
+                    </div>
+                )
+            }
+        }
+        //指定props中传递进来的count和addPlan的数据类型和必要性
+        Add.propTypes={
+            count:PropTypes.number.isRequired,
+	        addPlan:PropTypes.func.isRequired
+        }
+        
+        //创建List组件
+        class List extends React.Component{
+            
+            //读取通过props从父组件中传递进来的plans数组，并<li>遍历
+            render(){
+                const {plans}=this.props//解构赋值（optional）
+                return(
+                    <ul>
+	                    {
+		                    plans.map((plan,index)=><li key={index}>{plan}</li>)
+		                    /*
+		                    =>代表了函数体+return
+		                    因此如果想加{}，则可写成{return <li key={index}>{plan}</li>}
+		                     */
+	                    }
+                    </ul>
+                )
+            }
+        }
+        //指定通过props传进List组件的plans属性值的数据类型和必要性
+        List.propTypes={
+            plans:PropTypes.array.isRequired
+        }
+        
+        //渲染App标签组件
+        ReactDOM.render(<App/>,document.getElementById("example"))
+    </script>
+</body>
+</html>

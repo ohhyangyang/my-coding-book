@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+        /*
+        navigator
+            代表当前浏览器的信息，
+            功能：识别不同的浏览器
+    
+            由于历史原因，navigator对象的大部分属性都已经不能帮助我们识别浏览器了
+            （历史原因：因为一个网页在正常浏览器和IE浏览器中的效果不同，
+            开发时往往会设计一个最佳显示版本给正常浏览器，和一个正常显示版本给IE浏览器（效果相对较差）
+            再通过navigator对象属性来识别浏览器
+            IE为了避免歧视，一步步通过更改navigator对象，伪装得和其他正常浏览器越来越像，好让计算机难以识别）
+        */
+        console.log(navigator.appName);//正常浏览器和IE11:Netscape
+                                       //6～10IE浏览器:Microsoft Internet Explorer​ 
+                                       //11IE浏览器:Netscape
+
+        /*
+        navigator.userAgent
+        现在一般会使用userAgent（用户代理）来判断浏览器信息，
+        不同浏览器会有不同的userAgent，其中包含有用来描述浏览器信息内容的字符串
+        例：
+        火狐的：Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:70.0) Gecko/20100101 Firefox/70.0
+        chrome的：Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+        IE7：Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/4.0; GTB7.5; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; .NET4.0C; .NET4.0E)
+        ...
+        ⚠️⚠️⚠️
+        但是在IE11中，已经将微软和IE相关的信息都去除了，所以基本也不能通过userAgent来识别IE11了
+        那么如通过userAgent不能判断，则还可以通过一些浏览器中的特有对象属性来识别浏览器
+        比如 ActiveXObject函数 （只在IE里有）
+        */
+        //综上总结出以下识别浏览器的最终代码
+        var ua = navigator.userAgent;
+        if (/firefox/i.test(ua)) {//判断火狐
+            alert("你是火狐！");
+        } else if (/chrome/i.test(ua)) {//判断chrome
+            alert("你是chrome！");
+        } else if(/msie/i.test(ua)){//判断IE6～10
+            alert("你是IE");
+        } else if("ActiveXObject" in window){//判断IE11
+            alert("你是IE11！");
+        }
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

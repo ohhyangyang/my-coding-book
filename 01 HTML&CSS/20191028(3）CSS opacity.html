@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>元素的层级</title>
+        <style type="text/css">
+        /*
+        opacity 设置元素的透明度
+        可选值：0～1之间的值
+           0表示完全透明
+           1表示完全不透明
+
+        ⚠️IE8及以下浏览器不支持opacity，需要使用filter属性
+        语法 filter:alpha(opacity=透明度);
+             透明度需要取0～100之间的值
+             0表示完全透明
+             100表示完全不透明
+        */
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: relative;
+            z-index: 100;
+        }
+        .box2{
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            z-index: 101;
+            opacity: 0.8;
+            filter:alpha(opacity=80);
+            
+        }
+        .box3{
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            position: absolute;
+            z-index: 102;
+            left: 200px;
+            top:200px;
+            opacity: 0.5;
+            filter:alpha(opacity=50);
+
+        }
+        
+        
+        </style>
+    </head>
+    <body>
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        
+    </body>
+</html>

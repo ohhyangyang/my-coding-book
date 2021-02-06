@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+
+    /*
+    Primitive Values 基本数据类型
+    - string
+    - number
+        - Number.isNaN()用来确定一个值是否为NaN  ⚠️⚠️ 优于NaN(),因为NaN()测试string会返回false
+    - BigInt 
+        是一种内置对象，它提供了一种方法来表示大于 253 - 1 的整数。
+        这原本是 Javascript中可以用 Number 表示的最大数字。
+        BigInt 可以表示任意大的整数。
+    - boolean，
+    - null，
+        代表no value, no address这个值
+        ⚠️⚠️ 在实际应用中，常常用来预初始化一个对象，意味着将来会对这个对象进行指向一个memory parameter address
+    - undefined，  
+        表示变量已被声明，但还没有赋值，想一个空盒子
+        ⚠️⚠️ 和 referenceError 中的 not defined 不同
+    - symbol
+    */
+    /*
+    所有数值都是Number类型
+    包括整数和小数
+    Number.MAX_VALUE代表数字的最大值
+
+
+
+    */
+
+    var str2 = "hello";
+    str2 = 3;
+    str2 = "你好";
+    document.write(str2);
+    document.write(str2[1]);
+    
+    
+  console.log("我就是不出来");
+  alert("你好");
+    
+    var a=143.5453
+    console.log(a);
+
+    var a=123; //Number
+    var b="123";//String
+
+    /*可以使用typeof来检查变量类型
+    */
+    console.log(typeof a);
+    console.log(typeof b);
+
+    /* Number.MAX_VALUE=1.7976931348623157e+308
+    Number.MIN_VALUE=5e-34 (大于0的最小值)
+
+    */
+
+    document.write(Number.MAX_VALUE);//1.7976931348623157e+308
+    a=Number.MAX_VALUE * Number.MAX_VALUE
+    document.write(a);//结果为infinity,表示正无穷，-infinity表示负无穷
+    document.write(typeof a);//number
+
+   a="abc"*"cbd"; // 计算结果为NaN，是一个特殊的数字，表示Not a Number
+   console.log(typeof a);
+
+
+   var c=53426523546+456;
+   var c=0.1+0.2; 
+   console.log(c);
+   /*结果为0.30000000000000004，如果使用js进行小数运算，可能得到一个不精确的结果
+   所以千万不要用js进行精确度高的运算*/
+
+   /*Boolean 布尔值, 用于逻辑判断
+   true false
+   */
+
+   var bool=true;
+   console.log(bool);//true
+   console.log(typeof bool);//boolean
+
+   /*
+   Null类型的值为null,用来表示一个为空的object
+   Undefined表示未赋值
+   */
+   var a = null;
+   console.log(typeof a);//object
+   var f;
+   console.log(f);
+   console.log(typeof f);//undefined
+
+
+
+
+
+    
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

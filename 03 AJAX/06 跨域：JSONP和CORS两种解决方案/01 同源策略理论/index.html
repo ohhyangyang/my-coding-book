@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>首页</title>
+</head>
+<body>
+<h1>尚硅谷</h1>
+<button>点击获取用户数据</button>
+</body>
+<script type="text/javascript">
+	/*
+	-同源策略(Same-Origin Policy)
+	
+	最早由Netscape公司提出，是浏览器的一种安全策略。
+	同源： 协议、域名、端口号必须完全相同。
+    
+    下表给出了与URL http://store.company.com/dir/page.html 的源进行对比的示例:
+
+      URL	                                            结果	    原因
+      http://store.company.com/dir2/other.html	        同源	    只有路径不同
+      http://store.company.com/dir/inner/another.html	同源	    只有路径不同
+      https://store.company.com/secure.html	            失败  	协议不同
+      http://store.company.com:81/dir/etc.html	        失败	    端口不同 ( http:// 默认端口是80)
+      http://news.company.com/dir/other.html	        失败	    主机不同
+      http://store.company.cn/dir/page.html	            失败	    域名不同
+    
+    -跨域
+    
+    违背同源策略就是跨域。
+   
+    浏览器根据响应头的Access-Control-Allow-Origin字段的值来判断是否有权限获取数据
+    一般情况下，如果没有给他赋值*的话，跨域是没有访问权限的，响应的数据会被浏览器拦截
+          
+     更多相关：https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy
+    
+	 */
+	const btn = document.querySelector('button');
+	
+	btn.onclick = function () {
+        const xhr = new XMLHttpRequest();
+        //此处因为满足同源策略，所以URL可以简写
+        xhr.open('GET','/data');
+        //发送
+		xhr.send();
+		//绑定事件
+		xhr.onreadystatechange =function () {
+            if(xhr.readyState === 4){
+                if(xhr.status >= 200 && xhr.status <300){
+                    console.log(xhr.response);
+                }
+            }
+        }
+    }
+</script>
+</html>

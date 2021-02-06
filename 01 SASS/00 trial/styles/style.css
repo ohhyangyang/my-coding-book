@@ -1,0 +1,10 @@
+#box1 {
+  color: red;
+  background-color: blue;
+  font-size: 20px;
+}
+#box1:hover {
+  background-color: green;
+}
+
+/*# sourceMappingURL=style.css.map */

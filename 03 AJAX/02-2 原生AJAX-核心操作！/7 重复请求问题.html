@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>7 重复请求发送问题</title>
+</head>
+<body>
+<button>点击发送</button>
+</body>
+<script type="text/javascript">
+	/*
+	如果发生用户疯狂点击发送请求的情况，服务器会接收到非常多的相同请求，压力会很大
+	此时，可以在收到发送新请求时，先看看之前有没有相同请求，
+	如果有，则可以把之前的请求取消掉，然后重新发送新请求，保持向服务器发送的请求只有一个
+	从而减轻服务器压力
+	 */
+	const btn = document.getElementsByTagName('button')[0];
+	let xhr;//⚠️⚠️⚠️
+	
+    //设置标识变量，用于判断是否正在发送一个AJAX请求，默认值为false，表示没有在发送AJAX
+    let isSending = false;
+    
+    
+	btn.onclick = function () {
+	    
+	    /*
+	    创建一个新AJAX对象之前，首先判断标识变量，
+	    如果为true，则表示一个AJAX请求正在被发送，
+	    则取消该AJAX请求，并创建一个新AJAX请求
+	     */
+		if(isSending)
+		    xhr.abort();//取消请求
+		
+	    //创建AJAX对象
+        xhr = new XMLHttpRequest();
+        
+        //若创建了一个AJAX请求，则修改标识变量为true
+		isSending = true;
+		
+        //初始化
+		xhr.open('GET','http://127.0.0.1:8000/delay');
+		
+		//发送请求
+		xhr.send();
+		
+		//时间监听
+		xhr.onreadystatechange = function () {
+            if(xhr.readyState === 4){
+                
+                /*
+                在xhr.readyState === 4的情况下，表示收到了服务器的结果，
+                无论是否为一个成功的结果，都修改标识变量为false
+                 */
+                isSending = false;
+                
+                if(xhr.status >= 200 && xhr.status <300){
+                
+                }
+            }
+        }
+    }
+</script>
+</html>

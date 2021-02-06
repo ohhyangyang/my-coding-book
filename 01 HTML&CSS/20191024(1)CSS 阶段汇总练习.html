@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>阶段汇总练习</title>
+        <style type="text/css">
+        /*
+        PS：界面选项-单位与标尺-标尺：像素 文字：像素
+            ctr-R 标尺
+            ctr-1 100%比例视图
+            ctr-0 占满屏幕视图
+        */
+        /*清除默认样式*/
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /*统一页面字体*/
+        body{
+            font: 11px/1 Arial;/*line-height设置一倍行高*/
+        }
+        /*首先设置outer大小，并调整位置，最后完成之后可以去掉outer的设置*/
+        .outer{
+            width: 300px;
+            height: 473px;
+            background-color: rgb(255, 255, 169);
+            margin: 60px auto;
+        }
+        .title{
+            border-top:6px #09c solid;/*上边框*/
+            height:57px;/*title高度*/
+            background-color: white;
+            line-height: 57px;/*利用文字在行高内垂重居中，让文字垂直居中*/
+            padding:0px 10px 0px 5px;/*利用内边距控制h3和a靠边框的距离*/
+            /*⚠️因为未指定width，所以width默认为其父元素的100%，默认值为auto，
+            当此时设置了左右padding之后，元素的width会根据情况自动调整，以确保不会溢出父元素*/
+        }
+        .title h3{
+            float:left;
+            color: #f60;
+            display: block;
+            font: 22px/57px Arial;
+            /*⚠️font的简写属性，
+            未写font-weight，但因为默认为normal。所以去掉了h3的加粗，
+            而且需要再写一次line-height行高，否则会使用默认值*/
+            
+        }
+        .title a{
+            float:right;
+            color:rgb(200, 200, 255);
+            font-size: 12px;/*无法精确测量文字大小，需要其他人员提供*/
+        }
+        .content{
+            border:solid 1px #deddd9;
+            background-color: white;
+
+            
+        }
+        .content h3{
+            color:#00b4db;
+            font-weight: normal;
+            line-height:2;
+            margin-top:5px;
+        }
+        .content a{
+            color: black;/*设置content中所有超链接的样式*/
+            text-decoration: none;
+            
+        }
+        .content ul{
+            list-style: none;
+            padding:0px 10px 0px 10px;
+            line-height: 1.6;
+            padding-bottom: 10px;
+            border-bottom:1px dashed #deddd9;
+        }
+        .content .noborder{
+            border:none;
+        }
+        
+        .content .red{
+            color:rgb(200, 200, 255);
+            font-style: normal;
+        }
+        .content .right{
+            float:right;
+            /*这么写IE6中会出问题，因为在IE6里即使上一层是内联元素，
+            float元素也不可以在同一行，可以选择调换两个a的书写顺序，或者两个a都浮动*/
+        }
+        .content a:hover{
+            color: rgb(200, 200, 255);
+            text-decoration: underline;
+        }
+        .content a:active{
+            color:#f60;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="outer">
+            <div class="title">
+                <h3>AA SCHOOL</h3>
+                <a href="#">Info</a>
+            </div>
+            <div class="content">
+                <h3>WELCOME</h3>
+                <ul>
+                    <li>
+                        <a href="#">Welcome <span class="red">2018-19</span></a>
+                        <a class="right" href="#"><span class="red">AA Student Lists</span></a>
+                    </li>
+                    <li>
+                        <a href="#">Welcome 2017-18</a>
+                        <a class="right" href="#">AA Student Lists</a>
+                    </li>
+                    <li>
+                        <a href="#">Welcome 2016-17</a>
+                        <a class="right" href="#">AA Student Lists</a>
+                    </li>
+                    <li>
+                        <a href="#">Welcome 2015-16</a>
+                        <a class="right" href="#">AA Student Lists</a>
+                    </li>
+                </ul>
+                <h3>CALENDARS</h3>
+                <ul>
+                    <li>
+                        <a href="#">AA Calendar Subscription</span></a>                       
+                    </li>
+                    <li>
+                        <a href="#">View Room Booking</a>
+                    </li>
+                    
+                </ul>
+                <h3>BEDFORD SQUARE</h3>
+                <ul class="noborder">
+                    <li>
+                        <a href="#">About Bedford Square</span></a>                       
+                    </li>
+                    <li>
+                        <a href="#">Digital Prototyping Lab</a>
+                    </li>
+                    <li>
+                        <a href="#">Wood & Metal Workshop</span></a>                       
+                    </li>
+                    <li>
+                        <a href="#">Model Workshop</a>
+                    </li>
+                    <li>
+                        <a href="#">Digital Photo Studio</span></a>                       
+                    </li>
+                    <li>
+                        <a href="#">Audiovisual Department</a>
+                    </li>
+                    <li>
+                        <a href="#">Computer Department</a>
+                    </li>
+                    <li>
+                        <a href="#">Writing Centre</span></a>                       
+                    </li>
+                    <li>
+                        <a href="#">Student Care Centre</a>
+                    </li>
+                    <li>
+                        <a href="#">Restaurant & Bar</span></a>                       
+                    </li>
+                    <li>
+                        <a href="#">Security</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

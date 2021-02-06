@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生成器函数实例</title>
+</head>
+
+<body>
+    <script>
+        
+        /*
+        - 定时器案例来模拟 生成器函数在异步编程中的表现
+        
+          Javasrcipt是典型的单线程异步模式操作，
+          该案例逻辑可以用来处理包括：fs文件操作 网络操作(ajax, request) 数据库操作
+          
+        - 异步编程使用生成器的解决逻辑：类比多米诺骨牌
+             1 给每一个异步任务分别声明不同的函数  --> 制作骨牌
+             2 声明一个生成器函数，将所有函数依次放进来，并放入yield语句中  --> 骨牌放上桌
+             3 调用生成器函数，获取iterator迭代器  --> 获取骨牌推动器
+             4 将iterator.next()放入每个异步任务里，来形成多米诺骨牌式的迭代关系  --> 摆放好每个骨牌
+             5 调用iterator.next()，--> 推动第一块骨牌
+        */
+        /*
+        需求：
+             1s后控制台输出 111
+             然后 2s后输出 222
+             然后 3s后输出 333
+             ...
+         */
+        
+        // ⚠️⚠️不使用生成器的话，会陷入回调地狱
+        // setTimeout(() => {
+        //     console.log(111);
+        //     setTimeout(() => {
+        //         console.log(222);
+        //         setTimeout(() => {
+        //             console.log(333);
+        //         }, 3000);
+        //     }, 2000);
+        // }, 1000);
+        
+///////////以下开始使用生成器/////////////////////////////////////////
+        
+        //声明第一个函数，来完成第一个异步任务
+        function one(){
+            setTimeout(()=>{
+                console.log(111);
+                iterator.next(); //第二次
+            },1000)
+        }
+
+        //声明第二个函数，来完成第二个异步任务
+        function two(){
+            setTimeout(()=>{
+                console.log(222);
+                iterator.next(); //第三次
+            },2000)
+        }
+
+        //声明第三个函数，来完成第三个异步任务
+        function three(){
+            setTimeout(()=>{
+                console.log(333);
+                iterator.next(); //第四次
+            },3000)
+        }
+        
+        //声明生成器函数
+        function * gen(){
+            yield one();
+            yield two();
+            yield three();
+        }
+
+        //调用生成器函数
+        let iterator = gen();
+        
+        iterator.next(); //迭代开始，第一次
+
+    </script>
+</body>
+
+</html>

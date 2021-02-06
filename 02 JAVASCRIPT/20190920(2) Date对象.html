@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    Date对象
+    Date对象表示一个时间
+    */
+
+    //new Date() 使用构造函数创建一个Date对象，则会封装为当前函数调用的时间 
+    var d1=new Date();
+    console.log(d1);//Fri Sep 20 2019 13:49:36 GMT+0200 (CEST)
+    
+
+    //new Date(时间字符串) 如创建一个指定的时间对象，则需要在构造函数中传递一个表示时间的字符串作为参数
+    //日期格式 月/日/年 时:分:秒（年份一定写完整，避免歧义）
+    var d2=new Date("12/04/2016 11:10:30");
+    console.log(d2);//Sat Dec 03 2016 11:10:30 GMT+0100 (CET)
+
+    //getDate() 方法可返回月份的某一天（1～31）
+    var date=d2.getDate();
+    console.log(date);//3
+
+    //getDay() 方法可返回表示星期的某一天的数字。（0～6），0表示周日
+    var day=d2.getDay();
+    console.log(day);//0，周日
+
+    //getMonth() 方法可返回表示月份的数字。(0 ~ 11)，月份从0开始
+    var month=d2.getMonth();
+    console.log(month);//11，十二月
+
+    //getFullYear() 方法可返回一个表示年份的 4 位数字。
+    var year=d2.getFullYear();
+    console.log(year);//2016
+
+    /*
+    getTime()方法可返回时间戳，即指定的时间距离 1970年1月1日0时0分0秒之间的毫秒数。（1秒=1000毫秒）
+    1970年1月1日0时0分0秒为格林威治标准时间，被称为时间戳，计算机底层在保存时间时使用的都是时间戳
+    */
+    var time=d2.getTime();
+    console.log(time);//1480846230000，指定时间的时间戳
+
+    //Date.now()获取当前的时间戳
+    time=Date.now();//
+    console.log(time);//1568983080982，当前时间戳
+
+    //可以利用now()来测试代码执行的性能，类似于之前的console.time(testX)和console.timeEnd(testX)
+    var start=Date.now();//开始
+    for(var i=0;i<100;i++){
+        console.log(i);
+    }
+    var end=Date.now();//结束
+    console.log("执行了"+(end-start)+"毫秒");//执行了4毫秒
+
+    console.time("test");
+    for(var j=0;j<100;j++){
+        console.log(j);
+    }
+    console.timeEnd("test");//test: 4.157ms
+    //time和timeEnd更方便
+    
+
+
+
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

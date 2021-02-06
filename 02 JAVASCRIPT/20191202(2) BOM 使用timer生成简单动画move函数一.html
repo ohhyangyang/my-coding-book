@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            /* 
+            ⚠️⚠️需要指定一个left的值，这样在执行getStyle函数时，在IE中不会返回auto（返回auto则无法进行计算）
+            */
+        }
+    </style>
+    <script type="text/javascript">
+        //getStyle函数可获取元素的当前显示样式
+        function getStyle(obj, name) {
+            if (window.getComputedStyle) {
+                return getComputedStyle(obj, null)[name];
+            } else {
+                return obj.currentStyle[name];
+            }
+        }
+        window.onload = function () {
+            var box1 = document.getElementById("box1");
+            var btn01 = document.getElementById("btn01");
+            var timer;//定义定时器标识的变量
+            btn01.onclick = function () {//box1向右移动（left值增加），并在800px时停住
+                clearInterval(timer);//关闭上一个定时器，即使没有上一个，也不会报错
+                timer = setInterval(function () {
+                    var oldValue = parseInt(getStyle(box1, "left"));
+                    /*
+                    获取旧值
+                    使用getstyle函数，则可获取任意样式属性（不止是left）
+                    但是返回值需要处理：
+                    1 在默认值的情况下，IE会返回auto，因此需要在css 标签中对元素的相关属性进行赋值（赋默认值）
+                    2 需要使用parseInt()去掉px单位，用以计算
+                    */
+                    var newValue = oldValue + 13;//生成新值
+                    //当元素移动到800px时，使其停止执行动画
+                    if(newValue>800){
+                        newValue=800;//即使newValue无法取得800px整数，也使其等于800
+                    }
+                    box1.style.left = newValue + "px";
+                    if (newValue == 800) {//定时器停止
+                        clearInterval(timer);
+                    }
+                }, 30);
+            };
+        };
+
+    </script>
+</head>
+
+<body>
+    <button id="btn01">点击按钮以后，box1向右移动</button>
+    <br />
+    <br />
+    <div id="box1"></div>
+    <div id="box2" style="width: 0px; height: 1000px; border-left: black solid 1px; position: absolute; left: 800px; top: 0;"></div>
+</body>
+
+</html>

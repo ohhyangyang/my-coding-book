@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+    <script type="text/javascript">
+        //使div可以根据不同的方向键向不同方向移动
+        window.onload = function () {
+            var pace = 10;//设置每步移动距离的变量
+            var direction;//设置代表方向的变量
+            document.onkeydown = function (event) {//按下按键控制方向
+                event = event || window.event;//⚠️⚠️⚠️
+                direction=event.keyCode;
+                if(event.ctrlKey){
+                    pace=50;
+                }else{
+                    pace=10;
+                }
+            };
+            document.onkeyup=function(){//松开按键box停止
+                pace=0;
+            }
+            setInterval(function () {//通过定时器控制box运动速度
+                switch (direction) {
+                    case 37://左
+                        box1.style.left = box1.offsetLeft - pace + "px";
+                        break;//⚠️⚠️
+                    case 38://上
+                        box1.style.top = box1.offsetTop - pace + "px";
+                        break;//⚠️⚠️
+                    case 39://右
+                        box1.style.left = box1.offsetLeft + pace + "px";
+                        break;//⚠️⚠️
+                    case 40://下
+                        box1.style.top = box1.offsetTop + pace + "px";
+                        break;//⚠️⚠️
+                }
+            }, 500);
+            
+        };
+    </script>
+</head>
+
+<body>
+    <div id="box1"></div>
+</body>
+
+</html>

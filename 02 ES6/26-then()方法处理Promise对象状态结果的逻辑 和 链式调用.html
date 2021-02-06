@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise.prototype.then</title>
+</head>
+<body>
+    <script>
+	    /*
+	    - Promise.prototype.then(onFulfilled, onRejected)
+	      Promise.prototype.then 方法用于处理Promise不同状态的结果
+	                            then()方法返回的是一个新的 Promise 对象，因此可以采用链式调用。
+	                            它最多需要有两个参数：onFulfilled成功和onRejected失败情况的两个回调函数。
+	      https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/then
+	      
+	      语法   Promise.prototype.then(onFulfilled, onRejected)
+	      
+	             p.then( value => { fulfilled状态时调用的回调函数 },
+	                     reason => { rejected状态时调用的回调函数 });
+                  
+               参数  fulfilled状态函数 (optional)
+                                当 Promise 变成fulfilled时调用的函数。该函数有一个参数，即Promise对象fulfilled的最终结果（the fulfillment  value）。
+                                (如果该参数不是函数，则会在内部被替换为 (x) => x，即原样返回 promise 最终结果的函数)
+                     rejected状态函数 (optional)
+                                当 Promise 变成rejected时调用的函数。该函数有一个参数，即Promise对象rejected的原因（rejection reason）。
+                                (如果该参数不是函数，则会在内部被替换为一个 "Thrower" 函数 (it throws an error it received as argument)。)
+                  
+	      返回值   新Promise对象，Promise对象的状态由then()方法fulfilled或rejected状态的回调函数的执行结果决定：
+	      
+	                1 then()的对应callback返回一个非Promise值 (return xxx)
+	                           --> then() 返回值 新Promise对象： 状态 fulfilled，
+	                                                         并且将非Promise值传递给新Promise对象的fulfilled状态的callback参数。
+	                2 then()的对应callback没有返回任何值 (return undefined)
+	                           --> then() 返回值 新Promise对象： 状态 fulfilled，
+	                                                         新Promise对象的fulfilled状态的callback参数值为undefined。
+	                           
+	                3 then()的对应callback抛出一个错误 ( throw new Error('xxx') )，
+	                           --> then() 返回值 新Promise对象：状态 rejected，
+	                                                         并且将抛出的错误传递给给新Promise对象的rejected状态的callback参数。
+	                           
+	                4 then()的对应callback返回一个已经是fulfilled状态的Promise，
+	                           --> then() 返回值 新Promise对象：状态 fulfilled，
+	                                                          并且将那个 Promise 的fulfilled状态的callback的参数值传递给新Promise对象的fulfilled状态的callback参数。
+	                5 then()的对应callback返回一个已经是rejected状态的Promise，
+	                           --> then() 返回值 新Promise对象：状态 rejected，
+	                                                          并且将那个 Promise 的rejected状态的callback的参数值传递给新Promise对象的rejected状态的callback参数。
+	                6 then()的对应callback返回一个pending的 Promise，
+	                           --> then() 返回值 新Promise对象：状态 pending，
+	                                                          并且新Promise对象的终态与那个 Promise 的终态相同；同时，新Promise对象变为终态时调用的callback参数与那个 Promise 变为终态时的callback的参数是相同的。
+	      
+	      ⚠️ then()方法具有同步性
+	         由于then()和 Promise.prototype.catch() 方法都会返回 promise，它们可以被链式调用
+	         ——这同时也是一种被称为复合（ composition）的操作。
+	      
+	     - 链式调用
+	      
+	      
+	      
+	     */
+        //创建 promise 对象
+        const p = new Promise((resolve, reject)=>{
+            setTimeout(()=>{
+                resolve('传递一段用户数据');
+                // reject('出错啦');
+            }, 1000)
+        });
+
+        //调用 then 方法
+	    // then方法的返回结果是 一个新Promise 对象, 新Promise对象的状态由then()回调函数的执行结果决定
+        // const result = p.then(value => {
+        //
+        //     console.log(value);
+        //
+        //     //case 1. 返回非 promise 类型的属性
+        //     //return '我是then方法的返回值，但我被封装在Promise对象里';
+	    //
+        //     //case 3. 抛出错误
+        //     throw new Error('出错啦!');
+        //     throw '出错啦!';
+        //
+        //     //case 4 5 6. 返回 promise 对象
+        //     // return new Promise((resolve, reject)=>{
+        //     //     resolve('ok');
+        //     //     //reject('error');
+        //     // });
+        //
+        // }, reason=>{
+        //     //console.warn(reason);
+        // });
+        //
+        // console.log(result);//返回了一个新Promise对象
+
+        //链式调用，回避回调地狱的问题
+	    // (省略了 rejected状态的的回调函数)
+        p.then(value=>{
+        
+        }).then(value=>{
+
+        });
+
+
+    </script>
+</body>
+</html>

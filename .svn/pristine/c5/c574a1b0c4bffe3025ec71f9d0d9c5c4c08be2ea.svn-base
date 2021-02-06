@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>RGB值</title>
+        <style type="text/css">
+        /*
+        *在CSS中可以直接使用颜色的单词来表示不同颜色
+        红色 red
+        蓝色 blue
+        绿色 green
+        更多颜色名：https://www.w3school.com.cn/cssref/css_colornames.asp
+
+        *也可以使用RGB值来表示不同颜色（十进制）
+        所谓RGB值指的是通过三原色(Red Green Blue)的不同浓度，来表示出不同的颜色
+        颜色获取工具：数码测色计
+        优点：可以通过测色计吸取颜色并应用在代码中
+          语法：rgb(红色的浓度，绿色的浓度，蓝色的浓度)
+
+          颜色的浓度为0~255之间的值，255为最大，0表示无
+          浓度也可以采用百分数(0%~100%)来设置，百分数最终会转换为0～255之间的值(0%=0,100%=255)
+
+        *十六进制的RGB值（用的相对更多）
+        原理和RGB值相同，只不过使用十六进制数来代替，使用三组两位数的十六进制数字来表示一个颜色
+        颜色获取工具：数码测色计（左上设置：显示--值显示为--十六进制）
+          语法：#红色绿色蓝色
+
+          (十六进制：0 1 2 3 4 5 6 7 8 9 a b c d e f)
+
+          颜色浓度为00~ff之间的值，ff表示最大，相当于rgb中的255，00表示无，相当于rgb中的0
+          红色：#ff0000
+          绿色：#00ff00
+          蓝色：#0000ff
+
+          ⚠️两两重复的颜色可以简写
+          比如：#ff0000-->#f00
+               #aabbcc-->#abc
+        */
+        .box1{
+            width: 100px;
+            height: 100px;
+            background-color: rgb(253, 245, 219);/*通过数码测色计测出的背景色RGB值*/
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+            background-color: #abc;/*#aabbcc*/
+        }
+
+        </style>
+    </head>
+    <body>
+        <div class="box1"></div><br/>
+        <div class="box2"></div>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>属性选择器</title>
+        <style type="text/css">
+        /*
+        属性选择器：可以根据元素中的属性或属性值来选取指定元素
+        语法： 元素标签[属性名]  --选取含有指定属性的元素
+              元素标签[属性名="属性值"]   --选取含有指定属性及属性名的元素
+              元素标签[属性名^="开头内容"]  --选取属性值以指定内容开头的元素
+              元素标签[属性名$="结尾内容"]   --选取属性值以指定内容结尾的元素
+              元素标签[属性名*="包含内容"]   ---选取属性值包含指定内容的元素
+        */
+        p[title]{
+            background-color:honeydew;
+        }
+        p[title="hello"]{
+            color:mediumpurple;
+        }
+        p[title^="ab"]{
+            font-size:20px;
+        }
+        p[title$="c"]{
+            color:orangered;
+        }
+        p[title*="c"]{
+            font-size: 10px;
+        }
+
+        </style>
+    </head>
+    <body>
+        <!--
+            title属性：
+               该属性可给任何标签指定
+               当鼠标移入到元素上时，元素中的title属性值将会作为提示文字显示
+        -->
+        <p title="hello">我是一个段落</p>
+        <p title="ab">我是一个段落</p>
+        <p title="abc">我是一个段落</p>
+        <p title="abcd">我是一个段落</p>
+        <p title="hello~~我是title~~">我是一个段落</p>
+    </body>
+</html>

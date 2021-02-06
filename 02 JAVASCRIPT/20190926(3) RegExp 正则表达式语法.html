@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    使用字面量创建正则表达式
+    语法：var 变量=/正则表达式/匹配模式
+    
+    ⚠️⚠️正则内对空格敏感！！！
+    使用构造函数创建更加灵活
+    使用字面量创建更加方便
+    
+    |代表或者
+
+    []里的内容也是或者关系
+    [ab]==a|b
+    而[a-z]代表任意小写字母
+    [A-Z]任意大写字母
+    [A-z]任意字母
+    [0-9]任意数字
+
+    [^X]找除了X以外的东西
+    */
+    var reg=/a/i;
+    console.log(reg.test("abc"));//true
+
+    //创建一个正则，检查一个字符串中是否有a或b或c
+    
+    reg=/a|b|c/;//使用|代表或者
+    console.log(reg.test("byj"));//true,有b
+
+    //创建一个正则，检查字符串中是否有字母
+    reg=/[A-z]/;//代表任意字母
+
+    //创建一个字符串中是否有abc或adc或aec
+    reg=/a[bde]c/;//==abc|adc|aec
+
+    //[^ ]
+    reg=/[^ab]/;//找除了ab以外的东西
+    console.log(reg.test("acc"));//true，c
+
+    reg=/[^0-9]/;//除了数字以外的东西
+    console.log(reg.test("1234y567"));//true，y
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!--
+使用React在空div中添加一个h1标签
+-->
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>HelloReact</title>
+</head>
+<body>
+<div id="test"></div>
+
+<script type="text/javascript" src="./js/react.development.js"></script>
+                                   <!--react.js: React的核心库-->
+<script type="text/javascript" src="./js/react-dom.development.js"></script>
+                                   <!--react-dom.js: 提供操作DOM的react扩展库-->
+<script type="text/javascript" src="./js/babel.min.js"></script>
+                 <!--babel.min.js: 可以将解析JSX语法（JS的扩展语法，例如var vDOM = <h1>Hello React!</h1>）代码转为纯JS语法代码的库
+                                   也可以将ES6转换成ES5-->
+<script type="text/babel">/*告诉babel去解析里面的JSX代码*/
+    //1 创建虚拟DOM元素对象
+    var vDOM = <h1>Hello React!</h1>   //不是字符串，不加引号
+    //2 将虚拟DOM渲染到页面真实DOM容器中
+    ReactDOM.render(vDOM,document.getElementById("test"));
+</script>
+</body>
+</html>
+

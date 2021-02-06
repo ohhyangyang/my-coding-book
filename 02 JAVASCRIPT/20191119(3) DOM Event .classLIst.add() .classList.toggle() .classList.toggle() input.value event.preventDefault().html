@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    .open{
+        height: 200px;
+        width:100%;
+        border: 2px solid black;
+        transition: all 1s;
+    }
+
+    .closed{
+        height: 0px;
+        transition: all 1s;
+    }
+    </style>
+    
+</head>
+<body>
+    
+    <div id="dropdown-section" class="open"></div>
+    <button id="hide-div">toggle</button>
+
+    
+    <form action="">
+        <label for="todo-input">TO DO:</label>
+        <input id="todo-input" type="text">
+
+        <button id="add-item-button">Add Item</button>
+    </form>
+
+    <ul id="item-list"></ul>
+
+    <script type="text/javascript">
+    /*
+    - ele.classList.add()
+    - ele.classList.remove()
+    - ele.classList.toggle()
+    - input.value  
+    - event.preventDefault() 阻止网页reload
+       
+
+    */
+    const dropdownSection = document.querySelector("#dropdown-section");
+    const toggleButton = document.querySelector("#hide-div");
+
+    toggleButton.addEventListener("click",function(){
+        dropdownSection.classList.toggle("closed");
+
+        if(toggleButton.textContent === "Hide"){
+            toggleButton.textContent = "Show";
+        }
+        else if(toggleButton.textContent === "Show"){
+            toggleButton.textContent = "Hide";
+        }
+    })
+
+
+    const todoInput = document.querySelector("#todo-input");
+    const button = document.querySelector("#add-item-button")
+    const list = document.querySelector("#item-list");
+
+    button.addEventListener('click',function(event){
+        //⚠️⚠️ stop the default page reload on form button submit，需要阻止form提交时不停的reload
+        event.preventDefault();
+
+        //⚠️⚠️ getting the value written in the input  'el.value'
+        console.log('todoInput.value',todoInput.value)
+        const todoText = todoInput.value;
+
+        //creating and adding new Li
+        const newLi = document.createElement('li');
+        newLi.textContent = todoText;
+        list.appendChild(newLi);
+
+        //⚠️⚠️ 清除输入框
+        todoInput.value = "";
+
+        
+    })
+        
+        </script>
+</body>
+</html>

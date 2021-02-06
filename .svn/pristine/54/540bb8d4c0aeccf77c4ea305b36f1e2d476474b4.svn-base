@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    #box1{
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        position: absolute;/*⚠️记得开启定位后，才可以使用left top...（一般开绝对定位）*/
+    }
+    #box2{
+        width: 500px;
+        height: 500px;
+        background-color: #bfa;
+        
+    }
+    </style>
+    <script type="text/javascript">
+    /*
+    *event.pageX event.pageY属性
+    可以获取鼠标在当前相对于页面的坐标
+    ⚠️在IE中不支持
+
+    event.clientX event.clientY属性
+    可以获取鼠标在当前相对于可见窗口的坐标
+
+    -->在练习中div的偏移量是针对整个页面的，
+    因此使用pageX pageY更合理
+    但是由于要考虑到IE8的兼容性问题，有些时候只可以使用clientX Y + scrollTop来解决
+
+    *解决pageXY的兼容问题
+
+    */
+    //使div跟随鼠标移动
+    window.onload=function(){
+        
+        var box1=document.getElementById("box1");
+        document.onmousemove=function(event){//⚠️将事件绑定给document，使响应函数在页面所有位置都会被触发
+            event=event||window.event;//event对象的兼容性
+            var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+            var scrollLeft=document.documentElement.scrollLeft||document.body.scrollLeft;
+               /*⚠️获取滚动条水平垂直滚动的距离
+                chrome认为浏览器的滚动条属于body，可以通body.scrollTop  body.scrollLeft来获取
+                而火狐等浏览器认为浏览器的滚动条是HTML的
+                有哪个就用哪个
+                 （document.documentElement获取html根标签
+                 document.body获取body标签）
+                 */
+
+            var x=event.clientX;//获取当下event对象中鼠标的x坐标(相对窗口)
+            var y=event.clientY;//获取当下event对象中鼠标的y坐标(相对窗口)
+            box1.style.left=x+scrollLeft+"px";//（图）
+            box1.style.top=y+scrollTop+"px";
+            //⚠️X Y的返回值没有px单位，记得填加
+            //⚠️记得开启定位后，才可以使用left top...（一般开绝对定位）
+        };
+        var box2=document.getElementById("box2");
+        box2.onmousemove=function(event){
+            event=event||window.event;
+            event.cancelBubble=true;
+            //使div移动在box2中失效
+            //取消bubble后，阻止box2中的移动不会向上传递到document，因此不会触发document的事件
+        };
+
+    };
+    </script>
+</head>
+<body style="height: 1000px; width: 2000px;">
+    <div id="box2" ></div>
+    <div id="box1"></div>
+</body>
+</html>

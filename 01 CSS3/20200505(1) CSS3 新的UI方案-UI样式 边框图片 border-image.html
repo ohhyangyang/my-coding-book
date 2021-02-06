@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+		/*
+		-边框图片 border-image
+		   border-image 允许在元素的边框上绘制图像
+		   使用 border-image 时，其将会替换掉 border-style 属性所设置的边框样式
+		   规范要求使用 border-image 时border样式必须存在，但一些浏览器可能没有实现这一点。
+		   
+		   初始值	border-image-source: none
+                    border-image-slice: 100%
+                    border-image-width: 1
+                    border-image-outset: 0
+                    border-image-repeat: stretch
+            继承属性	否
+            语法： border-image: source slice width outset repeat|initial|inherit;
+
+             值	                    描述
+             border-image-source	用于指定要用于绘制边框的图像的URL位置
+             
+             border-image-slice	    从上面开始，顺时针，用四刀将image切成一个九宫格，
+                                    可输入1～4个值
+                                    具体用法见https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-image-slice
+             
+             border-image-width	    边框图片的宽度（border边框值不变）
+                                    不指定，则默认为border的宽度
+             border-image-outset	用于指定在边框向外部绘制的量（依然不改变border边框值）
+             border-image-repeat	用于设置图像边界是否应重复repeat（平铺）、拉伸stretch 或 铺满round(类似 repeat。如果无法完整平铺所有图像，则对图像进行缩放以适应区域)
+             fill                   使用fill关键字可以保留文字的中间部分
+		 */
+		
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#test1{
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+			width: 200px;
+			height: 200px;
+			border: 30px solid;
+			border-image:url("img/borderimage4.jpg") 10% 20% 30% 40% fill round ;
+		}
+		#test2{
+			
+			width: 200px;
+			height: 200px;
+			border: 30px solid;
+			border-image:url("img/borderimage4.jpg") 10% 20% 30% 40% repeat ;
+		}
+	</style>
+</head>
+<body>
+<div id="box1">
+	<div id="test1"></div>
+</div>
+<div id="box2">test2
+	<div id="test2"></div>
+</div>
+</body>
+</html>

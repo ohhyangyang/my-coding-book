@@ -1,0 +1,27 @@
+/*
+-fs (file system) 文件系统
+在Node中，与文件系统的交互是非常重要的，服务器的本质就是将本地的文件发送给远程的客户端
+file system简单来说就是通过Node来操作系统中的文件
+⚠️使用fs，需要先引入fs模块，fs是核心模块，直接引入，不需要下载
+
+-同步和异步调用文件系统
+同步(sync)：同步文件系统会阻塞程序的执行，除非操作完毕，否则不会向下执行代码
+synchronous
+异步：异步文件系统不会阻塞程序的执行，在操作完成时，通过回调callback函数将结果返回
+asynchronous
+
+-同步文件的写入
+   1 创建文件
+       fs.openSync(path, flags[, mode])
+            path 要打开文件的路径
+            flags 打开文件要做的操作的类型
+                 "r" 只读的
+                 "w" 可写的
+            mode 设置文件的操作权限，一般不传
+
+
+ */
+var fs=require("fs");
+console.log(fs);
+var fd=fs.openSync("hello.txt","w");
+console.log(fd);

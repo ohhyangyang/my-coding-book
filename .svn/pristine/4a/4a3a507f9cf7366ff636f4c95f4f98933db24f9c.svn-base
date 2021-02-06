@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    body{
+        width: 2000px;
+        height: 1000px;
+
+    }
+    #box1{
+        width: 100px;
+        height: 100px;
+        background-color: #bfa;
+        position:absolute;
+    }
+    #box2{
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        position:absolute;
+        left: 200px;
+        top: 200px;
+    }
+    </style>
+    <script type="text/javascript">
+    /*
+    event handlers
+    onmousedown  当鼠标按下
+    onmousemove  当鼠标移动时
+    onmouseup    当鼠标松开时
+
+    */
+    window.onload=function(){
+        /*
+        拖拽box1元素的流程
+             1 鼠标在元素上按下时，开始拖拽  onmousedown
+             2 鼠标移动时，元素跟随鼠标移动  onmousemove
+             3 鼠标松开时，元素停在当前位置  onmouseup
+        */
+        var box1=document.getElementById("box1");
+        
+        box1.onmousedown=function(event){//点击鼠标
+
+            //使用setCapture()设置box1捕获所有鼠标按下的事件（兼容IE8）
+            box1.setCapture && box1.setCapture(); //⚠️只有前面为true，才看后面，如果前面为false，则不看后面
+            /*
+            另一种写法：
+            if(box1.setCapture){
+                box1.setCapture();
+            };
+            /*
+            /*
+            ⚠️⚠️
+            setCapture()为一次性事件
+            结尾处必须加releaseCapture()呼应
+            否则，如果当次事件没有应用该次捕获的话，会影响到下一次操作
+            */
+            event=event||window.event;//⚠️⚠️⚠️
+            /*
+              点击时，div和鼠标之间的相对偏移量（图）
+              鼠标.clientX - div.offsetLeft --> 鼠标到左边的距离 - div到左边的距离
+              鼠标.clientY - div.offsetTop --> 鼠标到顶端的距离 - div到顶端的距离
+              ⚠️他们为点击下那一刻产生的固定值
+            */
+            var ol=event.clientX-box1.offsetLeft;
+            var ot=event.clientY-box1.offsetTop;
+            //如果不考虑偏移量，鼠标会始终处于box1左上角
+            document.onmousemove=function(event){//移动鼠标
+                event=event||window.event;//⚠️⚠️⚠️
+                //获取scroll的距离 （⚠️变化值）
+                var scrollLeft=document.documentElement.scrollLeft||document.body.scrollLeft;//scroll到左边的距离
+                var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;//scroll到顶端的距离
+                //获取鼠标的位置 （⚠️变化值）
+                var mouseLeft=event.clientX;//鼠标到左边的距离
+                var mouseTop=event.clientY;//鼠标到顶端的距离
+
+                //设定box1位置
+                box1.style.left=mouseLeft-ol+"px";
+                box1.style.top=mouseTop-ot+"px";
+            }
+            
+            document.onmouseup=function(){//松开鼠标时，结束当次事件
+
+                //⚠️不可以绑定给box1，因为当鼠标移动到box2上并松开时，松开后亦无法停止移动box1
+                document.onmousemove=null;//取消document的onmousemove事件
+                document.onmouseup=null;//也取消document的onmouseup事件
+                /*
+                鼠标在box1上按下时，产生event
+                鼠标松开后，一切事件都取消
+                */
+                box1.releaseCapture && box1.releaseCapture();//当鼠标松开时，取消box1对事件的捕获（兼容IE8）
+            }
+            return false;//（正常浏览器）
+            /*
+            当ctr+A（全选）后拖拽一个网页中的内容时，
+            浏览器会默认去搜索引擎中搜索内容，
+            此时会导致拖拽功能的异常
+
+            对于正常浏览器  可以通过return false取消默认行为 
+
+            对于IE8浏览器  可以通过set.capture()和release.capture()，将事件只捕获给box1
+            
+            元素.setCapture()  ⚠️只有IE支持，在firefox中不会报错，在chrome中会报错
+            调用元素的这个方法后，该元素会将下一次所有的鼠标的相关事件捕获到自己身上
+            set.capture()和release.capture()必须成对出现
+            */
+        }
+    }
+    </script>
+</head>
+<body>
+    <p>我是p</p>
+    <div id="box1"></div>
+    <div id="box2"></div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>元素的层级</title>
+        <style type="text/css">
+        /*
+        z-index
+        z-index可以用来设置元素层级
+        可为z-index指定一个正整数作为值，数值越大，优先级越高
+        如果两个定位元素的层级相同，那么下边的元素会盖住上边的（html结构上）
+        父元素层级再高，也不会盖住子元素
+        ⚠️对于没有开启定位的元素不能使用z-index
+        */
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: relative;
+            z-index: 100;
+        }
+        .box2{
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            z-index: 101;
+            
+        }
+        .box3{
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            position: relative;
+            z-index: 102;
+
+        }
+        .box4{
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+            position: relative;
+            z-index: 20;
+        }
+        .box5{
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+            position: absolute;
+            z-index: 10;
+        }
+        
+        </style>
+    </head>
+    <body>
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box4">
+            <div class="box5"></div>
+        </div>
+    </body>
+</html>

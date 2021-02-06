@@ -1,0 +1,40 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>按钮练习</title>
+        <style type="text/css">
+        /*
+        闪烁问题：
+        由于背景图片是外部资源，浏览器只会在该资源被使用时才会去加载资源，
+        因此在第一次触发:hover和:active时，才会加载相应背景图片，
+        而加载的时间会造成非常快的闪烁
+
+        解决方案： --> CSS-Sprite图片整合技术
+        将三个图片整合为一张图片，使三个同时加载
+        然后通过background-position来移动切换到要显示的图片的位置
+        优点：1 提高访问效率，提高用户体验
+             2 减小图片大小，提高速度
+
+        */
+        .btn:link{/*未访问过*/
+            display:block;
+            width: 40px;
+            height: 40px;
+            background-image: url(img/btn/btn9.png);
+            background-repeat: no-repeat;
+        }
+        .btn:hover{
+            background-image: url(img/btn/btn9.png);
+            background-position: -40px 0;
+        }
+        .btn:active{
+            background-image: url(img/btn/btn9.png);
+            background-position: -80px 0;
+        }
+        </style>
+    </head>
+    <body>
+        <a class="btn" href="#"></a>
+    </body>
+</html>

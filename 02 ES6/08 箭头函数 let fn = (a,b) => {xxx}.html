@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  /*
+  ES6 允许使用「箭头」（=>）定义函数。
+
+  - 声明一个箭头函数
+    有参数：
+       let fn = () => {
+          xxx
+       }
+
+    无参数：
+       let fn = (a,b) => {
+          return a + b;
+        }
+
+  - 箭头函数特性
+    1. this是静态的. this始终指向函数声明时所在作用域下的this的值
+       (在箭头函数出现之前，每一个新函数根据它是被如何调用的来定义这个函数的this值)
+       ⚠️⚠️ 即使使用call() apply()调用也不会改变指向
+    （例子见最下面）
+
+   2. 箭头函数不能作为构造函数实例化对象
+   例：
+      let Person = (name, age) => {
+          this.name = name;
+          this.age = age;
+      }
+      let me = new Person('xiao',30);  ❌❌❌ 报错：Person不是一个构造函数 
+      console.log(me);
+
+   3. 箭头函数不能使用 arguments 实参变量
+   例：
+   let fn = () => {
+       console.log(arguments);
+   }
+   fn(1,2,3);  ❌❌❌ 报错：arguments not defined
+
+   4. 箭头函数的简写
+
+   1) 可以省略小括号，当形参有且只有一个的时候
+      let add = n => {
+         return n + n;
+      }
+      console.log(add(9));
+
+   2) 可以省略花括号, 当代码体只有一条语句的时候,
+      ⚠️⚠️ 此时 return 必须省略
+           而且语句的执行结果就是函数的返回值
+      let pow = n => n * n;
+      console.log(pow(8));
+ */
+
+//1. this 是静态的
+  //普通函数
+  function getName(){
+    console.log(this.name);
+  }
+
+  //箭头函数
+  let getName2 = () => {
+    console.log(this.name);
+  };
+
+  //设置 window 对象的 name 属性
+  window.name = 'Yang';
+
+  const school = {
+    name: "ohyangyang"
+  };
+
+  //直接调用
+  getName();  //Yang
+  getName2(); //Yang
+
+  //call() 方法调用
+  getName.call(school); //ohyangyang
+  getName2.call(school); //Yang    ⚠️⚠️⚠️ call()方法无法改变箭头函数的this，
+
+
+
+
+
+
+</script>
+</body>
+</html>

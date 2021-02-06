@@ -1,0 +1,24 @@
+https://gist.github.com/ross-u/230fb1ff1ba9908f53b814cb5be7e567
+/*
+cd /usr/local/bin
+
+# Create the file
+touch vanilla-js
+
+# Copy paste the content from the provided vanilla-js file
+vi vanilla-js
+
+# Change the file permission in order to be executable by the user
+chmod +x vanilla-js
+
+# You can now execute the script from desired directory by running
+vanilla-js
+*/
+
+#!/bin/bash
+
+mkdir images scripts styles
+touch index.html scripts/index.js styles/style.css .prettierignore
+echo -e "<!DOCTYPE html>\n<html lang='en'>\n  <head>\n    <meta charset='UTF-8' />\n    <meta name='viewport' content='width=device-width, initial-scale=1.0' />\n    <title>Document</title>\n  </head>\n  <body>\n    <script src='./scripts/index.js'></script>\n  </body>\n</html>" >> index.html
+echo -e "**/*.js \n**/*.html" >> .prettierignore
+echo -e "File structure created successfully \nBoom!"

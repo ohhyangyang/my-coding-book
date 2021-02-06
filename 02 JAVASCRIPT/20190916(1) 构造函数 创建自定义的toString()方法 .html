@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    function Person(name,age,gender){
+        this.name=name;
+        this.age=age;
+        this.gender=gender;
+    }
+    //创建Person实例
+    var per=new Person("Yang",18,"girl");
+    console.log(per);//Person {name: "Yang", age: 18, gender: "girl"}
+
+    //当我们直接在页面打印一个对象时，实际上是输出了该对象的toString()方法的返回值，如下：
+    var a=per.toString();
+    console.log("a="+a);//a=[object Object]
+
+    //寻找toString方法的位置
+    console.log(per.hasOwnProperty("toString"));//false
+    console.log(per.__proto__.hasOwnProperty("toString"));//false
+    console.log(per.__proto__.__proto__.hasOwnProperty("toString"));//true,在Person的原型的原型里
+    console.log(per.__proto__.__proto__==Object.prototype);//true
+
+    //如果我们希望在输出对象时，自定义输出方法，我们可以为实例对象添加一个toString()方法
+    per.toString=function(){
+        return "我是一个美丽的Person";
+    }
+    console.log(per);
+    console.log(per.toString());//我是一个美丽的Person
+    //注意，课上的实例是以windows的浏览器进行操作，但在我macbook上的对象的输出方式并不是简单的toString输出，但是课程的意义，我get到了（课时68）
+
+    //但是单单对与per实例的toString方法的修改并不能影响到整个Person构造函数，因此需要在函数的原型中修改toString
+    Person.prototype.toString1=function(){
+        return "Person[name="+this.name+",age="+this.age+",gender="+this.gender+"]";
+    }
+    console.log(per.toString1())//Person[name=Yang,age=18,gender=girl]
+    var per2=new Person("Albert",18,"boy");
+    console.log(per2.toString1());//Person[name=Albert,age=18,gender=boy]
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

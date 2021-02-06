@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    //和77视频图解结合
+    var arr=[1,2,3,2,2,1,3,4,2,5];
+    //去除数组中重复的数字
+    for(var i=0;i<arr.length;i++){//遍历每个元素arr[i]
+        for(var j=i+1;j<arr.length;j++){//获取当前元素之后的所有元素arr[j]，依次与当前元素比较
+            if(arr[i]==arr[j]){
+                arr.splice(j,1);//如果arr[i]和arr[j]元素相同，就splice掉当前arr[j]
+                //但注意⚠️当删除了某j所在的元素之后，后边的元素会自动补位某j索引
+                //因此在某j的元素被删除之后，需要再比较一次某j所在位置的新补位元素
+                //因此需要使j自减次
+                j--;//元素会补位的问题很容易被忽略
+            }
+        }
+    }
+    console.log(arr);
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

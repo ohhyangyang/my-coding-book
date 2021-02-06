@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<style type="text/css">
+	/*
+	属性选择器
+	
+	存在和值属性选择器
+	[attr]：该选择器选择包含 attr 属性的所有元素，不论 attr 的值为何。
+	[attr=xxx]：该选择器仅选择 attr 属性被赋值为 xxx 的所有元素。
+	[attr~=xxx]：表示含有以attr 命名的属性的元素，并且对应的属性值是一个以空格作为分隔的值列表，其中至少一个值为xxx。
+	
+	子串值属性选择器
+	[attr|=xxx] : 选择attr属性的值是xxx（包括xxx）或以 xxx- 开头的元素。
+	[attr^=xxx] : 选择attr属性的值以xxx开头（包括xxx）的元素。
+	[attr$=xxx] : 选择attr属性的值以xxx结尾（包括xxx）的元素。
+	[attr*=xxx] : 选择attr属性的值中包含字符串xxx的元素。
+	 */
+	
+	*{
+		margin:0;
+		padding: 0;
+	}
+	#wrap>div[name='test']{
+		border: solid 1px;
+	}
+	/*[attr]*/
+	#wrap>div[name]{
+		text-decoration: underline;
+	}
+	/*[attr=xxx]*/
+	#wrap>div[name='test1']{
+		color: #fd7e14;
+	}
+	/*[attr~=xxx]*/
+	#wrap>div[name~='test2']{
+		color: #b3d4fc;
+	}
+	/*[attr|=xxx]*/
+	#wrap>div[name|='test3']{
+		color: #4cae4c;
+	}
+	/*[attr^=xxx]*/
+	#wrap>div[name^='test3']{
+		margin: 20px;
+	}
+	/*[attr$=xxx]*/
+	#wrap>div[name$='4']{
+		color: #d39e00;
+	}
+	/*[attr*=xxx]*/
+	#wrap>div[name*='test']{
+		border: 1px lightpink solid;
+	}
+	
+	
+	
+</style>
+<body>
+<div id="wrap">
+	<div name="test1">圆滚滚</div>
+	<div name="test2 yang">胖嘟嘟</div>
+	<div name="test3">小可爱</div>
+	<div name="test3-33">小贱贱</div>
+	<div name="test333">喜羊羊</div>
+	<div name="test4">灰太狼</div>
+	<div name="test5">小屁屁</div>
+	<div name="test6">小宝贝</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+		/*
+		- 伪元素
+		⚠️⚠️ 建议用双冒号，但是也可以使用单冒号
+		⚠️⚠️ 通过content可以向before或after的位置添加内容
+		
+		::after   表示元素最后边的部分
+		::before   表示元素最前边的部分
+		
+		::first-letter  用于选取指定选择器的首字母
+		::first-line   用于选取指定选择器的首行
+		
+		::selection   用于选取文档中被用户高亮选中的部分（比如使用鼠标或其他选择设备选中的部分）
+		    只有一小部分CSS属性可以用于::selection 选择器：
+		       color
+		       background-color
+		       cursor
+		       caret-color
+		       outline and its longhands
+		       text-decoration and its associated properties
+		       text-emphasis-color
+		       text-shadow
+		 */
+		
+		/* ::after */
+		#box1::after{
+			content: "我是::after伪元素";
+			display: block;
+			width: 200px;
+			height: 100px;
+			background-color: #b3d4fc;
+		}
+		
+		/* ::before */
+		#box1::before{
+			content: "我是::before伪元素";
+			display: block;
+			width: 200px;
+			height: 100px;
+			background-color: #b3d4fc;
+		}
+		
+		/* ::firstletter */
+		#box2::first-letter{
+			color: greenyellow;
+			font-size: 50px;
+		}
+		
+		/* ::first-line */
+		#box2::first-line{
+			color: #fd7e14;
+		}
+		
+		/* ::selection */
+		#box3::selection{
+			color: greenyellow;
+			background-color: red;
+		}
+		
+	</style>
+</head>
+<body>
+
+<div id="box1">
+	box1
+</div>
+<br>
+
+<div id="box2">
+	sssss<br>
+	sssss<br>
+	sssss<br>
+	sssss<br>
+</div>
+<br>
+
+<div id="box3">
+	我是::selection，我可以设置高亮显示
+	我是::selection，我可以设置高亮显示
+	我是::selection，我可以设置高亮显示
+	我是::selection，我可以设置高亮显示
+	我是::selection，我可以设置高亮显示
+	我是::selection，我可以设置高亮显示
+	我是::selection，我可以设置高亮显示
+	我是::selection，我可以设置高亮显示
+	我是::selection，我可以设置高亮显示
+</div>
+
+</body>
+</html>

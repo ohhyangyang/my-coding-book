@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    字面量都是一些不可改变的值，比如：1 2 3 4 5 “hello”
+    变量：x y，可以被任意改变，更加方便使用，
+    在开发中都是用变量去保存字面量，而很少直接使用字面量
+    */
+
+    //声明变量
+    //在js中使用var来声明变量
+    var a; //声明变量
+    a = 123; //为变量赋值
+    a = 456
+    a = 342653265436
+    document.write(a);
+
+    //或声明和赋值同时进行
+    var b = 789
+    var c = 0
+    var age = 80
+
+
+    
+    </script>
+    
+</head>
+<body>
+    
+</body>
+</html>

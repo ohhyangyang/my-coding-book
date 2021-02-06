@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+		/*
+		https://animate.style
+		
+		- transform 2D变形属性
+		  该属性允许我们对元素进行旋转、缩放、移动或倾斜。
+		  ⚠️ 只对块元素生效
+		     默认值：	none
+		     继承性：	no
+		     语法：      transform: none|transform-functions;
+		         
+		         (⚠️ 坐标原点00在左上角，)
+		         none	不进行转换。（默认值）
+		         
+		        平移函数
+		         translate(x[,y])	2D平移。如果y没有指定，默认值为0，例如translate(100px)等于translate(100px,0)
+		         translate3d(x,y,z)	3D平移。
+		         translateX(x)	2D沿着X轴平移。(正值向右，负值向左）
+		         translateY(y)	2D沿着Y轴平移。(正值向下，负值向上)
+		         translateZ(z)	3D沿着Z轴平移。
+		         
+		        缩放函数
+		         scale(x[,y])	2D缩放。如果y未指定，则默认为和x轴的值相同，例如scale(2)相当于scale(2,2)
+		         scale3d(x,y,z)	3D缩放。
+		         scaleX(x)	X轴方向上缩放。
+		         scaleY(y)	Y轴方向上缩放。
+		         scaleZ(z)	Z轴方向上缩放。
+		         (正值：0.01~0.99之间为缩小，超过1为放大
+		          负值：不推荐使用，会有旋转效果）
+		          
+		        旋转函数
+		         rotate(angle)	2D旋转，和rotateZ()效果一样
+		         rotate3d(x,y,z,angle)	3D旋转。
+		         rotateX(angle)	沿着X轴的3D旋转。
+		         rotateY(angle)	沿着Y轴的3D旋转。
+		         rotateZ(angle)	沿着Z轴的3D旋转。
+		         (正值为顺时针，负值为逆时针）
+		         
+		        斜拉函数
+		         skew(x-angle[,y-angle])	沿着X和Y轴的2D斜拉。如果y没有指定，则在Y轴上没有斜拉，例如skew(45deg)相当于skew(45deg,0)
+		         skewX(angle)	沿着X轴的2D斜拉。
+		         skewY(angle)	沿着Y轴的2D斜拉。
+		         (正值：向坐标轴正区间方向上斜拉
+		          负值：向坐标轴负区间方向上斜拉)
+		          
+		        矩阵函数 (会在下一课中细说）
+		         matrix(n,n,n,n,n,n)	定义 2D 转换，使用六个值的矩阵。
+		         matrix3d(n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n)	定义 3D 转换，使用 16 个值的 4x4 矩阵。
+		         
+		         perspective(n)	为3D转换元素定义透视视图。
+		         
+		 - transform-origin 变换基点 允许改变被转换元素的位置。
+		     2D 转换元素能够改变元素 x 和 y 轴。
+		     3D 转换元素能改变其 X Y Z 轴。
+		     ⚠️⚠️ 该属性必须与 transform 属性一同使用。
+		   (Internet Explorer 10、Firefox、Opera 支持 transform-origin 属性。
+		   Internet Explorer 9 支持替代的 -ms-transform-origin 属性（仅适用于 2D 转换）。
+		   Safari 和 Chrome 支持替代的 -webkit-transform-origin 属性（3D 和 2D 转换）。
+		   Opera 只支持 2D 转换。)
+		   
+		      默认值：	50% 50% 0
+		      继承性：	no
+		      语法：    transform-origin: x-axis y-axis z-axis;
+		      
+                   值	      描述
+                   x-axis	定义视图被置于 X 轴的何处。可能的值：
+                                 left
+                                 center
+                                 right
+                                 length
+                                 %
+                   y-axis	定义视图被置于 Y 轴的何处。可能的值：
+                                 top
+                                 center
+                                 bottom
+                                 length
+                                 %
+                   z-axis	定义视图被置于 Z 轴的何处。可能的值：
+                                 length
+		 */
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box1{
+			width: 200px;
+			height: 200px;
+			margin: 20px;
+			border: 1px solid;
+			position: relative;
+		}
+		#test1{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			/*border-radius: 50%;*/
+			
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			
+			transition: 1s;
+			transform-origin: left top;
+		}
+		#box1:hover #test1{
+			transform: translate(10px,30px);
+		}
+		#box2{
+			width: 200px;
+			height: 200px;
+			margin: 20px;
+			border: 1px solid;
+			position: relative;
+		}
+		#test2{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			/*border-radius: 50%;*/
+			
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			
+			transition: 1s;
+		}
+		#box2:hover #test2{
+			transform: scale(2,0.5);
+		}
+		#box3{
+			width: 200px;
+			height: 200px;
+			margin: 20px;
+			border: 1px solid;
+			position: relative;
+		}
+		#test3{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			/*border-radius: 50%;*/
+			
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			
+			transition: 1s;
+			transform-origin: left top;
+		}
+		#box3:hover #test3{
+			transform: rotate(45deg);
+		}
+		#box4{
+			width: 200px;
+			height: 200px;
+			margin: 20px;
+			border: 1px solid;
+			position: relative;
+		}
+		#test4{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			/*border-radius: 50%;*/
+			
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			
+			transition: 1s;
+			/*transform-origin: left top;*/
+		}
+		#box4:hover #test4{
+			transform: skew(45deg);
+		}
+	</style>
+</head>
+<body>
+<div id="box1">
+	translate平移
+	<div id="test1"></div>
+</div>
+<div id="box2">
+	scale缩放
+	<div id="test2"></div>
+</div>
+<div id="box3">
+	rotate旋转 + transform-origin变换基点
+	<div id="test3"></div>
+</div>
+<div id="box4">
+	skew斜拉
+	<div id="test4"></div>
+</div>
+</body>
+</html>

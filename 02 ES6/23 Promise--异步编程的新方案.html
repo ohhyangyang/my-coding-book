@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="24-Promise封装读取文件.js"></script>
+</head>
+<body>
+<script>
+	/*
+	- Promise对象
+	  Promise 是ES6引入的异步编程的新解决方案。
+	  语法上来说，Promise是一个构造函数，可以被实例化
+	  用来封装异步操作并可以获取其成功或失败的结果。
+	  
+	- Promise对象存在的意义
+	  Promise 对象是一个代理对象（代理一个值），被代理的值在Promise对象创建时可能是未知的。
+	  它允许你为异步操作的成功和失败分别绑定相应的处理方法（handlers）。
+	  这让异步方法可以像同步方法那样返回值，但并不是立即返回最终执行结果，
+	  而是一个能代表未来出现的结果的promise对象
+	  
+	- Promise的优势
+	  promise的值和操作的分离，可以让开发者类似同步操作地开发异步流程代码。避免了层层嵌套的回调函数
+	  可以对这个代理未来值的对象（promise）进行类似同步操作的控制，
+	  此外，Promise对象提供统一的接口，使得控制异步操作更加容易。
+	  https://medium.com/@keshidong.dev/深入浅出promise-69bcafbe4496
+	  
+	- Promise的状态
+	  Promise对象的状态不受外界影响。有三种状态：
+               pending: 初始状态，不是成功或失败状态。
+               fulfilled: 意味着操作成功完成。
+               rejected: 意味着操作失败。
+               
+    - 创建Promise对象
+        使用new关键字来创建Promise实例
+      
+        语法： new Promise( function (resolve, reject) {...} );
+        参数：
+               resolve回调函数  将Promise状态改为fulfilled，并传递数据给then()
+               reject回调函数   将Promise状态改为rejected，并传递信息给then()或catch()
+               
+        
+         
+         
+     
+       1) Promise构造函数 : Promise (executor) {}
+       2) Promise.prototype.then方法
+       3) Promise.prototype.catch方法
+	 */
+	
+	//实例化Promise对象
+	const P = new Promise(function (resolve,reject) {
+	    setTimeout(function () {
+	        
+	        //数据读取成功
+	        //得到一份用户数据
+	        let data = '数据库中用户数据';
+	        
+	        //调用resolve函数，Promise实例对象状态转为成功
+		    resolve(data);
+      
+		    //数据读取失败
+            // let err = '数据读取失败';
+            // //调用reject()函数，P对象状态转为失败
+            // reject(err);
+            
+        },1000)
+    });
+	
+	
+	/*
+	调用P对象的then()方法
+	当P对象状态为成功时，调用第一个回调函数
+	当P对象状态为失败时，调用第二个回调函数
+	 */
+	P.then(function (value) {
+	    console.log(value);
+    },function (reason) {
+	    console.error(reason);
+    });
+</script>
+</body>
+</html>

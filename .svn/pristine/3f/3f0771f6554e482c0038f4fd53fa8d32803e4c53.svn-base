@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*if语句
+    语法二：
+    if(条件表达式){
+        语句...
+    }else{
+        语句...
+    }
+    如表达式值为true，则执行if后语句
+    如表达式值为false，则执行else后语句
+
+    语法三：
+    if(条件表达式){
+        语句...
+    }else if(条件表达式){
+        语句...
+    }else if(条件表达式){
+        语句...
+    }else{
+        语句...
+    }
+    该语句执行时，从上到下依次对条件表达式求值
+    如表达式为true，则执行该语句
+    如表达式为false，则继续向下判断
+    如果都不满足，则执行最后的else
+    注：该语句中，只会有一个代码块被执行，一旦被执行，则直接结束语句
+
+    */
+    //语法二
+    var age=50;
+    if(age>=60){
+        document.write("你已经退休了");
+    }else{
+        document.write("你还没退休");
+    }//执行你还没退休
+    
+
+    //语法三（一个一个判断的）
+    var age=90;
+    if(age>100){
+        document.write("活着真没意思")
+    }else if(age>80){
+        document.write("你也老大不小的了")
+    }else if(age>60){
+        document.write("你也退休了")
+    }else if(age>30){
+        document.write("你已经中年了")
+    }else if(age>17){
+        document.write("你已经成年了")
+    }else{
+        document.write("你还是个小孩子")
+    } //执行你也老大不小的了
+
+    var age=90;
+    if(age>17){
+        document.write("你已经成年了")
+    }else if(age>30){
+        document.write("你已经中年了")
+    }else if(age>60){
+        document.write("你也退休了")
+    }else{
+        document.write("你岁数挺大的了")
+    } //这里的else if和else都是死代码
+
+    //如下更正
+    var age=90;
+    if(age>17&&age<=30){
+        document.write("你已经成年了")
+    }else if(age>30&&age<=60){
+        document.write("你已经中年了")
+    }else if(age>60){
+        document.write("你也退休了")
+    }else{
+        document.write("你岁数挺大的了")
+    } 
+   
+
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

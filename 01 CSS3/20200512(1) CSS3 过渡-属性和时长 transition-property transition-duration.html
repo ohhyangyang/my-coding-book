@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+		/*
+		使用transition的注意事项
+		⚠️⚠️ transition只关心元素的初始和结束状态，无法获取过渡过程中每一帧的状态
+		⚠️⚠️ 元素在初次渲染未结束时，无法触发transition属性
+		⚠️⚠️ 使用transform互相切换时，变换组合之间的位置或个数不一样的话，很可能无法触发过渡
+		⚠️⚠️ 当属性值列表长度不一致时，️与时间有关的属性重复列表，于关键字有关的重复默认值
+		
+		- transition-property 规定transition效果的属性
+		    ⚠️ 可以指定多个property
+		    ⚠️ 不是所有的属性都可以动画
+		    默认值：	all  （表示所有可能动画的属性都表现出过渡效果）
+		    继承性：	no
+		    语法：transition-property: none|all|property;
+                  值	    描述
+                  none	    没有属性会获得过渡效果。
+                  all	    默认值，所有属性都将获得过渡效果。
+                  property	定义应用过渡效果的 CSS 属性名称或名称列表，列表以逗号分隔。
+                  
+                  animated properties 可被动画的属性：https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_animated_properties
+
+        - transition-duration 规定transition效果需要的时间（以s或ms计）
+            默认值：	0s （无动画效果）
+            继承性：	no
+            语法：transition-duration: time;
+                值      描述
+                time	规定完成过渡效果需要花费的时间或时间列表，列表以逗号分隔。不接受负值，一定要加单位（不能写0，要写0s⚠️）
+                
+                ⚠️⚠️
+                时间列表会被应用到由transition-property指定的属性列表上。
+                如果指定的duration个数小于property个数，那么时间列表会重复。
+                如果时长列表更长，那么该列表会被裁减。两种情况下，property列表都保持不变。
+          
+        
+		 */
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#test1{
+			width: 200px;
+			height: 200px;
+			background-color: #d0e9c6;
+			text-align: center;
+			/*border-radius: 50%;*/
+			
+			/*居中*/
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			
+			transition-property:width,height,background-color/*约等于all*/;
+			transition-duration: 5s,1s;/*相当于5s,1s,5s,1s*/
+		}
+		#box1{
+			width: 400px;
+			height: 400px;
+			border: black solid 1px;
+			
+			/*居中*/
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+		}
+		#box1:hover #test1{
+			width: 100px;
+			height: 300px;
+			background-color: #fd7e14;
+		}
+	</style>
+</head>
+<body>
+<div id="box1">
+	<div id="test1"></div>
+</div>
+</body>
+</html>

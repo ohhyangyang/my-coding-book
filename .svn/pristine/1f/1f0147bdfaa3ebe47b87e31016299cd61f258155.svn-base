@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    
+    构造函数就是一个普通函数
+    不同的是，构造函数用于创建一个新的对象（函数名习惯首字母大写）
+
+    构造函数和普通函数调用函数的方式不同
+    普通函数直接调用，而构造函数需要使用new关键字来调用
+
+    构造函数的流程：
+    1 立刻创建一个新对象
+    2 将新建对象设为构造函数中的this
+    3 逐行执行函数中的代码
+    4 将新建的对象作为返回值返回
+
+    使用同一个构造函数创建的对象，我们称为一类函数，也将一个构造函数称为一个类
+    我们将通过一个构造函数创建的对象，称为是该类的实例
+
+    this的情况
+       1 以函数形式调用时，this永远为window全局对象
+       2 以方法形式调用时，this为此方法的对应对象
+       3 当以构造函数调用时，this为新创建的对象
+    */
+    //创建一个构造函数，用来创建Person对象
+    function Person(name,age,gender){
+        this.name=name;
+        this.age=age;
+        this.gender=gender;
+        this.sayName=function(){
+            alert(this.name);
+        };
+    }
+    var per1=new Person("Yang",18,"woman");
+    console.log(per1);//Person {name: "Yang", age: 18, gender: "woman", sayName: ƒ}
+
+    var per2=new Person("Albert",18,"man");
+    console.log(per2);//Person {name: "Albert", age: 18, gender: "man", sayName: ƒ}
+
+    var per3=new Person("Mom",18,"woman");
+    console.log(per3);//Person {name: "Mom", age: 18, gender: "woman", sayName: ƒ}
+    //per1 per2 per3被称为Person类的实例
+
+    //创建一个构造函数，用来创建Dog对象
+    function Dog(name,age,gender){
+        this.name=name;
+        this.age=age;
+        this.gender=gender;
+        this.sayHello=function(){
+            alert("汪汪🐶，我是淘淘");
+        };
+    }
+    var taotao=new Dog("Taotao",12,"boy");
+    console.log(taotao);//Dog {name: "Taotao", age: 12, gender: "boy", sayHello: ƒ}
+    taotao.sayHello();
+    //taotao被称为Dog类的实例
+
+    /*
+    使用instanceof可以检查一个对象是否是一个类的实例
+    instanceof语法：
+          对象 instanceof 构造函数
+    
+    如果是，返回true，否则返回false
+    （用法和【属性 in 对象】相似）
+    */
+    console.log(taotao instanceof Dog);//true
+    
+    /*
+    所有的对象都是Object类的实例
+    所以任何对象和Object做instanceof检查时，都会返回true
+    */
+    console.log(per1 instanceof Object);//true
+    console.log(taotao instanceof Object);//true
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

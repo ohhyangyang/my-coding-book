@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+	
+		/*倒影*/
+		#box2{
+			width: 100%;
+			height: 1000px;
+			background-color: #fff3cd;
+			position: relative;
+			text-align: center; /* 块元素可操作内部inline元素（img）的水平居中 */
+		}
+		/* ⚠️ ::after设置垂直居中，::after和img为在一行的inline元素，基线谁高就听谁的*/
+		#box2::after{
+			content: "";
+			display: inline-block;
+			height: 100%;
+			vertical-align: middle;
+		}
+		#box2 img{
+			vertical-align: middle;
+			text-align:center;
+			-webkit-box-reflect: below 10px linear-gradient(to top, rgba(0,0,0,1),rgba(0,0,0,0));
+		}
+		
+		
+	</style>
+</head>
+<body>
+
+<div id="box2">
+	倒影
+	<img src="../img/xiaotiantian.jpg"/>
+</div>
+
+</body>
+</html>

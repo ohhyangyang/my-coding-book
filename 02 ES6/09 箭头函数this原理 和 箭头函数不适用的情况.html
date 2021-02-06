@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+
+<body>
+<button id="myButton">Click</button>
+<script>
+    /*
+	- 箭头函数中的this：
+	
+	  箭头函数的this是静态的，始终指向箭头函数声明时所在作用域下的this的值
+	  箭头函数内的this，是继承箭头函数定义时所在的对象的this
+	  而普通函数的this，在调用时确定，是指向调用它的那个对象
+	  
+	  ⚠️⚠️⚠️
+	  原理: this指向的固定化，并不是因为箭头函数内部有绑定this的机制，
+		   实际原因是箭头函数根本没有自己的this，导致内部的this就是其外层代码块的this。borrow this from the closest scope
+		   正是因为它没有this，所以也就不能用作构造函数。
+		  
+	- 箭头函数不适用的情况：
+	
+	  1 不适用于定义对象中的方法，当然同样也不适用于原型对象
+	  2 不适用于事件的回调函数
+	  3 不适用调用构造函数
+	  
+	  
+	  
+	 */
+    
+    //1 不适用于定义对象中的方法，当然同样也不适用于原型对象
+    let obj = {
+        name:'Yang',
+        
+        //获取obj对象的this，-> 为window
+        scope: this,
+        
+        //获取常规函数内的this -> 为obj，常规的this在对象方法调用时会指向对象本身
+        getScope1(){
+            console.log(`常规函数在对象中的this:${this}`);
+        },
+        
+        //获取箭头函数的this -> 为window，箭头的this为静态，在定义时已经确定为是obj对象的this了
+        getScope2: ()=>{
+            console.log(`箭头函数在对象中的this:${this}`);
+        },
+        
+        //获取obj对象的name，只可以使用常规函数
+        getName(){
+            console.log(this.name);
+        }
+        
+        //getName: ()=>{console.log(this.name);}  ⚠️⚠️  这种写法会报错，因为该方法的上下文是window
+        
+        /*
+			⚠️⚠️⚠️
+			在箭头函数出现之前，每一个新函数根据它是被如何调用的来定义这个函数的this值
+			常规的this在对象方法调用时会指向对象本身
+			而箭头函数的this在此情况下将会指向window，
+			因为常规函数的this是在调用时确定的，而箭头函数的this是由封闭的上下文决定的
+			 */
+    };
+    console.log(obj.scope);  //obj内的上下文环境为window
+    obj.getScope1();  //常规函数在对象中的this为obj对象，（在调用时才确定）
+    obj.getScope2();  //箭头函数在对象中的this为window对象 （有封闭上下文确定）
+    obj.getName();  //Yang
+    
+    
+    //2 不适用于事件的回调函数
+    const button = document.getElementById('myButton');
+    
+    button.addEventListener('click', function() {
+        /*
+        ⚠️⚠️⚠️
+        这里必须使用常规函数，否则this将不会指向button，而是会指向window
+         */
+        console.log(this === button); // => true
+        this.innerHTML = 'Clicked button';
+    });
+    
+    //3 不适用于定义构造函数
+    const Message = (text) => {
+        this.text = text;
+    };   // ⚠️⚠️⚠️ 直接报错：  Throws "TypeError: Message is not a constructor"
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">我是一个按钮</button> 
+    <script type="text/javascript">
+    /*
+    文档节点代表的是整个网页
+    浏览器已经为我们提供了文档节点，是window对象的属性
+    可以在页面中直接使用-----document
+
+    */
+    //(windows模式下)
+    console.log(document);//[object HTMLDocument]
+    //获取到button对象
+    var btn=document.getElementById("btn");
+    /*
+    获取文档节点下id为"btn"的button标签，赋予给btn变量
+    */
+    console.log(btn);//[object HTMLButtonElement]，证明btn获取了button标签元素
+
+    //innerHTML
+    //修改btn按钮的文字
+    console.log(btn.innerHTML);//"我是一个按钮"，innerHTML获取元素内容
+    btn.innerHTML="I'm Button";//（此时按钮的文字被改变了）
+
+
+    
+    </script>
+    
+</body>
+</html>

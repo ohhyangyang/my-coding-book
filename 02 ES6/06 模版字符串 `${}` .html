@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  /*
+  - 模版字符串 template string
+    特点：
+        1 使用反引号标识 ``
+        2 字符串内可以出现换行符
+        3 可以使用${xxx}形式来输出变量
+        4 可以嵌套html `<html>`
+   */
+  //换行符（回车）
+  let str = `<ul>
+                <li>大宝</li>
+                <li>二宝</li>
+                <li>三宝</li>
+             </ul>`;
+
+  //${xxx}形式来输出变量
+  let name = 'Yang';
+  let country = `${name} is from China`;
+  console.log(country);
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>超链接</title>
+    </head>
+    <body>
+        <center>
+        <h1>加油加油</h1>
+        <!--
+            使用超链接可以让我们从一个页面跳转到另一个页面
+            使用a标签创建超链接
+               href属性:指向链接跳转的目标地址（相对路径或完整地址）
+               (访问之前是蓝色的，访问过之后会变成紫色的)
+        -->
+         <!--
+               target属性:用来指定打开链接的位置
+                 _self:在当前窗口打开（默认值）
+                 _blank:在新窗口打开
+                 填写一个iframe的name属性值，链接会在指定的iframe中打开（用的比较少，但要了解）
+        -->
+        <a href="http://www.google.es" target="_self">我是完整地址，在当前窗口打开</a> <br/><br/>
+        <a href="03102019(3)html的最基本页面.html" target="_blank">我是相对路径，在新窗口打开</a> <br/>
+        <a href="03102019(3)html的最基本页面.html" target="tom">我是在下面内联框架中打开</a><br/><br/>
+        <iframe src="07102019（2）XHMTL语法规范.html" name="tom"></iframe> <br/>
+        <!--center标签中的内容，会默认在页面中居中显示，不推荐使用-->
+        </center>
+    </body>
+</html>

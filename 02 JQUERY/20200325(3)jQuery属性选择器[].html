@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<!--
+	- 属性选择器
+	  通过元素的属性来获取相应的元素
+	  
+	  选择器                    描述                         返回结果
+	  [attribute]              获取拥有此属性的元素            集合元素
+	  [attribute=xxx]          获取指定属性的值为xxx的元素      集合元素
+	  [attribute!=xxx]         获取指定属性的值不等于xxx的元素   集合元素
+	  [attribute^=xxx]         获取指定属性的值以xxx开始的元素   集合元素
+	  [attribute$=xxx]         获取指定属性的值以xxx结束的元素   集合元素
+	  [attribute*=xxx]         获取指定属性的值含有xxx的元素     集合元素
+	  [selector1][selector2]   满足1～n多个条件的元素(交集)      集合元素
+	  ...[selectorN]
+
+	  
+	-->
+	<style type="text/css">
+		div, span , p {
+			width: 200px;
+			height: 200px;
+			margin: 5px;
+			background: #aaa;
+			border: #000 1px solid;
+			float: left;
+			font-size: 17px;
+			font-family: Verdana;
+		}
+		div.mini {
+			width: 70px;
+			height: 70px;
+			background-color: #aaa;
+			font-size: 12px;
+		}
+		div.hide {
+			display: none;
+		}
+	</style>
+	<script type="text/javascript" src="jquery-1.10.1.js"></script>
+	<script type="text/javascript">
+		$(function () {
+            $("#btn1").click(function () {
+                $("div[title]").css("background","lavender");
+            })
+			$("#btn2").click(function () {
+                $("div[title=test]").css("background","lavender");
+            })
+			$("#btn3").click(function () {
+                $("div[title!=test]").css("background","lavender");
+            });
+            $("#btn4").click(function () {
+                $("div[title^=te]").css("background","lavender");
+            })
+			$("#btn5").click(function () {
+                $("div[title$=est]").css("background","lavender");
+            })
+			$("#btn6").click(function () {
+                $("div[title*=es]").css("background","lavender");
+            })
+			$("#btn7").click(function () {
+                $("div[id][title*=es]").css("background","lavender");
+            })
+			$("#btn8").click(function () {
+                $("div[title][title!=test]").css("background","lavender");
+            })
+        })
+	</script>
+</head>
+<body>
+<input id="btn1" type="button" value="选择含有title属性的DIV元素">
+<input id="btn2" type="button" value="选择title属性值为test的DIV元素">
+<input id="btn3" type="button" value="选择title属性值不等于test的DIV元素（没有title属性的也将被选中）">
+<input id="btn4" type="button" value="选择title属性值以te开头的DIV元素">
+<input id="btn5" type="button" value="选择title属性值以est结束的DIV元素">
+<input id="btn6" type="button" value="选择title属性值含有es的DIV元素">
+<input id="btn7" type="button" value="选择含有id属性，且title属性值含有es的DIV元素">
+<input id="btn8" type="button" value="选择含有title属性，且title属性值不等于test的DIV元素">
+<br><br>
+<div class="one" id="one">
+	id为one，class为one的DIV
+	<div class="mini">class为mini的DIV</div>
+</div>
+<div class="one" id="two" title="test">
+	id为two，class为one，title为test的DIV
+	<div class="mini" title="other">class为mini，title为other的DIV</div>
+	<div class="mini" title="test">class为mini，title为test的DIV</div>
+</div>
+<div class="one">
+	<div class="mini">class为mini的DIV</div>
+	<div class="mini">class为mini的DIV</div>
+	<div class="mini">class为mini的DIV</div>
+	<div class="mini"></div>
+</div>
+<div class="one">
+	<div class="mini">class为mini的DIV</div>
+	<div class="mini">class为mini的DIV</div>
+	<div class="mini">class为mini的DIV</div>
+	<div class="mini" title="tesst">class为mini,title为tesst的DIV</div>
+</div>
+<div style="display: none;" class="none">style的display为none的DIV</div>
+<div class="hide">class为hide的DIV</div>
+<div>
+	包含input的type为hidden的DIV
+	<input type="hidden" value="12345" size="8">
+</div>
+<div>一个DIV元素</div>
+</body>
+</html>

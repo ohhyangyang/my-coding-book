@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    垃圾回收（GC garbage collection)
+    程序运行过程中会产生垃圾，垃圾多了以后，会影响程序运行速度，
+    
+    一个对象（在堆内存中），没有任何的变量或属性对它进行引用，我们将无法操作该对象，这就被视为垃圾（见69图解）
+    这种对象过多会大量占用内存空间，导致程序运行变慢，因此垃圾必须被清理
+
+    而在JavaScript中，拥有自动的垃圾回收机制，会自动将这些垃圾对象从内存中销毁
+    而我们需要做的，只是要将不再使用的对象设置为null即可，举例如下
+    */
+     var obj=new Object();
+
+     //对对象的一系列操作
+
+     obj=null;//断开obj变量和堆内存中对象的连接，堆内存中的对象会被自动回收掉
+    
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

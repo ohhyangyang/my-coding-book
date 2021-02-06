@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>否定伪类</title>
+        <style type="text/css">
+        /*
+        否定伪类：可以从已选中的元素中剔除某些伪类
+        语法： :not(选择器)
+        */
+        p:not(.hello){
+            background-color: aquamarine;
+        }
+        </style>
+    </head>
+    <body>
+        <p>我是p</p>
+        <p>我是p</p>
+        <p class="hello">我是p</p>
+        <p>我是p</p>
+        <p>我是p</p>
+    </body>
+</html>

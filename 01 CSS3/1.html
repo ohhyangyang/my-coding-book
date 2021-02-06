@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+		
+		/*默认情况下自适应，内容会自动换行*/
+		.div0 {
+			width: 300px;
+			border: 1px solid darkblue;
+		}
+		.div1 {
+			width: 300px;
+			border: 1px solid red;
+			
+			/*文本不会换行，文本会在在同一行上继续，直到遇到 <br> 标签为止。*/
+			white-space: nowrap;
+		}
+		.div2 {
+			width: 300px;
+			border: 1px solid black;
+			
+			/*空白会被浏览器保留。其行为方式类似 HTML 中的 <pre> 标签*/
+			white-space: pre;
+		}
+		.div3 {
+			width: 300px;
+			border: 1px solid chocolate;
+			
+			/*保留空白符序列，但是正常地进行换行。*/
+			white-space: pre-wrap;
+		}
+		.div4 {
+			width: 300px;
+			border: 1px solid chocolate;
+			
+			/*合并空白符序列，但是保留换行符。*/
+			white-space: pre-line;
+		}
+		.div5 {
+			width: 300px;
+			border: 1px solid chocolate;
+			
+			/*从父元素继承 white-space 属性的值。*/
+			white-space: inherit;
+		}
+	</style>
+</head>
+<body>
+<div class="div0">各国领导人感谢中方作为东道主对各国参展给予的大力支持0</div><br>
+<div class="div1">各国领导人感谢中方作为东道主对各国参展给予的大力支持1</div><br>
+<div class="div2">各国领导人感谢中方作为东道主对各国参展给予的大力支持2</div><br>
+<div class="div3">各国领导人感谢中方作为东道主对各国参展给予的大力支持3</div><br>
+<div class="div4">各国领导人感谢中方作为东道主对各国参展给予的大力支持4</div><br>
+
+
+
+
+</body>
+</html>

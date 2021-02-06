@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>6取消请求</title>
+</head>
+<body>
+<button>点击发送</button>
+<button>点击取消</button>
+</body>
+<script type="text/javascript">
+	/*
+	上一章讲到请求超时后自动取消请求
+	这一章讲，在请求的过程当中，在结果回来之前，可以通过代码手动取消请求
+	 */
+	//获取两个button对象
+	const btnSend = document.getElementsByTagName('button')[0];
+    const btnCancel = document.getElementsByTagName('button')[1];
+    
+    //在全局中声明xhr，以保证AJAX对象在以下两个绑定函数中都可以被获取到
+    let xhr= new XMLHttpRequest();;
+    
+    //绑定发送按钮
+    btnSend.onclick = function () {
+	    //初始化
+	    xhr.open('GET','http://127.0.0.1:8000/delay')
+	    //发送请求
+	    xhr.send();
+	    //事件绑定
+	    xhr.onreadystatechange = function () {
+	        if(xhr.readyState === 4){
+	            if(xhr.status >=200 && xhr.status <300){
+	                alert('成功');
+	            }
+	        }
+        }
+    }
+    
+    //绑定取消按钮，点击按钮即可取消请求
+    btnCancel.onclick = function () {
+        xhr.abort();
+    }
+</script>
+</html>

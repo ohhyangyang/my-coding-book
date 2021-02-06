@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>选择器的优先级</title>
+        <style type="text/css">
+        /*
+        当使用不同的选择器选中同一个元素，并且设置相同的样式时，样式之间产生了冲突，
+        最终选择哪种样式，由选择器的优先级（权重）决定，优先级高的优先显示
+
+        优先级规则：
+             内联样式   优先级 1000
+             id选择器   优先级 100
+             类和伪类   优先级 10
+             元素选择器 优先级 1
+             通配选择器 优先级 0
+             继承样式   无优先级
+        （也因此不建议使用内联样式，因为它的优先级太高，在css文本或style标签中就无法更改了）
+
+        
+        但是注意⚠️， 1 当选择器为多种选择器的交集时，需要将多种选择器的优先级相加然后再比较，
+                      但是计算结果不会超过它的最大数量级
+                   2 如果选择器的优先级相同，则选择靠后的样式
+                   3 并集选择器的优先级是每个子选择器单独分开计算大小
+        
+        !important（别用）
+        可以在样式的最后添加!important,此时该样式将会优先于所有的样式从而被显示出来
+        (必须写在;前面，如：font-size:50px !important; )
+        但是⚠️，在开发中尽量避免使用!important，因为在多人一起工作时，不方便后期的维护，另外JavaScript亦无法更改
+
+
+        */
+        *{
+            font-size:50px; 
+        }
+        .p1{
+            background-color: green;
+        }
+        #p1{
+            background-color: yellow;
+        }
+        p{
+            font-size: 30px;
+            background-color: red;
+        }
+        .p1{
+            color: blue;
+        }
+        .p2{
+            color:lemonchiffon;
+        }
+        </style>
+    </head>
+    <body>
+        <p class="p1 p2" id="p1" style="background-color: tomato">
+            我是p
+            <span>我是span</span>
+        </p>
+    </body>
+</html>

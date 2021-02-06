@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+     call()和apply()的属性和异同
+     ECMAScript 规范给所有函数都定义了 call 与 apply 两个方法，
+     他们是js常用的使用指定对象强行调用其他对象方法的关键字
+     
+     call()和apply()的共同属性
+     他们都是函数对象的方法，需要通过函数对象调用，例fun.call(obj);
+     (注意，fun才是函数对象，fun()是函数的返回值)
+
+     call()和apply()的区别
+     在函数本身拥有形参时，
+     call()方法将在第一个参数之后，依次传递实参
+     而apply()方法需要将实参封装到一个数组中统一传递
+
+     在调用call()和apply()时，第一个参数为被指定的对象，此时这个对象将会成为函数执行时的this
+
+     - call() 暂时借用
+     语法  function.call(thisArg, arg1, arg2, ...)
+     返回值   使用调用者提供的this值和参数调用该函数的返回值。若该方法没有返回值，则返回 undefined。
+
+     - apply() 暂时借用
+     语法  function.apply(thisArg, [argsArray])
+     返回值 调用有指定this值和参数的函数的结果。
+
+     - bind()  在原函数基础上，创建一个新函数，并拥有指定this
+     bind()方法创建一个新的函数，在 bind()被调用时，这个新函数的this被指定为bind()的第一个参数，
+     而其余参数将作为新函数的参数，供调用时使用。
+
+     语法   function.bind(thisArg[, arg1[, arg2[, ...]]])
+     返回值  返回一个原函数的拷贝，并拥有指定的 this 值和初始参数。 ⚠️⚠️⚠️
+    */
+    function fun1(){  //其实fun函数可视作window对象的fun方法
+        alert(this.name);
+    }
+    var obj1={
+        name:"obj1",
+        sayName:function(){
+            alert(this.name);
+        }
+        };
+    var obj2={name:"obj2"};
+    fun1.call(obj1);//alert:obj1，调用全局作用域（window）的fun函数，并用于obj1对象
+    obj1.sayName.call(obj2);//alert:obj2，调用obj1的sayName方法，并用于obj2对象
+    
+
+    /*
+    call()和apply()的区别
+    在函数本身拥有形参时，
+    call()方法将在第一个参数之后，依次传递实参
+    而apply()方法需要将实参封装到一个数组中统一传递
+    */
+    function fun2(a,b){
+        console.log(this.name);
+        console.log("a="+a);
+        console.log("b="+b);
+    }
+    fun2.call(obj1,2,3);//a=2,b=3，实参直接放进去
+    fun2.apply(obj2,[2,3]);//a=2,b=3，实参放在一个数组里传递
+    
+    /*
+    this情况补充
+    4 使用call和spply调用时，this是指定的那个对象（第一个参数）
+    */
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>MATACHANA</title>
+	<link rel="stylesheet" type="text/css" href="CSS/reset.css">
+	<style type="text/css">
+		
+		body{
+			height: 2000px;
+		}
+		.w {
+			width: 1000px;
+			margin: 0 auto;
+			
+		}
+		
+		.header{
+			background-color: #00b4db;;
+		}
+	    .header>div{
+	    	float:left;
+	    	height: 100px;
+		
+    	}
+		
+		.header .logo{
+			margin-left: 50px;
+			margin-top: 50px;
+		}
+		
+	    .header .userHelp{
+		    margin-left: 150px;
+	    }
+		
+		.header .language{
+			margin-top: 50px;
+			margin-left: 300px;
+		}
+		
+		.languageBox{
+			margin-top: 150px;
+			margin-left: -40px;
+			/*visibility: hidden;*/
+			position: relative;
+			z-index: 101;
+		}
+	
+	    .languageBox div{
+		    background-color:seashell;
+		    width: 200px;
+		    height: 50px;
+		    display: block;
+	    }
+		
+		.languageBox div:hover{
+			background-color:#b3d4fc;
+		}
+		
+		
+	    .navWeb{
+		    position: sticky;
+		    top:0px;
+	    	background-color: yellow;
+		    height: 100px;
+    	}
+	
+	    .navWeb .nav li{
+	    	float: left;
+		    background-color: lightgrey;
+		    padding: 30px 0px 20px 0px;
+		    margin-right: 20px;
+	    }
+		
+	    .nav a{
+		    text-decoration: none;
+	    }
+	    
+		.navMobil{
+			visibility: hidden;
+		}
+	
+	    .navMobil div{
+	    	float: left;
+		    
+    	}
+	
+	    .videos{
+		    height: 800px;
+		    background-color: #8fd19e;
+	    }
+		
+		.documents{
+			height: 800px;
+			background-color: #fff3cd;
+		}
+		
+		.products{
+			height: 800px;
+			background-color: #fd7e14;
+		}
+		
+	    @media only screen and (max-width: 768px){
+		    .navMobil{
+			    visibility: visible;
+		    }
+		    .navWeb{
+			    display: none;
+		    }
+	    }
+	
+	
+	
+	.clearfix:before,
+	.clearfix:after{
+		content:"";
+		display: table;
+		clear: both;
+	}
+	.clearfix{
+		zoom:1;   /*用于兼容IE6*/
+	}
+	
+	</style>
+	<script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		
+        $(window).scroll(function(event) {
+            //3
+            var toVideos=$(".videos").offset().top-100;
+            var toDocuments = $(".documents").offset().top-100;
+            var toProducts = $(".products").offset().top-100;
+            var scrollTop = $(window).scrollTop();
+            console.log(scrollTop);
+            console.log(toVideos);
+            if(scrollTop>=toVideos&&scrollTop<toDocuments){
+                $(".navWeb .nav li").css("border","none");
+                $(".navWeb .nav li:first").css("border","solid 1px black");
+            }
+            else if(scrollTop>=toDocuments&&scrollTop<toProducts){
+                $(".navWeb .nav li").css("border","none");
+                $(".navWeb .nav li:contains('Other documents')").css("border","solid 1px black");
+            }
+            else if(scrollTop>=toProducts){
+                $(".navWeb .nav li").css("border","none");
+                $(".navWeb .nav li:last").css("border","solid 1px black");
+            }
+            else {
+                $(".navWeb .nav li").css("border","none");
+            }
+        })
+        
+        $(window).ready(function () {
+            //1
+            $(".languageBox").hide();
+            $(".language").click(function () {
+                if($(".languageBox").is(":hidden")){
+                    $(".languageBox").slideDown();
+                }else{
+                    $(".languageBox").slideUp();
+                }
+        
+                return false
+            })
+    
+            //2
+            var toVideos=$(".videos").offset().top-100;
+            var toDocuments = $(".documents").offset().top-100;
+            var toProducts = $(".products").offset().top-100;
+            $("li:contains('Videos'),.logoVideos").click(function () {
+        
+                $('html,body').animate({scrollTop: toVideos}, 400);
+                //window.scrollTo(0,$(".videos").offset().top);
+                return false
+            })
+            $("li:contains('Other documents'),.logoDocuments").click(function () {
+        
+                $('html,body').animate({scrollTop:toDocuments }, 400);
+                //window.scrollTo(0,$(".documents").offset().top);
+                return false
+            })
+            $("li:contains('Other products'),.logoProducts").click(function () {
+        
+                $('html,body').animate({scrollTop: toProducts}, 400);
+                //window.scrollTo(0,$(".products").offset().top);
+                return false
+            })
+    
+        })
+
+
+                
+           
+			
+            
+			
+
+	</script>
+</head>
+<body>
+
+<div class="header w clearfix">
+	<div class="logo">
+		<a href="#" title="Matachana">
+			<img src="IMG/logo.jpg" alt="Matachana"/>
+		</a>
+	</div>
+	<div class="userHelp">
+		<img src="IMG/userhelp.jpg" alt="matachanauserhelp"/>
+	</div>
+	
+	<div class="language">
+		<a href="#">
+			<img src="IMG/language.jpg"/>
+		</a>
+		
+		<div class="languageBox">
+			<div class="English">
+				<a href="#">
+					<img src="" alt=""/>
+					ENGLISH
+				</a>
+			</div>
+			<div class="Spanish">
+				<a href="#">
+					<img src="" alt=""/>
+					ESPAÑOL
+				</a>
+			</div>
+			<div class="French">
+				<a href="#">
+					<img src="" alt=""/>
+					FRANÇAIS
+				</a>
+				
+			</div>
+			<div class="German">
+				<a href="#">
+					<img src="" alt=""/>
+					DEUTSCH
+				</a>
+				
+			</div>
+			<div class="Portuguese">
+				<a href="#">
+					<img src="" alt=""/>
+					PORTUGUÊS
+				</a>
+				
+			</div>
+			<div class="Russian">
+				<a href="#">
+					<img src="" alt=""/>
+					RUSSIAN
+				</a>
+				
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+
+<div class="navWeb w clearfix">
+	
+	<ul class="nav">
+		<li>
+			<a href="#">Videos</a>
+		</li>
+		<li>
+			<a href="#">Other documents</a>
+		</li>
+		<li>
+			<a href="#">Other products</a>
+		</li>
+	</ul>
+	<p>HPO Series</p>
+</div>
+
+<div class="content w clearfix">
+	<div class="videos">
+		<h5>Related videos</h5>
+	</div>
+	<div class="documents">
+		<h5>Tools & Documents</h5>
+	</div>
+	<div class="products">
+		<h5>Other products</h5>
+	</div>
+	
+</div>
+
+<div class="navMobil w clearfix">
+	<div class="logoVideos">
+		<a href="#">
+			<img src="IMG/videos.jpg" alt="matachanavideos"/>
+		</a>
+	</div>
+	<div class="logoDocuments">
+		<a href="#">
+			<img src="IMG/otherDocuments.png" alt="matachanaotherDocuments"/>
+		</a>
+	</div>
+	<div class="logoProducts">
+		<a href="#">
+			<img src="IMG/otherProducts.png" alt="matachanaotherProducts"/>
+		</a>
+	</div>
+</div>
+</body>
+</html>

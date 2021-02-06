@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+
+<body>
+<div id="player"></div>
+<script>
+    /*
+	使用<iframe>的好处：无需flash播放器的支持
+	使用<iframe>的要求：用户使用的必须是支持 HTML5 postMessage 功能的浏览器。
+					  除了 Internet Explorer 7 以外，大部分的新型浏览器都支持 postMessage
+					  尺寸至少为200x200像素的视口
+					  建议16:9播放器的宽至少为480像素、高至少为270像素
+					  
+	使用 IFrame API 的所有网页都还必须实施以下 JavaScript 函数：
+		   *onYouTubeIframeAPIReady –
+			在网页下载完播放器API的JavaScript（随后您便可以在网页上使用 API）时，API 就会调用此函数。
+			因此，此函数可创建您希望在网页加载时显示的播放器对象。
+	 */
+    //1 倒圆角
+    //2 蓝色play，play可以自己编辑样式吗？
+    //3 进度条可以是蓝色的吗？  color参数
+    //controls 播放控件是否会显示
+    //modestbranding
+    //此参数可让您使用不显示 YouTube 徽标的 YouTube 播放器。将参数值设置为 1 可以阻止 YouTube 徽标显示在控制栏中。请注意，当用户的鼠标指针悬停在播放器上方时，一个小 YouTube 文字标签仍将显示在暂停的视频的右上角。
+    
+    
+    
+
+        // 2. This code loads the IFrame Player API code asynchronously.
+        var tag = document.createElement('script');
+        
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        
+        // 3. This function creates an <iframe> (and YouTube player)
+        //    after the API code downloads.
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '360',
+                width: '640',
+                videoId: 'M7lc1UVf-VE',
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+            
+        }
+        
+        // 4. The API will call this function when the video player is ready.
+        function onPlayerReady(event) {
+            event.target.playVideo();
+        }
+        
+        // 5. The API calls this function when the player's state changes.
+        //    The function indicates that when playing a video (state=1),
+        //    the player should play for six seconds and then stop.
+        var done = false;
+        function onPlayerStateChange(event) {
+            if (event.data == YT.PlayerState.PLAYING && !done) {
+                setTimeout(stopVideo, 6000);
+                done = true;
+            }
+        }
+        function stopVideo() {
+            player.stopVideo();
+        }
+    
+</script>
+</body>
+</html>

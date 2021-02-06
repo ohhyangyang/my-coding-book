@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    循环语句：反复执行同一段代码
+
+    while循环
+    语法：
+         while(条件表达式){
+            语句...
+         }
+    
+    执行流程：
+    while语句执行时，先对表达式进行求值判断，
+    如为true，则执行循环
+    执行结束后继续对表达式进行判断
+    如为true，则继续执行循环
+    以此类推
+    直至值为false，终止循环
+
+
+    do...while循环
+    语法：
+    do{
+        语句...
+    }while(条件表达式)
+
+    执行流程：
+    do...while语句在执行时，会先执行循环体
+    循环执行完毕后，对while表达式进行判断
+    如果为true，则继续执行循环
+    如果为false，则终止循环
+
+    实际上do...while和while功能类似，只不过while会先判断再执行，do...while会先执行再判断
+    do...while可以保证循环体至少执行一次，而while不能
+    */
+    //换行
+    console.log("hello"+"\n"+"你好");//\n在控制台中换行
+    document.write("hello"+"<br/>"+"你好");//<br/>是在网页中换行
+
+    //while，
+    //向页面中输出连续的数字
+    var n=1;
+    while(true){      //表达式为true的循环为死循环，该循环不会停止，除非关闭浏览器，在开发中慎用
+        alert(n++);
+    }
+    /*
+    注：表达式为true的循环为死循环，该循环不会停止，
+    除非关闭浏览器，在开发中慎用
+    可以使用break来终止循环
+    */
+    var n=1;
+    while(true){
+        alert(n++);
+        if(n==10){
+            break;
+        }
+    }    
+    //注：创建循环三步骤：
+    //1 创建初始变量
+    var i=11;
+    //2 在循环中设定一个条件表达式
+    while(i<10){
+    //3 定义一个更新表达式，每次更新初始化变量
+        document.write(i++ + "<br/>");
+    }//什么都不显示，因为条件表达式中11大于10
+
+    //do...while
+
+    var i=11;
+    do{
+        document.write(i++ + "<br/>");
+    }while(i<10)//显示11，因为do...while先执行再判断，语句至少会被执行一次
+
+
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

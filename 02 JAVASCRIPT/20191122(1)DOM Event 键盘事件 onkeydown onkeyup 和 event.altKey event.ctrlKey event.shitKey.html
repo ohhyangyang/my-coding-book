@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    键盘事件handler
+    *onkeydown 
+    按键被按下
+    如果一直按着某个键不松手，则该事件会一直被触发
+    （为了防止误操作，第一次间隔会时间较长，其他次非常快）
+    ⚠️键盘事件一般绑定给一些可以获取到焦点的对象或者是document
+
+    *onkeyup 
+    按键被松开
+    只触发一次
+
+    键盘事件属性
+    *event.keyCode属性
+    通过event.keyCode可以获取按键的编码(unicode)
+    判断哪个按键被按下
+
+    *event.altKey 
+     event.ctrlKey 
+     event.shiftKey
+     判断alt ctrl和shift是否被按下
+     按下 返回true
+     未按下 返回false
+    
+
+    
+    */
+    window.onload=function(){
+        //给document绑定键盘事件
+        document.onkeydown=function(event){//按下按键
+            event=event||window.event;//⚠️⚠️⚠️
+            /*判断y键(89)是否被按下
+            if(event.keyCode===89){
+                 console.log("y被按下");
+            }*/
+            //判断y和ctrl是否被同时按下
+            if(event.keyCode===89 && event.ctrlKey){
+                console.log("y和ctrl都被按下")
+            }
+        }
+        document.onkeyup=function(){//松开按键
+            //console.log("up");
+        }
+        //给input绑定键盘事件（见20191122(2)DOM Event 键盘事件）
+    }
+    </script>
+</head>
+<body>
+    <div id="box1" style="width: 100px; height: 100px; background-color: red;"></div>
+    <input type="text"/>
+</body>
+</html>

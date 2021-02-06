@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    #areaDiv{
+        width: 300px;
+        height: 50px;
+        border: 1px solid blue;
+        margin-bottom: 10px;
+    }
+    #showMsg{
+        width: 300px;
+        height: 20px;
+        border: 1px solid blue;
+    }
+    </style>
+    
+    <script type="text/javascript">
+    /*
+    onmousemove 在鼠标移动时会触发
+
+    DOM事件对象
+    当事件的响应函数触发时，浏览器都会将一个事件对象（event）作为实参传递进响应函数
+    在event中封装了当时事件的一切相关信息
+    比如 鼠标的坐标 键盘哪个按键被按下 鼠标滚轮滚动方向。。。
+
+    ⚠️但是在IE8及一下浏览器中，响应函数在触发时，浏览器不会传递event对象
+    而是将event对象转而作为浏览器window对象的属性保存
+
+    DOM Event对象的鼠标 / 键盘属性
+    event.clientX	当事件被触发时，返回鼠标指针的水平坐标。(相对于窗口)
+    event.clientY	当事件被触发时，返回鼠标指针的垂直坐标。(相对于窗口)
+    */
+    window.onload=function(){
+        /*
+        当鼠标在areaDiv移动时，在showMsg中会显示鼠标的坐标
+        */
+        var areaDiv=document.getElementById("areaDiv");
+        var showMsg=document.getElementById("showMsg");
+        areaDiv.onmousemove=function(event){
+            //alert(event);//object MouseEvent，⚠️此时的event为一个mouse事件对象
+            /*if(!event){
+                event=window.event; 
+            }*/
+            event=event||window.event;//更常见的写法
+             //⚠️⚠️⚠️解决event对象兼容性的代码：如果没有event对象，那么window.event就是event
+            var x=event.clientX;
+            var y=event.clientY;
+            showMsg.innerHTML="x="+x+",y="+y;
+        }
+    }
+    </script>
+</head>
+<body>
+    <div id="areaDiv"></div>
+    <div id="showMsg"></div>
+</body>
+</html>

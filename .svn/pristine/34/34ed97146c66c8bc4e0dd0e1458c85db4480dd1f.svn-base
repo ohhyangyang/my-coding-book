@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>checkbox全选练习</title>
+        <script type="text/javascript">
+        window.onload=function(){//window.onload事件意味着先加载完整个页面，再开始执行<head>里的JS代码
+        var sports=document.getElementsByName("sports");//获取所有选项
+        var checkAllBox=document.getElementById("checkAllBox");
+        //1 #selcetAllBtn 全选
+        
+        var selectAllBtn = document.getElementById("selectAllBtn")//绑定全选按钮
+        selectAllBtn.onclick = function(){
+            // var sports=document.getElementsByName("sports"); 获取所有选项
+            //遍历sports
+            for(var i=0;i<sports.length;i++){
+                //checkboxObject.checked=true|false  设置或返回 checkbox 是否应被选中。
+                sports[i].checked=true;
+            }
+
+            //解决checkallbox的问题
+            checkAllBox.checked=true;
+        };
+        
+
+        //2 #selectNoneBtn 全不选
+        var selectNoneBtn=document.getElementById("selectNoneBtn");
+        selectNoneBtn.onclick=function(){
+            // var sports=document.getElementsByName("sports"); 获取所有选项
+            for(var i=0;i<sports.length;i++){
+                sports[i].checked=false;
+            }
+
+            //解决checkallbox的问题
+            checkAllBox.checked=false;
+        };
+        
+        //3 #selectRevBtn 反选
+        var selectRevBtn=document.getElementById("selectRevBtn");
+        selectRevBtn.onclick=function(){
+            checkAllBox.checked=true;
+            for(var i=0;i<sports.length;i++){
+            /*  笨一点的方法
+                 if(sports[i].checked){
+                    sports[i].checked=false;
+                }else{
+                    sports[i].checked=true;
+                }
+            */
+                sports[i].checked=!sports[i].checked;//对原boolean取反
+
+                //同part6 解决checkallbox的问题
+                if(!sports[i].checked){
+                        checkAllBox.checked=false;//只要有一个选项未被选中，checkallbox即为false
+                        //此处不可以有break
+                    }
+            }
+            
+            
+        };
+    
+        //4 #sendBtn 提交按钮（弹出所有选中的选框）
+        var sendBtn=document.getElementById("sendBtn");
+        sendBtn.onclick=function(){
+            for(var i=0;i<sports.length;i++){
+                if(sports[i].checked){
+                    alert(sports[i].value);
+                }
+            }
+        };
+        //5 #checkAllBox 全选/全不选
+        //var checkAllBox=document.getElementById("checkAllBox");
+        checkAllBox.onclick=function(){
+            /*if(checkAllBox.checked){
+                for(var i=0;i<sports.length;i++){
+                    sports[i].checked=true;
+                }
+            }else{
+                for(var i=0;i<sports.length;i++){
+                    sports[i].checked=false;
+                    }
+            }*/
+            for(var i=0;i<sports.length;i++){
+                    sports[i].checked=this.checked;
+                    //简便写法，一true全true，一false全false
+                    //this：响应函数绑给谁，this就是谁
+                }
+        };
+        
+        for(var i=0;i<sports.length;i++){
+            sports[i].onclick=function(){
+                checkAllBox.checked=true;//先默认checkallbox为选中状态，再去for循环中判定
+                for(var j=0;j<sports.length;j++){
+                    if(!sports[j].checked){
+                        checkAllBox.checked=false;//只要有一个选项未被选中，checkallbox即为false
+                        break;//一旦出现一个false，则不用继续循环下去，执行break退出
+                    }
+                }
+            };
+        }
+        }
+        </script>
+    </head>
+    <body>
+        <form action="#">
+            What are your favorite sports？
+            <input type="checkbox" id="checkAllBox"/>ALL/NONE<br/>
+            <input type="checkbox" name="sports" value="Football"/>Football
+            <input type="checkbox" name="sports" value="Basketball"/>Basketball
+            <input type="checkbox" name="sports" value="Badmintion"/>Badmintion
+            <input type="checkbox" name="sports" value="Ping-Pong"/>Ping-Pong
+            <br/>
+            <button type="button" id="selectAllBtn">SELECT ALL</button>
+            <button type="button" id="selectNoneBtn">SELECT NONE</button>
+            <button type="button" id="selectRevBtn">INVERSE</button>
+            <button type="button" id="sendBtn">GO</button>
+
+            
+        </form>
+    </body>
+</html>

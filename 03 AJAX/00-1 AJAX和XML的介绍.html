@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<!--
+	- AJAX (Asynchronous JavaScript And XML)   异步JS 和 XML
+	  通过AJAX 可以在浏览器中向服务器发送异步请求
+	  AJAX不是新的编程语言，而是一种将现有的标准组合在一起使用的新方式。
+	  
+	  最大优势：无刷新获取数据。 无需刷新网页，即可通信服务器
+      
+      特点：
+        优点
+          可以无需刷新页面而与服务器端进行通信。
+          允许你根据用户事件，在事件处理程序过程当中，来向服务端发送请求，获取结果，来更新部分页面内容。
+              比如 鼠标事件 键盘事件 表单事件 文档事件
+        缺点
+          无浏览历史，无回退
+          存在跨域问题 (但后期会讲如何解决)
+              举例：默认情况下，AJAX不允许a.com向b.com发送请求，
+          SEO(Search Engine Optimization搜索引擎优化)不友好，SEO搜索不到
+              因为数据是通过AJAX动态加载的，所以源代码中没有，SEO搜索不到
+              
+      
+    - 关于XML
+      在AJAX的最初，AJAX在实现数据交换时，所使用的格式是XML
+      服务器端给浏览器返回结果时，使用的就是XML格式的字符串
+      然后，前端JS在接到结果之后对字符串内容进行解析，提取数据，并处理数据
+        XML  Extensible Markup Language  即可扩展标记语言。
+        HTML  HyperText Markup Language  超文本标记语言
+        
+          XML是被设计用来传输和存储数据。
+          HTML是用来在网页当中呈现数据的
+          
+          XML和HTML类似，不同的是HTML中都是预定义标签，而XML中没有预定义标签，全都是自定义标签，用来表示一些数据。
+       例如：
+         比如说我有一个学生数据：
+           name = "孙悟空" ; age = 18 ; gender = "男" ;
+         用XML 表示：
+           <student>
+             <name>孙悟空</name>
+             <age>18</age>
+             <gender>男</gender>
+           </student>
+           
+       ⚠️  而现在已经换成了JSON格式，JSON相对于XML更加简洁，数据转换上也更加容易
+           例如 {"name":"孙悟空","age":18,"gender":"男"}
+       
+      
+	-->
+</head>
+<body>
+
+</body>
+</html>

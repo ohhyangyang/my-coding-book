@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<!--
+	- jQuery选择器
+	  优点：1 写法简洁
+	           $("#id")
+	           $("tagName")
+	       2 完善的处理机制
+	           正常情况下，使用DOM选择的元素不存在，浏览器会报错
+	           而使用jQuery选择的元素不存在，则不会报错
+	
+	- jQuery基本选择器
+	   基本选择器是jQuery最简单和最常用的选择器，它通过id，class和标签名来查找DOM元素
+	   格式为 $("选择器")
+	   
+	     选择器                    描述                          返回结果
+	     #id                      根据id匹配元素                  单个元素组成的集合
+	     .class                   根据class匹配的元素             集合元素
+	     element                  根据元素名匹配元素               集合元素
+	     *                        所有元素                        集合元素
+	     selector1, selector2,    合并几个选择器匹配到的元素(并集)   集合元素
+	     ..., selectorN
+	- jQuery事件
+	   click事件
+	   $("选择器").click([data],function(){})
+	   
+	- jQuery的css属性
+	   $("选择器").css(属性名称,属性值)
+	-->
+	<style type="text/css">
+		div, span , p {
+			width: 200px;
+			height: 200px;
+			margin: 5px;
+			background: #aaa;
+			border: #000 1px solid;
+			float: left;
+			font-size: 17px;
+			font-family: Verdana;
+		}
+		div.mini {
+			width: 70px;
+			height: 70px;
+			background-color: #aaa;
+			font-size: 12px;
+		}
+		div.hide {
+			display: none;
+		}
+	</style>
+	<script type="text/javascript" src="jquery-1.10.1.js"></script>
+	<script type="text/javascript">
+		$(function () {
+		    //使用id选择器选择id为btn1~btn5的按钮，并绑定onclick响应函数
+            $("#btn1").click(function () {
+                alert("btn1");
+                $("#one").css("background","yellow");
+            })
+			
+			$("#btn2").click(function () {
+                $(".mini").css("background","yellow");
+            })
+			
+			$("#btn3").click(function () {
+                $("div").css("background","yellow");
+            })
+			
+			$("#btn4").click(function () {
+                $("*").css("background","yellow");
+            })
+			
+			$("#btn5").click(function () {
+                $("span,#two").css("background","yellow");
+            })
+        })
+	</script>
+</head>
+<body>
+    <input id="btn1" type="button" value="选择id为one的元素">
+    <input id="btn2" type="button" value="选择class为mini的元素">
+    <input id="btn3" type="button" value="选择元素名为div的元素">
+    <input id="btn4" type="button" value="选择所有的元素">
+    <input id="btn5" type="button" value="选择所有的span和id为two的元素">
+    <br><br>
+    <div class="one" id="one">
+	    id为one，class为one的DIV
+	    <div class="mini">class为mini的DIV</div>
+    </div>
+    <div class="one" id="two" title="test">
+	    id为two，class为one，title为test的DIV
+	    <div class="mini" title="other">class为mini，title为other的DIV</div>
+	    <div class="mini" title="test">class为mini，title为test的DIV</div>
+    </div>
+    <div class="one">
+	    <div class="mini">class为mini的DIV</div>
+	    <div class="mini">class为mini的DIV</div>
+	    <div class="mini">class为mini的DIV</div>
+	    <div class="mini"></div>
+    </div>
+    <div class="one">
+	    <div class="mini">class为mini的DIV</div>
+	    <div class="mini">class为mini的DIV</div>
+	    <div class="mini">class为mini的DIV</div>
+	    <div class="mini" title="test">class为mini,title为test的DIV</div>
+    </div>
+    <div>
+	    包含input的type为hidden的DIV
+	    <input type="hidden">
+    </div>
+    <span>Span元素</span>
+
+</body>
+</html>

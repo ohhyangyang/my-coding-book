@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title></title>
+        <style type="text/css">
+        #u1{
+            background-color: #bfa;
+        }
+        </style>
+        <script type="text/javascript">
+        /*
+        *事件的委派
+        利用bubble，将事件统一绑定给元素共同的祖先元素，
+        这样当后代元素上的事件触发时，会一直冒泡到祖先元素，从而通过祖先元素的响应函数来处理事件
+        这样可以减少事件绑定的次数，提高程序性能
+
+        - event.target
+        触发此事件的元素对象
+
+        - event.currentTarget
+           currentTarget，它指的是当事件遍历DOM时，标识事件的当前目标
+
+        ⚠️⚠️⚠️ event.target 和 event.currentTarget都是监听事件触发的目标。
+        区别是，event.currentTarget( ) 会返回当前触发事件的元素(真正绑定事件的元素)；而event.target( ) 会返回触发事件触发的源头元素(点击的元素)。
+        
+        currentTarget is the element that the event listener is attached to. 
+        target is the element that triggered the event (e.g., the user clicked on)
+
+
+        */
+
+        window.onload=function(){
+            //⚠️⚠️⚠️⚠️不要忘了window.onload！！！！！！
+            //btn01的单击响应函数，用于添加新link
+            var u1=document.getElementById("u1");
+            var btn01=document.getElementById("btn01");
+            btn01.onclick=function(){
+                var li=document.createElement("li");
+                li.innerHTML="<a href='javascript:;' class='link'>new link!</a>";
+                u1.appendChild(li);//u1收养li
+            };
+            //老方法：依次给每个<a>添加单击响应函数
+            /*var links=document.getElementsByTagName("a");
+            for(var i=0;i<links.length;i++){
+                links[i].onclick=function(){
+                    alert("hi");
+                }
+            }*/
+            /*
+            ⚠️如此编写的问题：
+            因为links获取<a>是在浏览器加载结束后执行的，
+            因此links中不包括新的link，也无法将单击响应函数添加给新link
+            ⚠️优化方法：
+            将事件绑定给元素共同的祖先元素<ul>
+            这样可以应用到已有link和新link上
+            */
+            u1.onclick=function(event){
+                //先把事件绑定给<a>祖先元素<ul>，再通过event.target筛选触发事件的目标元素
+                event=event||window.event;
+                if(event.target.className=="link"){
+                    console.log(event.target);
+                    alert("我是ul的单击响应函数");
+                }
+            };
+        };
+        </script>
+    </head>
+    <body>
+        <button id="btn01">Add new link</button>
+        <ul id="u1">
+            <li>
+                p
+            </li>
+            <li><a href="javascript:;" class="link">link01</a></li>
+            <li><a href="javascript:;" class="link">link02</a></li>
+            <li><a href="javascript:;" class="link">link03</a></li>
+        </ul>
+    </body>
+</html>

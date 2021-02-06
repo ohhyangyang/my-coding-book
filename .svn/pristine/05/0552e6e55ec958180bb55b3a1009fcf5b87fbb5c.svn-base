@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    
+    . 是拥有特殊含义的字符，表示查找任意字符
+    因此在正则中如果要输入.，应输入的是\.
+    在正则中使用\作为转义字符
+    (用字面量表示时)
+    .  查找单个字符，除了换行和行结束符。
+    \. 查找 . 
+    \\ 查找 \ 
+    \w 查找任意字母、数字、_  [A-z0-9_]
+    \W 查找除了字母、数字、_  [^A-z0-9_]
+    \d 查找[0-9]
+    \D 查找[^0-9]
+    \s 查找空白字符
+    \S 查找除了空白字符
+    \b 匹配单词边界
+    \B 匹配非单词边界
+
+    注意：在使用构造函数时，由于它的参数是string，而\是string中的转义字符，需要使用\\来代替\
+         即字面量\=="\\"
+
+    */
+    //  \.表示.
+    var reg=/\./;//检查string中是否有 . 
+    console.log(reg.test("b."));//true
+
+    reg=new RegExp("\\.")//相当于/\./，同样检查string中是否有 .
+    console.log(reg);///\./
+    console.log("b.\\");//b.\，在string中用两个斜杠\\代表一个斜杠\
+
+    //  \\表示\
+    reg=/\\/;//检查string中是否有\  //相当于reg=new RegExp("\\\\");
+    console.log(reg.test("b.\\")) //true，不可以是"b.\"，因为相当于转义了"，会报错
+
+    //  \b表示单词边界
+    reg=/\bchild\b/;
+    console.log(reg.test("hello children"));//false
+
+    /*练习
+    接受一个用户的输入，删除掉string中的空格
+    */
+    var input=prompt("请输入你的用户名");
+    var str="    hello how are you      ";
+    str=str.replace(/^\s*|\s*$/g,"");//去除开头和结尾的空格，写成/^\s+|\s+$/g也可
+    console.log(str);//hello how are you
+   
+
+
+
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

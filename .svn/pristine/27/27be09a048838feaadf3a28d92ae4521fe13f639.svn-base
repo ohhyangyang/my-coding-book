@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>获取样式</title>
+    <style type="text/css">
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+        }
+    </style>
+    <script type="text/javascript">
+        /*
+        *获取元素当前显示样式
+
+        getComputedStyle()方法 ⚠️⚠️用于正常浏览器和IE9及以上浏览器（返回的结果更优）
+            getComputedStyle(a,b)
+                参数a：要获取样式的元素
+                参数b：可以传递一个伪元素，一般都传null
+                返回值：封装了当前元素样式的一个对象
+                语法：  可以通过对象.样式名来读取样式
+        ⚠️如果当前元素没有设置该样式，则获取到真实的值（更优）
+          如：未设置width的元素，会被获取到一个真实px长度，而不是auto
+
+        currentStyle属性  ⚠️⚠️只有IE浏览器支持
+        语法：元素.currentStyle.样式名
+        ⚠️如果当前元素没有设置该样式，则获取默认值
+          如：未设置width的元素，会被获取到auto
+
+        ⚠️⚠️通过currentStyle属性和getComputedStyle()方法读取到的样式都是只读的
+            不能修改，如要修改必须通过style属性
+
+        *[]
+        如需使用特殊属性名，不能采用 . 来操作，需要用另一种方式
+              语法   对象["属性名"]=属性值
+            ⚠️在[]中可以直接传递一个变量，这样变量值是多少就会读取那个属性
+        */
+        window.onload = function () {
+            var box1 = document.getElementById("box1");
+            //点击按钮1，读取box1样式
+            var btn01 = document.getElementById("btn01");
+            btn01.onclick = function () {
+                /*正常浏览器
+                var obj=getComputedStyle(box1,null);//获取封装样式的对象
+                alert(obj.width);//100px*/
+
+                /*IE浏览器
+                alert(box1.currentStyle.width);*/
+
+                /*所有浏览器*/
+                alert(getStyle(box1, "width"));
+            };
+
+
+            /*
+            定义一个函数getStyle，来处理“获取当前元素样式”的兼容性问题
+            参数：
+               obj 要获取的元素
+               name 要获取的样式名(字符串形式)
+            */
+            function getStyle(obj, name) {
+                /*
+                判断浏览器中是否有getComputedStyle()方法，
+                有则执行getComputedStyle()，没有则执行currentStyle
+                */
+                if (window.getComputedStyle) {
+                    /*
+                    如果该属性存在，则为true，运行getComputedStyle()方法（其他浏览器）
+                    如果不存在该属性，则为false，运行else的代码的currentStyle属性（IE8浏览器）
+                    ⚠️getComputedStyle前面必须加window，使getComputedStyle成为window对象的属性
+                      而如果不加window，getComputedStyle则代表了一个变量，在IE8中找不到该变量会报错
+                    */
+                    //方式一：使用if else（推荐）
+                    return getComputedStyle(obj, null)[name];//100px，使用[]将属性名传递进来，不然直接写.name就写死了
+                } else {
+                    return obj.currentStyle[name];
+                }
+
+                //方式二：或者可以使用三元运算符表达
+                //return window.getComputedStyle?getComputedStyle(obj,null)[name]:obj.currentStyle[name];
+            }
+
+
+        };
+
+    </script>
+</head>
+
+<body>
+    <button id="btn01">1</button>
+    <br />
+    <div id="box1"></div>
+</body>
+
+</html>

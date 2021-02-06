@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<!--
+	1 给网页的所有<p>元素添加onclick事件
+	2 使一个特定的表格各行变色
+	3 对多选框进行操作，输出选中的多选框个数
+	-->
+</head>
+<script type="text/javascript" src="jquery-1.10.1.js"></script>
+<script type="text/javascript">
+    /*
+		⚠️⚠️⚠️
+		1 jQuery对象可以进行隐式迭代，
+		  jQuery本身为DOM对象的数组
+		  而$("p").click(function () {...})可以为所有的p节点都绑定上click响应函数
+		
+		2 在响应函数中，它this为DOM对象，若想使用它的jQuery方法，需要包装成$(this)
+		
+		3 $(节点).text() 读取（不传递参数）或修改（传递参数）文本
+	*/
+	$(function () {
+        //1 给网页的所有<p>元素添加onclick事件
+		
+		$("p").click(function () {
+                alert($(this).text());
+                $(this).text("^^"+$(this).text());
+           
+        });
+		
+		//2 使一个特定的表格各行变色
+        //匹配所有索引值为偶数的元素，从 0 开始计数 0 2 4 6， 实际查找的是1 3 5行
+		$("table:first tr:even").css("background","blue");
+  
+		
+		//3 对多选框进行操作，输出选中的多选框个数
+		$("button").click(function () {
+            alert($(":checkbox:checked").length);
+        });
+    })
+	
+	
+</script>
+<body>
+<p>段落1</p>
+<p>段落2</p>
+<p>段落3</p>
+
+<table>
+	<tr>
+		<td>第一行</td><td>第一行</td>
+	</tr>
+	<tr>
+		<td>第一行</td><td>第一行</td>
+	</tr>
+	<tr>
+		<td>第一行</td><td>第一行</td>
+	</tr>
+	<tr>
+		<td>第一行</td><td>第一行</td>
+	</tr>
+	<tr>
+		<td>第一行</td><td>第一行</td>
+	</tr>
+	<tr>
+		<td>第一行</td><td>第一行</td>
+	</tr>
+</table>
+<table>
+	<tr>
+		<td>第一行</td><td>第一行</td>
+	</tr>
+	<tr>
+		<td>第一行</td><td>第一行</td>
+	</tr>
+	<tr>
+		<td>第一行</td><td>第一行</td>
+	</tr>
+	<tr>
+		<td>第一行</td><td>第一行</td>
+	</tr>
+	<tr>
+		<td>第一行</td><td>第一行</td>
+	</tr>
+	<tr>
+		<td>第一行</td><td>第一行</td>
+	</tr>
+</table>
+
+<input type="checkbox" name="test"/>
+<input type="checkbox" name="test"/>
+<input type="checkbox" name="test"/>
+<input type="checkbox" name="test"/>
+<input type="checkbox" name="test"/>
+<input type="checkbox" name="test"/>
+<button>选中的个数</button>
+</body>
+</html>

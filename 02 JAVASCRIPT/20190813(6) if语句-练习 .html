@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+        /*
+        练习一：
+        输入小明的期末成绩
+        成绩为100时，“奖励一辆BMW”
+        成绩为（80-99）时，“奖励一个iphone”
+        成绩为（60-80）时，“奖励一本参考书”
+        其他时，什么奖励也没有
+        */
+
+        /*
+        prompt()函数可以弹出一个带有文本框的提示框
+        用户可以输入内容
+        该函数需要String作为参数，而String将会成为提示文字
+        */
+
+        var score = prompt("输入小明的成绩");
+        if(score>100 || score<0 || isNaN(score)){
+            alert("请输入0-100之间的数字")//用于防止用户乱输入的情况
+        }else if(score==100){
+            //注意！！，要使用==，而不是=，=为赋值
+            alert("奖励一个宝马");
+        }else if(score>80 && score<=99){
+            alert("奖励一个iphone");
+        }
+        else if(score>60 &&score<=80){
+            alert("奖励一本参考书");
+        }
+        //或者可以用else嵌套所有
+        var score = prompt("输入小明的成绩");
+        if(score>100 || score<0 ||isNaN(score)){
+            alert("请输入0-100之间的数字")
+        }else {
+            if(score==100){
+            alert("奖励一个宝马");
+            }else if(score>80 && score<=99){
+            alert("奖励一个iphone");
+            }//注意！！，要使用==，而不是=
+            else if(score>60 &&score<=80){
+            alert("奖励一本参考书");
+             }
+        }
+
+        /*
+        练习二：
+        嫁女儿提出一定条件
+        高：180cm以上
+        富：1000万以上
+        帅：500以上
+        三个同时满足，为“我一定要嫁给他”
+        三个满足一个，为”嫁吧，比上不足，比下有余“
+        三个都不满足，为”不嫁！“
+
+        */
+        var height=prompt("请输入你的身高（CM）"), money=prompt("请输入你的财富（万）"), face=prompt("请输入你的颜值（PX）");
+        if(height>180 && money>1000 && face>500){
+            alert("我一定要嫁给他")
+        }else if(height>180 || money>1000 || face>500){
+            alert("嫁吧，比上不足，比下有余")
+        }else{
+            alert("不嫁！");
+        }
+
+        /*
+        练习三：
+        编写程序，由键盘输入三个整数分别存入变量num1，num2，num2，
+        对他们进行排序，并且从小到大输出
+        */
+
+        var num1=+prompt("请输入第一个数：");
+        var num2=+prompt("请输入第二个数：");
+        var num3=+prompt("请输入第三个数：");//由于prompt（）的返回值为String，所以要在前面加+，将其转为Number
+        //找到三个数中最小的数
+        if(num1<num2&&num1<num3){
+            if(num2<num3){
+                alert(num1+","+num2+","+num3);
+            }else{
+                alert(num1+","+num3+","+num2);
+            }
+        }else if(num2<num1&&num2<num3){
+            if(num1num3){
+                alert(num2+","+num1+","+num3);
+            }else{
+                alert(num2+","+num3+","+num1);
+            }
+        }else{
+            if(num1<num2){
+                alert(num3+","+num1+","+num2);
+            }else{
+                alert(num3+","+num2+","+num1);
+            }
+        }
+        
+            
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

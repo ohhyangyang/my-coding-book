@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            /* 
+            ⚠️⚠️需要指定一个left的值，这样在执行getStyle函数时，在IE中不会返回auto（返回auto则无法进行计算）
+            */
+        }
+
+        #box2 {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            position: absolute;
+            left: 0;
+            top: 200px;
+            /* 
+            ⚠️⚠️需要指定一个left的值，这样在执行getStyle函数时，在IE中不会返回auto（返回auto则无法进行计算）
+            */
+        }
+    </style>
+    <script type="text/javascript" src="js/tools.js"></script>
+    <script type="text/javascript">
+
+        window.onload = function () {
+            var box1 = document.getElementById("box1");
+            var btn01 = document.getElementById("btn01");
+            var btn02 = document.getElementById("btn02");
+
+
+            btn01.onclick = function () {//box1向右移动，并在800px时停住
+                move(box1, "left", 800, 5);
+            };
+            btn02.onclick = function () {//box1向左移动（left值减小）
+                move(box1, "left", 0, 13);
+            };
+
+            var box2 = document.getElementById("box2");
+            var btn03 = document.getElementById("btn03");
+            var btn04 = document.getElementById("btn04");
+
+            btn03.onclick = function () {
+                move(box2, "left", 800, 13);
+            };
+
+            btn04.onclick = function () {
+                move(box2, "width", 400, 13, function () {
+                    move(box2, "height", 400, 10, function () {
+                        move(box2, "top", 300, 10, function () {
+                            move(box2, "width", 100, 10, function () {
+                                move(box2, "top", 200, 10, function () {
+                                    move(box2, "height", 100, 10, function () { });
+                                });
+                            });
+                        });
+                    });
+                });
+            };
+            //最后将move和getStyle函数整理成外部文件，并放入js文件夹内
+
+        };
+        /*
+创建一个可以执行简单动画的函数
+参数：
+  obj 要执行动画的对象
+  attr 要执行动画的样式，比如："left" "top" "width" "height"
+  target 执行动画的目标位置
+  speed 移动的速度（正值）
+  callback 回调函数，在动画执行结束后执行
+*/
+
+        function move(obj, attr, target, speed, callback) {
+            clearInterval(obj.timer);
+            //获取目前元素位置
+            var currentValue = parseInt(getStyle(obj, attr));
+
+            if (currentValue > target) {//speed为负
+                speed = -speed;
+            }
+            /*
+            判断speed的正负值
+            如从左向右移动，currentValue<target，speed为正值，
+            如从右向左移动，currentValue>target，speed为负值
+            */
+
+            obj.timer = setInterval(function () {
+                /*
+                ⚠️
+                应向执行动画的对象中添加一个timer属性，用来保存它自己的定时器的标识，这样多个box动画的执行不会互相干扰
+                而不是在函数外部声明一个timer变量，因为一个外部变量无法同时移动多个box，例如：开启timer移动box2，box1的timer就会停止
+                */
+
+                var oldValue = parseInt(getStyle(obj, attr));
+                //取旧值，每30毫秒变一次
+
+                var newValue = oldValue + speed;
+                //取新值
+
+                if (speed < 0 && newValue < target || speed > 0 && newValue > target) {
+                    newValue = target;
+                }//判断新值与target关系，使其最终无偏差到达终点
+
+                obj.style[attr] = newValue + "px";
+                /*
+                将新值赋予元素样式中
+                ⚠️style["left"]等于style.left，但是[]中的参数可以被传递，而不是作为一个固定的变量属性被写死
+                */
+                //到达target后停止动画
+                if (newValue == target) {
+                    clearInterval(obj.timer);
+                    callback && callback();
+                    /*
+                    动画执行完毕，调用回调函数，
+                    ⚠️使用&&，不会报错
+                    有callback则调用，没有则不调用
+                    */
+                }
+            }, 30);
+        };
+
+    </script>
+</head>
+
+<body>
+    <button id="btn01">点击按钮以后，box1向右移动</button>
+    <button id="btn02">点击按钮以后，box1向左移动</button>
+    <br />
+    <button id="btn03">点击按钮以后，box2向右移动</button>
+    <button id="btn04">测试按钮</button>
+    <br />
+    <br />
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div id="line"
+        style="width: 0px; height: 1000px; border-left: black solid 1px; position: absolute; left: 800px; top: 0;">
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+	<title>Title</title>
+	<style type="text/css">
+	
+		/* 模糊背景 */
+		
+		#test3{
+			height: 100px;
+			width: 300px;
+			background:rgba(0,0,0,.5);
+			position: relative;
+		}
+		
+		#test3 #bg{
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background:url("../img/image1.jpeg") no-repeat;
+			background-size: 100% 100%;
+			z-index: -1;
+			filter: blur(2px);
+		}
+		
+		#test3 img{
+			margin: 20px 110px;
+		}
+	</style>
+</head>
+<body>
+
+<div id="test3">
+	<img src="../img/image1.jpeg" width="64px" height="64px" alt=""/>
+	<div id="bg"></div>
+</div>
+</body>
+</html>

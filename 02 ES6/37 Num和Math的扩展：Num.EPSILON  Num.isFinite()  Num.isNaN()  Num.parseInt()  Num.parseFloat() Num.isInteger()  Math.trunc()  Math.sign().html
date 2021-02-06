@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数值扩展</title>
+</head>
+<body>
+    <script>
+        /*
+        - Number.EPSILON 是 JavaScript 表示的最小精度
+          EPSILON 属性的值接近于 2.2204460492503130808472633361816E-16
+          应用：可以用于解决浮点数误差的问题，见下面例子
+
+        - 二进制和八进制的数值表示方式
+          二进制   let b = 0b1010;
+          八进制   let o = 0o777;
+          十进制   let d = 100;
+          十六进制 let x = 0xff;
+
+        - Number.isFinite()函数检测一个数值是否为有限数
+
+        - Number.isNaN() 检测一个数值是否为 NaN
+
+        - Number.parseInt() 字符串中提取整数数字
+        - Number.parseFloat()字符串中提取整数和小数
+        - Number.isInteger() 判断一个数是否为整数
+        - Math.trunc() 将数字的小数部分抹掉
+        - Math.sign() 判断一个数到底为正数 负数 还是零
+           正书返回1
+           负数返回-1
+           零返回0
+
+
+
+        ⚠️⚠️⚠️
+        Number.isNaN() Number.parseInt() 和 Number.parseFloat()均为原来既有函数，
+        只不过没有放在Number对象下，现在放在NUmber里只是为了更容易被初学者找到
+         */
+
+        //Number.EPSILON
+        //比较大小，如果两个数的差小于EPSILON，则可以认为是两个数相等
+        function equal(a, b){
+            if(Math.abs(a-b) < Number.EPSILON){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        console.log(0.1 + 0.2);//0.30000000000000004
+        console.log(0.1 + 0.2 === 0.3);//false ⚠️⚠️⚠️ 有误差
+        console.log(equal(0.1 + 0.2, 0.3));//true
+
+        //Number.isFinite()
+        console.log(Number.isFinite(100)); //true
+        console.log(Number.isFinite(100/0)); //false
+        console.log(Number.isFinite(Infinity)); //false
+        
+        //Number.isNaN() 检测一个数值是否为 NaN
+        console.log(Number.isNaN(123)); //false;
+
+        //4. Number.parseInt Number.parseFloat字符串转整数
+        console.log(Number.parseInt('5211314love'));//5211314
+        console.log(Number.parseFloat('3.1415926神奇'));//3.1415926
+
+        //5. Number.isInteger 判断一个数是否为整数
+        console.log(Number.isInteger(5));//true
+        console.log(Number.isInteger(2.5));//false
+
+        //6. Math.trunc() 将数字的小数部分抹掉
+        console.log(Math.trunc(3.5));//3
+
+        //7. Math.sign() 判断一个数到底为正数 负数 还是零
+        console.log(Math.sign(100)); //1
+        console.log(Math.sign(0)); //0
+        console.log(Math.sign(-20000)); //-1
+
+    </script>
+</body>
+</html>

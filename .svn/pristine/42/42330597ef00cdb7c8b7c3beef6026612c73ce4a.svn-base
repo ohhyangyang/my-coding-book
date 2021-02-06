@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    //1
+    var a=123;
+    function fun(){
+        alert(a);
+    }
+    fun();//123，全局的a
+
+    //2
+    var a=123;
+    function fun(){
+        alert(a);//函数中的a，var声明被提前，但未赋值
+        var a=456;//对全局a无影响
+    }
+    fun();//undefined
+    alert(a);//123
+
+    //3
+    var a=123;
+    function fun(){
+        alert(a);//函数中无a，始终针对全局a
+        a=456;
+    }
+    alert(a);//123,调函数之前a值未改变
+    fun();//123
+    alert(a);//456，调函数之后，a被赋值为456
+
+    //4
+    var a =123
+    function fun(a){//相当于在函数中声明变量a
+        alert(a);//声明的变量还未被赋值
+        a=456//对函数中的a赋值，对全局a无影响
+    }
+    fun();//undefined
+    alert(a);//123
+
+    //5
+    var a=123;
+    function fun(a){
+        alert(a);
+        a=456;
+    }
+    fun(123);//123，同练习4，但形参a被赋值了
+    alert(a);//123
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

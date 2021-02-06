@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+		/*
+		   - 制作溢出显示省略号
+		   首先前提是保证元素不是被内容撑开，
+		   然后使用以下样式：
+		     white-space:nowrap;     使文字不换行
+		     overflow: hidden;
+		     text-overflow: ellipsis;    出现省略号
+		 */
+		
+		/* 溢出显示省略号 */
+		#box3{
+			width: 200px;
+			height: 200px;
+			border: 1px solid black;
+			margin: 0 auto;
+			
+			white-space:nowrap;/*使文字不换行*/
+			overflow: hidden;
+			text-overflow: ellipsis;/*出现省略号*/
+		}
+	</style>
+</head>
+<body>
+
+
+<div id="box3">
+               我要溢出去了我要溢出去了我要溢出去了我要溢出去我要溢出去了我要溢出去了我要溢出去了我要溢出去了我要溢出去了，我要溢出去了我要溢出去了我要溢出去了
+</div>
+</body>
+</html>

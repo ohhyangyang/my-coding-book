@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Page Title</title>
+		
+		<script>
+		    /*弹出警告框*/
+		    
+		    /* alert("a"); */
+            /* document.write()是对body中输入内容
+			document.write("你真帅");*/
+			/*console.log()向控制台(console)中输入内容*/
+
+			
+			alert("a");
+			document.write("你真帅");
+			console.log("你猜我从哪出来");
+
+
+		</script>
+	</head>
+	<body>
+       
+	</body>
+</html>

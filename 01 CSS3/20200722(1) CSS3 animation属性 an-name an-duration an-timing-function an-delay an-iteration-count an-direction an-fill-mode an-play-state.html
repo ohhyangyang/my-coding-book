@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+		/*
+		* animation-name属性 指定应用的一系列动画，每个名称代表一个由@keyframes定义的动画序列。
+		   值 none（默认值）表示无关键帧
+		      keyframename 标识动画的字符串，由大小写敏感的字母a-z、数字0-9、下划线(_)和/或横线(-)组成。
+		                    第一个非横线字符必须是字母，数字不能在字母前面，不允许两个横线出现在开始位置。
+		      
+		   ⚠️ Internet Explorer 9 以及更早的版本不支持 animation-name 属性。
+		   
+		* animation-duration属性 定义动画完成一个周期所需要的时间，以秒或毫秒计。
+		  默认值 0s 无动画
+		  动画周期的单位为秒(s)或者毫秒(ms)，无单位值无效。
+		  ⚠️ 负值无效
+		
+		* animation-timing-function属性 定义动画在周期中执行的节奏。可能值为一或多个 <timing-function>。
+		  值	        描述
+		  linear	    动画从头到尾的速度是相同的。
+		  ease(默认值)   动画以低速开始，然后加快，在结束前变慢。
+		  ease-in	    动画以低速开始。
+		  ease-out	    动画以低速结束。
+		  ease-in-out	动画以低速开始和结束。
+		  cubic-bezier(n,n,n,n)	在 cubic-bezier 函数中自己的值。可能的值是从 0 到 1 的数值。
+		  steps(n,start/end)  可以让动画不连续。
+		          start：表示直接开始。    step-start等同于steps(1, start)。
+		          end：表示戛然而止。是默认值。   step-end等同于steps(1, end)或者steps(1)
+		          有点难，但这里讲的非常清楚：https://www.zhangxinxu.com/wordpress/2018/06/css3-animation-steps-step-start-end/
+		  
+		  ⚠️timing function作用于一个关键帧周期而非整个动画周期，即从关键帧开始开始，到关键帧结束结束。
+		
+		* animation-delay属性 定义动画什么时候开始
+		  值 0s  （默认值）
+		     time 单位可以是秒(s)或毫秒(ms)，
+		     提示: 允许负值，-2s 使动画马上开始，但跳过 2 秒进入动画。
+		  ⚠️ animation-delay属于动画外的属性
+		
+		* animation-iteration-count属性 定义动画的播放次数。
+		    值 1 默认值
+		       n
+		       infinite 无限次播放
+		    如果指定了多个值，每次播放动画时，将使用列表中的下一个值，在使用最后一个值后循环回第一个值。
+		    ⚠️ animation-iteration-count属于动画内的属性
+		
+		* animation-direction  属性指示动画是否反向播放，
+		  值	               描述
+		  normal(默认值)	       动画按正常播放。
+		  reverse              动画反向播放。
+		  alternate	           动画在奇数次（1、3、5...）正向播放，在偶数次（2、4、6...）反向播放。
+		                       animation-timing-function也会反向，比如，ease-in 在反向时成为ease-out。计数取决于开始时是奇数迭代还是偶数迭代
+		  alternate-reverse	   动画在奇数次（1、3、5...）反向播放，在偶数次（2、4、6...）正向播放。
+		                       animation-timing-function也会反向，比如，ease-in 在反向时成为ease-out。计数取决于开始时是奇数迭代还是偶数迭代
+		  
+		  
+		⚠️ 反转的是关键帧和animation-timing-function
+		
+		* animation-fill-mode 设置动画在执行之前和之后，如何将动画样式应用于其目标。
+		  值	    描述
+		  none	    不改变默认行为。
+		  forwards	当动画完成后，保持最后一个to属性值（在最后一个关键帧中定义）。
+		  backwards	在 animation-delay 所指定的一段时间内，在动画显示之前，应用from开始属性值（在第一个关键帧中定义）。
+		  both	    forwards向前和backwards向后填充模式都被应用。
+
+		
+		* animation-play-state属性 规定动画正在运行还是暂停
+		  值	    描述
+          paused	规定动画已暂停。
+          running	规定动画正在播放。
+          
+          ⚠️ 恢复一个已暂停的动画，将从它开始暂停的时候，而不是从动画序列的起点开始在动画。
+		
+		* animation简写属性
+		  第一个时间给duration
+		  第二个时间给delay
+		
+		* @keyframes 关键帧
+		
+		语法：
+		@keyframes animationName{
+		    关键帧selector{
+		       CSS声明
+		     }
+		}
+		
+		   关键帧selector:动画持续时间但百分比
+		                from:0%
+		                to:100%
+		⚠️ 关键帧中出现的 !important 将会被忽略。
+		
+		
+		 */
+		*{
+			margin:0;
+			padding: 0;
+		}
+		#wrap{
+			position: relative;
+			margin: 200px auto;
+			width: 300px;
+			height: 300px;
+			border: 1px black solid;
+			
+		}
+		#test{
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+			
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			font:20px/100px "Arial";
+			text-align: center;
+			
+			animation-name: move;
+			animation-duration: 2s;
+			animation-timing-function: steps(1);
+			animation-delay: 2s;/*动画外的属性，延迟2s*/
+			animation-iteration-count: 1;
+			animation-direction: reverse;/*方向和运动曲线反过来*/
+			animation-fill-mode: both;
+			
+		}
+		#wrap:hover #test{
+			animation-play-state: paused;
+		}
+		
+		@keyframes move {
+			0%{
+				transform:translateY(-100px);
+			}
+			25%{
+				transform: translateY(-50px);
+			}
+			50%{
+				transform: translateY(0px);
+			}
+			75%{
+				transform: translateY(50px);
+			}
+            100%{
+	            transform: translateY(100px);
+            }
+		}
+	</style>
+</head>
+<body>
+<div id="wrap">
+	<div id="test">YANG</div>
+</div>
+</body>
+</html>

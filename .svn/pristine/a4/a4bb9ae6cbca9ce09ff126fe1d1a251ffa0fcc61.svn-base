@@ -1,0 +1,73 @@
+/*
+- Buffer 缓冲区
+JavaScript作为前端代码有缺陷，数组中不能存储二进制文件(图片，mp3等），而buffer就是专门来存储二进制数据的
+Buffer的结构和数组很像，操作的方法和数组类似（无需引用模块，可直接使用buffer）
+
+buffer中存储的都是二进制的数据，但是在显示时都是以16进制(00 - ff)的形式显示（因为八位的二进制太长了）
+buffer中的一个元素占用一个字节
+
+-Buffer功能
+用户发来的请求（二进制形式）将保存在Buffer里
+同样，发送数据给用户时，需将数据转换成二进制，那么发送之前也将之保存到Buffer里
+
+- Buffer方法
+Buffer.from(str) 将一个字符串转化为buffer
+
+Buffer.alloc(size) 创建一个指定大小的buffer（清空了之前存在该空间内的数据）（更常用）
+
+Buffer.allocUnsafe() 创建一个指定大小的buffer，但可能包含敏感数据（即未清空该块内存之前存储的数据）
+⚠️和Buffer.alloc()相比，Buffer.allocUnsafe()的性能更好一些，但有可能泄露数据，一般会更加常用前者
+
+buf.toString()将缓冲区中的数据转换为字符串
+
+更多方法见http://nodejs.cn/api/buffer.html
+
+⚠️Buffer大小一旦确定，则不能修改
+  Buffer实际上是对底层内存的直接操作
+  Buffer创建一个buffer则会占用一条连续的内存，方便维护，性能也较优
+⚠️数字在console和页面输出时，必为十进制
+  如果想输出其他进制的模式可通过添加.toString(数字)来实现，实例如下
+
+
+【⚠️⚠️⚠️
+十六进制00 - ff 转换成二进制为 0000 0000 - 1111 1111
+（二进制可理解为010101的电信号）
+计算机中一个0或一个1为一位（bit）
+8bit = 1byte（字节）
+1024byte = 1kb
+1024kb = 1mb
+1024mb = 1gb
+1024gb = 1tb】
+
+
+
+
+ */
+//Buffer.from(),将一个字符串保存到buffer中
+var str="hello 杨歌";
+var buf=Buffer.from(str);
+console.log(buf);//<Buffer 68 65 6c 6c 6f 20 e6 9d a8 e6 ad 8c>（按照unicode编码转换的）
+console.log(buf.length);//12（str在内存中占用了10个字节）
+console.log(str.length);//8（str字符串的长度）
+                        // （一个英文字母占用一个byte，一个汉字占用三个byte）
+
+//Buffer.alloc(),创建一个指定大小的buffer
+var buf2=Buffer.alloc(10);//十个byte的buffer
+buf2[0]=255;//输入的为十进制255，会转换为十六进制ff
+buf2[1]=0xaa;//如想直接输入十六进制，前面需要加0x
+buf2[2]=257;//二进制为1 0000 0001，超过了八位，被舍为0000 0001了（因此十进制不可超过255）
+console.log(buf2);//<Buffer ff aa 01 00 00 00 00 00 00 00>
+console.log(buf2[1]);//170
+console.log(buf2[1].toString(16));//aa
+
+//Buffer.allocUnsafe()，创建一个指定大小的buffer，但是buffer中可能含有敏感数据
+var buf3=Buffer.allocUnsafe(10);
+console.log(buf3);
+
+//buf.toString()将缓冲区中的数据转换为字符串
+var buf4=Buffer.from("我是一段数据");
+console.log(buf4);//返回了Buffer数组
+console.log(buf4.toString());//我是一段数据
+
+1111
+

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    
+    console.time("test1");
+    for(var num=2;num<=1000;num++){
+        
+        var prime=true;  //默认num为质数,设prime来保存结果
+        for(var i=2;i<num;i++){
+            if(num%i==0){
+                prime=false;
+            }
+        }if(prime){
+            document.write(num+"&nbsp;");
+        }
+    }
+    console.timeEnd("test1");//
+
+    document.write("<br/>");
+
+    //优化并测试程序
+    //在程序执行前，开启计时器
+    //console.time("计时器名字")可以开启计时器
+    //console.timeEnd("计时器名字")可以终止计时器
+    
+    //1
+
+    console.time("test2")
+    for(var num=2;num<=1000;num++){
+        var prime=true;
+        for(var i=2;i<num;i++){
+            if(num%i==0){
+                prime=false
+                break;
+            }
+        }if(prime){
+            document.write(num+"&nbsp;");
+        }
+    }
+    console.timeEnd("test2")//
+
+    document.write("<br/>");
+
+    //2
+
+    console.time("test3");
+    outer:
+    for(var num=2;num<=1000;num++){
+        for(var i=2;i<num;i++){
+            if(num%i==0){
+                continue outer;
+            }
+        }document.write(num+"&nbsp;");
+    }
+    console.timeEnd("test3");
+
+    document.write("<br/>");
+
+    //3
+    console.time("test4");
+    outer:
+    for(var num=2;num<=1000;num++){
+        for(var i=2;i<=Math.sqrt(num);i++){  //Math.sqrt()对一个数开方。缩小取值范围内，因为无需检测2到num的所有数值
+            if(num%i==0){
+                continue outer;
+            }
+        }document.write(num+"&nbsp;");
+    }
+    console.timeEnd("test4");//时间最短，WIN
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

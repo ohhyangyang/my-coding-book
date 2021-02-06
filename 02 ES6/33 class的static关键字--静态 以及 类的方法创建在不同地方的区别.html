@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>静态成员</title>
+</head>
+<body>
+    <script>
+	    /*
+	    - class的 static关键字
+	        static 关键字用来定义一个类的一个静态方法。
+	        调用静态方法不需要实例化该类，且不能通过一个类实例调用静态方法。
+	        静态方法通常用于为一个应用程序创建工具函数。
+	    
+        - class中的方法在不同位置的区别
+          constructor中的方法：属于instance的方法，可以被instance调用
+          constructor外的箭头方法：属于instance的方法，可以被instance调用
+          constructor外的非箭头方法：属于instance的__proto__的原型方法，可以被instance借用和被类调用         
+          static方法：属于类的静态方法，只可以被类调用
+
+          ⚠️⚠️⚠️ 简而言之，实例方法就是只有实例可以调用，
+                        静态方法只有构造函数可以调用，
+                        原型方法是实例和构造函数都可以调用，是共享的方法！！！
+	     */
+/////////ES5 构造函数//////////////////////////////////////////
+	    
+	    //创建一个空的手机构造函数
+        function Phone(){
+
+        }
+        
+        //创建Phone()函数对象的属性和方法  --> 即是ES6中的静态成员⚠️⚠️
+        Phone.name = '手机';
+        Phone.change = function(){
+            console.log("我可以改变世界");
+        };
+        
+        //创建Phone构造函数实例对象的属性
+        Phone.prototype.size = '5.5inch';
+        
+        //创建一个nokia手机实例对象
+        let nokia = new Phone();
+
+        console.log(nokia.name);  //undefined
+        //nokia.change();    //typeError报错
+        console.log(nokia.size);  //5.5inch
+	    
+///////////ES6 class/////////////////////////////////////////////////////////////
+	    
+	    
+        class Movil{
+            
+            //静态属性
+            static name = '手机';
+            //静态方法
+            static change(){
+                console.log("我可以改变世界");
+            }
+        }
+
+        let Huawei = new Movil();
+        
+        console.log(Huawei.name); // undefined
+        console.log(Movil.name);  //手机
+	    
+    </script>
+</body>
+</html>

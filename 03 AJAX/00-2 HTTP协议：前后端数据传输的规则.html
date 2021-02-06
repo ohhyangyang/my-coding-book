@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<!--
+	# HTTP
+	  HTTP协议是HyperText Transfer Protocol（超文本传输协议）的缩写,
+	  协议详细规定了万维网（WWW:World Wide Web )服务器传输超文本到本地浏览器的规则。
+	
+	## 请求：浏览器向服务器发送的内容
+	   请求报文：发送的内容
+	   
+	    ->请求报文的格式 （重点是格式与参数）
+	          请求行 request-line
+	              get /s?ie=utf-8 HTTP/1.1     [请求方法字段 URL字段 HTTP协议版本字段]
+	                (HTTP协议的请求方法有GET、POST、HEAD、PUT、DELETE、OPTIONS、TRACE、CONNECT)
+	          
+	          请求头 headers  通知服务器有关于客户端请求的信息，一般用来让服务器提取参数来校验用户身份
+	              Host: atguigu.com       [关键字:(空格)值  ⚠️⚠️ 空格必须有！！！][请求的主机名，允许多个域名同处一个IP地址，即虚拟主机]
+                  Cookie: name=guigu                                   []
+                  Content-type: application/x-www-form-urlencoded      []
+                  User-Agent: chrome 83                                [产生请求的浏览器类型]
+                  ...
+                        
+	          空行                                        [必须有]
+	          blank line
+	          
+	          请求体    username=admin&password=admin     [请求体不在GET方法中使用，而是在POST方法中使用，例如输入用户名和密码登陆]
+	          request-body
+	          
+	## 响应：服务端给浏览器返回的结果
+	   响应报文：返回的结果
+	     ->响应报文的格式 （重点是格式与参数）
+	          响应行     响应请求行
+	                    HTTP/1.1  200  OK     [HTTP协议版本 响应状态码 响应状态字符串]
+	          响应头     响应请求头
+	                    Content-Type: text/html;charset=utf-8       [报文类型]
+                        Content-length: 2048                        [报文长度]
+                        Content-encoding: gzip                      [报文压缩方式]
+                        ...
+	          空行                                                   [必须有]
+	          响应体    <html>                                       [返回的结果]
+                           <head>
+                           </head>
+                           <body>
+                            <h1>尚硅谷</h1>
+                           </body>
+                        </html>
+                        
+	    
+	响应状态码
+	   404  找不到
+	   403  forbidden
+	   401  未授权
+	   500  内部错误
+	   200  OK
+	
+	
+	
+	-->
+</head>
+<body>
+
+</body>
+</html>

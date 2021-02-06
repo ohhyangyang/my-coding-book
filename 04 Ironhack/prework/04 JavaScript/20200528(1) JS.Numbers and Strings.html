@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<!--
+-变量声明
+   见https://www.runoob.com/js/js-let-const.html
+   -let 声明变量，let声明的变量只在let命令所在的代码块内有效，且需要先声明再使用
+   
+       例1
+        let company;
+            company = 'Ironhack';
+        //（没有问题）
+            
+       例2
+       let a = 0;
+       let a = 'sss';     //a变量只能声明一次（使用var则可重新声明）
+       // Uncaught SyntaxError: Identifier 'a' has already been declared
+     
+   -var 声明变量，var关键字声明的变量不具备块级作用域的特性，它在{}外依然能被访问到，且var变量可以先使用再声明
+        但是如果只在函数内使用var声明的变量，则只能在函数内访问它，
+        但如果不使用 var 则是全局变量
+   
+   -const 声明常量， 这意味着const分配给变量的值永远不会改变。
+       例
+        const name = 'Ana';
+              name = 'Marina';
+          -> console:   unknown: "name" is read-only    （const无法重新赋值）
+     ⚠️⚠️⚠️
+    let可以先声明变量，稍后再赋值
+    const需要在初始化变量的同时为变量赋值。
+    总而言之，现在，当预期到变量会改值时，可以互换使用let或var。 但是，当确定为恒定变量时，请使用const。
+    
+   -var和let
+      在ES6之前，我们都是用var来声明变量，而且JS只有函数作用域和全局作用域，
+      没有块级作用域，所以{}限定不了var声明变量的访问范围。
+       
+       例如：
+          {
+            var i = 9;
+                      }
+           console.log(i);  // 9
+           
+      ES6新增的let，可以声明块级作用域的变量。
+
+          {
+            let i = 9;     // i变量只在 花括号内有效！！！
+                      }
+           console.log(i);  // Uncaught ReferenceError: i is not defined
+-Numbers
+ - operator
+    + addition
+    - subtraction
+    * multiplication
+    / division
+    % 余数
+    A ** B  求A的B次幂
+   
+ - Assignment Operators
+    Name	                    Operator	Equivalent
+    Assignment	                x = y	    N / A
+    Addition assignment	        x += y	    x = x + y
+    Subtraction assignment	    x -= y	    x = x - y
+    Multiplication assignment	x *= y	    x = x * y
+    Division assignment	        x /= y	    x = x / y
+    Remainder assignment     	x %= y	    x = x % y
+    Exponentiation assignment	x **= y	    x = x ** y
+
+-Strings
+    可以使用"" ''和``来创建string
+    ⚠️⚠️ ``内可以使用${js变量}
+    
+ -console.log() new tips
+ 
+     1 可以使用 ，来取代 +
+       const country = "USA";
+       console.log("The country:"+ country);
+
+       let name = "Ironhacker";
+       console.log("The name:", name);
+     
+     2 使用${variable}在string中引用变量
+       const price = 12.99;
+       const statement = `The price of this amazing product is ${price}.`;
+       console.log(`The example of interpolation: ${statement}`);
+       
+  -string tips & methods
+  
+     1 使用 + 和 += 来串联string
+      例1
+       let emptyContainer = "";
+       emptyContainer += "Hello there, student!";
+       console.log(emptyContainer);
+      例2
+       let age = 21;
+       console.log(`I am ${age+12} years old.`);
+       
+     2 string.length 计算string长度
+      const fact = 'I love web dev!';
+      console.log(`"${fact}" is a string and it is length is ${fact.length}.`);
+      // "I love web dev!" is a string, and its length is 15.
+     
+     3 string.toUpperCase() 方法使字母大写
+     
+     4 使用 string[index] 或 string.charAt(index) 方法获取string内的信息
+       const greeting = "Hello";
+       console.log(greeting[0]); // => H
+       console.log(greeting[4]); // => o
+       console.log(greeting[9]); // => undefined
+       console.log(greeting[-2]); // => undefined
+       
+       const username = "ironMia";
+       console.log(username.charAt(0)); // => i
+       console.log(username.charAt(1)); // => r
+       console.log(username.charAt(6)); // => a
+       console.log(username.charAt(7)); // => ""
+     
+     5 string.indexOf(substring)方法
+        JavaScript indexOf（substring）可返回特定字符/字符串出现的index。如果未找到子字符串，则返回-1。
+        如果一个单词具有相同的字符/子字符串两次或更多次，则将返回第一次出现的index。
+       const favoritePhrase = "Don't be evil";
+       console.log(favoritePhrase.indexOf("Don't")); // => 0
+       console.log(favoritePhrase.indexOf("e")); // => 7 because indexOf prints the FIRST occurance
+       console.log(favoritePhrase.indexOf("z")); // -1 since it's not found
+       
+     6 string.includes(substring)方法
+         includes()是区分大小写的搜索，以查看字符串中是否存在特定字符/字符串。
+         包含，返回true
+         不包含，返回false
+       console.log("dog".includes("og")); // => true
+       console.log("Dog".includes("do")); // => false since it's a case sensitive
+       
+     7 string.substring(start, end)方法
+        substring（）方法从两个指定点之间的字符串中提取字符，然后返回新的子字符串。
+       let str = "ironhack";
+       let substr1 = str.substring(1, 4);
+       console.log(substr1);  // => ron
+       let substr2 = str.substring(4, 8);
+       console.log(substr2); // => hack
+       
+     8 string.slice(start, end)
+        提取字符串的某个部分，并以新的字符串返回被提取的部分。(不影响原字符串)
+        start：要抽取的片断的起始位置。（包括start）
+        end：要抽取的片段的结尾的位置。若未指定此参数，则截取到原字符串结尾。（不包括end）
+        如果是负数，则是从后往前位置
+        
+        ⚠️⚠️   substring()和slice()基本相同，
+               但不同的是，
+               substring()不可以传负值为参数（负值会被默认为0）
+                另外它会自动调整start的end位置，(1,5)和(5,1)都是一样的
+     
+-练习
+    /*Capitalize:
+      a) the whole name of the city where you are now
+      //a
+      const city = "barcelona";
+      console.log(city.toUpperCase());
+      
+      b) the first letter of the city
+      //b
+      let city1 = city.charAt(0).toUpperCase() + city.slice(1);
+      console.log(city1);
+      
+      c) capitalize the middle letter if the city has an odd number of letters or two middle
+       letters if the city has even number of letters (hint: you can use .charAt() and .slice())*
+      //c
+      let city2 = city.slice(0,3) + city.charAt(4).toUpperCase() + city.slice(5);
+      console.log(city2);
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+-->
+<body>
+
+</body>
+</html>

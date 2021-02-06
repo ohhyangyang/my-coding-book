@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+		/*
+		- 解决IE6中position:fixed失效的问题
+		    解决方法：
+		       用#wrap或body来充当视口，使用对#wrap或body的绝对定位来充当对视口固定定位
+		       
+		       我只举例了#wrap的情况
+		 */
+		/*禁止系统滚动条*/
+		html{
+			height: 100%;
+			overflow: hidden;
+		}
+		/*禁止系统滚动条*/
+		body{
+			height: 100%;
+			overflow: hidden;
+		}
+		
+		/* #wrap高度设为窗口的100%，来充当视口*/
+		#wrap{
+			height: 100%;
+			overflow: auto;/*auto显示#warp滚动条*/
+			border: red solid 1px;
+			
+		}
+		
+		/*#test1撑开#wrap*/
+		#test1{
+			height: 3000px;
+		}
+		
+		/*打开#test2绝对定位，因为是参照根标签的absolute绝对定位，因此和fixed固定定位效果相同，
+		  从而解决了IE6中position:fixed失效的问题
+		 */
+		#test2{
+			height: 200px;
+			width: 200px;
+			background-color: #8fd19e;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+	</style>
+</head>
+<body>
+<div id="wrap">
+	<div id="test1"></div>
+	<div id="test2"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		
+		#wrap{
+			position: absolute;/*position的属性比较重要，一般放在上边来写*/
+			left: 50%;
+			top: 50%;
+			margin-left: -100px;
+			margin-top: -100px;
+			
+			width: 200px;
+			height: 200px;
+			border: 1px solid black;
+			border-radius: 50%;
+			
+			
+		}
+		ul>li{
+			position: absolute;
+			left: 99px;
+			top:0;
+			
+			list-style: none;
+			width: 2px;
+			height: 10px;
+			background-color: black;
+			transform-origin: center 100px;/*代表着水平不动，垂直下移100px*/
+		}
+		
+		ul>li:nth-child(5n+1){/*修改大刻度的长度*/
+			height: 15px;
+		}
+		
+		#wrap>.hr{
+			position: absolute;
+			left: 97px;
+			top: 70px;
+			width: 6px;
+			height: 30px;
+			background-color: black;
+			transform-origin: center bottom;
+		}
+		#wrap>.min{
+			position: absolute;
+			left: 98px;
+			top: 50px;
+			width: 4px;
+			height: 50px;
+			background-color: gray;
+			transform-origin: center bottom;
+			
+		}
+		#wrap>.sec{
+			position: absolute;
+			left: 99px;
+			top: 30px;
+			width: 2px;
+			height: 70px;
+			background-color: red;
+			transform-origin: center bottom;
+		}
+		#wrap>.icon{
+			position: absolute;
+			left: 90px;
+			top: 90px;
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			background-color: pink;
+			opacity: 50%;
+			
+		}
+		
+		
+		
+		
+		
+		
+	</style>
+</head>
+<body>
+<div id="wrap">
+	<ul>
+	
+	</ul>
+	<div class="hr"></div>
+	<div class="min"></div>
+	<div class="sec"></div>
+	<div class="icon"></div>
+	
+</div>
+
+</body>
+<script type="text/javascript">
+	
+	window.onload=function () {
+        var ulNode = document.querySelector("#wrap>ul");
+        var liHtml = "";
+        
+        var styleTag = document.querySelector("style");//获取style标签元素
+        var cssText = "";
+        
+        for(var i=0;i<60;i++){
+            //添加li元素
+            liHtml += "<li></li>";
+    
+            //为li元素添加transform样式
+	        cssText += `ul>li:nth-child(${i+1}){transform: rotate(${i*6}deg);}`
+	        
+        }
+        
+        ulNode.innerHTML = liHtml;
+        styleTag.innerHTML += cssText;
+        
+        setInterval(move,1000);/*setinternal是封装的函数，会在加载完页面后异步执行，所以写在节点获取的前面也没关系*/
+        
+        /*节点的获取应该全部写在最前面，但为了看起来思路清晰，写在这里*/
+        var hrNode = document.querySelector("#wrap>.hr");
+        var minNode = document.querySelector("#wrap>.min");
+        var secNode = document.querySelector("#wrap>.sec");
+        
+        move();/*尤其move函数必须写在获取节点之后*/
+        
+        
+        function move() {
+            var date = new Date();
+            
+            var s = date.getSeconds();
+            var m = date.getMinutes()+s/60;/*更精确*/
+            var h = date.getHours()+m/60;/*更精确*/
+            
+            secNode.style.transform = `rotate(${6*s}deg)`;/*每小时转360/12度*/
+            minNode.style.transform = `rotate(${6*m}deg)`;/*每分钟转360/60度*/
+            hrNode.style.transform = `rotate(${30*h}deg)`;/*每秒转360/60度*/
+        }
+        
+        
+        
+    }
+    
+</script>
+</html>
+
+
+
+
+
+
+

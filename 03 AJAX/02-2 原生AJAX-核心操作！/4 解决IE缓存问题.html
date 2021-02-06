@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>4 IE缓存问题</title>
+</head>
+<style type="text/css">
+	#result{
+		width: 200px;
+		height: 100px;
+		border: solid 1px #258;
+	}
+</style>
+<body>
+<button>点击发送请求</button>
+<div id="result"></div>
+<script type="text/javascript">
+	/*
+	IE缓存问题：
+	   IE浏览器会对AJAX返回的结果进行缓存，
+	   那么下一次再去发送请求时，返回结果会是IE的缓存结果，而非服务器的最新数据
+	   这样就会影响结果的正确性
+	   
+	解决方法：
+	   在初始化传递url时，传入一个时间戳参数: t= ${Date.now()
+	   因为每此发请求的时间戳都是不一样的，所以IE浏览器会认为是两次不同的请求
+	   因此浏览器会将新请求发送到服务器，而不是使用本地缓存
+	 */
+	const btn = document.getElementsByTagName('button')[0];
+	btn.addEventListener('click',function () {
+	    //创建AJAX对象
+        const xhr =  new XMLHttpRequest();
+        //初始化，传入时间戳参数来解决问题
+		xhr.open('GET',`http://127.0.0.1:8000/ie?t= ${Date.now()}`);
+		
+		
+		//发送请求
+		xhr.send();
+		
+		//onreadystatechange事件绑定，处理响应结果
+		xhr.onreadystatechange = function () {
+		    if(xhr.readyState === 4){
+		        if(xhr.status >= 200 && xhr.status < 300){
+		            //处理响应结果
+			        result.innerHTML = xhr.response;
+		        }
+		    }
+        }
+    
+    })
+	
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>伪类的顺序</title>
+        <style type="text/css">
+        /*
+        a的伪类的优先级是一样的，但是书写顺序必须按照LVHA：
+        1 a:link 
+        2 a:visited 
+        3 a:hover
+        4 a:active
+        
+        （a:hover必须写在a:link和a:visited后面
+        a:active必须写在a:hover后面）
+        
+        */
+        a:link{
+            color:gold;
+        }
+        a:visited{
+            color:sienna;
+        }
+        a:hover{
+            background-color: lavender;
+        }
+        a:active{
+            background-color: mediumpurple;
+        }
+        </style>
+    </head>
+    <body>
+        <a href="https://www.sina.com" target="_blank">访问过的链接</a>
+        <br/>
+        <a href="http://www.baidu123456.com" target="_blank">未访问过的链接</a>
+        
+    </body>
+</html>

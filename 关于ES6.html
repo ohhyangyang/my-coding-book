@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<!--
+- ES6的字符串模版
+   ${变量}
+   可以直接插入到字符串中
+   
+   ⚠️⚠️⚠️ 此时字符串引号为`` 而不是''或者""
+
+- ES6类的继承
+在ES6中，可以通过Class关键字定义一个类：
+	                            class 类{...}
+        并可以通过extends关键字实现类的继承：
+	                            class 实例 extends 类{...}
+	                            
+- ES6解构赋值  https://www.runoob.com/w3cnote/deconstruction-assignment.html
+   数组模型的解构
+      let [a, b, c] = [1, 2, 3];
+      // a = 1
+      // b = 2
+      // c = 3
+   对象模型的解构
+      let { foo, bar } = { foo: 'aaa', bar: 'bbb' };
+      // foo = 'aaa'
+      // bar = 'bbb'
+      
+- ES6...的作用
+	 1 打包
+	    定义一个函数
+	      function fn(...as){}
+	    调用fn
+	      fn(1,2,3)
+	      
+	      相当于把1 2 3作为数组打包在as里
+	    
+	 2 解包
+	    拆数组
+	    const arr1=[1,2,3]
+	    const arr2=[6,...arr1,9]  相当于arr2=[6,1,2,3,9]
+	    
+	    拆对象
+	    <Person {...p1}/> 相当于 <Person name="Yang" gender="女" age={30} />
+	    
+- ES 6 var const 和 let
+  let 的用法类似于 var，但是 let 只在所在的代码块内有效，各个块之间互不干扰，可以说是更谨慎，所以我们一般使用 let 替代 var。
+  ⚠️⚠️ 真正的原因：
+   ️使用 var 关键字声明的全局作用域变量属于 window 对象，可以使用 window.xxx 访问变量
+    使用 let 关键字声明的全局作用域变量不属于 window 对象，不能使用 window.xxx 访问变量
+  
+  个人体会是let变量更接近php中对$变量的定义
+  
+  const 用来声明常量。
+  
+  
+  见https://www.runoob.com/js/js-let-const.html
+  
+- ES6 箭头函数
+  const test = (name) => {
+      console.log(name)
+  }
+  规则：1 如果参数只有一个，可以不加括号，如果没有参数或者参数多于一个就需要加括号
+         const test = name => {
+             console.log(name)
+         }
+
+         const test2 = (name1, name2) => {
+             console.log(name1 + ' and ' + name2)
+         }
+         
+       2 如果函数体只有一句话，可以不加大括号
+         const test = name => console.log(name)
+         
+       3 如果函数体没有括号，可以不写return，箭头函数会帮你return
+         const add = (p1, p2) => p1 + p2
+         add(10, 25)
+         
+       4 箭头函数的this会和外层的this保持一致（最外层的this一般就是window对象）
+         const obj = {
+             a: () => {
+                 console.log(this)
+             }
+         }
+         obj.a()  //打出来的是window
+
+	     
+	          
+-->
+</body>
+</html>

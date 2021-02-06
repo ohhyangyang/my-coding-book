@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+    <div id="example"></div>
+
+    <script type="text/javascript" src="js/react.development.js"></script>
+    <script type="text/javascript" src="js/react-dom.development.js"></script>
+    <script type="text/javascript" src="js/babel.min.js"></script>
+    <script type="text/babel">
+	    /*
+	    需求：自定义一个包含表单的组件
+	        1 输入用户名和密码后，点击登录提示输入的信息
+	        2 不提交表单
+	        
+	    非受控组件: 需要时才手动读取表单输入框中的数据  ->用户名 （相对简单，但通过refs读取了真实DOM的value）
+	    受控组件:表单项输入数据能自动收集成状态  ->密码 （相对麻烦，但更贴近React的思想，不操作真实DOM）
+	       两者皆可
+	    
+	    
+	    event.preventDefault()阻止事件的默认行为
+	     */
+	    class LoginForm extends React.Component {
+	        constructor(props) {
+                super(props);
+                //初始化state，设置密码的初始状态为空串
+		        this.state={
+		            pwd:""
+		        }
+		        
+                this.handleSubmit=this.handleSubmit.bind(this)
+                this.handleChange=this.handleChange.bind(this)
+            }
+            
+            //创建handleSubmit方法，来获取username
+            handleSubmit(event){
+	            const username=this.username.value
+	            const {pwd}=this.state
+	            alert('准备提交的用户名为'+username+',密码为'+pwd)
+	            
+	            //阻止提交表单，⚠️即阻止submit事件的默认行为
+	            event.preventDefault()
+            }
+            
+            //创建handleChange方法，一旦开始输入密码，则将输入值更新给state
+            handleChange(event){
+	            //读取输入了的密码，⚠️引用当前事件的标签，️无需使用ref标示标签，因为事件绑定的标签target即为所需要的标签
+	            const pwd = event.target.value
+	            //更新state中的pwd（⚠️密码取名必须为pwd，为了和state中的pwd保持一致，而保证实时更新）
+	            this.setState({pwd})
+            }
+	        render(){
+	            //给form表单添加onSubmit监听表格的提交，将之交给handleSubmit函数（或者也可以给按钮添加点击监听）
+		        
+	            //用户名（非受控组件）：将用户名文本框绑定给this.username属性，并由handleSubmit方法使用
+		        
+		        /*密码（受控组件）：将密码文本框的value直接交给this.state.pwd，绑定onChange监听，一旦触发输入框，则立刻获取输入值，并更新给state的pwd
+	            ⚠️在原生DOM中，input的onchange在失去焦点时触发，而React的onChange在输入时就会即时触发，因此可应用此新特性获得即时数据*/
+		        
+		        return (
+	                <form action="/test" onSubmit={this.handleSubmit}>
+		               用户名：<input type="text" ref={(input)=>this.username = input}/>&nbsp;&nbsp;
+		               密码：<input type="password" value={this.state.pwd} onChange={this.handleChange}/>&nbsp;&nbsp;
+		               <input type="submit" value="登陆"/>
+	                </form>
+	            )
+	        }
+	    }
+	    ReactDOM.render(<LoginForm/>,document.getElementById("example"))
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>DOM</title>
+        
+    </head>
+    <body>
+        <div class="box1">
+            <div>我是div子元素A</div>
+            <div>我是div子元素B</div>
+            <div>我是div子元素C</div>
+        </div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+
+        <script type="text/javascript">
+	        /*
+	        - ele.innerHTML   添加修改text或HTML标签
+            - ele.textContent 添加修改text，无法动态添加HTML标签
+	         */
+            //添加text
+            const divOne = document.querySelector (".box1>div:nth-child(1)")           
+            divOne.innerHTML = "DIV1: NEW CONTENT";
+            
+            //添加html
+            const divTwo = document.querySelector (".box1>div:nth-child(2)")           
+            divTwo.innerHTML =   `<h2> DIV2: Hola Mundo</h2>
+                                  <p>content</p>`;
+
+            //textContent
+            const divThree = document.querySelector (".box1>div:nth-child(3)")           
+            divThree.textContent =   `DIV3:
+                                      <h2> Hola Mundo</h2>
+                                      <p>content</p>`;
+
+
+        </script>
+    </body>
+</html>

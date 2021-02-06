@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>3 AJAX JSON</title>
+	<style type="text/css">
+		#result{
+			width: 200px;
+			height: 100px;
+			border: solid 1px #903;
+		}
+	</style>
+</head>
+<body>
+<div id="result"></div>
+</body>
+<script type="text/javascript">
+	/*
+	需求：
+	当按下键盘时，向服务端发送get请求，获取一个JSON格式的对象信息，
+	得到服务器响应结果后，解析JSON，并将结果显示在div中
+	 */
+	//绑定键盘按下事件
+	window.onkeydown = function() {
+	    const result = document.getElementById('result')
+        //创建一个新AJAX对象
+		const xhr = new XMLHttpRequest();
+		
+	    //⚠️ 设置响应体的数据类型，
+		// 这样的话，网页会自动对响应的JSON数据转换
+		xhr.responseType = 'json';
+	    
+		//初始化
+		xhr.open('GET','http://127.0.0.1:8000/json-server');
+		
+		//发送
+		xhr.send();
+		
+		//onreadystatechange事件绑定
+		xhr.onreadystatechange = function () {
+		    if(xhr.readyState === 4){
+		        if(xhr.status >= 200 && xhr.status <300){
+		            //处理返回结果
+			         console.log(xhr.response);
+			        
+			        //方法一：手动转换JSON数据，不需要上方的xhr.responseType = 'json'
+			        /*let data = JSON.parse(xhr.response)
+			        result.innerHTML = data.name;*/
+			        
+                    //方法二：自动转换JSON数据 （更优）
+			        //通过上方的 xhr.responseType = 'json';代码，xhr.response已被自动解析
+                    result.innerHTML = xhr.response.name
+		        }
+		    }
+        }
+    }
+</script>
+</html>

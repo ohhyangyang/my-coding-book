@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hack</title>
+    <style type="text/css">
+    body{
+        background-color: #bfa;
+        *background-color: yellow;/*IE7及以下浏览器*/
+        background-color: red\0;/*IE8及以上浏览器*/
+    }
+    </style>
+    <!--
+        ⚠️CSS hack不方便维护，不到万不得已，不要使用
+        CSS Hack是一种特殊的代码，用于解决兼容性问题
+        这段代码只能被某些浏览器识别（主要指IE），而其他的不可以
+
+        *条件hack：使代码只对IE10以下浏览器有效，其他浏览器会识别其为注释
+        语法：
+    -->
+    <!--[if (关键字) IE (版本)]> （如果不写版本，则针对IE10以下所有浏览器）
+        .....
+        .....
+        .....
+    <![endif]-->
+
+    <!--
+        *属性hack：
+        语法：selector{<hack?property:value<hack>?;}  
+
+            selector取值： _ IE6及以下（相对常用）
+                          * IE7及以下（相对常用）
+                          \9 IE6及以上（不常用）
+                          \0 IE8及以上（不常用）
+
+-->
+</head>
+<body>
+    <!--[if IE]>
+    <p>我只会出现在IE10以下浏览器中</p>
+    <![endif]-->
+    
+    <!--[if IE 6]>
+    <p>我只会出现在IE6中</p>
+    <![endif]-->
+
+    <!--[if IE 8]>
+    <p>我只会出现在IE8中</p>
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+    <p>我只会出现在IE8 7 6浏览器中</p>
+    <![endif]-->
+
+    <!--[if lte IE 9]>
+    <p>我只会出现在IE9 8 7 6浏览器中</p>
+    <![endif]-->
+
+    <!--[if gte IE 8]>
+    <p>我只会出现在IE9 8浏览器中</p>
+    <![endif]-->
+
+    <!--[if ! IE 8]>
+    <p>我只会出现在IE9 7 6浏览器中</p>
+    <![endif]-->
+
+
+</body>
+</html>

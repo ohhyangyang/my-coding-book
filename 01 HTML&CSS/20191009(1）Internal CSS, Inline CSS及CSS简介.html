@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>CSS简介</title>
+        <!--
+            *CSS (Cascading Style Sheets) 层叠样式表
+            CSS可以用来为网页创建样式表，对网页进行装饰
+            Cascading即层叠，可以将整个网页想象成是一层层的结构，层次高的会覆盖层次低的
+
+            *CSS书写位置
+            外部CSS：XXX
+
+            内部CSS：（如例一）（推荐）Internal CSS
+            可以将CSS样式编写到head中的style标签里
+            然后通过CSS选择器选中指定元素
+            并为所指定的元素一起设置样式，
+            这样可以反复使用某一样式
+            并且使表现和结构分离
+
+            内联样式表：(如例二）（不推荐）Inline CSS
+            可以将CSS样式编写到元素（标签）的style属性当中（body中）
+            内联样式只对当前元素的内容起作用
+            不方便反复使用
+        -->
+        <!--例一-->
+        <style type="text/css">
+        p{
+            color:violet;
+            font-size: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <!--例二-->
+        <p style="color:steelblue;font-size: 30px;">夜宿山寺</p>
+        <p style="color:black;font-size: 20px">李白</p>
+        <p style="color:seagreen;font-size: 20px;">危楼高百尺，<br/>手可摘星辰，<br/>不敢高声语，<br/>恐惊天上人。</p>
+        
+        <p>玉阶怨</p>
+        <p>李白</p>
+        <p>玉阶生白露，<br/>夜久侵罗袜。<br/>却下水晶帘，<br/>玲珑望秋月。</p>
+
+
+
+    </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    打印出1-100之间所有的质数
+    */
+    
+    for(var i=2;i<100;i++){//打印2-100之间所有的数
+    //创建一个Boolean，用来保存结果，默认i是质数
+        for(var j=2;j<i;j++){
+            var prime=true;
+            if(i%j==0){
+                prime=false//如果i能被j整除，则i不是质数，为false
+            }
+        }if(prime){    //如果i是质数，则打印出来
+                document.write(i+"&nbsp;");
+        }
+    }
+    
+
+    
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

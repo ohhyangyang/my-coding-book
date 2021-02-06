@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>伪类选择器</title>
+        <style type="text/css">
+        /*
+        伪类：用来表示元素的一种特殊的状态
+        比如：访问过的超链接，普通的超链接，获取焦点的文本框
+        当我们需要为处在特殊状态的元素设置样式时，则可以使用伪类
+
+        css 引入伪类和伪元素概念是为了格式化DOM树无法描述的元素的信息。
+
+        :link
+           普通的超链接（未被访问过）
+
+        :visited
+           访问过的超链接
+           ⚠️是通过浏览器历史记录来判断一个链接是否被访问过
+           ⚠️由于涉及到隐私问题，所以visited伪类只能设置color(不想太明显)(除了IE6)
+
+        :hover
+           鼠标移入的状态
+
+        :active
+           鼠标正在被点击的状态
+
+        
+           
+
+        使用伪类，将超链接设置成4种不同状态
+        */
+        a:link{
+            color:yellowgreen;
+            font-size:20px;
+        }
+        a:visited{
+            color:red;
+            background-color: thistle;
+            font-size:100px;
+        }
+        a:hover{
+            background-color:mistyrose;
+        }
+        a:active{
+            background-color:khaki;
+        }
+
+        /*
+        :hover和 :active也可以为其他元素设置
+        ⚠️但是IE6中，不支持对超链接以外的元素设置:hover和:active
+        */
+        p:hover{
+            background-color: beige;
+        }
+        p:active{
+            background-color:greenyellow;
+        }
+
+        /*
+        :focus
+           选取获得焦点的input元素的状态
+           ⚠️IE6不支持
+
+        :selection
+           内容被选中的状态
+           ⚠️::selection在firefox中需要采用另一种方式编写  ::-moz-selection
+           所以如果需要兼容Firefox则需要写两条代码
+        */
+
+        input:focus{
+            background-color:mintcream;
+        }
+
+        p::selection{
+            background-color:red;
+        }
+        <!--针对firefox-->
+        p::-moz-selection{  
+            background-color:red;
+        }
+        
+        
+        </style>
+    </head>
+    <body>
+        <a href="http://www.google.es" target="_blank">访问过的google!</a>
+        <br/>
+        <br/>
+        <a href="http://www.google1234567.es" target="_blank">没访问过的google!</a>
+        <p>Happy Thursday</p>
+        <!--使用input创建文本输入框-->
+        <input type="text"/>
+    </body>
+</html>

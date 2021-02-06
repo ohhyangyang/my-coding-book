@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding: 0;
+		}
+		body{
+			height: 100%;
+			overflow: hidden;
+		}
+		#wrap{
+			width: 300px;
+			height: 40px;
+			border: 1px solid;
+			margin: 100px auto;
+			overflow: hidden;
+		}
+		#wrap>.inner{
+			/*transition: 2s;*/
+			width: 600px;
+			height: 40px;
+			background-image: repeating-linear-gradient(45deg , white 0px,white 10px, black 10px,black 20px );
+		}
+		/*#wrap:hover .inner{
+			
+			inner为wrap的唯一子元素，默认顶在最上最左处，
+			所以此时只有margin-left和margin-top可以移动inner
+			margin-right和margin-bottom只可以移动inner的下一个兄弟元素
+			
+			margin-left:-300px ;
+			
+		}*/
+		
+		
+	</style>
+	<script type="text/javascript">
+		window.onload=function () {
+		var inner = document.querySelector("#wrap>.inner");
+		var flag=0;
+		setInterval(function () {
+		    flag++;
+		    if(flag==300){
+		        flag=0;
+		    }
+            inner.style.marginLeft=-flag+"px";
+        },30)
+        }
+	</script>
+</head>
+<body>
+<div id="wrap" class="clearfix">
+	<div class="inner"></div>
+	
+</div>
+</body>
+</html>

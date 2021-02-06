@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>catch方法</title>
+</head>
+
+<body>
+    <div>
+        <article>
+            <img src="" alt="">
+            <h3></h3>
+            <h3></h3>
+            <h4></h4>
+        </article>
+    </div>
+
+
+    <script>
+        
+        //例一 模拟AJAX fetch API的情况
+        const ourFetch = new Promise(function (resolve, reject) {
+
+            //模拟成功状态
+            const data ={ item:"Macbook Pro", price:2600, year:2020, img:"https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/refurb-mbp15touchbar-space-gallery-2018_GEO_ES?wid=1144&hei=1144&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1564699115400"}
+
+            //模拟失败状态
+            // const data = null;
+            // const error = new Error("Unable to get data");
+
+            if (data) {
+                resolve(data);
+            } else if (error) {
+                reject(error);
+            }
+        })
+
+        ourFetch
+        .then((data)=>{
+            document.body.innerHTML = 
+            `<div>
+             <article>
+                 <img src="${data.img}" style="width:400px; height:auto;" alt="">
+                 <h3>${data.item}</h3>
+                 <h3>Price: ${data.price}</h3>
+                 <h4>Year: ${data.year}</h4>
+             </article>
+             </div>`
+            
+        })
+        .catch((error)=>{
+            document.body.innerHTML = 
+            `<div>
+             <article>
+                 <h3>ERROR</h3>
+                 <h3> ${error}</h3>
+             </article>
+             </div>`
+        })
+
+        //例二
+        const promiseToDoExercise = new Promise(function (resolve, reject) {
+            let didExerciseToday = false;
+
+            if (didExerciseToday) {
+                resolve('good job!');
+            } else if (!didExerciseToday) {
+                reject('such lazy!')
+            }
+        })
+
+        promiseToDoExercise.then((valueFromResolve) => {
+            console.log(valueFromResolve);
+        })
+            .catch((valueFromReject) => {
+                console.log(valueFromReject);
+            })
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>margin</title>
+        <style type="text/css">
+        /*
+        margin 外边距
+        当前box和其他box之间的距离
+        margin不影响可见框大小，但会影响box的位置
+
+        *四个方向的外边距属性
+        margin-top
+        margin-right
+        margin-bottom
+        margin-left
+
+        *margin值
+        1 margin值可设为负值:box会向反方向移动
+        ⚠️但padding只能为正值
+
+        2 margin值可设为auto
+        若只指定left或right其中一个为auto时，则对应margin值被设置为最大
+        若同时指定left和right为auto时，则当前box会在其父元素中居中（更常用）
+        若将top或bottom设置为auto时，margin默认是0
+
+        *margin简写属性
+        规则同border-width
+        
+
+        */
+        .box1{
+            width:300px;
+            height:300px;
+            background-color: aliceblue;
+            border:10px solid skyblue;
+            /* margin-top: 100px;
+            margin-left: 100px;
+            margin-bottom: -100px;box1和box2重叠了 */
+            margin:0px auto;
+        }
+        .box2{
+            width:300px;
+            height:300px;
+            background-color:thistle;
+            margin-left: 100px;
+            margin-top: 100px;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="box1"></div>
+        <div class="box2"></div>
+    </body>
+</html>

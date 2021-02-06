@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script><!--Core REACT LIBRARY-->
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script><!--Core REACT-DOM LIBRARY-->
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script  type="text/babel">
+        class App extends React.Component{
+            state={
+                name:"Ryu",
+                age:30
+            }
+            handleClick=(e)=>{
+                // 此处必须是箭头函数才可以输出this.state，否则会报错 （或者可以在state中使用bind()绑定this）
+                console.log(this.state);
+                this.setState({
+                    name:'Yoshi',
+                    age:5
+                })
+
+            }
+            handleMouseOver(e){
+                console.log(e.target, e.pageX)
+            }
+            handleCopy(e){
+                console.log("cool")
+            }
+            render(){
+                return (
+                    <div className="app-content">
+                        <h1>Hey, ningjas</h1>
+                        <p>My name is { this.state.name }, and I'm {this.state.age}</p>
+                        <button onClick={this.handleClick}>Click me</button>
+                        <button onMouseOver={this.handleMouseOver}>Hover me</button>
+                        <p onCopy={this.handleCopy}>What we think, we become</p>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<App/>,document.getElementById('app'))
+    </script>
+</body>
+</html>

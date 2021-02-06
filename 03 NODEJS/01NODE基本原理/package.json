@@ -1,0 +1,17 @@
+{
+  "name": "hello_npm",
+  "version": "1.0.0",
+  "description": "npm practice",
+  "main": "03index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "yangyang"
+  ],
+  "author": "yangyang",
+  "license": "ISC",
+  "dependencies": {
+    "math": "0.0.3"
+  }
+}

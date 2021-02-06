@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set 实践</title>
+</head>
+<body>
+    <script>
+	    
+        //1. 数组去重
+        let arr1 = [1,2,3,4,5,4,3,2,1];
+        let result1 = [...new Set(arr1)]; //创建成集合，再打开
+        console.log(result1); //[1,2,3,4,5]
+        
+        //2. 创建新数组，为两个数组交集
+        let arr2 = [4,5,6,5,6];
+        
+        //去重arr1数组，并使用filter()方法过滤之，只有和arr2重合，才会被留下
+        // let result2 = [...new Set(arr1)].filter(item => {
+        //
+        //     //将arr2数组变为s2集合
+        //     let s2 = new Set(arr2);// Set(3) {4, 5, 6}
+	    //
+	    //     //如果s2集合中含有item，
+        //     if(s2.has(item)){
+        //         return true;
+        //     }else{
+        //         return false;
+        //     }
+        // });
+        
+        //⚠️⚠️ 简化以上代码
+        let result2 = [...new Set(arr1)].filter(item => new Set(arr2).has(item));
+        
+        console.log(result2);  //(2) [4, 5]
+
+        //3. 两个数组并集
+        //先把两个数组合并，然后在去重
+        let union = [...new Set([...arr1, ...arr2])];
+        console.log(union);
+
+        //4. 给两数组中一个数组求差集，即arr1中有，arr2中没有的元素
+        //先给arr1去重，然后过滤，item在arr2数组中，则return false
+        let diff = [...new Set(arr1)].filter(item => !(new Set(arr2).has(item)));
+        console.log(diff);  //(3) [1, 2, 3]
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<!--
+- $(节点).animate(styles,[speed],[easing],[callback])  执行 CSS 属性集的自定义动画
+  该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+
+
+
+
+
+  以下方法
+  当不传递参数时，会立即隐藏或显示
+  当传递参数，会显示动画效果
+  
+- 动画1 隐藏和显示，⚠️⚠️同时减少（增大）元素的高度，宽度和不透明度
+  $(节点).hide(speed) 会将元素的display样式改为none，功能同css("display","none")
+  $(节点).show(speed) 显示隐藏的匹配元素
+  
+- 动画2  隐藏和显示⚠️⚠️只改变元素透明度
+  $(节点).fadeOut(speed) 在指定时间内，降低元素的不透明度，直到完全消失
+  $(节点).fadeIn(speed) 相反，在指定时间内，增大元素的不透明度，直到完全显示
+  
+- 动画3 隐藏和显示⚠️⚠️只改变元素的高度
+  $(节点).slideDown(speed) 元素由上至下延伸显示
+  $(节点).slideUp(speed) 元素由下至上缩短隐藏
+  
+- 动画4  如可见，则切换为隐藏,如隐藏，则切换为可见
+  $(节点).toggle(speed) 切换元素的可见状态  ⚠️⚠️同时减少（增大）元素的高度，宽度和不透明度
+  
+  $(节点).slideToggle(speed) 通过高度变化来切换元素的可见性  ⚠️⚠️只改变元素的高度
+  
+  $(节点).fadeToggle(speed) 通过透明度变化来切换元素的可见性  ⚠️⚠️只改变元素的透明度
+  
+  $(节点).fadeTo(speed,opacity) 把不透明度渐近调整到指定值(0~1之间)
+      speed 三种预定速度之一的字符串("slow","normal", or "fast")或表示动画时长的毫秒数值(如：1000)
+      opacity 0~1
+  
+
+-->
+<style type="text/css">
+	#panel {
+		width: 300px;
+		border: 1px solid darkblue;
+	}
+	h5{
+		
+		height: 30px;
+		margin: 0;
+		background-color: #4cae4c;
+	}
+	.content{
+		border-top:1px solid darkblue;
+	}
+
+</style>
+<script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
+<script type="text/javascript">
+	$(function () {
+	    
+	    /*
+	    //show() hide() 高度 宽度透明度
+        $(".head").hover(function () {
+            $(".content").show(1000);
+        },function () {
+            $(".content").hide(1000);
+        })
+	     */
+	    
+	    /*
+	    //fadeOut() fadeIn() 透明度
+		$(".head").hover(function () {
+            $(".content").fadeOut(1000);
+        },function () {
+            $(".content").fadeIn(1000);
+        })
+	     */
+	    
+	    /*
+	    //slideDown() slideUp() 高度
+        $(".head").hover(function () {
+            $(".content").slideDown(1000);
+        },function () {
+            $(".content").slideUp(1000);
+        })
+	     */
+	    
+	    /*
+	    //toggle() 通过高度 宽度透明度来切换元素的可见状态
+        $(".head").click(function () {
+            $(".content").toggle(1000);
+        })
+        */
+        
+	    /*
+        //slideToggle()  通过高度变化来切换元素的可见性
+        $(".head").click(function () {
+            $(".content").slideToggle(1000);
+        })
+	     */
+	    
+	    /*
+	    //fadeToggle() 通过透明度变化来切换元素的可见性
+        $(".head").click(function () {
+            $(".content").fadeToggle(1000);
+        })
+	     */
+	    
+	    /*
+        //fadeTo() 把不透明度渐近调整到指定值
+        $(".head").click(function () {
+            $(".content").fadeTo("slow",0.1);
+        })
+        
+	     */
+	    
+	   
+    })
+</script>
+<body>
+<div id="panel">
+	<h5 class="head">什么是jQuery?</h5>
+	<div class="content">
+		jQuery是一个快速、简洁的JavaScript框架，是继Prototype之后又一个优秀的JavaScript代码库（或JavaScript框架）。jQuery设计的宗旨是“write Less，Do More”，即倡导写更少的代码，做更多的事情。它封装JavaScript常用的功能代码，提供一种简便的JavaScript设计模式，优化HTML文档操作、事件处理、动画设计和Ajax交互。
+	</div>
+</div>
+</body>
+</html>

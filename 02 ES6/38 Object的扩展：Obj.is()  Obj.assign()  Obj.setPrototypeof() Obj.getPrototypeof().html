@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象方法扩展</title>
+</head>
+<body>
+    <script>
+        /*
+        - Object.is(a,b) 判断两个值是否完全相等
+
+          ⚠️⚠️⚠️
+           NaN和NaN用Object.is()比较会返回true，用===比较会返回false，这是Object.is()和===唯一的区别
+
+        - Object.assign(obj1,obj2) 对象的合并
+          ⚠️⚠️⚠️ 两个对象间，不同的属性名会合并，属性名相同的，后者的属性值会覆盖前者
+
+        - Object.setPrototypeOf() 设置原型对象  不建议使用
+
+        - Object.getPrototypeof() 获取原型对象
+         */
+        //1. Object.is 判断两个值是否完全相等 
+        console.log(Object.is(120, 120));// true
+        console.log(Object.is(NaN, NaN));// true  ⚠️
+        console.log(NaN === NaN);// true ⚠️  NaN和任何其他数值比较都是false
+
+
+
+        //2. Object.assign 对象的合并
+        const config1 = {
+            host: 'localhost',
+            port: 3306,
+            name: 'root',
+            pass: 'root',
+            test: 'test'
+        };
+        const config2 = {
+            host: 'http://atguigu.com',
+            port: 33060,
+            name: 'atguigu.com',
+            pass: 'iloveyou',
+            test2: 'test2'
+        };
+        console.log(Object.assign(config1, config2));
+        /*
+        host: "http://atguigu.com"   覆盖
+        name: "atguigu.com"          覆盖
+        pass: "iloveyou"             覆盖
+        port: 33060                  覆盖
+        test: "test"                 合并
+        test2: "test2"               合并
+         */
+
+
+
+        //3. Object.setPrototypeOf 设置原型对象  Object.getPrototypeof
+        const school = {
+            name: 'ironhack'
+        };
+        const cities = {
+            xiaoqu: ['北京','上海','深圳']
+        };
+
+        //给school对象设置原型
+        Object.setPrototypeOf(school, cities);
+        console.log(Object.getPrototypeOf(school));  //发现school的原型中有cities
+        console.log(school);
+
+
+        
+    </script>
+</body>
+</html>

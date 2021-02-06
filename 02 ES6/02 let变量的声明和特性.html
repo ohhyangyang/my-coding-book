@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>let变量</title>
+</head>
+<body>
+<script>
+  //- let声明变量的格式
+  let a;
+  let b,c,d;
+  let e = 100;
+  let f = 521, g= 'iloveu', h = [];
+
+  /*
+  - let声明变量的特性：
+
+     1 let不能重复声明    ⚠️ var可以
+       例：
+          let a = yang;
+          let a = yangyang;  ❌❌ 不可以重复声明，这样写会报错
+
+     2 块级作用域    ⚠️{}代码块内部的var可以在{}外部被读取
+         let只在{}代码块内部有效，出了代码块则无效，⚠️ 包括if else while for
+       例：
+         {
+            let girl = 'yang';
+         }
+         console.log(girl);   ❌❌ 出了代码块会报错
+
+     3 不存在变量提升  ⚠️ 相对于var更符合常规思维
+       例：
+         console.log(c);
+         let c = 1234;   ❌❌ let不存在变量提升，会报错
+
+         console.log(b);   ⚠️⚠️ var变量可以提升，相当于在代码最前端植入了一个 var b;   会返回undefined
+         var b = 'abcd';
+
+      4 不影响作用域链  ⚠️ 和var一样
+        当前作用域可以使用上一级作用域的变量
+        例：
+            let school = 'ironhack';
+            function fn(){
+                console.log(school);
+            }
+            fn();   返回ironhack
+
+      ⚠️⚠️⚠️⚠️   总结：声明变量使用let就对了！！！！
+
+   */
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    不常用：forEach()方法用于调用数组的每个元素，并将元素传递给回调函数。
+    这个方法只支持IE8以上的浏览器：
+    IE8及一下浏览器不支持，所以如需兼容IE8，还是要用for循环来遍历
+
+    forEach()需要输入一个函数作为参数(该函数由我们创建但不由我们调用，而是被浏览器调用的，被称为回调函数)
+    需要定义函数中的形参，来读取数组中的元素
+    浏览器在回调函数中传递了三个参数
+      第一个参数：当前正在遍历的元素
+      第二个参数：当前正在遍历的元素的索引
+      第三个参数：正在遍历的数组对象
+    */
+    var arr=["a","b","c","d"];
+    arr.forEach(function(item,index,obj){
+        console.log(item);//a b c d 
+        console.log(index);//0 1 2 3
+    });
+
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

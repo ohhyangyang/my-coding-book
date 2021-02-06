@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+	
+		/*⚠️⚠️ 旋转的元素为box，所以需要给其父元素wrap设景深*/
+		*{
+			margin:0;
+			padding: 0;
+		}
+		#wrap{
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+			
+			width: 400px;
+			height: 400px;
+			border: 1px solid;
+			
+			perspective: 200px;
+			transform-style: preserve-3d;/*赋予box 3D舞台*/
+		}
+		#wrap > .box{
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+			
+			width: 100px;
+			height: 100px;
+			/*background-color: #d0e9c6;*/
+			transition: 3s;
+			transform-origin: center center -50px;/*旋转基点向后退*/
+			transform-style: preserve-3d;/*赋予六个面3D舞台*/
+		}
+		#wrap > .box > div{
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			/*opacity: 50%;*/
+			font: 30px/100px Arial;
+			text-align: center;
+		}
+		#wrap > .box > div:nth-child(2){
+			transform: translateZ(-100px) rotateX(180deg);/*转180，使"后"正过来*/
+		}
+		#wrap > .box > div:nth-child(3){
+			left: -100px;
+			transform-origin: right;
+			transform: rotateY(-90deg);
+		}
+		#wrap > .box > div:nth-child(4){
+			left: 100px;
+			transform-origin: left;
+			transform: rotateY(90deg);
+		}
+		#wrap > .box > div:nth-child(5){
+			top: -100px;
+			transform: rotateX(90deg);
+			transform-origin: bottom;
+		}
+		#wrap > .box > div:nth-child(6){
+			top: 100px;
+			transform-origin: top;
+			transform: rotateX(-90deg);
+		}
+		#wrap:hover .box{
+			transform: rotateX(360deg);
+			
+		}
+	</style>
+</head>
+<body>
+<div id="wrap">
+	<div class="box">
+		<div>前</div>
+		<div>后</div>
+		<div>左</div>
+		<div>右</div>
+		<div>上</div>
+		<div>下</div>
+	</div>
+</div>
+</body>
+</html>

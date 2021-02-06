@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<!--
+	- Terminal emulators 终端仿真器
+	   终端仿真器（同义词是终端应用程序或only term）提供基于文本的访问操作系统（与用鼠标/触控板控制的用户体验的大部分图形性质相反）。
+       终端仿真器提供了一个到操作系统命令行界面。它与Unix shell（如bash或ZSH）结合使用。
+       
+       终端仿真器/终端是一个程序，它可以打开一个窗口，让你与shell互动。并且终端为操作系统提供了一个命令行界面。
+
+	
+	- CLI 命令行界面？
+	   The Command Line Interface, or CLI is a terminal program that provides an interface that allows us to type text commands to our computer.
+	   More straightforward explanations would be - CLI is a tool in which you can type text commands to perform specific tasks (ex. create and navigate through files and folders, open files, etc.).
+
+    - Shell 壳层？
+	   Shell is a program that processes commands and returns the output.
+	   在计算机科学中指“为用户提供用户界面”的软件，通常指的是命令行界面的解析器。
+
+    - COMMAND LINE INTERFACE - CLI常用命令
+    
+	 *basics
+	   hostname 电脑名
+	   whoami 用户名
+	   pwd  显示当前所在路径
+	   cd 路径(绝对或者相对)   进入一个文件夹
+	   
+	   *iTerm 快捷键
+ 	    cd /    Navigate directly to the root path                      根目录
+ 	    cd ~    Navigate directly to our user’s home path               用户目录
+ 	    cd -    Navigate directly to the previous working directory     回到上一次目录
+
+	 *list files
+	    ls  当前路径包含的文件list
+ 	    ls -l  add -l to get a detailed listing
+ 	    ls -t  add -t to sort the results by file time
+ 	    ls -S  add -S to sort by file size
+ 	    ls -r  add -r to reverse the sorting
+  	    ls -a  add -a to include hidden files
+	   (You could combine them all to improve your listing.
+	   If you type ls -la, the result will be the detailed list of files, including the hidden ones.)
+
+	 *Tab completion
+ 	    Tab可以根据提示字母完成拼写directory
+ 	    So now if you would type: cd de
+ 	    and press the tab key, you will see automatically auto-complete the folder name to: cd Desktop
+ 	    Cool, right? It happens because Desktop is the only name that matches the given string (de).
+ 	    ⚠️ It is not case sensitive.  ⚠️⚠️⚠️但dont know why，我的bash是大小写敏感的，听说可以调试
+
+	 *Create and remove folders
+ 	    mkdir <foldername> 创建新文件夹
+ 	    rmdir <foldername> 移除空文件夹
+ 	    
+ 	    （You can remove any folder as long as the folder is empty.
+ 	    If it has files in, you’ll have to delete these files before
+ 	    you can remove the folder using rmdir. There is a shorter way
+ 	    to do this, we will explain it in a bit.)
+
+	 *Create and remove files
+ 	    touch <1>[ <2> <3>] 创建一个或多个新文件
+ 	    rm <filename> 移除文件
+ 	    rm -rf <filename> 移除非空文件  ⚠️⚠️ 危险命令！！！
+
+ 	 *Display a file
+ 	    cat <filename>  显示文件内容
+ 	    more <filename>  显示更多内容
+ 	    less <filename> 显示更少内容
+ 	    
+ 	    (If the specified file is too large, you won’t be able to see
+ 	    all the content on the screen. To be able to see all the content
+ 	    page by page, you have to use the more or less commands)
+
+     *Copy a file
+ 	    cp <原文件> <同目录下的新文件>   复制文件至当前目录
+   	       cp hello.txt copied.txt
+ 	    cp <原文件> <至新路径/>   复制到新目录
+  	        cp hello.txt copied-files/
+ 	    cp -r <原目录(非空目录)> <复制至新路径/>   复制备份非空文件到新目录
+   	        cp -r /System/Library/Extensions/* /User/用户名/Desktop/backup
+   	        
+    	     (Notice the / (slash) at the end of a directory. That makes sure
+    	     the path is a directory, so if the directory doesn’t exist, you will get an error.)
+
+     *Rename a file
+ 	    mv <filename> <filenewname>
+  	       mv awesome.txt uncool.txt
+
+     *Move a file
+ 	    mv <filename> <newpath>
+  	      mv uncool.txt /Users/my_name/Desktop
+
+	 *设置文件权限 （首先需要进入指定文件夹）
+		chmod -R 777  文件夹名
+		chmod  777  文件名
+
+		777的含义见https://juejin.im/post/6844903504822140941
+    
+  
+	 
+		 
+
+	-->
+</head>
+<body>
+
+</body>
+</html>

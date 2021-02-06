@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+		/*
+		- CSS3 背景
+		   - background-origin 规定 background-position 属性相对于什么位置来定位
+		   
+		      语法：  background-origin: padding-box|border-box|content-box;
+		                padding-box	背景图像相对于padding内边距框来定位。
+		                border-box	背景图像相对于border边框来定位。
+		                content-box	背景图像相对于内容框来定位。
+		                
+		      默认值：	padding-box
+		      继承性：	no
+		      
+		   - background-clip 属性规定背景的绘制区域。
+		   
+		      语法： background-clip: border-box|padding-box|content-box;
+		                border-box	默认值。背景绘制在border方框内（剪切成border方框）。
+		                padding-box	背景绘制在padding方框内（剪切成padding方框）。
+		                content-box	背景绘制在content方框内（剪切成content方框）。
+		                
+		      默认值：	border-box
+		      继承性：	no
+		      
+		   - -webkit-background-clip:text 按照文字等前景内容来剪切背景
+		   
+		   - background-size 指定背景图片大小。
+		      语法：background-size: length|percentage|cover|contain;
+		               length	设置背景图片高度和宽度。
+		                        第一个值设置宽度，第二个值设置的高度。
+		                        如果只给出一个值，第二个是设置为 auto(自动)
+		               percentage	将计算相对于背景定位区域的百分比。第一个值设置宽度，第二个值设置的高度。
+		                        如果只给出一个值，第二个是设置为"auto(自动)"
+		               cover	此时会保持图像的真实尺寸,并将图像缩放成将完全覆盖背景定位区域的最小大小。
+		               contain	此时会保持图像的真实尺寸,并将图像缩放成将适合背景定位区域的最大大小。
+			
+			- background 是背景的简写属性，可操作8种背景相关样式：
+			           background-clip、background-color、background-image、
+			           background-origin、background-position、background-repeat、
+			           background-size，和 background-attachment。
+			     ⚠️⚠️ 不建议使用，background可控制的样式太多，且拥有默认值，会覆盖之前的样式设置，出现问题时很难排查
+		 */
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#test1{
+			margin: 50px;
+			width: 500px;
+			height: 500px;
+			border: 30px solid rgba(0,0,0,.3);
+			padding: 20px;
+			background-image: url("img/background6.jpg");
+			background-origin: content-box;
+			background-clip: content-box;
+			/*-webkit-background-clip: text;*/
+			font: bold  80px/500px  "Arial";
+			color: rgba(0,0,0,0.4);
+			text-align: center;
+			background-repeat:no-repeat ;
+			background-size: 100% 100%;
+		}
+		
+	</style>
+</head>
+<body>
+<div id="box1">
+	<div id="test1">
+		YUMMMM
+	</div>
+</div>
+<div id="box2">
+	<div id="test2"></div>
+</div>
+
+</body>
+</html>

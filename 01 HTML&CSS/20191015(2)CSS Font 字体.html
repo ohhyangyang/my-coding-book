@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>字体</title>
+        <style type="text/css">
+        /*
+        CSS字体属性
+
+        *font-size:设置文字大小，浏览器中默认为16px
+        ⚠️在页面中，每个文字都是处在一个看不见的字框中，font-size实际上设置的是字框的高度
+          一般情况下都比字框小，有时也比字框大，字体不同，显示效果不同
+
+        *font-family: 可以指定文字字体，
+                     且可同时指定多个字体，字体之间使用逗号分开
+                     浏览器会优先使用前边的字体，前一个不支持，则尝试下一个，依此类推。。。
+        ⚠️如果字体不支持，则使用浏览器默认字体（每个浏览器的默认字体不同）（一般是中文不支持）
+        ⚠️浏览器使用的就是本地计算机中的fonts库（或macbook的字体册）中的字体，如计算机没有，则不能使用
+          因此，在开发中，尽量不要使用奇怪的字体，可能用户电脑里没有，就无法达到预期效果
+
+        *font-style:可以定义斜体字。
+          可选值：
+            normal	默认值。浏览器显示一个标准的字体样式。
+            italic	浏览器会显示一个斜体的字体样式。
+            oblique	浏览器会显示一个倾斜的字体样式。（基本不用）
+        ⚠️italic和oblique的效果往往是一样的，大部分浏览器不会做区分，一般只会用italic
+
+        *font-weight:设置文本的粗细。
+          可选值：
+            normal	默认值。定义标准的字符。
+            bold	定义粗体字符。
+        ⚠️该样式可以指定100～900之间的9个值，但是由于用户计算机往往没有这么多级别的字体，
+        所以可能达不到我们想要的效果，基本没有用
+
+        *font-variant:设置小型大写字母的字体显示文本（很少用）
+          可选值：
+            normal	默认值。浏览器会显示一个标准的字体。
+            small-caps	浏览器会显示小型大写字母的字体。
+        ⚠️小型大写字母：小写字母均会被转换为大写，但是使用small-caps的字母与其余文本相比，其字体尺寸更小。
+
+        *font
+        在CSS中提供了一个样式叫font，该样式可以同时设置字体相关的所有样式
+        将字体的样式值统一写在font样式中，不同值之间使用空格隔开
+        ⚠️⚠️在使用font时，斜体 加粗 字母大小写，无书写顺序要求，且可写可不写（不写则使用默认值）
+                      但文字大小和字体必须写，且必须分别位于倒数第二和倒数第一！
+        ⚠️使用font简写属性会有一个比较好的性能，如需设置多个属性时，推荐使用font
+
+        */
+        .p1{
+            COLOR:red;
+            font-size: 20px;
+            font-family: Arial,"楷体";
+            /* font-family: "curlz mt"; 中间有空格的名称可以用""括起来 */
+            font-style: italic;
+            font-weight: bold;
+            font-variant: small-caps;
+            margin-left: 200px;
+        }
+        .p2{
+            font:italic small-caps bold 60px "微软雅黑";
+            margin-top: 200px;
+        }
+        
+        </style>
+	    <link rel="stylesheet" href="../CSS3/SVG矢量图/buildings-v1.0/style.css">
+    </head>
+    <body>
+        <span class="p1">
+            我是p标签，ABCDefghi
+        </span>
+        <span class="p2">
+            我是p标签，ABCDefghi
+        </span>
+
+    </body>
+</html>

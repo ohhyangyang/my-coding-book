@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    
+    function Person(name,age,gender){
+        this.name=name;
+        this.age=age;
+        this.gender=gender;
+    }
+    Person.prototype.sayName=function(){
+            alert("大家好，我是"+this.name);
+        }//直接在prototype中添加共享的方法，以避免污染全局作用域
+    
+    var person1=new Person("Yang",18,"woman");
+    person1.sayName();//alert:大家好，我是Yang
+    console.log(person1);//Person {name: "Yang", age: 18, gender: "woman"}
+    var person2=new Person("Albert",18,"man");
+    person2.sayName();//alert:大家好，我是Albert
+    console.log(person2);//Person {name: "Albert", age: 18, gender: "man"}
+
+    console.log(person1.sayName==person2.sayName);//true，同一个constructor的两个实例共享一个原型对象的方法
+    
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

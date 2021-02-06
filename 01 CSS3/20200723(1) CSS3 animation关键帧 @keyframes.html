@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+		/*
+		*animation简写属性
+		
+		@keyframes 关键帧
+		
+		
+		 */
+		*{
+			margin:0;
+			padding: 0;
+		}
+		#wrap{
+			position: relative;
+			margin: 200px auto;
+			width: 300px;
+			height: 300px;
+			border: 1px black solid;
+			
+		}
+		#test{
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+			
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			font:20px/100px "Arial";
+			text-align: center;
+			
+			animation-name: move;
+			animation-duration: 2s;
+			animation-timing-function: linear;
+			animation-delay: 2s;/*动画外的属性，延迟2s*/
+			animation-iteration-count: 4;/*重复三次，但不会重复delay的时间*/
+			animation-direction: reverse;/*方向和运动曲线反过来*/
+			animation-fill-mode: both;
+			
+		}
+		#wrap:hover #test{
+			animation-play-state: paused;
+		}
+		
+		@keyframes move {
+			from{
+				transform:translateY(-100px);
+			}
+			to{
+				transform: translateY(100px);
+			}
+		}
+	</style>
+</head>
+<body>
+<div id="wrap">
+	<div id="test">YANG</div>
+</div>
+</body>
+</html>

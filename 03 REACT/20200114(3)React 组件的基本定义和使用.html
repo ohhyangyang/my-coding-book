@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>React面向组件编程</title>
+</head>
+<body>
+<!--
+React组件
+
+- 编程层级低->高
+   ->面向对象编程
+   ->面向模块编程
+   ->面向组件编程
+ React面向组件编程!!!
+ 
+- 组件标签
+  为除了html标签以外的自定义标签
+  ⚠️组件标签首字母大写
+  
+- React组件的基本使用
+  1 定义组件
+    方法一：工厂函数组件
+        ->简单组件：this为undefined，
+	               只能通过参数传递props，没有state
+	               特点是精简
+	               
+       function 简单组件(){
+            return 组件内部内容
+       }
+       
+    方法二：ES6类组件
+        ->复杂组件：this为组件
+	               为React.Component的实例
+	               拥有完整的属性
+	               
+       class 复杂组件(实例) extends React.Component{
+            render(){
+                return 组件内部内容
+            }
+       }
+       ⚠️一旦渲染了组件标签，就创建了一个继承了React类组件的实例对象，
+	       并让MyComponent2实例调用render()方法来得到一个虚拟DOM
+	   	   
+	   ⚠️ES6 类的继承
+	       在ES6中，可以通过Class关键字定义一个类：
+	                                  class 类{...}
+	               并可以通过extends关键字实现类的继承：
+	                                  class 实例 extends 类{...}
+   2 渲染组件标签
+    ReactDOM.render(<组件标签/>,真实DOM)
+
+
+
+-->
+    <div id="test1"></div>
+    <div id="test2"></div>
+    
+    <script type="text/javascript" src="js/react.development.js"></script>
+    <script type="text/javascript" src="js/react-dom.development.js"></script>
+    <script type="text/javascript" src="js/babel.min.js"></script>
+
+    <script type="text/babel">
+	    //1 定义组件
+	    /*
+	    方法一：工厂函数组件（简单组件）
+	     */
+	     function MyComponent(){
+             console.log(this)  //undefined
+             return <h2>工厂函数组件</h2>
+	     }
+	     /*
+	     方法二：ES6类组件（复杂组件）
+	     ⚠️一旦渲染了MyComponent2组件标签，就创建了一个继承了React类组件的MyComponent2实例对象，
+	       并让MyComponent2实例调用render()方法来得到一个虚拟DOM
+
+	       
+	      */
+	     class MyComponent2 extends React.Component{
+	         render(){
+	             console.log(this)  //这里的this为类组件的MyComponent2实例对象
+	             return <h2>ES6类组件</h2>
+	         }
+	     }
+		     //class用来定义类 extends代表继承
+	     
+	    //2 渲染组件标签
+	    ReactDOM.render(<MyComponent/>,document.getElementById("test1"))
+        ReactDOM.render(<MyComponent2/>,document.getElementById("test2"))
+    </script>
+
+</body>
+</html>

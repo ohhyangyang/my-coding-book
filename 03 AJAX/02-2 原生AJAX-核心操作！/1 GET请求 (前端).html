@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>1 AJAX GET 请求</title>
+	<style type="text/css">
+		#result{
+			width: 200px;
+			height: 100px;
+			border: solid 1px #90b;
+		}
+		
+	</style>
+	
+	
+	
+</head>
+<body>
+<button>点击发送请求</button>
+<div id="result"></div>
+<script type="text/javascript">
+	/*
+	GET请求
+	通过URL传数据
+	*/
+    /*
+	需求：
+	  点击button按钮，向服务器端发送一个请求
+	  把服务器端返回的响应体结果显示在div框中
+	  同时保证不刷新页面
+	 */
+    
+        //获取button
+        const btn = document.getElementsByTagName('button')[0];
+        const result = document.getElementById('result');
+        btn.onclick = function () {
+            //console.log("test");
+            
+	        //1 创建AJAX对象
+	        const xhr = new XMLHttpRequest();
+	        
+	        //2 初始化 设置请求的方法和服务器端url
+	        xhr.open('GET','http://127.0.0.1:8000/server?a=100&b=200&c=300');
+	        /*
+	        第一个参数: 发送方法
+	        第二个参数: 给送至服务端的url)
+	               ⚠️⚠️ 如何在url中传递参数给服务器
+	                     1 首先加?
+	                     2 名=值&名=值&名=值&...
+	                 可以在Google Chrome的Query String Parameters查到参数解析的结果
+	                   
+	         */
+	        
+	        // ⚠️⚠️ 关于如何设置请求头和请求体，见后一章: 2 POST请求
+	        
+	        //3 发送请求
+	        xhr.send();
+	        
+	        //4 onreadystatechange事件：当readystate发生改变时触发
+	        /*
+	        - onreadystatechange事件
+	          ->on 当。。。时候
+	          
+	          ->readystate xhr对象的一个属性，表示状态:
+	                值
+	                0 未初始化
+	                1 open()方法调用完毕
+	                2 send()方法调用完毕
+	                3 server返回了部分结果
+	                4 server返回了所有结果
+	                
+	           ->change 改变
+	         */
+	        xhr.onreadystatechange = function () {
+	            /*
+	            当事件触发后，如果readystate为4，且没有错误，
+	            则获取响应报文，并处理服务端的返回结果
+	            
+	             */
+	            //条件1：服务端返回所有结果时
+		        if(xhr.readyState === 4){
+		            //条件2：响应状态码 200 404 403 401 500
+			        //⚠️ 不是只有200表示成功，2xx都表示成功
+			        if(xhr.status >= 200 && xhr.status <300){
+			            
+			            //AJAX获取所有response
+				        
+				        //1 响应行中
+				          console.log(xhr.status);//获取到响应状态码！
+				          console.log(xhr.statusText);//获取到响应状态字符串！
+				        //2 响应头中
+				          console.log(xhr.getAllResponseHeaders())//获取到所有的响应头！
+				        //3 响应体中
+				          console.log(xhr.response);//获取到所有的响应体！
+				        //4 设置result对象的文本
+				         result.innerHTML = xhr.response;
+			        }else{
+			        
+			        }
+		        }
+            }
+        }
+    
+
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+
+    var obj=new Object();
+    obj.name="孙悟空";
+    obj.age=18;
+    //对象属性值也可以是函数
+    obj.sayName=function(){
+        console.log("my name is "+"\t"+obj.name);
+    };//obj的方法（method）
+    obj.sayName();//my name is  孙悟空，调对象的方法
+
+    function fun(){
+        console.log(obj.name);
+    }
+    fun();//孙悟空，调函数
+    
+    /*
+    如一个函数作为对象的属性保存，则成这个函数为这个对象的方法，调用函数则称为调用对象的方法
+    （只是名称上的区别）
+    */
+    
+    var obj2={
+        name:"猪八戒",
+        age:18,
+        sayName:function(){
+            console.log(obj2.name);
+        }
+    };
+    obj2.sayName();//猪八戒
+
+
+
+     
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

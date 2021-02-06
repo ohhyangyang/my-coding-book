@@ -1,0 +1,31 @@
+* settings
+  1 点击VSC左下角的小齿轮，选择settings
+  2 搜索SASS关键字， 选中 "live sass compilar"
+  3 在formats选项中选择 "Edit settings.json"
+  4 在"liveSassCompile.settings.formats"中进行基本设置: [
+    
+        //DEFAULT
+        {
+            "format": "expended",
+            "extensionName": ".css",
+            "savePath": null
+        },
+
+        //You can add more
+        {
+            "format": "compressed",
+            "extensionName": ".min.css",
+            "savePath": "/dist/css"
+        },
+
+        //More complex
+        {
+            "format": "compressed",
+            "extensionName": ".min.css",
+            "savePath": "~/../css"
+        }
+
+    ]
+
+    5 savePath: 点击下面的watch sass，就会创建一个css文件夹在savePath指定的目录中
+      format: 设置生成的css文件是否为压缩模式

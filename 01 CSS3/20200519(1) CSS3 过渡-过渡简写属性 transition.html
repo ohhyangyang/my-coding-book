@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+		/*
+		使用transition的注意事项
+		⚠️⚠️ transition只关心元素的初始和结束状态，无法获取过渡过程中每一帧的状态
+		⚠️⚠️ 元素在初次渲染未结束时，无法触发transition属性
+		⚠️⚠️ 使用transform互相切换时，变换组合之间的位置或个数不一样的话，很可能无法触发过渡
+		⚠️⚠️ 当属性值列表长度不一致时，️与时间有关的属性(duration和delay)重复列表，于关键字有关的(timing-function)重复默认值
+		
+		transition 属性是一个简写属性，用于设置四个过渡属性：
+		     transition-property
+		     transition-duration
+		     transition-timing-function
+		     transition-delay
+		 默认值：	all 0 ease 0
+		 继承性：	no
+		 语法：      transition: property duration timing-function delay;
+		 
+		 CSS过渡由简写属性transition定义是最好的方式，可以避免属性值列表长度不一，节省调试时间
+		 
+		 ⚠️ 在transition属性中，各个值的书写顺序是很重要的：
+		    第一个时间的值会被赋值给transition-duration
+		    第二个时间的值会被赋值给transition-delay
+		 ⚠️ Safari 支持 -webkit-transition 属性。
+		 */
+	</style>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+		/*
+		文本新增样式2:
+		  1 文字描边 -webkit-text-stroke
+		    -webkit-text-stroke属性为文本字符描边指定了 宽 和 颜色
+		    它是-webkit-text-stroke-width 和-webkit-text-stroke-color属性的缩写.
+		    
+		    准确来说，-webkit-text-stroke不算是CSS3的东西，因为只有webkit内核（google）才支持
+		    但是需要知道
+		    
+		  2 文字排版
+		  
+		    direction：规定文本的方向 / 书写方向。
+		       ltr	默认值。文本方向从左到右。
+		       rtl	文本方向从右到左。
+		       inherit	规定应该从父元素继承 direction 属性的值。
+		         必要时，需要配合 unicode-bidi:bidi-override; 来使用
+		         unicode-bidi 属性与 direction 属性一起使用，来设置或返回文本是否被重写，以便在同一文档中支持多种语言。
+		       
+		    text-overflow 规定当文本溢出包含元素时发生的事情。
+		       clip	直接修剪文本。（和直接overflow:hidden没什么区别）
+		       ellipsis	修剪文本，并显示省略符号来代表被修剪的文本。（如果元素是被内容撑开的，则不会溢出显示省略号）
+		       string	使用给定的字符串来代表被修剪的文本。
+		       
+		 - white-space属性
+		  white-space 属性设置如何处理元素内的空白。
+		      normal	相邻空白符合并成一个，且如果超过外层框会自动换行。默认属性。表示所有相邻的空白符都会被坍缩（collapse）成一个空格。
+		      pre	输入的空白符会被浏览器保留，但文本不会换行。其行为方式类似 HTML 中的 <pre> 标签。
+		      nowrap	文本不会换行，相邻空白符合并成一个,文本会在在同一行上继续，直到遇到 <br> 标签为止。
+		      pre-wrap	保留空白符序列，但是正常地进行换行。和pre非常像，区别在于pre-wrap会根据外层line-box进行自动换行，而pre则会溢出外层框
+		      pre-line	相邻空白符合并成一个，但是保留换行符。
+		      inherit	规定应该从父元素继承 white-space 属性的值。
+		      
+		 - 制作溢出显示省略号的步骤
+		   首先前提是保证元素不是被内容撑开，
+		   然后使用以下样式：
+		     white-space:nowrap;     使文字不换行
+		     overflow: hidden;
+		     text-overflow: ellipsis;    出现省略号
+		 */
+		
+		/* 文字描边 */
+		h1{
+			font:50px/100px "Arial";
+			text-align: center;
+			color: white;
+			-webkit-text-stroke: 2px greenyellow;
+		}
+		
+		/*文字排版*/
+		#box2{
+			width: 200px;
+			height: 200px;
+			border: 1px solid black;
+			margin: 0 auto;
+		}
+		#box2 #p1{
+			color: #027de7;
+			direction: rtl;
+		}
+		#box2 #p2{
+			color: #fd7e14;
+			direction: rtl;
+			unicode-bidi:bidi-override
+		}
+		
+		/* 溢出显示省略号 */
+		#box3{
+			width: 200px;
+			height: 200px;
+			border: 1px solid black;
+			margin: 0 auto;
+			
+			white-space:nowrap;/*使文字不换行*/
+			overflow: hidden;
+			text-overflow: ellipsis;/*出现省略号*/
+		}
+	</style>
+</head>
+<body>
+
+<div id="box1">
+    <h1>我使用-webkit-text-stroke后被描边了</h1>
+</div>
+
+<div id="box2">
+	<p id="p1">没使用unicode-bidi:bidi-override，我只是右对齐</p>
+	<p id="p2">OSTIA我怎么反过来了</p>
+</div>
+
+<pre>
+	我是什么东西
+</pre>
+<div id="box3">
+               我要溢出去了我要溢出去了我要溢出去了我要溢出去我要溢出去了我要溢出去了我要溢出去了我要溢出去了我要溢出去了，我要溢出去了我要溢出去了我要溢出去了
+</div>
+</body>
+</html>

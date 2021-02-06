@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>文本标签</title>
+        <style type="text/css">
+        /*
+        *<em>和<strong>都表示强调
+
+        <em>标签表示语气上的强调 (Emphasized text)，默认显示为斜体
+
+        <strong>标签表示内容上的强调（Important text），比<em>更强烈，默认显示为粗体
+        （无需重视默认值，重点是要明白语义）
+
+        二者可单独使用，也可一起使用
+
+        *<i>和<b>没有语义（已经不怎么用于设置文字样式了，只偶尔会用于设置小图标）
+
+        <i>标签的内容以斜体显示(Italic text)
+
+        <b>标签的内容以加粗显示(Bold text)
+
+        HTML5规范中规定，对于只是单纯的加粗或斜体（不着重内容），就可以使用b和i标签
+
+        *<small>标签中的内容会比他的父元素的文字要小
+        在HTML5中，用<small>来表示细则一类的内容（不想让你看清楚的。。）
+        如：合同中的小字，网站的版权声明copywrite
+        (<big>已经淘汰了)
+
+        *<cite>标签用于表示网页中所有的加书名号《》的内容，默认显示为斜体
+        如，数名 歌名 话剧名 电影名。。。
+
+        *<q>和<blockqoute>表示引用
+
+        <q>标签标示一个短的引用（行内引用）
+        <q>标签引用的内容，浏览器会默认添加 ""（也是不关心表现，以后都会被去掉）（而且不同浏览器表现也不一样）
+
+        <blockquote>标签表示长引用
+        <blockqoute>标签为块级引用，独占一行，不能放在<p>里，可以放在<div>里
+        （<p>元素不可以包含任何其他块元素，包括他本身）
+
+        *<sub>和<sup>标签表示上下标
+        <sub>标签（subscripted text）表示下标
+        <sup>标签(superscripted text)表示上标
+
+        *<ins>和<del>标签
+        <ins>标签(inserted text)表示插入的内容，默认添加下划线
+        <del>标签(deleted text)表示删除的内容，默认添加删除线
+
+        *<code>和<pre>标签
+        <code>标签专门用来表示代码，但是没有语义，不会保留格式
+
+        <pre>标签（preformatted text）为预格式标签，
+        会将代码中的格式原封不动保存，不会忽略多个空格
+
+        一般结合使用<pre>和<code>
+
+        */
+        </style>
+    </head>
+    <body>
+        <p>
+            <strong>警告，任何情况下不要接近僵尸</strong><br/>
+            他们只是<em>看起来</em>友好
+        </p>
+        <p>
+            今天天气<em>真不错啊！</em><br/>
+            <strong>
+                不认真学编程，就找不到好工作。
+            </strong>
+        </p>
+        <p>
+            <i>我是斜体i</i><br/>
+            <b>我是加粗b</b>
+        </p>
+        <p>
+            我是p<br/>
+            <small>我是small</small>
+        </p>
+        <p>
+            <cite>The Scream</cite> by Edward Munch. Painted in 1893.
+        </p>
+        <p>WWF's goal is to: 
+            <q>Build a future where people live in harmony with nature.</q>
+            We hope they succeed.
+        </p>
+        <div>
+            子曰：
+            <blockquote>
+                有朋自远方来，不亦悦乎
+            </blockquote>
+        </div>
+        
+        <p>
+            2<sup>2</sup><br/>
+            赵薇<sup><a href="#">[1]</a></sup>
+        </p>
+
+        <p>
+            H<sub>2</sub>O
+        </p>
+
+        <p>
+            <del>17.75</del><br/>
+            15.54
+        </p>
+
+        <p>
+            My favorite color is <del>blue</del> <ins>red</ins>!
+        </p>
+        
+        <pre>
+    window.onload=function(){
+        alert("hello world");
+    }<!--左边的空格也都会被显示出来，如果不想要，需要全部缩进-->
+        </pre>
+        <pre>
+            <code>
+                var btn=document.getElementById("btn");
+            </code>
+        </pre>
+        
+
+    </body>
+</html>

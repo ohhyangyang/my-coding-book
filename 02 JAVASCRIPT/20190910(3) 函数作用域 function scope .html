@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    函数作用域：
+       调用函数时，创建函数作用域，函数执行完毕后，函数作用域销毁
+       每调用一次函数，创建一个新的函数作用域，他们之间是互相独立的
+       注1 在函数作用域中，可以访问到全局作用域的变量（如例一）
+       注2 在全局作用域中，无法访问到函数作用域中的变量（如例二）
+       注3 当在函数作用域中操作变量时，它会先在自身作用域中寻找该变量，如果有，直接使用
+           如没有，才会在上一级作用域中寻找（注意是上一级，而不一定是全局作用域，就近原则）
+           如全局作用域中依然没有找到，则会报错ReferenceError（如例三）
+       注4 如在函数中要访问全局变量可以使用window对象（如例四)
+       注5 在函数作用域中也有声明提前的特性
+           使用var声明的变量，会在函数中所有代码执行之前被声明（如例五）
+           使用function 函数(){}也会在函数中所有代码执行之前被声明（如例六）
+       注6 在函数中，不使用var声明的变量都会变为全局变量（如例七 例八）   ⚠️⚠️ bad practice
+       注7 定义形参就相当于在函数作用域中声明了一个变量（例九)
+    */
+    
+    //例一
+    var a=10;
+    function fun1(){
+        console.log("a="+a);
+    }
+    fun1();//a=10
+
+    //例二
+    function fun2(){
+        var b=20;
+    }
+    console.log(b);//b is not defined
+
+    //例三
+    var c=30;
+    function fun3(){
+        var c="我是函数变量c";
+        console.log("c="+c);
+    }
+    fun3();//我是函数变量c
+    console.log("c="+c);//c=30
+
+    //例四
+    var d=40;
+    function fun4(){
+        var d="我是函数变量d";
+        console.log("d="+d);//d=我是函数变量d
+        console.log("d="+window.d);//d=40
+    }
+    fun4();
+
+    //例五
+    function fun5(){
+        console.log("e="+e);
+        var e=50;
+    }
+    fun5();//e=undefined
+    /*
+    相当于：
+    function fun5(){
+        var e;
+        console.log("e="+e);
+        e=50;
+    }
+    fun5();
+    */
+
+    //例六
+    function fun6(){
+        fun7();
+        function fun7(){
+            document.write("我是fun7");
+        }
+    }
+    fun6();//我是fun7
+
+    //例七
+    var f=100;
+    function fun8(){
+        f=200;
+    }
+    console.log("f="+f);//f=100，调用fun8前
+    fun8();
+    console.log("f="+f);//f=200，调用fun8后
+
+    //例八
+    function fun9(){
+        g=300;//不写var则相当于设了全局变量window.g=300
+    }
+    console.log("g="+g);//g is not defined
+    fun9();
+    console.log("g="+g);//g=300
+
+    //例九
+    var h=123;
+    function fun10(h){
+        //定义形参h，就相当于声明var h;
+        alert(h);
+    }
+    fun10(100);//alert:100
+
+    
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

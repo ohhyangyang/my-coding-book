@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        body {
+            width: 2000px;
+            height: 1000px;
+
+        }
+
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: #bfa;
+            position: absolute;
+        }
+
+        #box2 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 200px;
+            top: 200px;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            /*
+              创建拖拽drag函数
+              参数：obj
+              */
+            function drag(obj) {
+                obj.onmousedown = function (event) {
+                    obj.setCapture && obj.setCapture();
+                    event = event || window.event;
+                    var ol = event.clientX - obj.offsetLeft;
+                    var ot = event.clientY - obj.offsetTop;
+                    document.onmousemove = function (event) {
+                        event = event || window.event;
+                        var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+                        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                        var mouseLeft = event.clientX;
+                        var mouseTop = event.clientY;
+                        obj.style.left = mouseLeft - ol+ "px";
+                        obj.style.top = mouseTop - ot+ "px";
+                    }
+                    document.onmouseup = function () {
+                        document.onmousemove = null;
+                        document.onmouseup = null;
+                        obj.releaseCapture && obj.releaseCapture();
+                    }
+                    return false;
+                }
+            }
+            var box1 = document.getElementById("box1");
+            var box2 = document.getElementById("box2");
+            var img1 = document.getElementById("img1");
+            drag(box1);
+            drag(box2);
+            drag(img1);
+        }
+    </script>
+</head>
+
+<body>
+
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <img src="img/cat.gif" id="img1" style="position: absolute;" </body> </html>

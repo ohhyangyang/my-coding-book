@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>浮动</title>
+        <style type="text/css">
+        /*
+        float 可以定义元素在哪个方向浮动，从而脱离文档流
+           可选值：
+              left	元素向页面左侧浮动。
+              right	元素向页面右侧浮动。
+              none	默认值。元素默认在文档流中排列。
+
+        ⚠️当元素float之后(非none），会立即脱离文档流，尽量向页面左上或右上漂浮，直到遇到父元素边框或其他的浮动元素
+        ⚠️浮动元素下边文档流中的元素会向上移动，且浮动元素不会盖住其他元素中的文字，文字会自动环绕在浮动元素周围，因此我们可以通过float来设置文字环绕图片的布局 结合图片
+        ⚠️如果浮动元素上边是一个没有浮动的文档流中块元素，则浮动元素始终处于该块元素下一行 结合图片
+        ⚠️浮动元素不会超过他上边的兄弟元素，最多在同一行 结合图片
+        ⚠️假如在一行上只有极少的空间给浮动元素，那么这个浮动元素会跳至下一行，这个过程会持续到某一行拥有足够的空间为止。结合图片
+        
+        块元素float之后，脱离文档流：width和height都被内容撑开
+        内联元素float之后，脱离文档流：内联元素变成块元素，width和height都被内容撑开
+        简而言之，脱离文档流之后，都会成为块元素，且width和height都被内容撑开
+
+        块元素在文档流中的特点
+            1 在文档流中，会独占一行，自上向下排列
+            2 在文档流中，默认width是父元素的100% (default value: auto)
+            3 在文档流中，默认height被子元素内容撑开 (default value: auto)
+        内联元素在文档流中的特点
+            1 在文档流中，只占自身大小，从左向右排列，如一行装不下，则会换到下一行
+            2 在文档流中，默认width和默认height被子元素内容撑开 (default value: auto)
+        */
+        .box1{
+            width: 400px;
+            height: 200px;
+            background-color: red;
+            float:left;
+        }
+        .box2{
+            width: 400px;
+            height: 200px;
+            background-color: yellow;
+            float:left;
+        }
+        .box3{
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            float:right;
+        }
+        .p1{
+            background-color: pink;
+        }
+        .box4{
+            background-color: powderblue;
+            font-size: 50px;
+            float: left;
+        }
+        .s1{
+            background-color: sandybrown;
+            font-size: 20px;
+            width: 100px;
+            height: 100px;
+            float: left;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <p class="p1">
+            An ancient Hebraic text says:" love is as strong as death". It seems that not everyone experiences this kind of strong love. The increasing probably,crime and war tells us that the world is in indispensable need of true love. But what is true love?
+            Love is something we all need.But how do we know when we experience it?
+            True love is best seen as the promotion and action, not an emotion. Love is not exclusively based how we feel.Certainly our emotions are involved.But they cannot be our only criteria for love.True love is when you care enough about another person that you will lay down your life for them. When this happens,then love truly is as strong as death.How many of you have a mother, or father,husband or wife,son or daughter or friend who would sacrifice his or her own life on yours? Those of you who truly love your spells but unchildren, would unselfishly lay your life on the line to save them from death? Many people in an emergency room with their loved ones and prayed"please, God,take me instead of them".Find true love and be a true lover as well.May you find a love which is not only strong as death, but to leave to a truly for feeling life.
+        </p>
+
+        <div class="box4">ABCD</div>
+        <span class="s1">abcdefg</span>
+        
+    </body>
+</html>

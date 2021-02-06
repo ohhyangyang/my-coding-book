@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<!--
+	- 层次选择器
+	  通过DOM元素之间的层次关系来获取特定元素，如后代元素，子元素，相邻元素，兄弟元素等
+	  	  
+	     选择器                    描述                            返回结果
+	     ancestor descendant      匹配ancestor所有的后代元素        集合元素
+	     parent > child           匹配parent所有的子元素            集合元素
+	     prev + next              匹配prev的下一个相邻的元素         集合元素  （⚠️如筛选出的元素不相邻，选择器无效）
+	     prev ~ siblings          匹配prev后面所有的siblings元素     集合元素
+	     
+	- 查找筛选方法（查阅jQuery手册）
+	  $("选择器").siblings([筛选xx元素])  选择指定元素的所有兄弟xx元素
+	  $("选择器").nextAll([筛选xx元素])   选择指定元素后面的所有兄弟xx元素（可以不相邻）
+	  $("选择器").prevAll([筛选xx元素])   选择指定元素前面的所有兄弟xx元素
+	
+	- 过滤选择器
+	  :first   获取匹配的第一个元素
+	-->
+	<style type="text/css">
+		div, span , p {
+			width: 200px;
+			height: 200px;
+			margin: 5px;
+			background: #aaa;
+			border: #000 1px solid;
+			float: left;
+			font-size: 17px;
+			font-family: Verdana;
+		}
+		div.mini {
+			width: 70px;
+			height: 70px;
+			background-color: #aaa;
+			font-size: 12px;
+		}
+		div.hide {
+			display: none;
+		}
+	</style>
+	<script type="text/javascript" src="jquery-1.10.1.js"></script>
+	<script type="text/javascript">
+		$(function () {
+            $("#btn1").click(function () {
+                //选择body内所有的DIV元素  祖先 后代
+                $("body div").css("background","orange");
+            })
+			
+			$("#btn2").click(function(){
+			    //选择body的DIV子元素  父 > 子
+			    $("body > div").css("background","orange");
+			})
+			
+			$("#btn3").click(function () {
+                //选择id为one的元素的下一个DIV元素  上一个 + 下一个
+                $("#one + div").css("background","orange");
+            })
+            
+            $("#btn4").click(function () {
+                //选择id为two的元素后面的所有DIV兄弟元素  前面元素 ~ 后面所有兄弟
+                $("#two ~ div").css("background","orange");
+            })
+            
+            $("#btn5").click(function () {
+                //选择id为two的元素的所有DIV兄弟元素  siblings("div")
+                $("#two").siblings("div").css("background","orange");
+            })
+			
+			$("#btn6").click(function () {
+                //选择id为one的下一个span元素
+				/*
+				⚠️$("#one + span")选择器在该种情况下无效，因为id为one的元素和span元素不相邻
+				 */
+                $("#one").nextAll("span:first").css("background","orange");
+            });
+            
+            $("#btn7").click(function () {
+                $("#two").prevAll("div").css("background","orange");
+            })
+        })
+	
+	</script>
+</head>
+<body>
+<input id="btn1" type="button" value="选择body内所有的DIV元素">
+<input id="btn2" type="button" value="选择body的DIV子元素">
+<input id="btn3" type="button" value="选择id为one的元素的下一个DIV元素">
+<input id="btn4" type="button" value="选择id为two的元素后面的所有DIV兄弟元素">
+<input id="btn5" type="button" value="选择id为two的元素的所有DIV兄弟元素">
+<input id="btn6" type="button" value="选择id为one的下一个span元素">
+<input id="btn7" type="button" value="选择id为two的元素前边的所有DIV兄弟元素">
+<br><br>
+<div class="one" id="one">
+	id为one，class为one的DIV
+	<div class="mini">class为mini的DIV</div>
+</div>
+<div class="one" id="two" title="test">
+	id为two，class为one，title为test的DIV
+	<div class="mini" title="other">class为mini，title为other的DIV</div>
+	<div class="mini" title="test">class为mini，title为test的DIV</div>
+</div>
+<div class="one">
+	<div class="mini">class为mini的DIV</div>
+	<div class="mini">class为mini的DIV</div>
+	<div class="mini">class为mini的DIV</div>
+	<div class="mini"></div>
+</div>
+<div class="one">
+	<div class="mini">class为mini的DIV</div>
+	<div class="mini">class为mini的DIV</div>
+	<div class="mini">class为mini的DIV</div>
+	<div class="mini" title="test">class为mini,title为test的DIV</div>
+</div>
+<div>
+	包含input的type为hidden的DIV
+	<input type="hidden">
+</div>
+<span>Span元素</span>
+</body>
+</html>

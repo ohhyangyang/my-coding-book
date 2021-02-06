@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title></title>
+        <style type="text/css">
+        /*
+        文本Text
+        *color:设置文字颜色
+
+        *text-transform: 控制文本大小写。（对中文没有意义）
+           可选值：
+              none：默认值，不作任何处理
+              capitalize：文本中每个单词以大写字母开头（通过空格来识别单词）
+              uppercase:所有字母大写
+              lowercase：所有字母小写
+
+        *text-decoration 文本的修饰
+           可选值：
+              none	默认值。(可用于删除<a>的下划线)
+              underline	下划线。
+              overline	上划线。
+              line-through	删除线。
+        ⚠️<a>超链接的text-decoration的默认值为underline，设置为none，可取消<a>的下划线
+
+        *letter-spacing和word-spacing
+        letter-spacing 字符间距（中文有效）
+        word-spacing 单词间隔（中文无效）
+        ⚠️word-spacing实际上设置的是词与词之间空格的大小，所以中文基本无效
+
+        *text-align水平对齐方式
+            可选值：
+               left	    左对齐。默认值
+               right	右对齐。
+               center	居中
+               justify	两端对齐(通过控制空格大小)
+
+        *text-indent首行缩进
+            可选值
+              x px	缩进指定px值。默认值：0。（正值向右移动，负值向左移动）
+              x em	缩进x倍字体尺寸（常用）
+        ⚠️px为负值的情况：可以将一些不想显示的文字隐藏起来，这样用户看不见，但搜索引擎可见，例，text-indent: -99999px;
+
+
+        */
+        .p1{
+            text-transform: uppercase;
+            text-decoration: underline;
+            letter-spacing: 1px;
+            word-spacing: 10px;
+            text-align: left;
+            text-indent: 2em;
+        }
+        a{
+            text-decoration: none;
+        }
+        h1{
+            text-align:center;
+        }
+      
+        
+        </style>
+    </head>
+    <body>
+        <a href="#">我是超链接</a>
+        <h1>Text Sample</h1>
+        <P class="p1">
+            Jean and her family recently traveled to Boston, Massachusetts, one of America’s oldest colonial cities. Boston is rich in history and local personality. During their visit, Jean and her family appreciated learning about Boston’s role during the American Revolution.
+            In the city, Jean and her family followed the famous Freedom Trail. This is a 2.5-mile route that tourists can explore in order to visit 16 different historical landmarks located throughout the city. Famous sites on this trail include the Paul Revere House, King’s Chapel, and the Bunker Hill Memorial. Jean and her family received a map to navigate the Freedom Trail. The roads were clearly marked by red lines, and there were signs throughout the city to keep Jean’s family and other tourists from getting lost.
+            As part of the Freedom Trail, Jean and her family spent a lot of time in Boston’s North End. This is one of the oldest residential neighborhoods in the entire country. Here, Jean and her family were able to visit Boston Harbor, which is the site of the historical Boston Tea Party. This event sent a strong message to the British leading up to the American Revolution.
+            The end of the Freedom Trail led Jean and her Family to the Boston Common, the oldest urban park in the nation. The park is filled with plenty of lush greenery, but it also serves as a burial ground for heroes of the American Revolution.
+            Because of their walk along the historical Freedom Trail, Jean and her family left Boston with a thorough understanding of early American history.
+        </P>
+    </body>
+</html>

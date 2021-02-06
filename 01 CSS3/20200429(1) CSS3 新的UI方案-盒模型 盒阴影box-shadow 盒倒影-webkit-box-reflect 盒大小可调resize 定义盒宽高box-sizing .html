@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+		/*
+		- 盒阴影
+		  box-shadow 属性向框添加一个或多个阴影。
+		  默认值：none
+		  不可继承
+		    语法： box-shadow: h-shadow v-shadow blur spread color inset;
+		      h-shadow	必需。水平阴影的位置。允许负值。
+		      v-shadow	必需。垂直阴影的位置。允许负值。
+		      blur	可选。模糊距离。
+		      spread	可选。阴影的尺寸。允许负值。
+		      color	可选。阴影的颜色。请参阅 CSS 颜色值。
+		      inset	可选。将默认的外部阴影 (outset) 改为内部阴影。
+		  ⚠️ 以逗号分隔来描述一个或多个阴影（第一个阴影在最上面），可以应用到几乎任何元素上。
+		     如果元素同时设置了border-radius，阴影也会有圆角
+		  ⚠️⚠️ 注意实例box1中text的水平垂直居中方法
+		  
+		- 倒影
+		  -webkit-box-reflect 设置元素倒影 ⚠️⚠️ webkit内核，firfox不支持
+		  默认值：none
+		  适用于：所有元素
+		  继承性：无
+		  语法：  box-reflect：<direction> <offset> <mask-box-image>
+                  方向 <direction> = above | below | left | right
+                  距离 <offset> = <length> | <percentage> 长度单位
+                  渐变 <mask-box-image> =  none | <url> | <linear-gradient> | <radial-gradient> | <repeating-linear-gradient> | <repeating-radial-gradient>
+          ⚠️⚠️ 注意实例box2中img的水平垂直居中方法
+
+        - resize属性
+          resize CSS 属性允许你控制一个元素的可调整大小性。
+          ⚠️⚠️ 一定要配合 overflow:auto 使用
+          默认值：	none
+          继承：	no
+            语法： resize: none|both|horizontal|vertical
+                 none	用户无法调整元素的尺寸。
+                 both	用户可调整元素的高度和宽度。
+                 horizontal	用户可调整元素的宽度。
+                 vertical	用户可调整元素的高度。
+        
+        - box-sizing属性
+          box-sizing 属性允许以特定的方式定义匹配某个区域的特定元素。
+          例如，假如您需要并排放置两个带边框的框，可通过将 box-sizing 设置为 "border-box"。
+          这可令浏览器呈现出带有指定宽度和高度的框，并把边框和内边距放入框中。
+           默认值：	content-box
+           继承性：	no
+             语法： box-sizing: content-box|border-box|inherit;
+                 content-box    这是由 CSS2.1 规定的默认宽度高度行为。
+                                宽度和高度分别应用到元素的content内容框。
+                                在宽度和高度之外绘制元素的padding和border。
+
+                 border-box     为元素设定的宽度和高度决定了元素的边框盒。
+                                就是说，为元素指定的任何padding和border都将在已设定的宽度和高度内进行绘制。
+                                通过从已设定的宽度和高度分别减去边框和内边距才能得到内容的宽度和高度。
+                                
+                 inherit	    规定应从父元素继承 box-sizing 属性的值。
+                 
+          ⚠️⚠️ 注意实例box4中div的水平垂直居中方法
+		 */
+		/* 盒阴影 */
+		#box1{
+			width: 100%;
+			height: 300px;
+			background-color: #fff3cd;
+			position: relative;
+		}
+		#test1{
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+			background-color: #fd7e14;
+			width: 100px;
+			height: 100px;
+			text-align: center;
+			line-height: 100px;
+			box-shadow: 10px 10px 15px 10px white inset,
+		                40px 40px 2px -10px black;
+		}
+		
+		/*倒影*/
+		#box2{
+			width: 100%;
+			height: 1000px;
+			background-color: #fff3cd;
+			position: relative;
+			text-align: center; /* 块元素可操作内部inline元素（img）的水平居中 */
+		}
+		/* ⚠️ ::after设置垂直居中，::after和img为在一行的inline元素，基线谁高就听谁的*/
+		#box2::after{
+			content: "";
+			display: inline-block;
+			height: 100%;
+			vertical-align: middle;
+		}
+		#box2 img{
+			vertical-align: middle;
+			text-align:center;
+			-webkit-box-reflect: below 10px linear-gradient(to top, rgba(0,0,0,1),rgba(0,0,0,0));
+		}
+		
+		/*resize*/
+		#box3{
+			width: 100%;
+			height: 400px;
+			background-color: #fff3cd;
+			position: relative;
+		}
+		#box3 #test3{
+			width: 100px;
+			height: 100px;
+			background-color: #bd2130;
+			overflow: auto;
+			resize: both;
+		}
+		
+		/* box-sizing */
+		#box4{
+			width: 100%;
+			height: 400px;
+			background-color: #fff3cd;
+			position: relative;
+		}
+		#box4 #test4{
+			width: 200px;
+			height: 200px;
+			background-color: #9999ff;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin-left: -100px;
+			margin-top: -100px;
+			box-sizing: border-box;
+			border: 10px darkseagreen solid;
+			
+		}
+	</style>
+</head>
+<body>
+<div id="box1">
+	<div id="test1">test1</div>
+</div>
+<br>
+<div id="box2">
+	倒影
+	<img src="img/xiaotiantian.jpg"/>
+</div>
+<br>
+<div id="box3">
+	<div id="test3"></div>
+</div>
+<br>
+<div id="box4">
+	<div id="test4"></div>
+</div>
+</body>
+</html>

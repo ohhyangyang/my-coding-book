@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<!--
+- props
+  每个组件都有props属性
+  props中保存着标签的所有属性
+  
+- 通过props值设置信息的默认值
+    组件.defaultProps = {}
+    
+- 通过props内的属性值限制输出信息的类型和必要性（⚠️需要先引入prop-types.js库）
+    组件.propTypes = {
+        属性名1:PropTypes.数据类型       ->指定属性值1的数据类型
+        属性名2:PropTypes.数据类型.isRequired     ->指定了属性值2的数据类型和必要性
+    }
+    
+- 简化传递对象中的所有属性给标签组件
+   先定义一个对象
+       p1 = {
+          属性1 : aaa
+          属性2 : aaa
+          属性3 : aaa
+       }
+   然后根据对象p1的信息渲染标签组件
+   ReactDOM.render(<标签 {...p1}/>,真实DOM)
+   
+- ES6中 ...的作用
+	 1 打包
+	    定义一个函数
+	      function fn(...as){}
+	    调用fn
+	      fn(1,2,3)
+	      
+	      相当于把1 2 3作为数组打包在as里
+	    
+	 2 解包
+	    拆数组
+	    const arr1=[1,2,3]
+	    const arr2=[6,...arr1,9]  相当于arr2=[6,1,2,3,9]
+	    
+	    拆对象
+	    <Person {...p1}/> 相当于 <Person name="Yang" gender="女" age={30} />
+    
+-->
+    <div id="example1"></div>
+    <div id="example2"></div>
+
+    <script type="text/javascript" src="js/react.development.js"></script>
+    <script type="text/javascript" src="js/react-dom.development.js"></script>
+    <script type="text/javascript" src="js/babel.min.js"></script>
+    <script type="text/javascript" src="js/prop-types.js"></script>
+                              <!--引入prop-types库，用于指定props内属性值的类型和必要性-->
+
+    <script type="text/babel">
+	    /*
+	    需求：自定义一个用来显示一个人员信息的组件
+	      1）必须指定姓名
+	      2）如果没指定性别，则默认为男
+	      3）如果没指定年龄，则默认18
+	     */
+	    //1 定义组件，
+	    
+	    /*
+	    可以使用工厂函数组件（没有state，但是有props）
+	    this为undefined，
+	    只能通过参数传递props，没有state
+	    特点是精简
+	     */
+	    
+	    // function Person(props) {
+	    // console.log(this)  //undefined
+	    //     return (
+	    //         <ul>
+		//             <li>姓名：{props.name}</li>
+        //             <li>性别：{props.gender}</li>
+        //             <li>年龄：{props.age}</li>
+	    //         </ul>
+	    //     )
+        // }
+        
+	    /*
+	    可以使用ES6类组件创建
+	    this为组件
+	    为React.Component的实例
+	    拥有完整的属性props，state，refs等等，无需通过参数传递
+	     */
+	    class Person extends React.Component{
+	        render(){
+                console.log(this)  //Person组件
+	            return (
+                    <ul>
+                        <li>姓名：{this.props.name}</li>
+                        <li>性别：{this.props.gender}</li>
+                        <li>年龄：{this.props.age}</li>
+                    </ul>
+	            )
+	        }
+	    }
+	    
+        
+        //指定组件Person的props的默认值
+	    Person.defaultProps = {
+	        gender:"男",
+		    age:18
+	    }
+	    
+	    //指定属性值的类型和必要性
+	    Person.propTypes = {
+	        name:PropTypes.string.isRequired, //姓名为string且必要
+		    gender:PropTypes.string,
+		    age:PropTypes.number
+	    }
+	    
+	    //2 渲染组件标签
+	    const p1 = {
+	        name:"Yang",
+		    gender:"女",
+		    age:30
+	    }
+        //ReactDOM.render(<Person name={p1.name} gender={p1.gender} age={p1.age}/>,document.getElementById("example1"))
+        ReactDOM.render(<Person {...p1} />,document.getElementById("example1"))
+	                          //⚠️解包p1
+	    
+	    
+	    const p2 = {
+	        name:"Jack"
+	    }
+        ReactDOM.render(<Person name={p2.name}  />,document.getElementById("example2"))
+	    
+    </script>
+</body>
+</html>

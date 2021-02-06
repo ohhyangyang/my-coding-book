@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    使用object字面量来创建一个object
+    
+    */
+    var obj={};//和new object（）功能相同，但更简便
+    console.log(typeof obj);//object
+
+    /*
+    使用对象字面量，可以在创建object时，直接指定object中的属性
+    语法：
+         {属性名:属性值,属性名:属性值,属性名:属性值...}
+         字面量的属性名可以加"也可以不加，建议不加，因为属性名本身即为string
+         但如果要使用一些特殊的名字，则必须加引号
+    */
+    var obj2={
+        name:"猪八戒",//string
+        颜值:"ugly",//string
+        test:{name:"帅哥"},//object,属性也可为对象
+        age:28,//number
+        gender:true//boolean,注意最后一个属性结尾不加逗号
+        };
+    console.log(obj2);//{name: "猪八戒", 颜值: "ugly", age: 28}
+    console.log(typeof obj2.name);//string
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

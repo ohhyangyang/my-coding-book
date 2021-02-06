@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    字符串在底层是以字符数组形式保存的
+    例如["H","e","l","l","o"]
+
+    且字符串大部分方法都不会对原数据产生影响
+    */
+    var str="你好 Yangyang";
+    
+    //属性
+    /*
+    length属性用于获取字符串长度
+    */
+    console.log(str.length);//11
+    console.log(str[7]);//y
+    
+    //方法
+    /*
+     chartAt()方法可根据索引返回指定位置的字符。
+     */
+    var result=str.charAt(6);
+    console.log(result);//g，返回字符
+
+    result=str[6];
+    console.log(result);//g，两种方法获得的结果是一样的
+
+    /*
+    charCodeAt()方法可返回在指定的位置的字符的 Unicode 编码。
+    */
+    result=str.charCodeAt(0);
+    console.log(result);//20320，“你”的unicode编码为20320
+
+    /*
+    String.fromCharCode()方法可以通过字符编码获取一个字符串。（注意是通过string调的）
+    */
+    result=String.fromCharCode(20015);
+    console.log(result);//丯
+
+    /*
+    concat()方法可以连接两个或多个字符串
+    不如+简单
+    */
+    result=str.concat(" ","guapa");
+    console.log(result);//你好 Yangyang guapa
+
+    result=str+" "+"guapa";
+    console.log(result);//你好 Yangyang guapa
+
+    /*
+    indexOf()方法可以查找一个字符串中是否含有指定内容（从前向后）
+    语法： stringObject.indexOf(searchvalue,fromindex)
+    searchvalue规定指定内容
+    fromindex规定在字符串中开始检索的位置，如省略，则从字符串的首字符开始检索。
+
+    如字符串中含有该指定内容，则返回指定内容第一次出现的索引
+    如果要检索的字符串值没有出现，则该方法返回 -1。
+
+    indexOf() 方法对大小写敏感！
+    */
+    result=str.indexOf("a");
+    console.log(result);//4,从索引0开始从前向后找
+
+    result=str.indexOf("a",5);
+    console.log(result);//8，从索引5开始从前向后找
+
+    /*
+    lastIndexOf()方法相同indexOf()，不同的是lastIndexOf从后往前找
+    */
+    result=str.lastIndexOf("g");
+    console.log(result);//10, 从最后一个索引开始从后向前找
+
+    result=str.lastIndexOf("g",8);
+    console.log(result);//6，从第8个索引开始从后向前找
+
+    //includes() 方法用于判断一个字符串是否包含在另一个字符串中，根据情况返回 true 或 false。
+
+    /*
+    slice()方法可提取字符串的某个部分，并以新的字符串返回被提取的部分。(不影响原字符串)
+    
+    stringObject.slice(start,end)
+    start：要抽取的片断的起始位置。（包括start）
+    end：要抽取的片段的结尾的位置。若未指定此参数，则截取到原字符串结尾。（不包括end）
+    
+    如果是负数，则是从后往前位置
+
+    String.slice() 与 Array.slice() 相似
+    */
+    var str2="abcdefghijk";
+    result=str2.slice(1);
+    console.log(result);//bcdefghijk，未指定end，截取到结尾
+
+    result=str2.slice(1,-4);
+    console.log(result);//bcdefg，包括b，不包括h(-4)
+
+    /*
+    substring()和slice()基本相同，
+    但不同的是，
+    substring()不可以传负值为参数（负值会被默认为0）
+    另外它会自动调整start的end位置，(1,5)和(5,1)都是一样的
+    */
+    result=str2.substring(6,3);
+    console.log(result);//def，相当于索引3（d）取到索引6（g），且不包括g
+    
+    /*
+    substr()方法截取字符串
+    语法：stringObject.substr(start,length)
+    用slice或substring就可以了，不用这么多
+    */
+
+    /*
+    split()方法可以把字符串分割为字符串数组。
+    类似array中的join(将数组连成字符串)
+
+    语法：stringObject.split(separator,howmany)
+    separator
+    howmany 数组的最大长度
+
+    如果separator为空串，则会将每个字符拆分为数组中的元素
+    */
+    var str3="abc/bcd/efg/hij";
+    result=str3.split("/");
+    console.log(result);//["abc", "bcd", "efg", "hij"] (4)
+    console.log(result[2]);//efg
+
+    result=str3.split("");
+    console.log(result);//["a", "b", "c", "/", "b", "c", "d", "/", "e", "f", …] (15)
+
+    /*
+    toUpperCase()方法用于把字符串转换为大写。（不影响原变量）
+    toLowerCase() 方法用于把字符串转换为小写。（不影响原变量）
+    */
+    var str4="abcdefg";
+    str5=str4.toUpperCase();
+    console.log(str5);//ABCDEFG
+
+    result=str5.toLowerCase();
+    console.log(result)//abcdefg
+
+
+    
+
+
+    
+
+
+
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

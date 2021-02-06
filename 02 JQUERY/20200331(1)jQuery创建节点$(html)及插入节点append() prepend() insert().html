@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<!--
+	- jQuery查找节点
+	  1 查找元素节点：jQuery选择器
+	  2 操作属性节点：$(节点).attr()
+	    ⚠️ val()可以直接操作value属性
+	  3 操作文本节点：$(节点).text()
+	  
+	- jQuery创建节点
+	  $(html)
+	  
+	  ⚠️⚠️
+	  1 创建的节点还需要通过方法插入到文档中
+	  2 需要注意闭合标签和使用标准的xhtml格式： $("</p>") 或 $("<p></p>")
+	  
+	- jQuery插入节点  ⚠️⚠️ ️$写在jquery代码的最前面
+	  方法            描述                                      写法
+	  append()        向匹配的元素的内容结尾处追加内容             $(父).append(结尾添加的子)
+	  appendTo()      将匹配到的元素追加到指定的元素内部的结尾处     $(结尾添加的子).appendTo(父)
+	  prepend()       向每个匹配元素的内部的开始处插入内容          $(父).append(开头添加的子)
+	  prependTo()     将匹配到的元素追加到指定的元素内部的开头处     $(开头添加的子).appendTo(父)
+	  
+	  after()         向匹配的元素之后插入内容               $(兄弟).after(后面添加的兄弟)
+	  insertAfter()   将匹配的元素插入到指定元素之后          $(后面添加的兄弟).insertAfter(兄弟)
+	  before()        向匹配的元素之前插入内容               $(兄弟).before(前面添加的兄弟)
+	  insertBefore()  将匹配的元素插入到指定元素之前          $(前面添加的兄弟).insertBefore(兄弟)
+	-->
+</head>
+<script type="text/javascript" src="jquery-1.10.1.js"></script>
+<script type="text/javascript">
+	$(function () {
+	    //1 jQuery操作文本节点  text()
+		alert($("#bj").text());
+		$("#bj").text("香港");
+		
+		//2 jQuery操作属性节点  attr()
+		//⚠️ val()可以直接操作value属性
+		alert($(":text[name=username]").attr("value"));
+		$(":text[name=username]").attr("value","小屁屁")
+		
+		//3 jQuery创建节点并插入节点
+		$("<li id='dl'>大连</li>").appendTo("#city");
+		$("#city").append("<li id='sz'>深圳</li>");
+		
+		//4 jQuery创建节点并插入节点
+		$("<li id='mario'>马里奥</li>").insertAfter("#rl");
+		$("<li id='odyssey'>奥德赛</li>").insertBefore("#rl");
+		
+    })
+</script>
+<body>
+<p>你喜欢那个城市？</p>
+<ul id="city">
+	<li id="bj" name="Beijing">北京</li>
+<li>上海</li>
+<li id="dj">东京</li>
+<li id="se">首尔</li>
+</ul>
+<br>
+<br>
+<p>你喜欢哪款单机游戏？</p>
+<ul id="game">
+	<li id="rl">红警</li>
+	<li>实况</li>
+	<li>极品飞车</li>
+	<li>魔兽</li>
+</ul>
+<br>
+<br>
+gender:
+<input type="radio" name="gender" value="male">Male
+<input type="radio" name="gender" value="female">Female
+<br>
+<br>
+name:
+<input type="text" name="username" value="火辣辣">
+   
+
+</body>
+</html>

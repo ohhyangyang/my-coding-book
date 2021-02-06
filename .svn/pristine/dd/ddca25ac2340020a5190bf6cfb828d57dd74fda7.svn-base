@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>外部样式表</title>
+        <!--
+            外部样式表：External CSS （最推荐）
+            还可将CSS样式编写到外部的CSS文件中
+            然后通过link标签将外部CSS文件引入到当前页面中
+
+            这样是结构与表现完全分离，使样式表在不同的页面中使用
+            同时，可以利用浏览器的缓存，加快用户访问的速度，提高用户体验，所以在开发中最推荐
+
+        -->
+        <link rel="stylesheet" type="text/css" href="css/09102019(2).css" />
+    </head>
+    <body>
+        <p>水调歌头</p>
+        <p>明月几时有，把酒问青天。</p>
+    </body>
+    </html>

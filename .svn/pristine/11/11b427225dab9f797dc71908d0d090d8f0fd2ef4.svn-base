@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    定义一个函数，可以根据半径计算一个圆的面积，并返回计算结果
+    */
+    function area(r){
+        return 3.14*r*r;
+    }
+    var s1=area(3);
+    console.log("result="+s1);//result=28.259999999999998
+
+    //函数套函数的输出方式
+    function fun(a){
+        console.log("a="+a);
+    }
+    fun(area(10));//a=314
+    
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    浏览器在加载页面时，是按由上向下顺序加载的
+    读取一行，运行一行
+    如果将script标签写到head中，在代码执行时body还没加载，DOM对象也没有加载
+
+    将JS代码编写到页面的下部
+    就是为了可以在页面加载完毕以后再执行JS代码
+    （写在下边，性能最优）
+
+    但如果一定要写在上边
+    则需要为window绑定一个onload事件
+    onload事件对应的函数会在整个页面加载完成之后才触发
+    该代码会在DOM所有对象加载完毕之后才执行
+    （写在上边，一目了然，好管理）
+    
+
+    写在下边是最好的，但进入公司后有可能写哪里的都有，要根据公司需求来做
+    */
+    window.onload=function(){
+        var btn=document.getElementById("btn");
+        btn.onclick=function(){
+            alert("hello");
+        }
+    }
+
+    
+    </script>
+</head>
+<body>
+    <button id="btn">点我一下</button>
+    <script type="text/javascript">
+    
+    
+    
+
+    
+    </script>
+</body>
+</html>

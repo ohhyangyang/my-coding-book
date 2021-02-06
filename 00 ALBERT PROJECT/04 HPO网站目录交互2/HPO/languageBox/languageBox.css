@@ -1,0 +1,79 @@
+@import url("https://fast.fonts.net/lt/1.css?apiType=css&c=88050ef6-42db-4475-9ef0-8919cb50638b&fontids=1475496,1475502,1475508,1475514,1475520,1475526,1475532,1475538,1475544,1475550,1475556,1475562");
+
+@font-face {
+    font-family: "Avenir LT W05_45 Book";
+    src: url("../../Fonts/5687178/c4c68310-7910-47fe-aafe-fb8e8c7c3fc3.eot?#iefix");
+    src: url("../../Fonts/5687178/c4c68310-7910-47fe-aafe-fb8e8c7c3fc3.eot?#iefix") format("eot"), url("../../Fonts/5687178/2b019de4-ece8-4a0d-b8b4-72866ca60c27.woff2") format("woff2"), url("../../Fonts/5687178/b8885363-76e9-4313-bd2f-446d01014e36.woff") format("woff"), url("../../Fonts/5687178/c9947fd3-3bc8-4301-9642-9e30604027f3.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Avenir LT W05_95 Black";
+    src: url("../../Fonts/5225567/d54f0688-824d-4cae-88f3-ebed1ed3d2be.eot?#iefix");
+    src: url("../../Fonts/5225567/d54f0688-824d-4cae-88f3-ebed1ed3d2be.eot?#iefix") format("eot"), url("../../Fonts/5225567/ef5440cb-9db6-4c3a-b4ab-8135481379cd.woff2") format("woff2"), url("../../Fonts/5225567/6497b0cb-750c-4e79-b974-2d66cef3ac7d.woff") format("woff"), url("../../Fonts/5225567/7b88d46c-84c0-49b1-91d7-5a63a6d0b09a.ttf") format("truetype");
+}
+
+.languageBox {
+    border: 2px solid #1B365D;
+    border-radius: 30px;
+    background-color: white;
+    overflow: hidden;
+
+}
+
+.languageBox a {
+    text-decoration: none;
+    color: #1B365D;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+}
+
+.languageBox img {
+    width: 50px;
+    margin: 0px 10px;
+}
+
+.languageBox span {
+
+    position: relative;
+    bottom: 0px;
+    font: 18px  "Avenir LT W05_45 Book";
+    /*background-color: blue;*/
+    /*border-bottom: 50px;*/
+
+}
+
+
+.languageBox div {
+    /*width: 100%;*/
+    /*height: 70px;*/
+    /*display: flex;*/
+    /*justify-content: start;*/
+    /*align-items: center;*/
+}
+.languageBox div:not(:last-child){
+    border-bottom: 2px solid #1B365D;
+}
+
+.languageBox div:hover {
+    background-color: #1B365D;
+}
+
+.languageBox a:hover {
+    color: white;
+}
+
+/*.languageBox div:nth-child(1) {*/
+/*    border-radius: 30px 30px 0px 0px;*/
+
+/*}*/
+
+/*.languageBox div:nth-child(6) {*/
+
+/*    border-radius: 0px 0px 30px 30px;*/
+
+
+/*}*/

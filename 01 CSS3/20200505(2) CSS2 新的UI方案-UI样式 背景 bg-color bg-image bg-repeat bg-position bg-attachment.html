@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+		/*
+		- CSS2 背景
+		
+		   -background-color 背景色
+		        默认值 transparent
+		        平铺整个border-box
+		        
+		   -background-image 为元素设置一个或多个背景图
+		      在绘制时，先指定的图像会在之后指定的图像上面绘制。因此指定的第一个图像在最上层，“最接近用户”。
+		      ⚠️ 元素的border和content会在它们之上被绘制，而 background-color 会在它们之下绘制。
+		      ⚠️ 默认情况下，background-image放置在元素的左上角，从padding-box开始绘制，
+		                    并垂直和水平方向重复，从border-box开始剪裁。
+		                    绘制尺寸为自己的文图像素
+		                   	
+		   -background-repeat 定义背景图像的重复方式
+		      背景图像可以沿着水平轴，垂直轴，两个轴重复，或者根本不重复。
+		      
+		   -background-position 为背景图片控制图片位置。
+		      ⚠️⚠️ background-origin 属性规定 background-position 属性相对于什么位置来定位
+		      ⚠️⚠️  左上角为(0%,0%)右下角为（100%，100%）
+		      
+		        值                     描述
+		        top left               如果您仅规定了一个关键词，那么第二个值将是"center"。
+                top center
+                top right
+                center left
+                center center
+                center right
+                bottom left
+                bottom center
+                bottom right
+
+                x% y%                  第一个值是水平位置，第二个值是垂直位置。
+                                       左上角是 0% 0%。右下角是 100% 100%。
+                                       如果您仅规定了一个值，另一个值将是 50%。
+                                       
+                xpos ypos              第一个值是水平位置，第二个值是垂直位置。
+                                       左上角是 0 0。单位是像素 (0px 0px) 或任何其他的 CSS 单位。
+                                       如果您仅规定了一个值，另一个值将是50%。
+                                       您可以混合使用 % 和 position 值。
+		        
+		        默认值 0% 0%
+		        继承  no
+		        
+		  -background-attachment 设置背景图像是否固定或者随着页面的其余部分滚动。
+		        默认值：	scroll
+		        继承性：	no
+		        
+		        值	       描述
+                scroll	  默认值。背景图像会随着页面其余部分的滚动而移动。
+                fixed	  当页面的其余部分滚动时，背景图像不会移动。  ⚠️⚠️ 最好不要用，有性能问题
+                inherit	  规定应该从父元素继承 background-attachment 属性的设置。
+		 */
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		html{
+			height: 3000px;
+		}
+		#test1{
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			width: 500px;
+			height: 500px;
+			color: #fd7e14;
+			text-align: center;
+			background-color: lavender;
+			background-image: url("img/background4.png"),url("img/image1.jpeg");
+			background-size: 80%;
+			background-repeat:no-repeat ;
+			background-position: center center;
+			overflow: auto;
+		}
+		#test2{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			margin: 100px;
+			position: fixed;
+		}
+	
+	</style>
+</head>
+<body>
+<div id="box1">
+	<div id="test1">
+		给我居留！！！！！<br>
+		给我居留！！！！！<br>
+		给我居留！！！！！<br>
+		给我居留！！！！！<br>
+		给我居留！！！！！<br>
+		给我居留！！！！！<br>
+		给我居留！！！！！<br>
+		给我居留！！！！！<br>
+		给我居留！！！！！<br>
+		给我居留！！！！！<br>
+		给我居留！！！！！<br>
+		给我居留！！！！！<br>
+		给我居留！！！！！<br>
+		给我居留！！！！！<br>
+		给我居留！！！！！<br>
+		给我居留！！！！！<br>
+		给我居留！！！！！<br>
+		给我居留！！！！！<br>
+		给我居留！！！！！<br>
+		给我居留！！！！！<br>
+		给我居留！！！！！<br>
+		给我居留！！！！！<br>
+		给我居留！！！！！<br>
+		给我居留！！！！！<br>
+		给我居留！！！！！<br>
+		给我居留！！！！！<br>
+		给我居留！！！！！<br>
+		给我居留！！！！！<br>
+		给我居留！！！！！<br>
+		给我居留！！！！！<br>
+		给我居留！！！！！<br>
+		给我居留！！！！！<br>
+		给我居留！！！！！<br>
+	</div>
+</div>
+<div id="box2">
+	<div id="test2">我是被position: fixed;的DIV</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--
+    - delopyment
+       git checkout -b gh-pages  创建新branch(production)，并转到该branch
+       git branch  查看branch
+       q 退出查看
+       git push origin gh-pages  上传branch
+       
+       (github)
+       github-对应project-setting-github pages-去http （有的时候要等5-10分钟）
+
+       git checkout master 回到master(developing)
+
+    - update deployment
+       (master)
+       git add . 
+       git commit -m"xxx"
+       git push origin master
+
+       git checkout gh-pages  转到branch
+       git merge master  从local master分支更新进度到local分支
+       git push origin ph-pages   更新GitHub的branch
+
+       git checkout master 回到master(developing)
+
+    - Juanmi 的笔记
+      DEPLOYMENT
+      1 $ git checkout -b gh-pages // copies a branch locally and takes you there (happens locally)
+      2 $ git branch // see branches
+      3 $ q to come out
+      4 $ git push origin gh-pages // pushes it live to the github production server     
+      5 Now go to settings and find GitHub Pages (need to scroll dwn). 99% of times no need to touch. Click on the link to see the live product!
+      6 $ git checkout master // takes me back to master branch to continue working IMPORTANT to work in the development environment
+      
+      -- 
+      Once you have the branch ready, when you want to upload again to production, first you merge the master with the gh-pages at staging level, and then push it live
+      1 git checkout gh-pages // switch to the production server
+      2 $ git merge master // instead of $ git checkout -b gh-pages, and then
+      3 $ git push origin gh-pages // do it!
+      4 $ git checkout master // IMPORTANT to go back to continue development
+
+    -->
+</body>
+
+</html>

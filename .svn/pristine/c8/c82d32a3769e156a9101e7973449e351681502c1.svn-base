@@ -1,0 +1,33 @@
+#my_menu {
+    width: 250px;
+    margin: 200px auto;
+    padding:10px 0;
+}
+#my_menu div{
+    overflow: hidden;/*所有多余的部分全部都会被隐藏*/
+}
+#my_menu a{
+    color: black;
+    letter-spacing: 1px;
+    
+}
+#my_menu span{
+    display: block;
+    color: black;
+    letter-spacing: 5px;
+    margin: 10px 0;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+#my_menu a:hover{
+    background-color:#22ff08;
+    color:white;
+    font-size: 18px;
+}
+#my_menu .greenArrow{
+    color: #22ff08;
+}
+.collapsed{
+    height: 32px;
+}

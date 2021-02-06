@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>frameset</title>
+</head>
+<!-- <body> -->
+    <!--
+        <frameset>和<iframe>类似，都用于引入其他外部页面
+        但<frameset>可以同时引入多个页面
+        HTML5也相对更推荐使用<framset>
+            ⚠️<frameset>和<body>不能出现在同一个页面中
+
+        二者都不推荐使用：
+        1 里边的内容不会被搜索引擎检索到
+        2 浏览器需发送多次请求，用户体验差
+        3 如必须使用，建议使用<frameset>
+        
+        *<frameset>
+            rows属性，指定框架集中的所有框架，一行一行的排列
+            cols属性，指定框架集中的所有框架，一列一列的排列
+            （二者必选其一，并且需指定每一部分所占比例大小）
+            ⚠️<frameset>可以再嵌套<frameset>
+
+        *<frame>子标签用于指定要引入的页面（自结束）
+    -->
+    <frameset cols="20%, 40%, 40%" >
+        <frame src="20191029（3）CSS table样式.html"/>
+        <frame src="20191028（3）CSS opacity.html"/>
+        <frameset rows="50%, 50%">
+            <frame src="20191028(4)CSS background 背景.html"/>
+            <frame src="20191029（1）HTML <table> <tr><td>.html"/>
+        </frameset>
+    </frameset>
+<!-- </body> -->
+</html>

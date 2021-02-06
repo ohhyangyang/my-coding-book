@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义遍历数据</title>
+</head>
+
+<body>
+    <script>
+	    /*
+	    - 举例如何自定义遍历数据
+	      需求：给以下banji对象添加Iterator接口，使用for...of遍历banji对象，
+	           且每次返回stus数组的一个成员 （原生对象为非迭代）
+	     */
+        //声明一个对象,并在对象内添加含有next()函数的Iterator接口
+        const banji = {
+            name: "终极一班",
+            stus: [
+                'xiaoming',
+                'xiaoning',
+                'xiaotian',
+                'knight'
+            ],
+	        
+	        //添加Iterator接口
+            [Symbol.iterator]() {
+                //索引变量
+                let index = 0;
+                
+                //获取[Symbol.iterator]()函数的this
+                let _this = this;
+                
+                //返回一个指针对象
+                return {
+                    
+                    //创建next()方法
+                    next: function () {
+                        
+                        if (index < _this.stus.length) {
+                            /*
+                            ⚠️⚠️
+                            此处的this为从外面传递进来的，
+                            或者是可以直接使用箭头函数声明next，来直接继承指针函数外面的this
+                             */
+                            
+                            //设置结果
+                            const result = { value: _this.stus[index], done: false };
+                            //设置后索引自增
+                            index++;
+                            //返回结果
+                            return result;
+                        }else{
+                            //迭代结束
+                            return {value: undefined, done: true};
+                        }
+                    }
+                };
+            }
+        };
+
+        //遍历这个对象 
+        for (let v of banji) {
+            console.log(v);
+        }
+    </script>
+</body>
+
+</html>

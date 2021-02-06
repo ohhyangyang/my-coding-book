@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<!--
+	- 响应式布局
+	指的是同一页面在不同屏幕尺寸下有不同的布局。
+	传统的开发方式是PC端开发一套，手机端再开发一套，而使用响应式布局只要开发一套就够，
+	缺点就是CSS比较重
+	
+	- CSS3媒体属性
+	CSS3媒体查询是响应式布局的核心
+	
+       
+     *操作符，关键字 (only,and,(，or),not)
+        and  与的意思，所有的连接选项都要匹配成功才能应用规则
+             一般用来连接媒体类型和媒体属性
+             
+         
+        only  only运算符仅在整个查询匹配时才用于应用样式，并且对于防止较早的浏览器应用所选样式很有用。
+              当不使用only时，旧版本的浏览器会将screen and (max-width: 500px)简单地解释为screen，
+              忽略查询的其余部分，并将其样式应用于所有屏幕。 如果使用only运算符，则还必须指定媒体类型。
+	   			在新浏览器下
+	   			      @media only screen and (min-width:800px ){...}和
+	   			      @media  screen and (min-width:800px ){}含义相同
+	   			而在老款的浏览器下，不加only时，会识别screen媒体类型
+	   				  @media only    ->    因为没有only这种设备 规则被忽略
+	   				  @media screen  ->    因为有screen这种设备而且老浏览器会忽略带媒体属性的查询
+	
+	   			因此建议在每次抒写media query的时候带上only
+	   			
+	     ,   或的意思，所有的连接选项只要匹配成功一个就能应用规则
+	
+		 not:取反
+	-->
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#wrap{
+			width: 100px;
+			height: 100px;
+			margin: 100px auto;
+		}
+		
+		
+		/*一般都写在最下面*/
+		/*媒体类型+媒体属性*/
+		
+		@media only screen and (orientation: landscape),(-webkit-device-pixel-ratio: 2){
+			/*只有在横屏屏幕 或 设备像素比为2 时显示*/
+			#wrap{
+				border: 10px solid orange;
+			}
+		}
+		
+		@media not screen and (orientation: landscape),(-webkit-device-pixel-ratio: 2){
+			/*只有不是横屏屏幕 或 设备像素比为2 时显示*/
+			#wrap{
+				border: 10px solid red;
+			}
+		}
+		
+		@media screen and (min-width : 1000px){
+			/*只在彩色屏幕中显示，以下的声明在打印时都看不见*/
+			#wrap{
+				border: 10px solid green;
+			}
+		}
+		
+		@media screen and (min-width : 1500px){
+			/*只在彩色屏幕中显示，以下的声明在打印时都看不见*/
+			#wrap{
+				border: 10px solid blue;
+			}
+		}
+	</style>
+</head>
+<body>
+<div id="wrap">
+
+</div>
+</body>
+</html>

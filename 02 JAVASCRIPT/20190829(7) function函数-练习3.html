@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    创建一个函数，可以在控制台中输出一个人的信息
+    name, age, gender, address
+    */
+    //解一
+    function sayHello(name,age,gender,address){
+        console.log("我是"+name+"，我今年"+age+"岁了，我是"+gender+"生，我住在"+address);
+    }
+    sayHello("杨歌",30,"女","巴塞罗那");//我是杨歌，我今年30岁了，我是女生，我住在巴塞罗那
+
+    //解二，实参可以是一个object
+    var obj={
+        name:"杨歌",
+        age:30,
+        gender:"女",
+        address:"巴塞罗那"
+    }
+    function sayHello1(o){
+        console.log("我是"+o.name+"，我今年"+o.age+"岁了，我是"+o.gender+"生，我住在"+o.address);
+    }
+    sayHello1(obj);
+
+    //注意⚠️：实参也可以为一个函数
+    //例
+    function area(r){
+        return 3.14*r*r;
+    }
+    function fun(a){
+        console.log("a="+a);
+    }
+    fun(area(10));//a=314
+    fun(area)//a=function area(r){return 3.14*r*r;}
+    /*
+    其中area()为调用函数，相当于使用的函数的返回结果
+    而area为函数对象，相当于直接使用函数对象语句
+    */
+
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

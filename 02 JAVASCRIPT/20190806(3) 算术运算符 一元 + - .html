@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*一元运算符，只需一个操作数
+    +正号，不会对数字产生影响
+    -负号，对数字进行取反
+
+    而对于非Number类型，一元运算符会把该值先转换为Number，在进行运算
+    因此可以使用“+”，来将其他数据类型转换为Number，原理和Number（）函数相同
+    */
+    var a=123;
+    a = -a
+    console.log("a="+a);//a=-123
+
+    var b=true;
+    b=-b;
+    console.log("b="+b);//-1
+
+    //便捷的隐式Number转换
+    var c = "18";
+    c=+c;
+    console.log(c);//18
+    console.log(typeof c);//number
+
+    var result=1+"2"+3;
+    console.log("result="+result);//result=123
+
+    var result2= 1+ +"2"+ 3;
+    console.log(result2);//6
+
+
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

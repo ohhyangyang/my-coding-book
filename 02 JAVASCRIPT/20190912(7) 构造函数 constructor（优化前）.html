@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    创建一个Person函数
+    */
+    //原型
+    function PersonA(name,age,gender){
+        this.name=name;
+        this.age=age;
+        this.gender=gender;
+        this.sayName=function(){
+            alert("大家好，我是"+this.name)
+        }
+
+    }
+    var person1=new PersonA("Yang",18,"woman");
+    person1.sayName();//alert:大家好，我是Yang
+    console.log(person1);//Person {name: "Yang", age: 18, gender: "woman", sayName: ƒ}
+    var person2=new PersonA("Albert",18,"man");
+    person2.sayName();//alert:大家好，我是Albert
+    console.log(person2);//Person {name: "Albert", age: 18, gender: "man", sayName: ƒ}
+    console.log(person1.sayName==person2.sayName);//false,不共享一个方法
+    /*
+    目前我们的方法sayName是在构造函数内部创建的，而且构造函数执行一次就会创建一个新的方法
+    执行10000次就会创建10000个一模一样的新方法
+    这是完全没有必要的，完全可以使所有对象共享同一个方法
+    */
+
+    //优化后
+    function PersonB(name,age,gender){
+        this.name=name;
+        this.age=age;
+        this.gender=gender;
+        this.sayName=fun;//将sayName方法提出去，在全局作用域中定义
+    }
+
+    function fun(){
+            alert("大家好，我是"+this.name);
+        }
+    
+    var person3=new PersonB("Yang",18,"woman");
+    person3.sayName();//alert:大家好，我是Yang
+    console.log(person3);//Person {name: "Yang", age: 18, gender: "woman", sayName: ƒ}
+    var person4=new PersonB("Albert",18,"man");
+    person4.sayName();//alert:大家好，我是Albert
+    console.log(person4);//Person {name: "Albert", age: 18, gender: "man", sayName: ƒ}
+
+    console.log(person3.sayName==person4.sayName);//true，共享一个方法，节省空间
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/javascript" src="js/react.development.js"></script>
+    <script type="text/javascript" src="js/react-dom.development.js"></script>
+    <script type="text/javascript" src="js/babel.min.js"></script>
+    <script type="text/babel">
+	    /*
+	    命令式编程：例如JQuery，需要自己去设定编写流程
+	    声明式编程：例如React，整个过程已经设定好了，只需要告诉它具体要如何显示结果即可
+	    
+	    - 生命周期的回调函数，也叫生命周期的勾子（由用户定义，计算机调用）
+	    
+	    - 首次初始化渲染组件流程：ReactDOM.render()
+	      constructor()  创建组件对象，初始化state
+	      componentWillMount()   组件将被挂载
+	      render()  调用render回调函数进行渲染（！important）
+	      componentDidMount()   组件已经被挂载（！important）（可用于开启监听，发送ajax请求）
+	      
+	    - 每次更新state: this.setState()
+	      componentWillUpdate() 组件将要更新
+	      render() （！important）
+	      componentDidUpdate() 组件已经更新
+	      
+	    - 移除某一节点上的组件 ReactDOM.unmountComponentAtNode(containerDom)
+	      componentWillUnmount() : 组件将要被移除（！important）（可用于做一些收尾工作，如清理定时器）
+	      
+	    - componentWillReceiveProps() 后面再具体介绍
+	    */
+	    
+	    /*
+	    需求：
+	        1 让指定的文本做隐藏/显示的渐变动画
+	        2 切换的持续时间为2s
+	        3 点击"不活了"按钮从界面中移除组件界面
+	   
+	     */
+	    
+	   class Life extends React.Component {
+	       
+           //创建组件对象，初始化state，⚠️constructor永远写在最上面
+	       constructor(props) {
+               console.log("constructor()")
+		       
+               super(props);
+               
+               //初始化h2标签的透明度
+               this.state={
+                   opacity:1
+               };
+               
+               this.destroyComponent=this.destroyComponent.bind(this)
+           }
+		   
+           componentWillMount(){
+	           console.log("componentWillMount()")
+           }
+           
+           
+           //在组件被挂载后，打开定时器
+           componentDidMount(){
+               console.log("componentDidMount()")
+	           
+	           //打开定时器，将定时器的标示保存在组件this中，使得该标识在其他区块中可以被看见，并用来关闭该定时器
+	           this.intervalId = setInterval(function () {
+                   console.log("定时器执行")
+	               let {opacity} = this.state
+		           opacity -= 0.1
+		           if(opacity<=0){
+		               opacity=1
+		           }
+		           this.setState({opacity})
+               }.bind(this),200)
+	           /*
+	           ⚠️
+	           setInterval()的回调函数的默认this为window，（window.setTimeout()和window.setInterval()）
+	           因此需要将componentDidMount()函数的this（为组件对象）绑定给它
+	           */
+           }
+           
+           componentWillUpdate(){
+	           console.log("componentWillUpdate()")
+           }
+           
+           componentDidUpdate(){
+	           console.log("componentDidUpdate()")
+           }
+           
+           //在组件将要被卸载时，停止定时器
+           componentWillUnmount(){
+               console.log("componentWillUnmount()")
+    
+               console.log("定时器停止")
+	           clearInterval(this.intervalId)
+            
+           }
+        
+           //声明一个卸载组件的函数，绑定给按钮的onClick监听
+           destroyComponent(){
+               console.log("ReactDOM.unmountComponentAtNode()")
+	           
+               ReactDOM.unmountComponentAtNode(document.getElementById("example"))
+           }
+           
+           //渲染组件给真实DOM ⚠️render方法永远写在最下面
+	       render(){
+               console.log("render()")
+	           const {opacity}=this.state;
+	           return (
+	               /*
+	               h2标签中style属性的结构为 style={{样式名1:样式值1},{样式名2:样式值2},{样式名3:样式值3}}
+	               外面的{}代表内部要写JS代码
+	               内部的{}代表一个个JS名值对对象
+	               ⚠️{{opacity}}为ES6写法，意为{{opacity:opacity}}
+	                */
+	               <div>
+		               <h2 style={{opacity}}>{this.props.msg}</h2>
+		               <button onClick={this.destroyComponent}>不活了</button>
+	               </div>
+	           )
+	       }
+	   }
+	   ReactDOM.render(<Life msg="React太南了。。。。。。"/>,document.getElementById("example"))
+	   
+    </script>
+</body>
+</html>

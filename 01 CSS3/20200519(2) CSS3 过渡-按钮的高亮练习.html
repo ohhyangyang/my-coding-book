@@ -1,0 +1,45 @@
+<! doctype html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<title></title>
+	<!--
+	top margin padding height的百分比 参照于其父元素的高度
+	left margin padding width的百分比 参照于其父元素的宽度
+	background-position的百分比  参照于 图片区域-图片的位图像素值
+	-->
+	<style type="text/css">
+		a{
+			
+			text-decoration: none;
+			/*height: 30px;*/
+			/*width: 60px;*/
+			border: 1px black solid;
+			text-align: center;
+			line-height: 30px;
+			background-color: gray;
+			color: white;
+			font-weight: bold;
+			box-shadow: 2px 2px 2px black;
+			transition: 1s;
+			
+			/*
+			⚠️⚠️⚠️ 在未知元素宽高时，使用如下方法居中元素
+			 */
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+		}
+		a:hover{
+			background-color: white;
+			color: black;
+		}
+	</style>
+</head>
+<body>
+
+	<a href="javascript:;">Home</a>
+
+</body>
+</html>

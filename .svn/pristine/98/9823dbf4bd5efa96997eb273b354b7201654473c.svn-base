@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>添加删除记录</title>
+        <link rel="stylesheet" type="text/css" href="DOM.css"/>
+        
+        <script type="text/javascript">
+        /*
+        confirm()可以弹出带有确认和取消按钮的提示框
+        点击确认，返回true
+        点击取消，返回false
+        */
+        window.onload=function(){
+            //删除员工
+            //删除tr的响应函数，把该函数写在外面，使已有员工和新员工都可以使用
+            
+            function delA(){
+                    var tr=this.parentNode.parentNode;//tr为a超链接的父元素的父元素
+                    //获取员工名字
+                    var name=tr.getElementsByTagName("td")[0].innerHTML;//方法一
+                    var name=tr.children[0].innerHTML;//方法二
+                    var flag=confirm("确认取消"+name+"吗？")//确认是否取消员工，确认：flag为true。取消：flag为false
+                    if(flag){//如flag返回true，则删除员工，返回false，则不执行删除tr的代码
+                    tr.parentNode.removeChild(tr);//删除tr（自杀哈哈）
+                    }
+                    //⚠️return false来取消超链接默认的跳转页面行为
+                    return false;
+                    //或者也可以将href值写为：href="javascript:;"
+                }
+            var links=document.getElementsByTagName("a");
+            for(var i=0;i<links.length;i++){
+                //绑定删除tr的函数给已有员工
+                links[i].onclick=delA
+                }
+
+            //添加员工⚠️⚠️优化版:直接添加新tr
+            var addEmpButton=document.getElementById("addEmpButton");
+            addEmpButton.onclick=function(){
+                //
+                //删除之后的代码，只留下var相关代码
+                var newEmployee=document.createElement("tr");
+                //创建新name<td>
+                var newName=document.getElementById("nm").value;
+                //创建新email<td>
+                var newEmail=document.getElementById("em").value;
+                //创建新salary<td>
+                var newSalary=document.getElementById("sl").value;
+                //获取填写的员工salary
+
+                newEmployee.innerHTML="<td>"+newName+"</td>"
+                                     +"<td>"+newEmail+"</td>"
+                                     +"<td>"+newSalary+"</td>"
+                                     +"<td><a href='javascript:;'>Delete</a></td>"
+                
+                //获取tbody
+                var tbody=document.getElementsByTagName("tbody")[0];
+                //将tr加入tbody中
+                tbody.appendChild(newEmployee);
+                //获取a，并绑定删除tr的函数给新员工
+                var a = newEmployee.getElementsByTagName("a")[0];
+                a.onclick=delA;
+            };
+            //⚠️不要添加tbody，因为会把所有tr都整个换掉，且影响性能
+            
+        }
+        </script>
+    </head>
+    <body>
+        <table id="employeeTable">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Salary</th>
+                <th>&nbsp;</th>
+            </tr>
+            <tr>
+                <td>Tom</td>
+                <td>tom@tom.com</td>
+                <td>5000</td>
+                <td><a href="xxx">Delete</a></td>
+            </tr>
+            <tr>
+                <td>Jerry</td>
+                <td>jerry@sohu.com</td>
+                <td>8000</td>
+                <td><a href="xxx">Delete</a></td>
+            </tr>
+            <tr>
+                <td>Bob</td>
+                <td>Bob@gmail.com</td>
+                <td>10000</td>
+                <td><a href="xxx">Delete</a></td>
+            </tr>
+        </table>
+        <form id="form" action="#">
+            <h4>New employee</h4>
+            <label class="word" for="nm">name:</label>
+            <input class="inp" id="nm" type="text" name="username"/>
+            <br/>
+            <label class="word" for="em">email:</label>
+            <input class="inp" id="em" type="text" name="email"/>
+            <br/>
+            <label class="word" for="sl">salary:</label>
+            <input class="inp" id="sl" type="text" name="salary"/>
+            <br/>
+            <button id="addEmpButton" type="button">Submit</button>
+        </form>
+    </body>
+</html>

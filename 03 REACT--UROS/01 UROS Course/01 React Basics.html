@@ -1,0 +1,104 @@
+<!--
+    MPA更优于SEO引擎搜索
+    SPA更优于页面reload，只有首次reload慢
+    例子：Airbnb之前是SPA，现在又换回成了MPA，就是为了SEO搜索
+
+     - App.js  -- Root component  ⚠️⚠️⚠️component首字母大写
+      index.js -- Inject App.js to DOM   ⚠️⚠️⚠️不是component，不用大写
+      webpack.config.js -- minify the root <div>
+      dist/bundle.js -- 压缩所有component
+      
+
+        
+        npm run build   --创建dist/bundle.js
+        npm run webpack  --运行webpack，创建运行web
+        
+
+        ⚠️⚠️⚠️src中的组建可以是js文件，也可以是jsx文件
+    - props
+
+    - state
+       data which is private to every class component (only the component can access and change)
+
+    - Class component VS Function component（可以是箭头函数）
+        1 class components(module 3) provide more features than function components(module 2)
+             (⚠️⚠️⚠️⚠️
+              function components are a light weight version of components
+               they can receive props,
+               they don't have 'state' object,
+               they don't have 'lifecycle methods')
+        2 class components have state, render method, life-cycle methods 
+              (life-cycle methods used to do something with component depending on if the state of the component,
+               once it loads, updates, before it unloads)
+
+    - react-player播放器
+       1 npm i react-player
+       2 ⚠️⚠️以下两行意义相同
+           <ReactPlayer url="xxx" playing controls volume={0,5}/>
+         或<ReactPlayer url="xxx" playing={true} controls={true} volume={0,5}/>
+    
+    - Component/Component.js 组件的文件夹最好和组件同名
+    - "start": "webpack-dev-server --mode development --open --hot",  
+            webpack-dev-server  打开webpack开发服务器
+            mode development  开发mode
+            open 自动打开
+            hot  每次更改代码都会更新页面
+      "build": "webpack --mode production",
+            webpack  创建webpack
+            mode production  自动添加文件及文件夹
+      "test": "echo \"Error: no test specified\" && exit 1"
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--BABEL: JSX translator-->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!--Core REACT MAIN LIBRARY-->
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+
+    <!--REACT-DOM LIBRARY: Inject React application into the DOM-->
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="root">
+
+    </div>
+
+    <script type="text/babel">
+
+        class App extends React.Component {
+            state={
+                name:"Yang",
+                city:"Barcelona",
+                address:{
+                    city:"Barcelona",
+                    street:"Saragossa"
+                },
+                darkMode:true
+            }
+
+            render() {
+                return (
+                    <div>
+                        <h1>Hello {this.state.name} Welcome to {this.state.city}</h1>
+                        <h3>React Intro!</h3>
+                    </div>
+                )
+            }
+        }
+
+
+        ReactDOM.render(<App />, document.querySelector('#root'));
+    </script>
+</body>
+
+</html>

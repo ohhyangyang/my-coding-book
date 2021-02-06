@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+
+
+    /*
+    1 通过程序，在页面中输出如下图型
+    *****
+    *****
+    *****
+    *****
+    *****
+
+    */
+    //通过for循环执行，for执行几次，图形高度就是多少
+    for(i=0;i<5;i++){
+        document.write("*****<br/>");
+    }
+
+
+
+    /*
+    2 通过程序，在页面中输出如下图型
+    *************************
+    *************************
+    *************************
+    *************************
+    *************************
+    （25 x 5）
+    */
+    for(var i=0;i<5;i++){      //外部的for控制图形高度（5行）
+        for(j=0;j<25;j++){     //内部嵌套的for控制图形宽度（25列），外部for执行1次，则内部for执行25次
+            document.write("*");
+        }
+            document.write("<br/>");//执行一次内部for，换行一次
+    }
+
+    //间距改良版
+    for(var i=0;i<5;i++){      
+        for(j=0;j<25;j++){     
+            document.write("*&nbsp;&nbsp;&nbsp;");//&nbsp;为空格（non-breaking space)
+        }
+            document.write("<br/>");
+    }
+
+
+
+    /*
+    3 通过程序，在页面中输出如下图型
+    *
+    **
+    ***
+    ****
+    *****
+
+    */
+
+    for(var i=0;i<5;i++){      
+        for(j=0;j<i+1;j++){     //j根据i的值变化
+            document.write("*&nbsp;&nbsp;&nbsp;");//&nbsp;为空格（non-breaking space)
+        }
+            document.write("<br/>");
+    }
+
+    /*
+    4 通过程序，在页面中输出如下图型
+
+    *****
+    ****
+    ***
+    **
+    *
+
+    */
+
+    for(i=0;i<5;i++){
+        for(j=0;j<5-i;j++){
+            document.write("*");
+        }
+        document.write("<br/>");
+    }
+    
+    
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    复制OBJECT和ARRAY的方法
+    - shallow copy  复制一个对象时，只复制premitive的值和对象地址
+
+       方法一： ...
+       方法二： const copyObj = Object.assign({},originalObj)
+
+    - deep copy 复制一个对象时，复制premitive的值和对象内的内容
+       
+       方法一 Poor Man Copy:
+       const Copy = JSON.parse(  JSON.stringify (originalObj) )
+         JSON.stringtify()  将object变成string
+         JSON.parse()  将string变成object
+
+        方法二：Uros的cloneObject()方法
+            https://gist.github.com/ross-u/afe5f55656b52cea5e809ee4a2a1a3a1
+
+    
+    */
+
+    //1 shallow copy
+    const description = {brand:"Apple",color:"silver"};
+    //方法一
+    const newDescription1 = {...description};
+    //方法二
+    const newDescription2 = Object.assign({},description);
+
+    const book = {
+        author: "CB",
+        publishers: ["Pen","B"]
+    }
+    const bookCopy = {...book}; //⚠️⚠️⚠️ 此处只shallow copy了publishers数组的地址指向
+    bookCopy.publishers[0] = "Other";//⚠️⚠️⚠️ 因为数组地址没有变，所以修改copy的publishers，会影响原book
+    console.log("book.publishers",book.publishers);
+    console.log("bookCopy.publishers",bookCopy.publishers);
+
+
+    //2 deep copy
+    const movie = {
+        name:"Sponge Bob",
+        imdb : 7,
+        actors : ['Sponge Bob' , 'Patick the star']
+    }
+    //Poor Man Copy  -- JSON.parse (Json.stringtify(objToCopy))  先JSON 再解JSON
+    //JSON.stringtify()  将object变成string
+    //JSON.parse()  将string变成object
+    const movieCopy = JSON.parse(  JSON.stringify (movie) );
+    console.log(movieCopy);
+    
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

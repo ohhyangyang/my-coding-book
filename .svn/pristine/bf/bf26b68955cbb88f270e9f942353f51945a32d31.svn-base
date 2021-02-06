@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    Math
+    Math和其他Date或String类对象不同，Math不是一个构造函数，也不存在Math()
+    它属于一个工具类的对象，里边封装了数学运算相关的属性和方法
+
+    它的属性均为大写，代表着一些算数常量，比如Math.PI代表着圆周率
+    */
+    console.log(Date);//function Date() {[native code]}，Date是一个构造函数
+    console.log(String);//function String() {[native code]}
+    console.log(Math);//object
+    
+
+    //Math.abs()返回绝对值
+    console.log(Math.abs(-1));//1
+    
+    //Math.ceil()上舍入，对一个数执行向上取整计算
+    console.log(Math.ceil(1.4));//2
+    
+    //Math.floor()下舍入，对一个数执行向下取整计算
+    console.log(Math.floor(1.99));//1
+    
+    //Math.round()四舍五入
+    console.log(Math.round(5.4));//5
+    
+    //Math.random()返回一个0～1之间的随机数（不包括0和1），随机数将来会用的挺多
+    console.log(Math.random());//0.29864907323454504
+    /*
+    生成一个0～X之间的随机整数(不包括0和x)
+    Math.round(Math.random()*X)
+    */
+    //0~10之间（不包括0和10）
+    console.log(Math.round(Math.random()*10));//0~10随机整数
+    //0~20之间（不包括0和20）
+    console.log(Math.round(Math.random()*20));//0~20随机整数
+    /*
+    生成一个x～y之间的随机整数（包括x和y）
+    Math.round(Math.random()*(y-x))+x
+    */
+    //1~10之间（包括1和10）
+    console.log(Math.round(Math.random()*9)+1);
+    //5～55之间
+    console.log(Math.round(Math.random()*50)+5);
+
+    /*
+    Math.max()返回多个数中的最大值
+    Math.min()返回多个数中的最小值
+    */
+    var max=Math.max(10,45,30,100);
+    var min=Math.min(10,45,30,100);
+    console.log(max);//100
+    console.log(min);//10
+
+    //Math.pow(x,y)返回x的y次幂
+    console.log(Math.pow(2,3));//8
+
+    //Math.sqrt()返回数的平方根
+    console.log(Math.sqrt(4));//2
+
+
+
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

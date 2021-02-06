@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+	/*
+		- 结构性伪类
+		  ⚠️index的值从1开始计数！！！！
+		  ⚠️ index可以是  n      n代表0-正无穷
+		          可以是  odd    奇数
+		          可以是  even   偶数
+		  ⚠️e:nth-of-type(index)以元素为中心
+		   e:nth-child(index)系列  ⚠️表示匹配e的父元素的第index个子元素，而且这个子元素标签必须是e
+		                           ⚠️e:nth-child(index)以兄弟排列为中心
+		        e:first-child
+				e:last-child
+				e:nth-last-child(index)
+				e:only-child  独生子
+				
+			e:nth-of-type(index)系列 ⚠️表示匹配e的父元素的第index个e子元素，
+			                        ⚠️e:nth-of-type(index)以元素为中心
+				e:first-of-type
+				e:last-of-type
+				e:nth-last-type(index)
+				e:only-of-type
+				
+			e:not
+			
+			e:empty
+			⚠️⚠️ 内容必须是空的，有空格都不行，有attr没关系
+				
+	 */
+	    div{
+		    width: 500px;
+		    background-color: #fff3cd;
+	    }
+	    /* #wrap */
+		#wrap li:nth-child(1){ /*无效*/
+			color: red;
+		}
+	    #wrap :nth-child(1){ /*有效*/
+	    	color: #00b4db;
+	    }
+		#wrap li:nth-child(3){ /*有效*/
+			color: red;
+		}
+		#wrap li:nth-of-type(3){
+			color: #8fd19e;
+		}
+		#wrap span:only-of-type{
+			color: #d39e00;
+		}
+		/* #box1 */
+		#box1 :only-child{
+			border: 1px solid pink;
+		}
+		
+		/* #box2 */
+		#box2 :nth-of-type(1){
+			border: 1px solid cyan;
+		}
+		
+		/* #box3 */
+		#box3 a{
+			text-decoration: none;
+			color: black;
+			background-color: lightgrey;
+			font-size: 14px;
+			display: block;
+			float: left;
+			width: 100px;
+			height: 30px;
+			margin: 0 10px;
+		}
+		#box3{
+			width: 800px;
+			height: 50px;
+			margin: 0 auto;
+		}
+		#box3>a:not(:last-of-type){
+			border-right: #fd7e14 1px solid;
+		}
+		
+		/* #box4 */
+	    #box4 div{
+		    height: 100px;
+		    border: black 1px solid;
+	    }
+		#box4>div:empty{
+			background-color: #b3d4fc;
+		}
+	</style>
+</head>
+<body>
+
+<div>
+	<ul id="wrap">
+		<p>p1 我是#wrap p:nth-of-type(1)，我也是#wrap p:nth-child(1)，或者是#wrap :nth-child(1)</p>
+		<p>p2</p>
+		<li>1 我是#wrap li:nth-of-type(1)，我也是#wrap li:nth-child(3)，或者是#wrap :nth-child(3)</li>
+		<li>2</li>
+		<li>3 我是#wrap li:nth-of-type(3)，我也是#wrap li:nth-child(5)，或者是#wrap :nth-child(5)</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<span>我是#wrap内唯一的span</span>
+	</ul>
+</div>
+<br>
+
+<div id="box1">
+	<p>我是#box1 :only-child独生子</p>
+</div>
+
+<div id="box2">
+	<div class="inner">div 我是#box2 :nth-of-type(1)，我还是#box2 :nth-child(1)</div>
+	<p class="inner">p 我也是#box2 :nth-of-type(1)，我还是#box2 :nth-child(2)</p>
+	<span class="inner">span 我也是#box2 :nth-of-type(1)，我还是#box2 :nth-child(3)</span>
+	<h1 class="inner">h1 我也是#box2 :nth-of-type(1)，我还是#box2 :nth-child(4)</h1>
+	<h2 class="inner">h2 我们都是#box2 :nth-of-type(1)，我还是#box2 :nth-child(5)</h2>
+</div>
+
+<div id="box3">
+	<a href="#">first</a>
+	<a href="#">second</a>
+	<a href="#">third</a>
+	<a href="#">fourth</a>
+	<a href="#">fifth</a>
+	
+</div>
+<br>
+
+<div id="box4">
+	<div> </div>
+	<div>Second 我上面的div有空格</div>
+	<div></div>
+	<div>Fourth 我上面的div没空格</div>
+</div>
+</body>
+</html>

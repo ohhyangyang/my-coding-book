@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>fetch发送AJAX请求</title>
+</head>
+<body>
+<button>AJAX请求</button>
+</body>
+<script type="text/javascript">
+	/*
+	- fetch()函数属于全局对象 可以直接调用
+	  它返回一个 promise对象，这个 promise 会在请求响应后被 resolve，并传回 Response 对象。
+	
+	
+	  语法 fetch(URL[, 配置对象]);
+	        (配置对象内容见：https://developer.mozilla.org/es/docs/Web/API/WindowOrWorkerGlobalScope/fetch)
+	
+	- promise.then()
+	    ⚠️⚠️ Promise API（ES6推出的异步编程的新的解决方案！）
+	    ⚠️⚠️ 一個 promise对象經過 then 後，原本的 promise对象的內容會改變？
+              不會。then方法執行完會另外產生一個新的promise对象
+	    
+	 */
+	
+	const btn = document.querySelector('button');
+	
+	btn.onclick = function () {
+        fetch(
+            
+            //第一个参数：URL路径
+            'http://127.0.0.1:8000/fetch-server?vip=10',
+	        
+	        //第二个参数：配置对象
+	        {
+	            //请求方法
+	            method: 'POST',
+		        
+		        //请求头
+		        headers:{
+	                name:'Yang'
+		        },
+		        
+		        //请求体
+		        body:'username=admin&password=admin'
+	        }).then(res => {
+	            
+	            //首先解析响应结果，选择想要的信息
+	            //return res.text();
+	            return res.json();
+	            
+        }).then(res => {
+            //打印出结果
+            console.log(res);
+        })
+		
+		
+    }
+</script>
+</html>

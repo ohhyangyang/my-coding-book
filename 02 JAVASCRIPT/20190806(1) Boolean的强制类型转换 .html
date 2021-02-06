@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    将其他数据类型转化为Boolean
+    使用Boolean（）函数
+    
+    Number-->Boolean
+    除了0和NaN，其余都是true
+    
+    String-->Boolean
+    除了“”,其余都是true
+
+    null-->Boolean
+    false
+
+    undefined-->Boolean
+    false
+
+    object也会转换为true
+
+    */
+
+    //Number
+    var a = 123;
+    a=Boolean(a);
+
+    console.log(typeof a);//boolean
+    console.log(a);//true
+
+    var b = -123;
+    b=Boolean(b);
+
+    console.log(typeof b);//boolean
+    console.log(b);//true
+
+    var c = 0;
+    c=Boolean(c);
+
+    console.log(typeof c);//boolean
+    console.log(c);//false
+
+    var d = -Infinity;
+    d=Boolean(d);
+
+    console.log(typeof d);//boolean
+    console.log(d);//true
+
+    var e = NaN;
+    e=Boolean(e);
+
+    console.log(typeof e);//boolean
+    console.log(e);//false
+
+    //String
+
+
+    var f = "hello";
+    f=Boolean(f);
+
+    console.log(typeof f);//boolean
+    console.log(f);//true
+
+    var g = "";
+    g=Boolean(g);
+
+    console.log(typeof g);//boolean
+    console.log(g);//false
+
+    var h = "  ";
+    h=Boolean(h);
+
+    console.log(typeof h);//boolean
+    console.log(h);//true
+
+    //null
+    var i = null;
+    i=Boolean(i);
+
+    console.log(typeof i);//boolean
+    console.log(i);//false
+
+    //undefined
+    var j = undefined;
+    j=Boolean(j);
+
+    console.log(typeof j);//boolean
+    console.log(j);//false
+    
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

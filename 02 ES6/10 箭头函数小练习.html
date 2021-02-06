@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>箭头函数实践</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background: #58a;
+    }
+  </style>
+</head>
+<body>
+<div id="ad">
+
+</div>
+<script>
+/*
+
+ */
+
+//需求1 点击div，2s后颜色变成粉色
+
+  //获取元素
+  let ad = document.getElementById('ad');
+  //绑定事件
+  ad.addEventListener('click',function () {
+      /*
+      ⚠️⚠️⚠️
+      此处如果使用箭头函数会报错，因为this将会变为寻找上一层级的window对象，而不会指向ad
+      */
+    console.log(this);  //ad对象
+    
+    //定时器
+    setTimeout(() => {
+      this.style.background = 'pink';
+      /*
+      ⚠️⚠️⚠️
+      此处如果不使用箭头函数，会报错
+      因为箭头函数的this是静态的，始终指向函数声明时所在作用域下的this的值 --- ad
+      而常规函数下，this在调用时才确定
+       */
+    },2000);
+  });
+
+
+
+//需求2 从数组中返回偶数元素
+  //箭头函数简略写法
+  const arr = [1,6,9,10,100,25];
+  const result = arr.filter(item => item % 2 === 0);
+  
+  /*
+  常规写法
+  const arr = [1,6,9,10,100,25];
+  const result = arr.filter(function(item){
+            if(item % 2 === 0){
+                return true;
+            }else{
+                return false;
+            }
+        });
+   */
+
+
+
+
+</script>
+</body>
+</html>

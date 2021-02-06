@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<!--
+	- jQuery的使用步骤
+	  1 导入jQuery库
+	    <script type="text/javascript" src="jqueryxxx.js"></script>
+	    
+	  2 在$(function(){})中编写jQuery代码
+	      <script type="text/javascript">
+	         $(function(){
+	            $("选择器").click(function(){
+	               ...
+	            });
+	            ...
+	         })
+	      </script>
+	
+	- jQuery选择器注意事项
+	
+	  1 选取<select>的选项需要选中<select>的<option>子节点
+	     $("select[name=test1] :selected") （⚠️其中的空格代表后代选择器，非常重要）
+	     
+	  2 jQuery选择器可以综合使用
+	  
+	  3 选择器也可以借助方法来筛选
+	     $(节点).siblings([筛选xx元素])   选择指定元素的所有兄弟xx元素
+	     $(节点).nextAll([筛选xx元素])    选择指定元素后面的所有兄弟xx元素（可以不相邻）
+	     $(节点).prevAll([筛选xx元素])    选择指定元素前面的所有兄弟xx元素
+	     
+	- jQuery对象的方法
+	   1 $(节点).val()       获取(不传递参数)或设定(传递参数)被选中元素的value属性值
+	      设置value值   $(":text:enabled").val("不高兴😒");
+	      获取value值   alert($(":text:enabled").val());
+	   2 $(节点).attr()      获取(传递一个参数)或设置(传递两个参数)被选元素的属性值。
+	      设置name属性值   $(":text:enabled").attr("name","💩");
+	      获取name属性值   alert($(":text:enabled").attr("name"));
+	   3 $(节点).each()      对jQuery对象遍历，对于每个匹配的元素都要执行的一个callback函数。⚠函数内对️this为正在遍历对DOM对象
+	      $("select[name=test1] :selected").each(function () {
+                    alert(this.value);
+                })
+	   4 $(节点).text() 读取或修改文本
+	     获取元素节点的文本子节点值  text()
+	     设置元素节点的文本子节点值  text(str)
+	     
+	   5 $(节点).show([speed,[easing],[fn]])   使不可见元素变为可见。
+	-->
+	
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+		/*
+		transitionend 监听事件会在 CSS transition 结束后触发.
+		  如在transition完成前移除了transition，比如移除了transition-property属性，事件将不会被触发.
+		  如在transition完成前设置display为"none"，事件同样不会被触发。
+		   ⚠️⚠️ 每一个拥有transition的css属性在完成时，都会触发一次transitionend事件
+		   ⚠️⚠️ 因为transitionend监听太容易触发，所以经常在transitionend函数的最后
+		        使用this.removeEventListener("transitionend",fn);解绑监听，以免在其他属性过渡结束时触发
+		    语法： object.addEventListener("transitionend", myScript);
+		    
+		    
+		   ⚠️⚠️  Safari 3.1 到 6.0 版本才支持该事件, 使用webkitTransitionEnd前缀。
+		   ⚠️⚠️  Internet Explorer 8 及更早 IE 版本不支持 addEventListener() 方法。
+		 */
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 400px;
+			height: 400px;
+			border: 1px solid black;
+			
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			
+			
+		}
+		#test{
+			width: 100px;
+			height: 100px;
+			background-color: #d0e9c6;
+			
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			
+			transition-property: width,background-color;
+			transition-duration: 6s,2s;
+			transition-timing-function: ease-in,ease-out;
+			transition-delay: 1s,2s;
+			
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function () {
+            var box=document.querySelector("#box");
+            var test=document.querySelector(("#test"));
+            box.onmouseover=function () {
+                test.style.width="400px";
+                test.style.backgroundColor="lavender";
+                // test.style.display="none";
+                
+            }
+            test.addEventListener("transitionend",function () {
+                alert("完成了一个属性的过渡")
+            })
+        }
+	</script>
+</head>
+<body>
+<div id="box">
+	<div id="test"></div>
+</div>
+</body>
+</html>

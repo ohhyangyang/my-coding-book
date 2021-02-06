@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="test1"></div>
+    <div id="test2"></div>
+    <script type="text/javascript" src="js/react.development.js"></script>
+    <script type="text/javascript" src="js/react-dom.development.js"></script>
+    <script type="text/javascript" src="js/babel.min.js"></script>
+    
+    <script type="text/javascript">/*最原始的方法*/
+	    const msg="I Love You!";
+	    const myId="fromYang";
+	    
+	    //1创建虚拟DOM  JS初始写法
+	    const vDOM1 = React.createElement("h1",{id:myId.toLowerCase()},msg.toUpperCase());
+	    const trueDOM1=document.getElementById("test1");
+        //⚠️debugger可以设置断点
+        //debugger;
+	    //2渲染虚拟DOM为真实DOM
+	    ReactDOM.render(vDOM1,document.getElementById("test1"));
+    </script>
+    
+    <script type="text/babel">/*⚠️之后️babel会将JSX转换成纯JS*/
+    
+        //1创建虚拟DOM JXS的简单写法
+	    const vDOM2=<h3 id={myId.toUpperCase()}>{msg.toLowerCase()}</h3>;  //⚠️{}内部可用来传递动态的值
+        //debugger
+        //2渲染虚拟DOM为真实DOM
+        ReactDOM.render(vDOM2,document.getElementById("test2"));
+    </script>
+<!--
+- debugger断点，可用来进行前台页面js调试
+
+- 真实DOM和虚拟DOM
+   通过debugger检查发现(或可以通过console.log输出），真实DOM元素中的内容远要比虚拟DOM中多很多，
+   换言之，虚拟DOM要轻很多，而且渲染之前不会重回页面，反映出了其高效性
+   
+- JSX (JavaScript XML) ->为react定义的一种基于XML的JS扩展语法: XML+JS，必须通过babel.js来识别
+   规则特点: 首要特点为可以让JS和HTML在一个页面使用
+     1 任意标签名：XML与HTML不同点在于，XML还可以自定义标签名，例如<aa>等，被称为组件标签
+     2 任意标签属性名：HTML标签属性或其它
+     3 遇到以 < 开头的代码, 以标签的语法解析
+     4 遇到以 { 开头的代码，以JS语法解析，标签中的js代码必须用{ }包含
+     5 浏览器不能直接解析JSX代码, 需要babel转译为纯JS的代码才能运行,都要加上type="text/babel"
+
+- React基本使用方法
+     1 创建虚拟DOM对象
+     
+           方法一 通过JSX
+                const 虚拟DOM对象 = <标签 属性名={JS代码}>{JS代码}</标签>
+                
+           方法二 通过纯JS（一般不用）
+                const 虚拟DOM对 = React.createElement('标签',  {属性名:'属性值'},  标签内内容)
+     2 最终渲染虚拟DOM成真实容器DOM
+           ReactDOM.render(虚拟DOM对象,容器DOM);
+     
+   而
+   
+-->
+</body>
+</html>

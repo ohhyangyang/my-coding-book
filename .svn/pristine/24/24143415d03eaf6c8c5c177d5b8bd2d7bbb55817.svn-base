@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    运算符，也叫操作符，它可以对一个或多个值进行运算，并获取运算结果
+    比如：typeof，他可以来获得一个值的类型，他会将该值的类型以string形式返回
+
+    算术运算符：
+
+    当对非number类型值进行运算时，会将这些值转换为Number，然后再运算（除了string加法）
+    任何值和NaN运算，结果都是NaN
+    +
+        如果对两个string进行加法运算，则会将两个string拼接成一个，并返回
+        任何值和string做加法，都会将该值先转换为string，然后在做拼串
+        string的隐式类型转换：任意数据类型+""（有浏览器自动完成，实际上他也是调用了string（）函数）
+    -
+        number的隐式类型转换：可以通过-0，*1，/1来将某个类型值转换为number，原理和Number（）函数一样，使用起来更加简单
+    *
+    /
+    %
+
+
+    */
+
+    //"+"
+    var a=123;
+    var result=typeof a;//"number""string""boolean""undefined""object"
+    console.log(result);//number
+    console.log(typeof a);//numer
+    console.log(typeof result);//string
+
+    //算术运算符
+
+    var b= 456+789;
+    console.log(b);//1245
+
+    var c= true+1;
+    console.log(c);//2, true为1
+
+    var d= true+false;
+    console.log(d);//1， false为0
+
+    var e= 2+null;
+    console.log(e);//2
+
+    var f=2+NaN;
+    console.log(f);//NaN
+
+    var i="123"+"456";
+    console.log(i);//123456
+
+    var str="锄禾日当午,"+
+            "汗滴禾下土,"+
+            "谁知盘中餐,"+
+            "粒粒皆辛苦.";
+    console.log(str);//锄禾日当午,汗滴禾下土,谁知盘中餐,粒粒皆辛苦.
+
+    var aa=123+"1";
+    console.log(aa);//1231，123被转化为了string
+    
+    var bb=123;
+    bb=bb+"";
+    console.log(bb);//123
+    console.log(typeof bb);//string
+
+    var cc=null;
+    cc=cc+"";
+    console.log(cc);//null
+    console.log(typeof cc);//string
+
+    var dd=123;
+    console.log("dd="+dd);//dd=123
+
+    var ee=1+2+"3";
+    console.log("ee="+ee);//ee=33
+
+    var ff="1"+2+3;
+    console.log("ff="+ff);//ff=123
+
+    //"-"
+    var aaa=100-true;
+    console.log(aaa);//99
+
+    var bbb=100-"1";
+    console.log(bbb);//99
+
+    var ccc=100-"你好";
+    console.log(ccc);//NaN
+
+    var ddd="100"-"34";
+    console.log(ddd);//66
+
+    //"*"
+    var eee=2*"8";
+    console.log(eee);//16
+
+    var fff= 2*null;
+    console.log(fff);//0
+
+    var ggg=2*undefined;
+    console.log(ggg);//NaN
+
+    //隐式转换为number
+
+    var aaaa="123";
+    aaaa=aaaa-0;
+    console.log(aaaa);//123
+    console.log(typeof aaaa);//number
+    
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

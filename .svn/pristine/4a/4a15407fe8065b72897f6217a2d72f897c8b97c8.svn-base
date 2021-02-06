@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    setTimeout()
+    延时调用：一个函数隔一段时间后才执行，而且只会执行一次
+
+    clearTimeout()
+    关闭一个延时调用
+
+    setInterval()和setTimeout()是可以互相代替的，在开发中可根据需要选择
+    */
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

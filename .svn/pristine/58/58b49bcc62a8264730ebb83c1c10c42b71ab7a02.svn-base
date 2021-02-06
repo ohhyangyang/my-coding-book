@@ -1,0 +1,22 @@
+/*
+- 文件的读取
+  1 同步文件读取
+  2 异步文件读取
+  3 简单文件读取
+  4 流式文件读取
+
+1和2和之前的写入方式非常相似，此处不细说
+     open-->read-->close
+
+- 简单文件读取
+   异步 fs.readFile(path[, options], callback)
+   同步 fs.readFileSync(path[, options])
+        path 要读取的文件的路径
+        options 读取的选项，一般都不写
+        callback 回调函数，通过回调函数将读取到的内容返回
+*/
+var fs=require("fs");
+
+fs.readFile("03hello easywrite.txt",function () {
+
+})

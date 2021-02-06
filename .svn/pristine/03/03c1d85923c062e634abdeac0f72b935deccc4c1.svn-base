@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    push()方法可向数组的末尾添加一个或多个元素，并返回新的长度
+    */
+    var arr=["Yang","Albert",];
+    arr.push("Natalia");
+    console.log(arr);//["Yang", "Albert", "Natalia"] (3)
+
+    var result=arr.push("Bubu","Cui");
+    console.log("result="+result);//result=5, 返回值为数组的新长度
+
+     /*
+    unshift()方法和push()类似，可向数组的开头添加一个或更多元素，并返回值为新的长度。
+    注意⚠️其他元素的索引会依次调整
+    */
+    arr.unshift("Lap");
+    console.log(arr);//["Lap", "Yang", "Albert", "Natalia", "Bubu", "Cui"] (6)
+    
+    result = arr.unshift("Rob");
+    console.log("result="+result);//result=7, 返回值为新的长度
+
+    /*
+    pop()方法用于删除数组的最后一个元素，并返回删除的元素
+    */
+    console.log(arr);//["Rob", "Lap", "Yang", "Albert", "Natalia", "Bubu", "Cui"] (7)
+    arr.pop();
+    console.log(arr);//["Rob", "Lap", "Yang", "Albert", "Natalia", "Bubu"] (6)
+    
+    result=arr.pop();
+    console.log(arr);//["Rob", "Lap", "Yang", "Albert", "Natalia"] (5)
+    console.log("result="+result);//result=Bubu，返回值为删除的元素
+
+    /*
+    shift() 方法用于把数组的第一个元素从其中删除，并返回删除的元素
+    */
+    console.log(arr);//["Rob", "Lap", "Yang", "Albert", "Natalia"] (5)
+    arr.shift();
+    console.log(arr);//["Lap", "Yang", "Albert", "Natalia"] (4)
+
+    result=arr.shift();
+    console.log("result="+result);//result=Lap
+   
+
+
+
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <style type="text/css">
+        /*
+        字体分类
+        在HTML中，将字体分成为5大类
+        serif（衬线字体）(网页常用)
+        sans-serif（非衬线字体）(网页常用)
+        monospace（等宽字体）(编程常用)
+        cursive（草书字体）
+        fantasy（虚幻字体）
+
+        可将字体分为这些大的分类，不涉及具体类型，这样，浏览器会自行选择指定类型的字体并应用之
+        ⚠️一般会将字体的大分类指定为font-family的最后一个字体（用来兜底）
+        */
+        .p1{
+            font-family: arial,微软雅黑,华文彩云,serif;
+        }
+        
+        </style>
+
+    </head>
+    <body>
+        <p style="font-size:50px; font-family: serif;">
+            衬线字体：我是p标签ABCDefghi
+        </p>
+        <p style="font-size:50px; font-family: sans-serif;">
+            非衬线字体：我是p标签ABCDefghi
+        </p>
+        <p style="font-size:50px; font-family: monospace;">
+            等宽字体：我是p标签ABCDefghi
+        </p>
+        <p style="font-size:50px; font-family: cursive;">
+            草书字体：我是p标签ABCDefghi
+        </p>
+        <p style="font-size:50px; font-family: fantasy;">
+            虚幻字体：我是p标签ABCDefghi
+        </p>
+        <p class="p1">我是p标签</p>
+
+    </body>
+</html>

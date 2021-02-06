@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生成器函数</title>
+</head>
+<body>
+    <script>
+	    /*
+	    - 定时器案例模拟生成器函数异步获取数据的表现
+	    
+	      案例逻辑包括：用户数据，订单数据，商品数据
+	    
+	    - 为何不分别调用函数，而是要使用异步？
+	      因为在实际场景中，很多数据之间是有关联度的，
+	      比如说，有了用户数据，才会有订单，有了订单，才会有订单中对应的商品，
+	      分别调用的话，是无法获得想要的结果的，必须按照一定顺序去走
+	      
+	    ⚠️⚠️ 该案例逻辑和上一章实例类似，只是多了一步传递和获取数据，
+	          从next()实参中传递数据，从yield语句的返回值获取数据
+	     */
+	    //声明函数，获取用户数据
+        function getUsers(){
+            setTimeout(()=>{
+                let data = '用户数据';
+                
+                iterator.next(data); //  --> 第二次调next()，并且传入用户数据
+            }, 1000);
+        }
+	    
+        //声明函数，获取订单数据
+        function getOrders(){
+            setTimeout(()=>{
+                let data = '订单数据';
+                iterator.next(data);  //  --> 第三次调next()，并且传入订单数据
+            }, 1000)
+        }
+        
+        //声明函数，获取商品数据
+        function getGoods(){
+            setTimeout(()=>{
+                let data = '商品数据';
+                iterator.next(data);  //  --> 第四次调next()，并且传入商品数据
+            }, 1000)
+        }
+        
+        //声明生成器函数
+        function * gen(){
+            let users = yield getUsers(); //  --> 第一个yield返回第二次next()的实参：用户数据
+	        console.log(users);
+            let orders = yield getOrders(); //  --> 第二个yield返回第三次next()的实参：订单数据
+            console.log(orders);
+	        let goods = yield getGoods(); //  --> 第三个yield返回第四次next()的实参：商品数据
+            console.log(goods);
+        }
+
+        //调用生成器函数
+        let iterator = gen();
+        iterator.next(); //  --> 第一次调next()
+
+        
+
+    </script>
+</body>
+</html>

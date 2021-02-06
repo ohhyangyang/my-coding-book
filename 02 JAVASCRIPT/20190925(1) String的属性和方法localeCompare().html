@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+        /*
+        - Str.localeCampare()  方法返回一个数字来指示一个参考字符串是否在排序顺序前面或之后或与给定字符串相同。
+        语法  StrA.localeCompare(StrB [, locales[, options]])
+              StrB 用来比较的字符串
+        返回值  如果引用字符存在于比较字符之前则为负数; 
+               如果引用字符存在于比较字符之后则为正数; 
+               相等的时候返回 0 .
+
+        - sort()
+          compare function rules
+          If compareFunction(a, b) returns  -1 ,  a is sorted before b ( leaves a to be first in the pair).
+          If compareFunction(a, b) returns 0, leave a and b unchanged.
+          If compareFunction(a, b) is greater than 0 ( 1 ), sort b to an index lower than a (i.e. b comes first).
+
+          
+
+        */
+
+        // sort ascending  .o:O
+        function compareAscending(a, b) {
+            if (a < b /* a is less than b by some ordering criterion */) {
+                return -1;
+            }
+            if (a > b /* a is greater than b by the ordering criterion */) {
+                return 1;
+            }
+            if (a == b /* a is equal to b */) {
+                return 0;
+            }
+        }
+        // sort descending  O:o.
+        // Switch the comparison operators in the conditions
+        function compareDescending(a, b) {
+            if (a > b /* a is less than b by some ordering criterion */) {
+                return -1;
+            }
+            if (a < b /* a is greater than b by the ordering criterion */) {
+                return 1;
+            }
+            if (a == b /* a is equal to b */) {
+                return 0;
+            }
+        }
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        var movies = [
+            {
+                title: "Moon",
+                year: 2009,
+                director: "Duncan Jones",
+                duration: "97",
+                rate: 7.9,
+            },
+            {
+                title: "2001: A Space Odyssey",
+                year: 1968,
+                director: "Stanley Kubrick",
+                duration: "149",
+                rate: 8.3,
+            },
+            {
+                title: "Star Trek",
+                year: 2009,
+                director: "J.J. Abrams",
+                duration: "127",
+                rate: 7.9,
+            },
+            {
+                title: "Guardians of the Galaxy",
+                year: 2014,
+                director: "James Gunn",
+                duration: "121",
+                rate: 8.0,
+            },
+            {
+                title: "The Right Stuff",
+                year: 1983,
+                director: "Philip Kaufman",
+                duration: "193",
+                rate: 7.8,
+            },
+            {
+                title: "Interstellar",
+                year: 2014,
+                director: "Christopher Nolan",
+                duration: "169",
+                rate: 8.6,
+            },
+            {
+                title: "Solaris",
+                year: 1972,
+                director: "Andrei Tarkovsky",
+                duration: "147",
+                rate: 8.1,
+            },
+            {
+                title: "Apollo 13",
+                year: 1995,
+                director: "Ron Howard",
+                duration: "140",
+                rate: 7.6,
+            },
+            {
+                title: "Alien",
+                year: 1979,
+                director: "Ridley Scott",
+                duration: "117",
+                rate: 8.4,
+            },
+            {
+                title: "The Martian",
+                year: 2015,
+                director: "Ridley Scott",
+                duration: "144",
+                rate: 8.0,
+            },
+            {
+                title: "Gravity",
+                year: 2013,
+                director: "Alfonso Cuarón",
+                duration: "91",
+                rate: 7.8,
+            },
+            {
+                title: "Star Wars: Episode VII - The Force Awakens",
+                year: 2015,
+                director: "J.J. Abrams",
+                duration: "138",
+                rate: 7.9,
+            },
+        ];
+
+
+        //Question 1: print the movies with a rate of at least 8.0
+        for (var i = 0; i < movies.length; i++) {
+            if (movies[i].rate >= 8.0) {
+                //alert(movies[i])
+                console.log("TITLE:" + movies[i].title + ", RATE:" + movies[i].rate);
+            }
+        }
+
+
+        //Question 2: print the "bestMovies" array
+        var bestMovies = [];
+        for (var i = 0; i < movies.length; i++) {
+            if (movies[i].rate >= 8.0) {
+                bestMovies.push(movies[i]);
+            }
+
+        }
+        console.log(bestMovies);
+
+
+        //Question 3: Print the movies that are from Ridley Scott
+        for (var i = 0; i < movies.length; i++) {
+            if (movies[i].director == "Ridley Scott") {
+                console.log("Ridley Scott:" + movies[i].title);
+            }
+        }
+
+
+        //Question 4: print the shortest movie of Ridley Scott
+        var rsMovies = [];
+        for (var i = 0; i < movies.length; i++) {
+            if (movies[i].director == "Ridley Scott") {
+                //alert(movies[i])
+                rsMovies.push(movies[i]);
+            }
+        }
+        rsMovies.sort(function (a, b) {
+            return a.duration - b.duration
+        });
+        console.log("The shortest movie of Ridley Scott in the list is " + rsMovies[0].title);
+
+
+        //Question 5 + BONUS: Sort the movies
+        movies.sort(function (a, b) {
+            if (a.year !== b.year) {
+                return b.year - a.year
+            } else {
+                return a.title.localeCompare(b.title);
+            }
+        });
+        console.log(movies);
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

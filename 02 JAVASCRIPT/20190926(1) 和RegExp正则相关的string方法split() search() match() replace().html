@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    split()方法：string拆分为array
+    split()方法可传递正则作为参数，这样将根据正则的规则去拆分string
+
+    注：split()即使不使用全局匹配，也会全部拆分
+
+    */
+    var str="1a2B3c4D5e6F7";
+    //根据任意字母来拆分string
+    var result=str.split(/[A-z]/);
+    console.log(result);//["1", "2", "3", "4", "5", "6", "7"] (7)
+
+    /*
+    search()方法：检索string中是否含有指定内容（类似indexOf）
+    可接受正则作为参数，然后根据正则规则去检索string
+    如搜索到指定内容，则返回第一次出现的索引，没搜索到返回-1
+
+    注：search() 方法不执行全局匹配，它将忽略标志 g
+    注：search()的参数可以是正则表达式,而indexOf()的参数只是普通的字符串。indexOf()是比search()更加底层的方法。
+    */
+    //参数为string，搜索string中是否含有abc
+    str="hello abc hello abc";
+    result=str.search("abc");
+    console.log(result);//6
+
+    //参数为正则，搜索string中是否含有abc或aec或afc
+    result=str.search(/a[bef]c/);
+    console.log(result);//6
+
+    /*
+    match()方法：根据正则从一个string中将符合条件的内容提取出来，并将内容封装到数组中返回（即使只查询到一个结果）
+    默认模式下，match找到第一个符合的内容后就停止检索了
+    但我们可以设置正则为全局匹配模式g，就会匹配到所有内容
+
+    注：可以为一个正则匹配多个模式，且顺序无所谓，例ig gi
+    注：该方法类似 indexOf() 和 lastIndexOf()，但是它返回指定的值，而不是字符串的位置。
+    */
+    //提取string中所有的字母
+    str="1a2B3c4D5e6F7";
+
+    result=str.match(/[A-z]/);//查找到第一个字母就停止，并返回字母
+    console.log(result);//["a"] (1)，数组类型
+
+    result=str.match(/[A-z]/g);//或者/[a-z]/ig //查找全局字母
+    console.log(result);//["a", "B", "c", "D", "e", "F"] (6)，数组类型
+
+    /*
+    replace()方法：可以将string中指定内容替换为新内容，返回新的string
+    语法：字符串.replace(被替换内容,新内容)
+    被替换内容：可以为string或正则
+    新内容：string
+    默认只会替换第一个
+
+    */
+    str="1a2a3A4a5e6f7";
+    result=str.replace("a","@_@");//替换第一个小a
+    console.log(result);//1@_@2a3a4a5e6f7
+
+    result=str.replace(/a/g,"@_@");//全局模式替换小a
+    console.log(result);//1@_@2@_@3A4@_@5e6f7
+
+    result=str.replace(/[A-z]/g,"");//删除所有字母
+    console.log(result);//1234567
+
+
+
+
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

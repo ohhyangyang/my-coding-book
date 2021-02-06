@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>get 和 set</title>
+</head>
+<body>
+    <script>
+        /*
+        与ES5 一样， 在 Class 内部可以使用get和set关键字， 对某个属性设置存值函数和取值函数， 拦截该属性的存取行为。
+        - getter：当对某一个属性进行获取时，则执行get对应的函数
+          语法  {get prop() { ... } }
+          
+          应用场景：get绑定一个动态的属性值，属性值每次变化，就会触发getter获得一个新的相关计算结果
+          
+        - setter：当对某一个属性进行设置时，则执行set对应的函数
+          语法  {set prop(val) { . . . }}   ⚠️⚠️⚠️必须要有一个参数
+          
+          应用场景：set可用于给赋值时做判断，判断一个值是否合法，成功则赋值，失败的则不赋值
+          
+          在 javascript 中，如果试着改变一个属性的值，那么对应的 setter 将被执行。
+         */
+        //创建Phone类  ⚠️⚠创建类时不是一定要有constructor函数，没有也合法
+        class Phone{
+            //getter
+            get price(){
+                console.log("价格属性被读取了");
+                return 'iloveyou';
+            }
+	        //setter
+            set price(Val){
+                console.log('价格属性被修改了');
+            }
+        }
+
+        //实例化对象
+        let s = new Phone();
+        
+        //获取price属性的值，此时会触发setter
+        console.log(s.price);//价格属性被读取了 iloveyou
+        
+        //设置price属性的值，此时会触发getter
+        s.price = 'free';//价格属性被修改了
+    </script>
+</body>
+</html>

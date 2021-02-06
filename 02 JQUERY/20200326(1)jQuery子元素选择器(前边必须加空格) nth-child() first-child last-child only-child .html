@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<!--
+	- 子元素过滤选择器
+	  ⚠️子元素过滤选择器之前必须加一个空格
+	  
+	  选择器                                 描述                                    返回结果
+	  :nth-child(index/even/odd/equation)   选取每个父元素下的第index个子元素或奇偶元素  集合元素
+	  :first-child                          选取每个父元素的第一个子元素                集合元素
+	  :last-child                           选取每个父元素的最后一个子元素              集合元素
+	  :only-child                           如果为父元素的唯一子元素，将被选中           集合元素
+	  
+	  :nth-child()详解
+	  1 :nth-child(even/odd)  可选取index为偶数/奇数的元素
+	  2 :nth-child(2)   可选取index为2的元素
+	  3 :nth-child(3n)  可选取index为3的倍数的元素
+	  4 :nth-child(3n+1)  可选取index为3n+1的元素
+	-->
+	<style type="text/css">
+		div, span , p {
+			width: 200px;
+			height: 200px;
+			margin: 5px;
+			background: #aaa;
+			border: #000 1px solid;
+			float: left;
+			font-size: 17px;
+			font-family: Verdana;
+		}
+		div.mini {
+			width: 70px;
+			height: 70px;
+			background-color: #aaa;
+			font-size: 12px;
+		}
+		div.hide {
+			display: none;
+		}
+	</style>
+	<script type="text/javascript" src="jquery-1.10.1.js"></script>
+	<script type="text/javascript">
+		$(function () {
+            $("#btn1").click(function () {
+                $("div.one :nth-child(2)").css("background","lavender");
+            });
+            $("#btn2").click(function () {
+                $("div.one :first-child").css("background","lavender");
+            });
+			$("#btn3").click(function () {
+                $("div.one :last-child").css("background","lavender");
+            });
+			$("#btn4").click(function () {
+                $("div.one :only-child").css("background","lavender");
+            });
+        })
+	</script>
+</head>
+<body>
+<input id="btn1" type="button" value="选择每个class为one的div元素的第二个子元素">
+<input id="btn2" type="button" value="选择每个class为one的div元素的第一个子元素">
+<input id="btn3" type="button" value="选择每个class为one的div元素的最后一个子元素">
+<input id="btn4" type="button" value="选中只有一个子元素的class为one的div元素">
+<br><br>
+<div class="one" id="one">
+	id为one，class为one的DIV
+	<div class="mini">class为mini的DIV</div>
+</div>
+<div class="one" id="two" title="test">
+	id为two，class为one，title为test的DIV
+	<div class="mini" title="other">class为mini，title为other的DIV</div>
+	<div class="mini" title="test">class为mini，title为test的DIV</div>
+</div>
+<div class="one">
+	<div class="mini">class为mini的DIV</div>
+	<div class="mini">class为mini的DIV</div>
+	<div class="mini">class为mini的DIV</div>
+	<div class="mini"></div>
+</div>
+<div class="one">
+	<div class="mini">class为mini的DIV</div>
+	<div class="mini">class为mini的DIV</div>
+	<div class="mini">class为mini的DIV</div>
+	<div class="mini" title="tesst">class为mini,title为tesst的DIV</div>
+</div>
+<div style="display: none;" class="none">style的display为none的DIV</div>
+<div class="hide">class为hide的DIV</div>
+<div>
+	包含input的type为hidden的DIV
+	<input type="hidden" value="12345" size="8">
+</div>
+<div>一个DIV元素</div>
+</body>
+</html>

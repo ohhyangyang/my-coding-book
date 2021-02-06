@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>背景</title>
+        <style type="text/css">
+        /*
+        背景
+        *background-color
+        *background-image背景图片属性
+          语法   background-image:url(相对路径)
+
+        如果图片大于元素，默认从图片左上角开始显示
+        如果图片小于元素，则会默认将图片重复平铺充满元素
+        ⚠️假设样式统一写在外部的css文件中，此时相对路径是相对css文件来说的
+        ⚠️一般情况下，设置background-image时都会同时指定一个background-color
+           这样background-color会作为background-image的底色
+           
+
+        *background-repeat 设置是否及如何重复背景图像。
+          可选值：
+            repeat	默认。图像将在垂直方向和水平方向重复。
+            repeat-x	图像将在水平方向重复。
+            repeat-y	图像将在垂直方向重复。
+            no-repeat	图像将仅显示一次。
+
+        *background-position 设置图片位置
+          可选值：
+            
+            top left      左上        
+            top center    中上
+            top right     右上
+            center left   左中
+            center center 居中
+            center right  右中
+            bottom left   左下
+            bottom center 中下
+            bottom right  右下
+                 （如果仅规定了一个关键词，那么第二个值将默认是"center"。）
+            xpos ypos	水平偏移量 垂直偏移量
+                      （水平：正值向右移动，负值向左移动。
+                       垂直：正值向下移动，负值向上移动。
+                       默认值：0% 0%。）
+                （如果您仅规定了一个值，另一个值将是50%。）
+
+        *background-attachment 属性设置背景图像是否固定或者随着页面的其余部分滚动。
+          可选值：
+            scroll	默认值。背景图像会随着页面其余部分的滚动而移动。
+            fixed	当页面的其余部分滚动时，背景图像不会移动。
+                   (⚠️当设置为fixed时，图片的定位永远相对于浏览器窗口
+                    ⚠️fixed的背景图片，一般都是设置给<body>，而不设置给其他元素，
+                      不然的话，如果包含图片的元素消失于窗口，图片就消失了)
+
+
+        
+        */
+        .box1{
+            width: 500px;
+            height: 300px;
+            margin: 0 auto;
+            background-color: yellow;
+            background-image: url(img/bg/bg6.gif);
+            background-repeat: repeat-x;
+            opacity: 0.8;
+        }
+        .box2{
+            width: 500px;
+            height: 400px;
+            background-color: #bfa;
+            margin: 10px auto;
+            background-image: url(img/bg/bg7.gif);
+            background-repeat: no-repeat;
+            background-position: 100px 0;
+            opacity: 0.8;
+        }
+        body{
+            height: 5000px;
+            background-image: url(img/bg/bg8.gif);
+            background-repeat: repeat-x;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="box1"></div>
+        <div class="box2"></div>
+    </body>
+</html>

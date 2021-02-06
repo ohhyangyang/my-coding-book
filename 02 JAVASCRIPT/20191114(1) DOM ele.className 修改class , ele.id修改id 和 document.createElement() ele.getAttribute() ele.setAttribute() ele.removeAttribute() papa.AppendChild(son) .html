@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>获取内联样式</title>
+        <style type="text/css">
+        #box1{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        .active{
+            width: 100px;
+            height: 100px;
+            background-color: greenyellow;
+        }
+        </style>
+        <script type="text/javascript">
+        /*
+        - element.className
+        - element.id
+        - element.getAttribute()
+        - element.setAttribute()
+        - element.removeAttribute()
+        - document.createElement()
+        - papa.appendChild(son)
+        */
+        
+        window.onload=function(){
+            var box1=document.getElementById("box1");//获取box1          
+            //点击按钮1，修改box1大小
+            var btn01=document.getElementById("btn01");//获取按钮1
+            btn01.onclick=function(){
+                box1.style.width="300px";//样式值为string
+                box1.style.height="300px";
+                box1.style.backgroundColor="yellow";//css样式名改为js驼峰命名法
+            };
+
+            //1 ele.className
+            var box2=document.querySelector("#box2");//获取box2
+            var btn02=document.getElementById("btn02");
+            btn02.onclick=function(){
+                box2.className += "active";
+            };
+            
+            //2 ele.id
+            console.log(box2.id); //box2
+            
+            //3 ele.getAttribute()
+            var box3=document.querySelector("#box3");//获取box3
+            const divId = box3.getAttribute("id");
+            console.log(divId); //box3
+            
+            //4 ele.setAttribute()
+            //5 ele.removeAttribute()
+            box3.removeAttribute("class");
+
+            //6 document.createElement()
+            const h2Tag = document.createElement("h2");
+            h2Tag.textContent = "Sub Title"
+            const body = document.querySelector("body");
+            body.appendChild(h2Tag);
+
+            //7 Creating element and text node and appending all to the DOM
+            const articleBrief = document.createElement("h3");
+            const articleContent = document.createElement("p");
+
+            const textContent1 = document.createTextNode('Article Brief');
+            const textContent2 = document.createTextNode("Lorem ipsum".repeat(10));
+
+            articleBrief.appendChild(textContent1);
+            articleContent.appendChild(textContent2);
+
+            body.appendChild(articleBrief);
+            body.appendChild(articleContent);
+        
+
+
+
+
+
+
+        }
+        </script>
+    </head>
+    <body>
+        <button id="btn01">click 1</button>
+        <button id="btn02">click 2</button>
+        <br/>
+        <div id="box1"></div>
+        <div id="box2"></div>
+
+        <div id="box3" class="knowingAtrribute">
+    </body>
+</html>

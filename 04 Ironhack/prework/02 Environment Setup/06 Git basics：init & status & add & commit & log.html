@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--
+      - Git basics
+        - 创建repository    Creating and remove a Repository
+        
+          git init    ==> 创建.git repository
+            通过terminal进入指定folder，输入git init
+            此时会创建一个.git的隐藏文件
+            (git init is the command to signal to Git that the folder you are currently
+            in will now be a Git repository. From the point forward, Git will track all
+            changes to the files and folders inside of that folder.)
+            
+          rm -rf .git   ==> 移除.git repository
+          
+       ⚠️⚠️ 创建git repository的位置
+          建议每一个project创建一个.git文件！！！
+          不建议创建在high-level folder中
+          
+               (You do not want to create a Git repository in a high-level folder,
+               such as Documents, or your home(~) directory.
+                    This is bad because:
+                      it is unnecessary;
+                      when you go to create a Git repo later on inside of a project,
+                      you may run into issues;
+                      when you eventually want to store your Git repos on GitHub later,
+                      you may accidentally push sensitive information.)
+                      
+       - 查看git状态     Viewing Changes
+       
+         git status  ==> 查询project的git状态
+         
+       - 添加文件至staging暂存区    Staging Changes
+       
+         git add <filename>         ==> 添加文件至staging area
+         git add <file1> <file2>... ==> 添加多个文件至staging area
+         git add .                  ==> 添加全部文件至staging area
+         git reset <filename>       ==> 将文件从staging area移除
+         
+                               
+       - 提交staging中的文件到本地repository    Saving Changes
+       
+         git commit  将获取staging area中的所有文件，并向repository创建新的commit。
+         git commit -m  表示将提供有关commit的消息。 请注意，应该在该commit中留下详细的描述性消息。
+                  例如 git commit -m "Initial commit - Create files, add data"
+            功能：
+              help you revert mistakes to a previous working version (kind of undo button thing);
+              帮助您将错误恢复到以前的工作版本（诸如撤消按钮之类的东西）；
+              enable you to collaborate with other developers on your projects without colliding and
+              使您可以与项目中的其他开发人员进行协作而不会发生冲突
+              keep track of who made changes, and when they did it.
+              跟踪谁进行了更改以及何时进行了更改。
+              
+       - 查看commit记录       Revisiting and Viewing Commits
+         
+         git log 用于查看commit和data。 运行后会进入git log界面
+         q   退出log
+            log包括：
+                commit SHA: a unique ID for each commit,
+                            This can be used in the future to revert to this commit（还原）,
+                            remove the commit（删除）, or combine multiple commits（合并）.
+                Author: 查看是谁的commit.
+                Date: commit日期
+                Message: 提供了有关当时所做的事情的一些背景信息。需要详细描述
+       
+       - Terms
+       
+          staging area（暂存区域）：The staging area is a place where we have notified Git
+                        that something will be tracked.
+          Commit: A commit in Git is a snapshot of the state of the files and folders in your project, as well as the content in them.
+                  它是项目中文件和文件夹及其内容的状态的快照。
+          State: in computer science and web development is a term used to describe
+                 the status of an object, folder, files, etc. and its attributes or contents.
+                 If data.txt contains: "Hello" and we modify that file to say: "Goodbye" the state has changed.
+          
+
+
+      
+         
+            
+        
+    -->
+</head>
+<body>
+    
+</body>
+</html>

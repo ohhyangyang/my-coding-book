@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style type="text/css">
+		/*
+		- transition过渡:
+		  transition 属性是一个简写属性，用于设置四个过渡属性：
+		     transition-property
+		     transition-duration
+		     transition-timing-function
+		     transition-delay
+		   默认值：	all 0 ease 0
+		   继承性：	no
+		   语法： transition: property duration timing-function delay;
+		      transition-property	规定设置过渡效果的 CSS 属性的名称。
+		      transition-duration	规定完成过渡效果需要多少秒或毫秒。
+		      transition-timing-function	规定速度效果的速度曲线。
+		      transition-delay	定义过渡效果何时开始。
+		- transform
+		  transform 属性向元素应用 2D 或 3D 转换。该属性允许我们对元素进行旋转、缩放、移动或倾斜
+		  默认值：	none
+		  继承性：	no
+		  语法： transform: none|transform-functions;
+                    none	定义不进行转换。
+                    matrix(n,n,n,n,n,n)	定义 2D 转换，使用六个值的矩阵。
+                    matrix3d(n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n)	定义 3D 转换，使用 16 个值的 4x4 矩阵。
+                    translate(x,y)	定义 2D 转换。
+                    translate3d(x,y,z)	定义 3D 转换。
+                    translateX(x)	定义转换，只是用 X 轴的值。
+                    translateY(y)	定义转换，只是用 Y 轴的值。
+                    translateZ(z)	定义 3D 转换，只是用 Z 轴的值。
+                    scale(x,y)	定义 2D 缩放转换。
+                    scale3d(x,y,z)	定义 3D 缩放转换。
+                    scaleX(x)	通过设置 X 轴的值来定义缩放转换。
+                    scaleY(y)	通过设置 Y 轴的值来定义缩放转换。
+                    scaleZ(z)	通过设置 Z 轴的值来定义 3D 缩放转换。
+                    rotate(angle)	定义 2D 旋转，在参数中规定角度。
+                    rotate3d(x,y,z,angle)	定义 3D 旋转。
+                    rotateX(angle)	定义沿着 X 轴的 3D 旋转。
+                    rotateY(angle)	定义沿着 Y 轴的 3D 旋转。
+                    rotateZ(angle)	定义沿着 Z 轴的 3D 旋转。
+                    skew(x-angle,y-angle)	定义沿着 X 和 Y 轴的 2D 倾斜转换。
+                    skewX(angle)	定义沿着 X 轴的 2D 倾斜转换。
+                    skewY(angle)	定义沿着 Y 轴的 2D 倾斜转换。
+                    perspective(n)	为 3D 转换元素定义透视视图。
+         - 禁止系统滚动条
+         
+         
+         
+           absolute绝对定位模拟fix固定定位
+           
+		 */
+	    *{
+	    	margin: 0;
+	    	padding: 0;
+	    }
+	    html,body{
+		    height: 100%;
+		    overflow:hidden;
+	    }
+		#wrap{
+			width: 300px;
+			height: 300px;
+			/*border: 1px solid;*/
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+			transition: 1s;
+		}
+		#wrap>div:nth-child(1),
+		#wrap>div:nth-child(4){
+			margin: 10px;
+			width: 130px;
+			height: 130px;
+			background-color: #fff3cd ;
+			float: left;
+			box-sizing: border-box;
+			border-radius: 0px 78px;
+		}
+	    #wrap>div:nth-child(2),
+	    #wrap>div:nth-child(3){
+		    margin: 10px;
+		    width: 130px;
+		    height: 130px;
+		    background-color: #fff3cd ;
+		    float: left;
+		    box-sizing: border-box;
+		    border-radius: 78px 0px;
+	    }
+		
+		#wrap:hover{
+			transform:rotate(120grad) ;
+		}
+	</style>
+</head>
+<body>
+<div id="wrap">
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</div>
+</body>
+</html>

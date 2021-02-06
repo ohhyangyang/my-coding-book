@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    var arr1=["a","b","c"];
+    var arr2=["1","2","3"];
+    var arr3=["一","二","三"];
+    /*
+    concat()方法可以连接两个或更多的数组，并返回新数组。(不对原数组产生影响)
+    语法： arrayObject.concat(arrayX,arrayX,......,arrayX)
+    arrayX可以是具体的值，也可以是数组对象。可以是任意多个。
+    */
+    var result=arr1.concat(arr2,arr3,"Yang","Albert");
+    console.log(result);//["a", "b", "c", "1", "2", "3", "一", "二", "三", "Yang", "Albert"] (11)
+
+    /*
+    join()方法可以将一个数组转换为一个字符串，并返回转换后的一个字符串（不对原数组产生影响)
+    语法： arrayObject.join(separator)
+    separator可以指定数组中元素的分隔符，如不填，则默认逗号
+    */
+    result=arr1.join();
+    console.log(result);//a,b,c
+    console.log(typeof result);//string
+    //指定separator
+    result=arr1.join("$");
+    console.log(result);//a$b$c
+
+    /*
+    reverse()方法用于反转数组中元素的顺序。(会直接修改原数组)
+    */
+    arr1.reverse();
+    console.log(arr1);//["c", "b", "a"] (3)
+
+    /*
+    sort() 方法用于对数组的元素进行排序。(会直接修改原数组)(会按照Unicode编码进行排序)
+    语法：arrayObject.sort(sortby)
+    sortby 可选。规定排序顺序。必须是函数。
+    */
+    var arr=["b","d","e","a","c"];
+    arr.sort();
+    console.log(arr);//["a", "b", "c", "d", "e"] (5)
+    //因为是根据Unicode排序，所以对数字排序时，可能是错的
+    arr=[3,4,11,2,5];
+    arr.sort();
+    console.log(arr);//[11, 2, 3, 4, 5] (5)
+    /*所以我们可以在sort()内添加回调函数，来指定排序规则
+    回调函数需要两个形参：function sortNumber(a,b)
+    a被指定为前边的数，b为后边的数
+    浏览器会分别使用数组中的元素作为实参去调用函数，并根据返回值来决定元素顺序
+    回调函数规则如下：
+         如果返回值大于0，元素交换位置
+         如果返回值小于或等于0，元素位置不变
+    */
+    
+    arr=[5,4,2,1,3,6,8,7];
+    
+    
+    //升序排列a-b
+    arr.sort(function sortNumber(a,b){
+        return a - b;//若a>b,a-b>0,那么就交换位置
+    });
+    console.log(arr);//[1, 2, 3, 4, 5, 6, 7, 8] (8)
+    
+    //降序排列b-a
+    arr.sort(function sortNumber(a,b){
+        return b-a;//若a<b,b-a>0,那么就交换位置
+    });
+    console.log(arr);//[8, 7, 6, 5, 4, 3, 2, 1] (8)
+
+    
+    
+    
+    
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

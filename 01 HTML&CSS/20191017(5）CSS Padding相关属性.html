@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>padding</title>
+        <style type="text/css">
+        /*
+        padding 内边距
+        content与border之间的距离
+
+        *四个方向的内边距属性：
+        padding-top
+        padding-right
+        padding-bottom
+        padding-left
+        ⚠️padding会影响box可见框的大小，且元素的背景会延伸到padding
+
+        *box可见框宽度 = border-left-width + padding-left + width + padding-right + border-right-width
+        box可见框高度 = border-top-width + padding-top + height + padding-bottom + border-bottom-width
+
+        *padding简写属性
+        规则同border-width
+
+        */
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: lavenderblush;
+            border:green 10px double;
+            /* 
+            padding-top:50px;
+            padding-right: 50px;
+            padding-bottom: 50px;
+            padding-left: 50px;
+            */
+            padding:20px 50px 30px;
+        }
+        .box2{
+            width: 100%;
+            height:100%;
+            background-color:yellow;
+            
+        }
+        </style>
+    </head>
+    <body>
+        <div class="box1">
+            <div class="box2"></div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<script>
+	/*
+	ES6允许给函数参数添加默认值
+	1 设置形参默认值
+	  ⚠️ 其中既有默认值的形参，书写位置靠后（潜规则）
+	  
+	2 默认值与解构赋值结合
+	 */
+//1 形参初始值
+	function add(a,b=4,c=10) {
+              //⚠️ 其中既有默认值的形参，书写位置靠后（潜规则）
+	    return a + b + c ;
+    }
+    let result = add(1,2);
+	console.log(result);
+	
+//2 与解构赋值结合
+	function connect({host='127.0.0.1', username, password, port}) {
+        console.log(host);
+        console.log(username);
+        console.log(password);
+        console.log(port);
+    }
+	//调用connect()
+    connect({
+	    //host:'localhost',
+	    username:'root',
+	    password: 'root',
+	    port: 3306
+    });
+	
+</script>
+</body>
+</html>

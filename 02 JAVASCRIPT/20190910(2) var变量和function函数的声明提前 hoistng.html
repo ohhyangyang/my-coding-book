@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*
+    1 变量的声明提前
+    使用var关键字，声明的变量会在所有代码执行前被声明，如例一
+    如不使用var，声明则不会被提前，如例二
+    ⚠️ 只提前变量container，不会赋值
+
+    2 函数的声明提前
+    使用function 函数(){}，如例三，创建的函数会在所有代码执行之前被声明，所以可以在函数被声明前来调用该函数
+    使用var 函数=function(){}创建的函数，如例四，不会被提前声明，所以不能在被声明之前调用
+
+    */
+    //例一
+    console.log("a="+a);
+    var a=123;//a=undefined
+    /*
+    相当于：
+    var a;
+    console.log("a="+a);
+    a=123;
+    */
+
+    //例二
+    console.log("b="+b);
+    b=456;//b is not defined
+
+    //例三，function 函数(){}函数声明，会被提前创建
+    fun();//我是fun
+    function fun(){
+        console.log("我是fun");
+    }
+    
+    //例四，var 函数=function(){}创建的函数，不会被提前创建
+    fun2();//fun2 is not defined
+    var fun2=function(){
+        console.log("我是fun2");
+    }
+    fun2();//我是fun2
+    
+    
+
+    
+
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

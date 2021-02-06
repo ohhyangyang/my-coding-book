@@ -1,0 +1,1276 @@
+@import url("https://fast.fonts.net/lt/1.css?apiType=css&c=88050ef6-42db-4475-9ef0-8919cb50638b&fontids=1475496,1475502,1475508,1475514,1475520,1475526,1475532,1475538,1475544,1475550,1475556,1475562");
+
+@font-face {
+    font-family: "Avenir LT W05_45 Book";
+    src: url("../../Fonts/5687178/c4c68310-7910-47fe-aafe-fb8e8c7c3fc3.eot?#iefix");
+    src: url("../../Fonts/5687178/c4c68310-7910-47fe-aafe-fb8e8c7c3fc3.eot?#iefix") format("eot"), url("../../Fonts/5687178/2b019de4-ece8-4a0d-b8b4-72866ca60c27.woff2") format("woff2"), url("../../Fonts/5687178/b8885363-76e9-4313-bd2f-446d01014e36.woff") format("woff"), url("../../Fonts/5687178/c9947fd3-3bc8-4301-9642-9e30604027f3.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Avenir LT W05_95 Black";
+    src: url("../../Fonts/5225567/d54f0688-824d-4cae-88f3-ebed1ed3d2be.eot?#iefix");
+    src: url("../../Fonts/5225567/d54f0688-824d-4cae-88f3-ebed1ed3d2be.eot?#iefix") format("eot"), url("../../Fonts/5225567/ef5440cb-9db6-4c3a-b4ab-8135481379cd.woff2") format("woff2"), url("../../Fonts/5225567/6497b0cb-750c-4e79-b974-2d66cef3ac7d.woff") format("woff"), url("../../Fonts/5225567/7b88d46c-84c0-49b1-91d7-5a63a6d0b09a.ttf") format("truetype");
+}
+
+html {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    overflow-x: hidden;
+    background-color: white;
+
+}
+
+h1 {
+    font-size: 33px;
+    color: #1B365D;
+    font-family: "Avenir LT W05_95 Black";
+    padding-bottom: 10px;
+}
+
+h2 {
+    width: 100%;
+    font-size: 28px;
+    color: #1B365D;
+    font-family: "Avenir LT W05_95 Black";
+    padding-bottom: 20px;
+    /* border-bottom: 1px solid #1B365D; */
+}
+
+h3 {
+    font-size: 20px;
+    color: #1B365D;
+    margin-bottom: 10px;
+    font-family: "Avenir LT W05_95 Black";
+}
+
+h4 {
+    font-size: 18px;
+    color: #1B365D;
+    font-family: "Avenir LT W05_95 Black";
+
+}
+
+p {
+    font-size: 16px;
+    font-family: "Avenir LT W05_45 Book";
+    line-height: 20px;
+
+}
+
+.btn {
+
+    width: 60%;
+    height: 50px;
+    border-radius: 40px;
+    background-color: #1B365D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: "Avenir LT W05_45 Book";
+}
+
+
+/*----------------HEADER------------*/
+
+.header {
+
+    width: 70%;
+    height: 40px;
+    padding: 25px 15% 25px 15%;
+    background-color: #1B365D;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.header .logo {
+    /*background-color: red;*/
+    width: 250px;
+    height: 40px;
+}
+
+.logo img {
+
+    width: 250px;
+    height: 50px;
+}
+
+.userHelp {
+    /*background-color: red;*/
+}
+
+.userHelp img {
+
+    height: 60px;
+    /* background-color: green; */
+}
+
+/*------------- MENU IDIOMAS------------ */
+.header .language {
+    position: relative;
+    width: 120px;
+    height: 50px;
+    border-radius: 10px;
+    background-image: linear-gradient(to bottom, rgba(231, 241, 255, 1), rgba(45, 78, 117, 1));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.language a {
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.language img {
+    width: 30%;
+}
+
+.language p {
+    font-family: "Avenir LT W05_45 Book";
+    font-size: 20px;
+    color: white;
+}
+
+.languageBoxWrap {
+    width: 250px;
+    position: absolute;
+    top: 60px;
+    right: -10px;
+    z-index: 101;
+}
+
+
+
+
+
+/* --------MENU DESKTOP---------- */
+
+
+.navWeb {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0px;
+    z-index: 1;
+    width: 70%;
+    height: 70px;
+    background-color: #ffff;
+    border-bottom: 2px solid #1B365D;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15% 0 15%;
+}
+
+.UserHelp-seccion {
+    /*background-color: red;*/
+    font-size: 40px;
+    font-family: "Avenir LT W05_95 Black";
+    color: #1B365D;
+    /*margin-left: 50px;*/
+    cursor: default;
+
+}
+
+.nav {
+    font-family: "Avenir LT W05_95 Black";
+
+
+}
+
+.navWeb a {
+
+    text-decoration: none;
+    text-align: center;
+}
+
+.navWeb .nav {
+    float: right;
+
+}
+
+.navWeb .nav li {
+
+    float: left;
+    margin-left: 30px;
+    /* background-color: red; */
+    text-align: center;
+
+
+}
+
+.navWeb .nav a {
+    color: #1B365D;
+
+    text-decoration: none;
+
+
+}
+
+.navWeb .nav a:hover {
+    border-bottom: 5px solid #1B365D;
+
+}
+
+
+/* --------------------------CONTENT---------------- */
+
+.HPO_img {
+    width: 100%;
+    height: 150px;
+    padding: 20px 0px 20px 0px;
+    /* background-color: grey; */
+    display: flex;
+
+    justify-content: center;
+
+
+}
+
+
+.main-video {
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 50px;
+    /* background-color: orange; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.youtube-video {
+    width: 80%;
+
+    display: flex;
+    flex-wrap: wrap;
+    /* flex-direction: row; */
+    justify-content: center;
+    /* background-color: red; */
+
+}
+
+.title-description {
+    width: 660px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding-bottom: 30px;
+    /*background-color: green;*/
+}
+
+
+.youtube-video div:first-child {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.pdf-tutorial {
+    width: 560px;
+    height: 60px;
+    color: #ffffff;
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-decoration: none;
+    box-shadow: 0px 1px 20px 1px rgba(27, 54, 93, .6);
+    background-color: #1B365D;
+
+}
+
+.pdf-tutorial img {
+    width: 70px;
+}
+
+.youtube-video p {
+    /* width: 560px;
+    color:#ffffff;
+    margin-top: 30px;
+    padding:20px;
+    border-radius: 10px;
+    display:flex;
+    justify-content: center;
+
+    text-decoration: none; */
+
+}
+
+.main-iframe {
+    width: 660px;
+    height: 415px;
+}
+
+
+/* CONTAINER VIDEOS & DOCUMENTS */
+
+.content {
+    width: 100%;
+
+}
+
+/*------- Seccion VIDEOS------- */
+
+.videos {
+    width: 100%;
+    height: 100%;
+    /*  background-color: #8fd19e; */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+    padding-bottom: 50px;
+}
+
+.title-section {
+    width: 70%;
+    display: flex;
+    justify-content: flex-start;
+    /* background-color: red; */
+}
+
+
+.cont-video {
+    width: 70%;
+    height: 80px;
+    padding: 10px 0px 10px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: yellow; */
+    border-bottom: 1px solid #1B365D;
+
+
+}
+
+.cont-video a:first-child {
+    width: 200px;
+    height: 80px;
+    /* border: 2px solid #1B365D; */
+    border-radius: 10px;
+    background-color: rgb(223, 241, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cont-video a:first-child img {
+    width: 50%;
+
+
+}
+
+.cont-video a:first-child img:hover {
+    width: 60%;
+    transition: width 0.5s;
+}
+
+
+.video-description {
+    width: 100%;
+    padding: 0px 40px 0px 40px;
+    color: rgb(102, 102, 102);
+}
+
+.btn-pdf img {
+    width: 70px;
+    height: 70px;
+    display: flex;
+
+}
+
+/* 	    .cont-video div:first-child{
+	width:300px;
+	background-color: red;
+}
+ */
+
+
+/* --------------------SECCIÓN Tools & Documents ----------------*/
+
+.documents {
+    width: 100%;
+    height: 100%;
+    /* background-color: #fff3cd; */
+
+    /*padding:20px;*/
+    /*background-color: grey;*/
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-bottom: 50px;
+
+}
+
+
+.cont-document {
+    width: 70%;
+    height: 80px;
+    padding: 10px 0px 10px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: yellow; */
+    border-bottom: 1px solid #1B365D;
+
+}
+
+.doc-1 {
+
+    background-image: url(../img/Fotos/img_Compatibility-Finder.jpg);
+    background-repeat: no-repeat;
+    background-color: white;
+    background-position: center;
+    z-index: 0;
+}
+
+
+.doc-2 {
+
+    background-image: url(../img/Fotos/img_Loading-Guide-130.jpg);
+    background-repeat: no-repeat;
+    background-color: white;
+    background-position: center;
+    z-index: 0;
+}
+
+
+.doc-3 {
+
+    background-image: url(../img/Fotos/img_Loading-Guide-50.jpg);
+    background-repeat: no-repeat;
+    background-color: white;
+    background-position: center;
+    z-index: 0;
+}
+
+
+.doc-4 {
+
+    background-image: url(../img/Fotos/img_Guide-DaVinci-xi.jpg);
+    background-repeat: no-repeat;
+    background-color: white;
+    background-position: center;
+    z-index: 0;
+}
+
+.cont-document a:first-child {
+    width: 200px;
+    height: 80px;
+    border: 2px solid #1B365D;
+    border-radius: 10px;
+    /* background-color: rgb(223,241,255); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.document-description {
+    width: 100%;
+    padding: 0px 40px 0px 40px;
+    color: rgb(102, 102, 102);
+}
+
+
+/* ---------------------SECCIÓN Other products------------------ */
+
+
+.products {
+    width: 100%;
+    height: 100%;
+    /* background-color: #fd7e14; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.products h2 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.cont-product {
+    width: 360px;
+    height: 490px;
+    margin: 20px 20px 20px 20px;
+    background-image: linear-gradient(to bottom, rgba(242, 242, 242, 1), rgba(220, 220, 220, 1));
+    text-decoration: none;
+    border-radius: 30px;
+    box-shadow: 0px 1px 30px 1px rgba(27, 54, 93, .4);
+    /* background-color: yellow; */
+    /* display:flex;
+    flex-wrap: wrap;
+    align-items: flex-start; */
+}
+
+
+.img-product {
+    width: 360px;
+    height: 250px;
+    border-radius: 30px 30px 0px 0px;
+    /* background-color: red; */
+}
+
+.product1 {
+    background-image: url(../img/Fotos/img_Monitoring-Starter-Kit-HPO_large.jpg);
+    background-repeat: no-repeat;
+    background-color: white;
+    background-position: center;
+    z-index: 0;
+}
+
+
+.product2 {
+    background-image: url(../img/Fotos/img_130LF_large.jpg);
+    background-repeat: no-repeat;
+    background-color: white;
+    background-position: center;
+    z-index: 0;
+}
+
+.product3 {
+    background-image: url(../img/Fotos/img_HPO-Series_large.jpg);
+    background-repeat: no-repeat;
+    background-color: white;
+    background-position: center;
+    z-index: 0;
+}
+
+
+.product-description {
+    height: 150px;
+    padding: 20px 20px 0px 20px;
+    /* border-radius: 0px 0px 30px 30px; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* align-items: flex-start;  */
+}
+
+.cont-product div:nth-child(3) {
+    display: flex;
+    justify-content: center;
+    /* background-color: red; */
+}
+
+
+/* -------------FOOTER----------------- */
+
+footer {
+    height: 320px;
+    background-color: #1B365D;
+    display: block;
+}
+
+footer h2 {
+    color: white;
+    font-family: "Avenir LT W05_45 Book";
+    padding-top: 30px;
+
+}
+
+footer div:first-child {
+    width: 100%;
+    text-align: center;
+    /* background-color: red;  */
+    /* padding: 40px 0px 5px 0px; */
+}
+
+.rrss {
+    width: 100%;
+    height: 70px;
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+
+}
+
+.rrss img {
+    width: 50px;
+    height: 50px;
+    padding: 0px 20px 0px 20px;
+}
+
+/*  .rrss img:first-child{
+
+	 padding-right: 40px; 
+}
+
+.rrss img:nth-child(2){
+
+	 padding-left: 40px;
+}  */
+
+
+footer div:nth-child(3) {
+    width: 100%;
+    height: 50px;
+    /* padding:40px 0px 40px 0px; */
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    /*  background-color: red; */
+}
+
+
+footer div:nth-child(3) img {
+    width: 200px;
+}
+
+footer div:nth-child(4) {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* background-color: green; */
+
+}
+
+footer div:nth-child(4) a {
+    text-decoration: none;
+    font-size: 40px;
+    font-family: "Avenir LT W05_45 Book";
+    color: white;
+}
+
+footer div:nth-child(4) p {
+    color: white;
+    font-size: 10px;
+    font-family: "Avenir LT W05_45 Book";
+}
+
+/* -------------------------MENU MOBILE----------------- */
+
+.navMobil {
+    position: sticky;
+    position: -webkit-sticky;
+    bottom: 0px;
+    width: 100%;
+    height: 121px;
+    padding: 10px 0px 0px 0px;
+    background-color: white;
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.UserHelp-seccion-mobile {
+    width: 100%;
+    padding-bottom: 10px;
+    font-size: 30px;
+    border-bottom: 2px solid #1B365D;
+    font-family: "Avenir LT W05_95 Black";
+    color: #1B365D;
+    display: flex;
+    justify-content: center;
+    cursor: default;
+}
+
+
+.navMobil a {
+    width: 33%;
+    height: 70px;
+    padding: 5px 0px 5px 0px;
+    text-align: center;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    /*background-color: red;*/
+    text-decoration: none;
+    /*color: white;*/
+
+}
+
+.navMobil .colorNormal {
+    color: #1B365D;
+}
+
+.colorHighlight {
+    color: white;
+    background-color: #1B365D;
+}
+
+.navMobil .logoDocuments {
+
+    border-left: 2px solid #1B365D;
+}
+
+.navMobil .logoProducts {
+
+    border-left: 2px solid #1B365D;
+}
+
+.navMobil .logoVideos:hover {
+    color: white;
+    background-color: #1B365D;
+}
+
+
+.navMobil .logoDocuments:hover {
+    color: white;
+    background-color: #1B365D;
+}
+
+
+.navMobil .logoProducts:hover {
+    color: white;
+    background-color: #1B365D;
+}
+
+. {
+    color: #1B365D;
+    background-color: #1B365D;
+}
+
+.navMobil p {
+    width: 100%;
+    padding-top: 5px;
+}
+
+
+.navMobil img {
+    width: 58px;
+    height: 39px;
+}
+
+
+
+/*----------Tamaños para distintos dispositivos-------*/
+/*-----------max-width: 1024px-----------*/
+@media only screen and (max-width: 1024px) {
+
+
+    .header {
+        width: 94%;
+        padding: 25px 3%;
+    }
+
+    .navWeb {
+        width: 94%;
+        padding: 0 3% 0 3%;
+    }
+
+    .title-section {
+        width: 94%;
+        padding: 0 3% 0 3%;
+
+    }
+
+    .cont-video {
+        width: 94%;
+        padding: 10px 3%;
+    }
+
+
+    .cont-document {
+        width: 94%;
+        padding: 10px 3%;
+    }
+
+
+}
+
+/*-----------en general---max-width: 768px-----------*/
+@media only screen and (max-width: 768px) {
+
+    h1 {
+        font-size: 28px;
+
+    }
+
+    h2 {
+        font-size: 22px;
+        padding-bottom: 10px;
+
+    }
+
+    h3 {
+        font-size: 16px;
+        margin-bottom: 5px;
+
+    }
+
+    h4 {
+        font-size: 18px;
+
+
+    }
+
+    p {
+        font-size: 14px;
+        line-height: 15px;
+
+
+    }
+
+    .btn {
+
+        width: 60%;
+        height: 50px;
+        border-radius: 40px;
+        background-color: #1B365D;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+        font-family: "Avenir LT W05_45 Book";
+    }
+
+
+    /*footer::after {*/
+    /*    content: "";*/
+    /*    display: block;*/
+    /*    height: 130px;*/
+    /*    width: 100%;*/
+    /*    background-color: white;*/
+    /*}*/
+
+    .navWeb {
+        display: none;
+    }
+
+    .navMobil {
+        display: flex;
+
+    }
+
+    /* -------HEADER--- max-width: 768px */
+    .header {
+        position: sticky;
+        position: -webkit-sticky;
+        top: 0px;
+        z-index: 101;
+    }
+
+    .header .logo {
+        width: 150px;
+        height: 40px;
+        /*margin-left: 10px;*/
+        display: flex;
+        align-items: center;
+    }
+
+    .logo img {
+        width: 150px;
+        height: 40px;
+        /* 	margin-left: 10px; */
+        /*background-color: red;*/
+        display: flex;
+        align-items: center;
+    }
+
+    .userHelp img {
+        width: 150px;
+        height: 60px;
+        /* background-color: green; */
+    }
+
+    .header .language {
+        width: 70px;
+        height: 40px;
+        /*margin-right: 10px;*/
+        border-radius: 10px;
+        background-image: linear-gradient(to bottom, rgba(231, 241, 255, 1), rgba(45, 78, 117, 1));
+    }
+
+    .language img {
+        margin: 0 5px;
+        width: 20px;
+    }
+
+    .language p {
+        font-size: 15px;
+
+    }
+
+    /* ---HPO img--- max-width: 768px */
+    .HPO_img {
+        width: 100%;
+        height: 120px;
+        padding: 20px 0px 10px 0px;
+    }
+
+
+    /* ---Main Video--- max-width: 768px */
+    .title-description {
+        width: 460px;
+    }
+
+    .main-iframe {
+        width: 460px;
+        height: 215px;
+    }
+
+
+    /* ---Related videos--- max-width: 768px */
+    .title-section {
+        width: 94%;
+        padding: 0px 3%;
+
+    }
+
+    .cont-video {
+        width: 94%;
+        height: 90px;
+        padding: 10px 3%;
+
+    }
+
+    .cont-video a:first-child {
+        height: 70px;
+    }
+
+
+    .btn-pdf img {
+        width: 60px;
+        height: 60px;
+        display: flex;
+
+    }
+
+    /* ---Documents--- max-width: 768px */
+    .cont-document {
+        width: 94%;
+        height: 90px;
+        padding: 10px 3%;
+
+
+    }
+
+    /* ---FOOTER--- max-width: 768px */
+    footer h2 {
+        color: white;
+        font-family: "Avenir LT W05_45 Book";
+        font-size: 18px;
+
+    }
+
+
+    .rrss img {
+        width: 40px;
+        height: 50px;
+
+    }
+
+    footer div:nth-child(4) a {
+        font-size: 30px;
+
+    }
+
+}
+
+/* ---en general--- max-width: 500px */
+@media only screen and (max-width: 500px) {
+
+    h1 {
+        font-size: 28px;
+
+    }
+
+    h2 {
+        font-size: 22px;
+        padding-bottom: 10px;
+
+    }
+
+    h3 {
+        font-size: 16px;
+        margin-bottom: 5px;
+
+    }
+
+    h4 {
+        font-size: 18px;
+
+
+    }
+
+    p {
+        font-size: 14px;
+        line-height: 15px;
+
+
+    }
+
+
+    .btn {
+
+        width: 50%;
+        height: 40px;
+        border-radius: 40px;
+        background-color: #1B365D;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        font-family: "Avenir LT W05_45 Book";
+    }
+
+
+    /* ---HEADER--- max-width: 500px */
+    .header {
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        padding: 25px 5%;
+    }
+
+    .header .logo {
+
+        visibility: hidden;
+        position: absolute;
+    }
+
+    .logo img {
+        width: 100px;
+        height: 40px;
+        /* 	margin-left: 10px; */
+        background-color: red;
+        display: flex;
+        align-items: center;
+    }
+
+    .userHelp img {
+        width: 150px;
+        height: 60px;
+        /* background-color: green; */
+    }
+
+
+    /* ---HPO img--- max-width: 500px */
+    .HPO_img {
+        width: 100%;
+        height: 100px;
+        padding: 20px 0px 10px 0px;
+    }
+
+
+    /* ---Main Video--- max-width: 500px */
+    .title-description {
+        width: 300px;
+
+    }
+
+    .main-iframe {
+        width: 300px;
+        height: 155px;
+    }
+
+
+    /* ---Related videos--- max-width: 500px */
+    .title-section {
+        width: 90%;
+        padding: 0px 5%;
+
+    }
+
+    .cont-video {
+        width: 90%;
+        height: 100%;
+        padding: 10px 5%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+
+
+    }
+
+    .cont-video a:first-child {
+        width: 100px;
+        height: 70px;
+        margin-top: 10px;
+        display: flex;
+        order: 2;
+        /* background-color: green; */
+
+    }
+
+    .cont-video p {
+
+    }
+
+    .video-description {
+        padding: 0px;
+        display: flex;
+        flex-wrap: wrap;
+        order: 1;
+
+    }
+
+    .btn-pdf {
+        display: flex;
+        order: 3;
+        margin: 0px;
+    }
+
+    .btn-pdf img {
+        width: 60px;
+        height: 60px;
+        /* background-color: orange; */
+
+
+    }
+
+    /* ---Tools & Documents--- max-width: 500px */
+    .cont-document {
+        width: 90%;
+        height: 100%;
+        padding: 10px 5%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+
+
+    }
+
+    .cont-document a:first-child {
+        width: 100px;
+        height: 70px;
+        margin-top: 10px;
+        display: flex;
+        order: 2;
+        /* background-color: green; */
+
+    }
+
+
+    .document-description {
+        padding: 0px;
+        display: flex;
+        flex-wrap: wrap;
+        order: 1;
+
+    }
+
+    .btn-pdf {
+        display: flex;
+        order: 3;
+        margin-top: 15px;
+    }
+
+    .btn-pdf img {
+        width: 60px;
+        height: 60px;
+        /* background-color: orange; */
+
+
+    }
+
+
+    /* ---Other products--- max-width: 500px */
+    .cont-product {
+        width: 100%;
+        height: 490px;
+        margin: 20px 20px 20px 20px;
+    }
+
+    .img-product {
+        width: 100%;
+        height: 250px;
+        border-radius: 30px 30px 0px 0px;
+        /* background-color: red; */
+    }
+
+
+    /* ---MENU MOBILE--- max-width: 500px */
+    .navMobil {
+        width: 100%;
+        height: 121px;
+        padding: 10px 0px 0px 0px;
+
+
+    }
+
+    .UserHelp-seccion-mobile {
+        border-bottom: 1px solid #1B365D;
+    }
+
+    .navMobil a {
+        width: 33%;
+        height: 70px;
+        padding: 5px 0px 5px 0px;
+        text-align: center;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        /* background-color: red; */
+        text-decoration: none;
+        color: white;
+
+    }
+
+    .navMobil a:nth-child(2) {
+
+    }
+
+    .navMobil p {
+        width: 100%;
+        padding-top: 5px;
+    }
+
+
+    .navMobil img {
+        width: 58px;
+        height: 39px;
+    }
+
+
+    .navMobil div {
+        /* float: left; */
+        position: sticky;
+        bottom: 0px;
+    }
+
+
+}
+
+
+/*.clearfix:before,*/
+/*.clearfix:after {*/
+/*    content: "";*/
+/*    display: table;*/
+/*    clear: both;*/
+/*}*/
+
+/*.clearfix {*/
+/*    zoom: 1; !*用于兼容IE6*!*/
+/*}*/

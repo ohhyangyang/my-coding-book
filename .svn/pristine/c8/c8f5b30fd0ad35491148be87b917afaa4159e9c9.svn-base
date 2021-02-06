@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title></title>
+        <style type="text/css">
+        /*
+        background简写属性
+        没有顺序要求，没有数量要求
+        ⚠️不写的样式会使用默认值！！!
+        */
+        body{
+            /* background-color: lavenderblush;
+            background-image: url(img/3.gif);
+            background-repeat: repeat-x;
+            background-position: center center;
+            background-attachment: fixed;
+            height: 5000px; */
+            
+            background: lavenderblush url(img/bg/bg7.gif) repeat-x center fixed;
+        }
+        </style>
+    </head>
+    <body>
+
+    </body>
+</html>

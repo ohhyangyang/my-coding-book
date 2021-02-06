@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>内联盒子</title>
+        <style type="text/css">
+        /*
+        内联元素
+        不支持width和height
+        *支持水平方向内边距padding-left padding-right
+        可以设置垂直方向内边距padding-top padding-bottom，但是不会影响布局（等于不支持）
+        *支持水平边框border-left border-right
+        可以设置垂直方向边框border-top border-bottom，但是不会影响布局（等于不支持）
+        *支持水平外边距margin-left margin-right，且两个水平margin不会重叠
+        不支持垂直方向外边距margin-top margin-bottom
+
+
+
+
+        */
+        span{
+            background-color: rgb(192, 229, 238);
+        }
+        .box1{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+        }
+        .s1{
+            padding-left: 20px;
+            padding-right: 120px;
+            border: violet 100px solid;
+            margin:100px;
+        }
+        .s2{
+            margin:100px;
+        }
+        
+        </style>
+    </head>
+    <body>
+        <span class="s1">我是span</span>
+        <span class="s2">我是span</span>
+        <span>我是span</span>
+        <div class="box1"></div>
+    </body>
+</html>

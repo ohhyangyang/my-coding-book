@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>测试</title>
+	<style type="text/css">
+		html, body {
+			width: 100%;
+			height: 100%
+		}
+	</style>
+</head>
+<body>
+
+<div style="width: 100%;height: 100%;background: red" onclick="scrollToView()"></div>
+<div id="scroll" style="width: 100%;height: 100px;background: blue;"></div>
+<div style="width: 100%;height: 100%;background: red"></div>
+
+<script type="text/javascript">
+    function scrollToView () {
+        document.getElementById('scroll').scrollIntoView({
+            block: 'start',
+            inline: 'nearest',
+            behavior: 'smooth'
+        })
+    }
+</script>
+
+</body>
+</html>

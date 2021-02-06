@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<script>
+	/*
+	- 迭代器
+	  遍历器（Iterator）就是一种机制。它是一种接口，为各种不同的数据结构提供统一的访问机制。
+	  任何数据结构只要部署 Iterator 接口，就可以完成遍历操作
+	  
+	  ES6创造了一种新的遍历命令for...of循环，就是因为给数据部署了Iterator接口
+	  (JS的Iterator接口就是指对象里的一个属性---Symbol.iterator
+	  对象进行for...of循环时，会调用 Symbol.iterator方法，返回该对象的默认遍历器）
+      
+    - 原生具备iterator接口的数据: (可用for...of遍历 )
+            Array, Arguments, Set, Map, String, TypedArray, NodeList
+            
+    - for in 和 for of
+      for in遍历的是key， 用来遍历obj对象的属性，属性值为 obj[key] （ES5 已存在）
+      for of遍历的是value， 用来遍历数组 （ES6 新引入）
+    
+    
+    - 迭代器工作原理  ⚠️⚠️  需要自定义遍历数据的时候，要想到迭代器。
+        a) 创建一个指针对象，指向当前数据结构的起始位置
+        b) 第一次调用对象的next方法，指针自动指向数据结构的第一个成员
+        c) 接下来不断调用next方法，指针一直往后移动，直到指向最后一个成员
+        d) 每调用next方法返回一个包含value和done属性的对象
+        
+        
+            
+            
+            
+	 */
+    //声明一个数组
+    const xiyou = ['唐僧','孙悟空','猪八戒','沙僧'];
+    
+    //使用 for...of 遍历数组
+    for(let v of xiyou){
+        console.log(v);
+    }                //'唐僧','孙悟空','猪八戒','沙僧'
+    
+    //使用 for...in 遍历数组键名
+    for(let v in xiyou){
+        console.log(v);
+    }                //0 1 2 3
+    
+	
+//迭代器的工作原理
+	
+    //调用xiyou对象的Symbol.iterator方法，并用iterator声明返回值 -- 创建了一个迭代器
+    let iterator = xiyou[Symbol.iterator]();
+    console.log(iterator);// 为一个封装有next()方法的Iterator数组
+    
+    //依次输出迭代器对象的next方法的返回值
+    console.log(iterator.next());
+    /*
+    Object
+      done: false
+      value: "唐僧"
+      __proto__: Object
+     */
+    console.log(iterator.next());
+    /*
+    Object
+      done: false
+      value: "孙悟空"
+      __proto__: Object
+     */
+    console.log(iterator.next());
+    /*
+    Object
+      done: false
+      value: "猪八戒"
+      __proto__: Object
+     */
+    console.log(iterator.next());
+    /*
+    Object
+      done: false
+      value: "沙僧"
+      __proto__: Object
+     */
+    console.log(iterator.next());
+    /*
+    Object
+      done: true    表示遍历完成
+      value: "undefined"
+      __proto__: Object
+     */
+</script>
+</body>
+</html>
