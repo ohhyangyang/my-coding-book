@@ -1,0 +1,60 @@
+1 Context API
+   创建context
+      1 创建context文件夹和文件
+      2 在 XxContext.js 中 通过createContext函数创建 XxContext
+            export const XxContext = createContext();
+      3 使用 <XxContext.Provider> 和对应的state和action信息创建 XxContextProvider 包裹件
+
+   
+   如何consume
+     方法1 在子组件class中输入 static contextType = XxContext;
+           即可在this.context中直接调用 XxContext 中的参数
+           ⚠️⚠️⚠️ 只可以供一个context使用，不适用于multiple contexts
+
+     方法2 在XxContext.js中创建<ThemeContenxt.provider>后，在子组件中创建<XxContenxt.consumer>
+            <ThemeContext.Consumer>{(XxContext)=>{
+              const {a,b,c}=XxContext;
+                ...
+            }}</ThemeContext.Consumer>
+
+2 Hooks  允许你在fucntional components里创建使用state和特殊的functions
+    - useState() 在fucntional components里使用state
+        创建state
+          const [xxx, setXxx] = useState(要创建的xxx state对象);
+        修改state
+          setXxx(更新后的xxx state)
+
+          例如：
+            const [songs, setSongs] = useState([
+              { title: "almost home", id: 1 },
+              { title: "memory gospel", id: 2 },
+              { title: "this wild darkness", id: 3 },
+            ]);
+            const addSong = (title) => {
+                setSongs([...songs, { title: title, id: uuidv1() }]);
+              };
+
+
+
+    - useEffect(callback [, [target datas]])  
+       在fucntional components里，代替life cycle method
+       每一次页面渲染或者data更新都会执行useEffect()
+          ⚠️⚠️⚠️
+          在不传递第二个参数的情况下，每一次页面渲染或者有任何data更新时都会执行callback
+          如果想要在指定data更新时才执行，需要在callback后传递第二个参数
+
+
+
+
+    - useContext() 
+       在fucntional components里使用context，⚠️⚠️⚠️ 而且适用于multiple contexts
+         const { a, b, c } = useContext(XxxContext);
+
+3 uuid
+   to generate unique IDs
+   https://www.npmjs.com/package/uuid
+
+   下载方式： npm install uuid
+   引入方式： import { v1 as uuidv1 } from 'uuid';
+   生成新id:  let newID = uuid1()
+  

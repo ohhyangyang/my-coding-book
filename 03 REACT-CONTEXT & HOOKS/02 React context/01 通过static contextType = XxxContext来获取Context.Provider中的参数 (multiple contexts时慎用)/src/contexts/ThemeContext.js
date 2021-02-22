@@ -1,0 +1,30 @@
+import React, { createContext, Component } from "react";
+import Navbar from "../components/Navbar";
+
+export const ThemeContext = createContext();
+
+//⚠️⚠️创建provider，提供给App.js
+//若要给component使用，还需要consume来配合 (在其他子组件中)
+export default class ThemeContextProvider extends Component {
+  state = {
+    isLightTheme: true,
+    light: {
+      syntax: "#555",
+      ui: "#ddd",
+      bg: "#eee",
+    },
+    dark: {
+      syntax: "#ddd",
+      ui: "#333",
+      bg: "#555",
+    },
+  };
+  render() {
+    return (
+      // ⚠️⚠️使用 ThemeContext.Provider
+      <ThemeContext.Provider value={{ ...this.state }}>
+        {this.props.children}
+      </ThemeContext.Provider>
+    );
+  }
+}
